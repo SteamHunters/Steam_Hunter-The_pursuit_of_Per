@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Steam_Hunters
 {
-    static class MusicManager
+    static class TexturManager
     {
         // Hur man ska skriva
         //public static Texture2D "Namn på variablen" { get; private set; }

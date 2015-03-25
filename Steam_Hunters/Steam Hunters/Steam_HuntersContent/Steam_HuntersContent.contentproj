@@ -29,6 +29,20 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.AudioImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Maps\" />
+    <Folder Include="Texturer\Enimes\Bosses\" />
+    <Folder Include="Texturer\Enimes\Mobs 1\" />
+    <Folder Include="Texturer\Enimes\Mobs 2\" />
+    <Folder Include="Texturer\Enimes\Mobs 3\" />
+    <Folder Include="Texturer\Enimes\Mobs 4\" />
+    <Folder Include="Texturer\Karakter\Archer\" />
+    <Folder Include="Texturer\Karakter\Enginer\" />
+    <Folder Include="Texturer\Karakter\Warrior\" />
+    <Folder Include="Texturer\Karakter\Wizard\" />
+    <Folder Include="Tiles\GriddyDefault\" />
+    <Folder Include="Tiles\Terrain\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

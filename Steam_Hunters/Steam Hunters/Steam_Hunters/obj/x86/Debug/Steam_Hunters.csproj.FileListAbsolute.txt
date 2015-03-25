@@ -1,0 +1,6 @@
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.csprojResolveAssemblyReference.cache
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Steam_Hunters.exe
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Steam_Hunters.pdb
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.exe
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.pdb
