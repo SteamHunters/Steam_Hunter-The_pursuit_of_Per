@@ -56,10 +56,6 @@ namespace Steam_Hunters
                 this.Exit();
             #endregion
 
-
-
-
-
             base.Update(gameTime);
         }
 
