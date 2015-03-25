@@ -11,22 +11,45 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Steam_Hunters
 {
+    enum Screen
+    {
+        StartScreen,
+        GamePlayScreen,
+        GameOverScreen
+    }
     
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        StartScreen startScreen;
+        GamePlayScreen gamePlayScreen;
+        GameOverScreen gameOverScreen;
+
+        Screen currentScreen;
+
+        int height, width;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            //window
+            width = graphics.PreferredBackBufferWidth = 1280;
+            height = graphics.PreferredBackBufferHeight = 720;
+            graphics.ApplyChanges();
+            graphics.IsFullScreen = false;
+
+            this.Window.Title = "Steam Hunter - The pursuit of Per";
+
         }
 
        
         protected override void Initialize()
         {
-            
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -34,10 +57,14 @@ namespace Steam_Hunters
        
         protected override void LoadContent()
         {
-            
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           
+            startScreen = new StartScreen(this);
+            currentScreen = Screen.StartScreen;
+
+            base.LoadContent();
+
         }
 
       
@@ -56,6 +83,24 @@ namespace Steam_Hunters
                 this.Exit();
             #endregion
 
+            #region Gamestate Update
+            switch (currentScreen)
+            {
+                case Screen.StartScreen:
+                    if (startScreen != null)
+                        startScreen.Update();
+                    break;
+                case Screen.GamePlayScreen:
+                    if (gamePlayScreen != null)
+                        gamePlayScreen.Update(gameTime);
+                    break;
+                case Screen.GameOverScreen:
+                    if (gameOverScreen != null)
+                        gameOverScreen.Update();
+                    break;
+            }
+            #endregion
+
             base.Update(gameTime);
         }
 
@@ -64,13 +109,44 @@ namespace Steam_Hunters
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-
-
-
-            spriteBatch.End();
+            #region GameState Draw
+            switch (currentScreen)
+            {
+                case Screen.StartScreen:
+                    if (startScreen != null)
+                        startScreen.Draw(spriteBatch);
+                    break;
+                case Screen.GamePlayScreen:
+                    if (gamePlayScreen != null)
+                        gamePlayScreen.Draw(spriteBatch);
+                    break;
+                case Screen.GameOverScreen:
+                    if (gameOverScreen != null)
+                        gameOverScreen.Draw(spriteBatch);
+                    break;
+            }
+            #endregion
 
             base.Draw(gameTime);
         }
+
+        public void StartGame()
+        {
+            gamePlayScreen = new GamePlayScreen(this);
+            currentScreen = Screen.GamePlayScreen;
+
+            startScreen = null;
+            gameOverScreen = null;
+        }
+
+        public void EndGame()
+        {
+            gameOverScreen = new GameOverScreen(this);
+            currentScreen = Screen.GameOverScreen;
+
+            gamePlayScreen = null;
+        }
+
+
     }
 }

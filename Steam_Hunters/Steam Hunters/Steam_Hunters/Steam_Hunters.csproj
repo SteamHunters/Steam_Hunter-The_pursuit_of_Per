@@ -78,6 +78,18 @@
   <ItemGroup>
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="GameObject\GameObject.cs" />
+    <Compile Include="GameStates\GamePlayScreen.cs" />
+    <Compile Include="Player\Player classes\Archer.cs" />
+    <Compile Include="Player\Player classes\Engineer.cs" />
+    <Compile Include="Player\Player classes\Warrior.cs" />
+    <Compile Include="Player\Player classes\Wizard.cs" />
+    <Compile Include="GameObject\Projectile.cs" />
+    <Compile Include="GameStates\GameOverScreen.cs" />
+    <Compile Include="GameStates\StartScreen.cs" />
+    <Compile Include="Tools\Camera.cs" />
+    <Compile Include="Particle\Particle.cs" />
+    <Compile Include="Engins\ParticleEngine.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Anoying shit\Program.cs" />
     <Compile Include="Game1.cs" />
@@ -122,11 +134,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Engins\" />
-    <Folder Include="GameStates\" />
-    <Folder Include="Particle\" />
-    <Folder Include="Player\" />
-    <Folder Include="Tools\" />
     <Folder Include="World\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
