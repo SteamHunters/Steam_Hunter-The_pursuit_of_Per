@@ -19,13 +19,13 @@ namespace Steam_Hunters
         Projectile projectile;
 
 
-        int bY, bX, speed, hp, mana;
+        int bY, bX, speed, hp, mana, projectileTimerLife;
         public Vector2 direction = Vector2.Zero;
         public Vector2 bulletDirection, force;
 
        // public int playerDamagedCounter; // fråga sebbe om denna
         float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue;
-        bool notMoved;
+        bool notMoved, shootOneAtTime;
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps)
             : base(tex, pos)
@@ -34,6 +34,8 @@ namespace Steam_Hunters
             this.window = window;
             notMoved = true;
             speed = 10;
+            projectileTimerLife = 2000;
+            shootOneAtTime = true;
         }
         public override void Update(GameTime gameTime)
         {
@@ -87,12 +89,20 @@ namespace Steam_Hunters
             {
                 if (rightTriggerValue != 0)
                 {
-
-                    rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (rightTriggerTimer > 200)
+                    if (shootOneAtTime == true)
                     {
                         AddProjectile(new Vector2(0, -1));
+                    }
+                    shootOneAtTime = false;
+
+                    if (shootOneAtTime == false)
+                    {
+                        rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
+                        if (rightTriggerTimer > 100)
+                        {
+                            shootOneAtTime = true;
+                        }
+
                     }
                 }
             }
@@ -100,9 +110,7 @@ namespace Steam_Hunters
             {
                 if (rightTriggerValue != 0)
                 {
-                    rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (rightTriggerTimer > 200)
+                    if (shootOneAtTime == true)
                     {
                         if (newState.ThumbSticks.Right.X != 0.0f)
                         {
@@ -122,6 +130,17 @@ namespace Steam_Hunters
                                 AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
                             }
                         }
+                        shootOneAtTime = false;
+
+                    }
+                    else if (shootOneAtTime == false)
+                    {
+                        rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
+                        if (rightTriggerTimer > 100)
+                        {
+                            shootOneAtTime = true;
+                        }
+
                     }
                 }
             }
@@ -149,7 +168,7 @@ namespace Steam_Hunters
 
         private void AddProjectile(Vector2 insertDirection)
         {
-            projectile = new Projectile(pos, TextureManager.testTexture, insertDirection, angle, new Point(), new Point());
+            projectile = new Projectile(pos, TextureManager.arrow, insertDirection, angle, new Point(), new Point());
             listProjectile.Add(projectile);
             rightTriggerTimer = 0;
         }
@@ -168,9 +187,10 @@ namespace Steam_Hunters
             {
                 shootTimer += gameTime.ElapsedGameTime.Milliseconds;
 
-                if (shootTimer > 200)
+                if (shootTimer > projectileTimerLife)
                 {
                     listProjectile.RemoveAt(i);
+                    i--;
                     shootTimer = 0;
                 }
 

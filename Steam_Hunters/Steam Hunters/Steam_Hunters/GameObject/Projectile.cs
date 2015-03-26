@@ -10,7 +10,7 @@ namespace Steam_Hunters
     class Projectile : GameObject
     {
         private Vector2 direction;
-        private float speed = 1f;
+        private float speed = 0.4f;
         int projectileLife;
         bool stepRemove;
         public bool StepRemove
