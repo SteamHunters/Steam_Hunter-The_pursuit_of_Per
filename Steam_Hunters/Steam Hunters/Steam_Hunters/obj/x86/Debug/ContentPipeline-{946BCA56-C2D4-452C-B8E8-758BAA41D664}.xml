@@ -8,15 +8,15 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_HuntersContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Anton\Documents\GitHub\Steam-Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_HuntersContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Anton\Documents\GitHub\Steam-Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Anton\Documents\GitHub\Steam-Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Anton\Documents\GitHub\Steam-Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-09-10T20:42:41.5347135+02:00</Value>
+        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2014-09-16T15:48:21.0985117+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

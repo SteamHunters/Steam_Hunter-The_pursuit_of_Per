@@ -13,166 +13,37 @@ namespace Steam_Hunters
         public GameWindow window;
         public GamePlayScreen gps;
 
-        Vector2 dPad_value;
+        Vector2 prevThumbStickRightValue;
 
         List<Projectile> listProjectile = new List<Projectile>();
         Projectile projectile;
 
-        int speed = 7;
+
+        int bY, bX, speed, hp, mana;
         public Vector2 direction = Vector2.Zero;
-        public Vector2 bulletDirection, force, prevPos;
-        public int playerDamagedCounter;
-        float PrevAngle;
-        float shootTimer;
-        float rightTriggerTimer;
+        public Vector2 bulletDirection, force;
 
-        int bY, bX;
-
-        private GamePadState oldState;
+       // public int playerDamagedCounter; // fråga sebbe om denna
+        float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue;
+        bool notMoved;
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps)
             : base(tex, pos)
         {
             this.gps = gps;
             this.window = window;
+            notMoved = true;
+            speed = 10;
         }
         public override void Update(GameTime gameTime)
         {
-
             GamePadState newState = GamePad.GetState(PlayerIndex.One);
 
-            //Vector2 notShoot = newState.ThumbSticks.Right;
+            MoveLeftThumbStick(newState);
+            ShootRightThumbStick(newState, gameTime);
+            changeDirection();
 
-            pos.X += newState.ThumbSticks.Left.X * speed;
-            pos.Y -= newState.ThumbSticks.Left.Y * speed;
-
-
-            if (newState.Buttons.RightShoulder == ButtonState.Pressed &&
-                                oldState.Buttons.RightShoulder == ButtonState.Released)
-            {
-                //if (GamePad.GetState())
-                //{
-
-                //}
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X == 0f && GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X == 0f)
-                {
-
-                }
-                if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X == 0f)
-                {
-                    projectile = new Projectile(pos, TextureManager.testTexture, new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y), angle, new Point(), new Point());
-                    listProjectile.Add(projectile);
-                }
-                else
-                {
-
-                    projectile = new Projectile(pos, TextureManager.testTexture, new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y), angle, new Point(), new Point());
-                    listProjectile.Add(projectile);
-                }
-
-                // the button has just been pressed
-                // do something here
-            }
-
-            dPad_value = new Vector2(GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X, GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Y);
-
-            float rightTriggerValue = newState.Triggers.Right;
-
-            rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-
-            if (rightTriggerTimer > 200)
-            {
-                if (rightTriggerValue == 1)
-                {
-                    if (!(GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X == 0f && GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X == 0f))
-                    {
-
-                        projectile = new Projectile(pos, TextureManager.testTexture, new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y), angle, new Point(), new Point());
-                        listProjectile.Add(projectile);
-                        rightTriggerTimer = 0;
-
-                    }
-                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.X == 0f)
-                    {
-                        if (!(GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Y == 0f))
-                        {
-                            projectile = new Projectile(pos, TextureManager.testTexture, new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y), angle, new Point(), new Point());
-                            listProjectile.Add(projectile);
-                            rightTriggerTimer = 0;
-
-                        }
-
-                    }
-                    //else
-                    //{
-                    //    projectile = new Projectile(pos, TextureManager.testTexture, new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y), angle, new Point(), new Point());
-                    //    listProjectile.Add(projectile);
-                    //}
-                    //else
-                    //{
-
-                    //    projectile = new Projectile(pos, TextureManager.testTexture, new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y), angle, new Point(), new Point());
-                    //    listProjectile.Add(projectile);
-                    //}
-                }
-            }
-
-
-            for (int i = 0; i < listProjectile.Count; i++)
-            {
-                shootTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-                if (shootTimer > 200)
-                {
-                    listProjectile.RemoveAt(i);
-                    i--;
-                    shootTimer = 0;
-                }
-
-            }
-
-            //foreach (Projectile p in listProjectile)
-            //{
-            //    shootTimer += gameTime.ElapsedGameTime.Milliseconds;
-
-            //    if (shootTimer > 200)
-            //    {
-
-            //        shootTimer = 0;
-            //    }
-            //}
-
-            foreach (Projectile e in listProjectile)
-            {
-                e.Update(gameTime);
-            }
-
-            // At the end, we update old state to the state we grabbed at the start of this update.
-            // This allows us to reuse it in the next update.
-            oldState = newState;
-
-            prevPos = pos;
-            pos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
-
-            PrevAngle = angle;
-
-            angle = (float)Math.Atan2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
-
-            if (GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Length() == 0)
-            {
-                angle = PrevAngle;
-            }
-
-
-
-            //DpadControl();
-
-            //if (GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Left.Y == 0f)
-            //{
-            //    direction.Y = 0;
-            //}
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -184,29 +55,149 @@ namespace Steam_Hunters
             {
                 e.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(TextureManager.font, "value: " + dPad_value +
+            spriteBatch.DrawString(TextureManager.font, "value: " + prevThumbStickRightValue +
                                                         "\npos: " + pos +
                                                         "\nshoot timer: " + shootTimer +
                                                         "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);
         }
-        private void DpadControl()
+
+        private void changeDirection()
         {
-            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
-                direction.X = -1;
+            PrevAngle = angle;
 
-            else if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed)
-                direction.X = 1;
-            else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Released)
-                direction.X = 0;
+            angle = (float)Math.Atan2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
 
-            if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed)
-                direction.Y = -1;
-
-            else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed)
-                direction.Y = 1;
-
-            else if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Released)
-                direction.Y = 0;
+            if (GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Length() == 0)
+            {
+                angle = PrevAngle;
+            }
         }
+
+        private void MoveLeftThumbStick(GamePadState newState)
+        {
+            pos.X += newState.ThumbSticks.Left.X * speed;
+            pos.Y -= newState.ThumbSticks.Left.Y * speed;
+        }
+
+        private void ShootRightThumbStick(GamePadState newState, GameTime gameTime)
+        {
+            rightTriggerValue = newState.Triggers.Right;
+
+            if (notMoved)
+            {
+                if (rightTriggerValue != 0)
+                {
+
+                    rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                    if (rightTriggerTimer > 200)
+                    {
+                        AddProjectile(new Vector2(0, -1));
+                    }
+                }
+            }
+            else
+            {
+                if (rightTriggerValue != 0)
+                {
+                    rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                    if (rightTriggerTimer > 200)
+                    {
+                        if (newState.ThumbSticks.Right.X != 0.0f)
+                        {
+                            AddProjectile(new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                     -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                        }
+                        else if (newState.ThumbSticks.Right.Y != 0.0f)
+                        {
+                            AddProjectile(new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                     -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                        }
+
+                        if (newState.ThumbSticks.Right.X == 0.0f && newState.ThumbSticks.Right.Y == 0.0f)
+                        {
+                            if (rightTriggerValue != 0)
+                            {
+                                AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
+                            }
+                        }
+                    }
+                }
+            }
+
+            RightThumbStickInCenter(newState);
+            RemoveProjectile(gameTime);
+            UpdateProjectile(gameTime);
+        }
+
+        private void RightThumbStickInCenter(GamePadState newState)
+        {
+            if (newState.ThumbSticks.Right.X != 0.0f)
+            {
+                prevThumbStickRightValue = new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                      -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
+                notMoved = false;
+            }
+            else if (newState.ThumbSticks.Right.Y != 0.0f)
+            {
+                prevThumbStickRightValue = new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                       -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
+                notMoved = false;
+            }
+        }
+
+        private void AddProjectile(Vector2 insertDirection)
+        {
+            projectile = new Projectile(pos, TextureManager.testTexture, insertDirection, angle, new Point(), new Point());
+            listProjectile.Add(projectile);
+            rightTriggerTimer = 0;
+        }
+
+        private void UpdateProjectile(GameTime gameTime)
+        {
+            foreach (Projectile e in listProjectile)
+            {
+                e.Update(gameTime);
+            }
+        }
+
+        private void RemoveProjectile(GameTime gameTime)
+        {
+            for (int i = 0; i < listProjectile.Count; i++)
+            {
+                shootTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+                if (shootTimer > 200)
+                {
+                    listProjectile.RemoveAt(i);
+                    shootTimer = 0;
+                }
+
+            }
+        }
+
+
+        // skriv om så items används
+        //private void DpadControl()
+        //{
+        //    if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
+        //        direction.X = -1;
+
+        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed)
+        //        direction.X = 1;
+        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Released)
+        //        direction.X = 0;
+
+        //    if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed)
+        //        direction.Y = -1;
+
+        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed)
+        //        direction.Y = 1;
+
+        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Released)
+        //        direction.Y = 0;
+        //}
+
     }
 }
