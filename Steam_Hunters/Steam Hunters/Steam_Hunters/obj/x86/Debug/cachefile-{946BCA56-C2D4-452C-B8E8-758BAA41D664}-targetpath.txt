@@ -1,0 +1,4 @@
+Content\font.xnb
+Content\map.xnb
+Content\one frame wizard.xnb
+Content\StartScreen AlphaPix.xnb

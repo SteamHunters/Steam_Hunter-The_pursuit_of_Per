@@ -15,7 +15,7 @@ namespace Steam_Hunters
         public GameOverScreen(Game1 game)
         {
             this.game = game;
-            TextureManager.LoadTextures(game);
+            TextureManager.LoadContent(game);
         }
         public void Update()
         {

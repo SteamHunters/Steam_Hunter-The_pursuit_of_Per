@@ -18,7 +18,7 @@ namespace Steam_Hunters
         public GamePlayScreen(Game1 game)
         {
             this.game = game;
-            TextureManager.LoadTextures(game);
+            TextureManager.LoadContent(game);
 
             wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this);
             engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this);

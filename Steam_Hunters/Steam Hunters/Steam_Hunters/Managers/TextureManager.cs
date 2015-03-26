@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +75,12 @@ namespace Steam_Hunters
 
         #endregion
 
-        public static void LoadContent(ContentManager Content)
+        public static Texture2D testTexture { get; private set; }
+        public static Texture2D startBackground { get; private set; }
+        public static Texture2D map { get; private set; }
+        public static SpriteFont font { get; private set; }
+
+        public static void LoadContent(Game1 game)
         {
             // Vad man ska skriva                        Vart den finns i content mappen ex:
             //"Namn på variablen" = Content.Load<Texture2D>(@"Texture/Tower/LazerTower");
@@ -141,6 +147,12 @@ namespace Steam_Hunters
             #endregion
 
             #endregion
+
+            testTexture = game.Content.Load<Texture2D>("one frame wizard");
+            startBackground = game.Content.Load<Texture2D>("StartScreen AlphaPix");
+            map = game.Content.Load<Texture2D>("map");
+            font = game.Content.Load<SpriteFont>("font");
+
         }
 
 
