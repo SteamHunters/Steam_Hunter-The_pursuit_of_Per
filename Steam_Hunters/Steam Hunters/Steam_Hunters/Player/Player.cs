@@ -12,6 +12,7 @@ namespace Steam_Hunters
     {
         public GameWindow window;
         public GamePlayScreen gps;
+        private GamePadState oldState;
 
         Vector2 prevThumbStickRightValue;
 
@@ -27,6 +28,10 @@ namespace Steam_Hunters
         float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue;
         bool notMoved, shootOneAtTime;
 
+        int showButton;
+        double sec;
+        bool showButtonCounter;
+
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps)
             : base(tex, pos)
         {
@@ -36,6 +41,8 @@ namespace Steam_Hunters
             speed = 10;
             projectileTimerLife = 2000;
             shootOneAtTime = true;
+            showButton = 0;
+            showButtonCounter = true;
         }
         public override void Update(GameTime gameTime)
         {
@@ -46,6 +53,8 @@ namespace Steam_Hunters
             changeDirection();
 
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
+
+            ButtonPress(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -61,7 +70,143 @@ namespace Steam_Hunters
                                                         "\npos: " + pos +
                                                         "\nshoot timer: " + shootTimer +
                                                         "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);
+
+            switch (showButton)
+            {
+                case 1:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n X " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+                case 2:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Y " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+                case 3:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n A " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+                case 4:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n B " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+                case 5:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Right Shoulder " + sec, new Vector2(200, 200), Color.Red);                   
+                    break;
+                case 6:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Left Shoulder " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+                case 7:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Left Trigger " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+                case 8:
+                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Right Trigger " + sec, new Vector2(200, 200), Color.Red);
+                    break;
+
+            }
         }
+
+        public bool AButton()
+        {
+            if ()
+            {
+                return true;    
+            }
+
+            return false; 
+        }
+
+        private void ButtonPress(GameTime gT)
+        {
+            GamePadState newState = GamePad.GetState(PlayerIndex.One);
+            if (newState.Buttons.X == ButtonState.Pressed &&
+                                oldState.Buttons.X == ButtonState.Released)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 1;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Buttons.Y == ButtonState.Pressed &&
+                                oldState.Buttons.Y == ButtonState.Released)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 2;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Buttons.A == ButtonState.Pressed &&
+                                oldState.Buttons.A == ButtonState.Released)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 3;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Buttons.B == ButtonState.Pressed &&
+                                oldState.Buttons.B == ButtonState.Released)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 4;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Buttons.RightShoulder == ButtonState.Pressed &&
+                                oldState.Buttons.RightShoulder == ButtonState.Released)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 5;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Buttons.LeftShoulder == ButtonState.Pressed &&
+                                oldState.Buttons.LeftShoulder == ButtonState.Released)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 6;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Triggers.Left != 0)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 7;
+                showButtonCounter = true;
+
+            }
+            else if (newState.Triggers.Right != 0)
+            {
+                // the button has just been pressed
+                // do something here
+                showButton = 8;
+                showButtonCounter = true;
+            }
+            else
+            {
+                showButton = 0;
+            }
+
+            if (showButtonCounter == true)
+            {
+                sec += gT.ElapsedGameTime.TotalSeconds;
+
+                if (sec >= 1)
+                {
+                    showButton = 0;
+                    sec = 0;
+                    showButtonCounter = false;
+                }
+            }
+            
+
+            // At the end, we update old state to the state we grabbed at the start of this update.
+            // This allows us to reuse it in the next update.
+            oldState = newState;
+        }
+
+
 
         private void changeDirection()
         {
