@@ -19,12 +19,12 @@ namespace Steam_Hunters
         List<Projectile> listProjectile = new List<Projectile>();
         Projectile projectile;
 
+        PlayerIndex index = PlayerIndex.One;
 
         int bY, bX, speed, hp, mana, projectileTimerLife;
         public Vector2 direction = Vector2.Zero;
         public Vector2 bulletDirection, force;
 
-       // public int playerDamagedCounter; // fråga sebbe om denna
         float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue;
         bool notMoved, shootOneAtTime;
 
@@ -101,19 +101,18 @@ namespace Steam_Hunters
             }
         }
 
-        public bool AButton()
-        {
-            if ()
-            {
-                return true;    
-            }
-
-            return false; 
-        }
+        //public bool AButton()
+        //{
+        //    if ()
+        //    {
+        //        return true;    
+        //    }
+        //    return false; 
+        //}
 
         private void ButtonPress(GameTime gT)
         {
-            GamePadState newState = GamePad.GetState(PlayerIndex.One);
+            GamePadState newState = GamePad.GetState(index);
             if (newState.Buttons.X == ButtonState.Pressed &&
                                 oldState.Buttons.X == ButtonState.Released)
             {
@@ -199,14 +198,10 @@ namespace Steam_Hunters
                     showButtonCounter = false;
                 }
             }
-            
-
             // At the end, we update old state to the state we grabbed at the start of this update.
             // This allows us to reuse it in the next update.
             oldState = newState;
         }
-
-
 
         private void changeDirection()
         {
