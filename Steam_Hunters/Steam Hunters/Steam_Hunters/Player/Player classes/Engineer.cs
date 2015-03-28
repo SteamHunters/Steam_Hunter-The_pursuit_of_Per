@@ -9,11 +9,13 @@ namespace Steam_Hunters
 {
     class Engineer : Player
     {
-        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps)
-            : base(tex, pos, window, gps)
+        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int playerIndex)
+            : base(tex, pos, window, gps, playerIndex)
         {
 
         }
+
+        
 
         //public override void Draw(SpriteBatch sb)
         //{

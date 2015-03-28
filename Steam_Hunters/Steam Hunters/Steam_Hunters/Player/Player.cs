@@ -10,6 +10,8 @@ namespace Steam_Hunters
 {
     class Player : GameObject
     {
+
+        public char c;
         public GameWindow window;
         public GamePlayScreen gps;
         private GamePadState oldState;
@@ -19,12 +21,12 @@ namespace Steam_Hunters
         List<Projectile> listProjectile = new List<Projectile>();
         Projectile projectile;
 
-
+        PlayerIndex playerIndex;
+        
         int bY, bX, speed, hp, mana, projectileTimerLife;
         public Vector2 direction = Vector2.Zero;
         public Vector2 bulletDirection, force;
 
-       // public int playerDamagedCounter; // fråga sebbe om denna
         float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue;
         bool notMoved, shootOneAtTime;
 
@@ -32,7 +34,7 @@ namespace Steam_Hunters
         double sec;
         bool showButtonCounter;
 
-        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps)
+        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int playerIndex)
             : base(tex, pos)
         {
             this.gps = gps;
@@ -43,10 +45,35 @@ namespace Steam_Hunters
             shootOneAtTime = true;
             showButton = 0;
             showButtonCounter = true;
+
+            #region Identify player index
+            if (playerIndex == 1)
+            {
+                this.playerIndex = PlayerIndex.One;
+            }
+            if (playerIndex == 2)
+            {
+                this.playerIndex = PlayerIndex.Two;
+            }
+            if (playerIndex == 3)
+            {
+                this.playerIndex = PlayerIndex.Three;
+            }
+            if (playerIndex == 4)
+            {
+                this.playerIndex = PlayerIndex.Four;
+            }
+            #endregion
+
+
+
+            
         }
+
+
         public override void Update(GameTime gameTime)
         {
-            GamePadState newState = GamePad.GetState(PlayerIndex.One);
+            GamePadState newState = GamePad.GetState(playerIndex);
 
             MoveLeftThumbStick(newState);
             ShootRightThumbStick(newState, gameTime);
@@ -54,7 +81,11 @@ namespace Steam_Hunters
 
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
 
-            ButtonPress(gameTime);
+            //ButtonPress(gameTime);
+
+            AButton(playerIndex);
+
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -70,7 +101,7 @@ namespace Steam_Hunters
                                                         "\npos: " + pos +
                                                         "\nshoot timer: " + shootTimer +
                                                         "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);
-
+            #region asfaf
             switch (showButton)
             {
                 case 1:
@@ -97,23 +128,37 @@ namespace Steam_Hunters
                 case 8:
                     spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Right Trigger " + sec, new Vector2(200, 200), Color.Red);
                     break;
-
             }
-        }
+            #endregion
 
-        public bool AButton()
-        {
-            if ()
+
+            if (AButton(playerIndex) == true)
             {
-                return true;    
+                spriteBatch.DrawString(TextureManager.font, " X ", new Vector2(0, -50), Color.Black);
             }
-
-            return false; 
         }
+
+        //  oldState = newState;
+
+        #region Get gamePad button
+        public bool AButton(PlayerIndex playerIndex)
+        {
+            GamePadState newState = GamePad.GetState(playerIndex);
+            if (newState.Buttons.A == ButtonState.Pressed)
+            {
+                return true &&  false;
+            }
+            else
+                return false;
+        }
+
+
+        #endregion
+        
 
         private void ButtonPress(GameTime gT)
         {
-            GamePadState newState = GamePad.GetState(PlayerIndex.One);
+            GamePadState newState = GamePad.GetState(playerIndex);
             if (newState.Buttons.X == ButtonState.Pressed &&
                                 oldState.Buttons.X == ButtonState.Released)
             {
@@ -121,6 +166,7 @@ namespace Steam_Hunters
                 // do something here
                 showButton = 1;
                 showButtonCounter = true;
+                
 
             }
             else if (newState.Buttons.Y == ButtonState.Pressed &&
@@ -206,15 +252,13 @@ namespace Steam_Hunters
             oldState = newState;
         }
 
-
-
         private void changeDirection()
         {
             PrevAngle = angle;
 
-            angle = (float)Math.Atan2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X, GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
+            angle = (float)Math.Atan2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X, GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
 
-            if (GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Length() == 0)
+            if (GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Length() == 0)
             {
                 angle = PrevAngle;
             }
@@ -259,13 +303,13 @@ namespace Steam_Hunters
                     {
                         if (newState.ThumbSticks.Right.X != 0.0f)
                         {
-                            AddProjectile(new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
-                                                     -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                            AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                     -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
                         }
                         else if (newState.ThumbSticks.Right.Y != 0.0f)
                         {
-                            AddProjectile(new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
-                                                     -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                            AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                     -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
                         }
 
                         if (newState.ThumbSticks.Right.X == 0.0f && newState.ThumbSticks.Right.Y == 0.0f)
@@ -299,14 +343,14 @@ namespace Steam_Hunters
         {
             if (newState.ThumbSticks.Right.X != 0.0f)
             {
-                prevThumbStickRightValue = new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
-                                                      -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
+                prevThumbStickRightValue = new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                      -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
                 notMoved = false;
             }
             else if (newState.ThumbSticks.Right.Y != 0.0f)
             {
-                prevThumbStickRightValue = new Vector2(GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.X,
-                                                       -GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
+                prevThumbStickRightValue = new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                       -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y);
                 notMoved = false;
             }
         }

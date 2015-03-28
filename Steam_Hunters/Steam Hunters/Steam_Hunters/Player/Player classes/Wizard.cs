@@ -9,8 +9,8 @@ namespace Steam_Hunters
 {
     class Wizard : Player
     {
-        public Wizard(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps)
-            : base(tex, pos, window, gps)
+        public Wizard(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int playerIndex)
+            : base(tex, pos, window, gps, playerIndex)
         {
 
         }

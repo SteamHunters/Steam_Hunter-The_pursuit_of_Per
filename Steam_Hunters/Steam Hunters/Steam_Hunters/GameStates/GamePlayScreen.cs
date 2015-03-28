@@ -20,8 +20,9 @@ namespace Steam_Hunters
             this.game = game;
             TextureManager.LoadContent(game);
 
-            wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this);
-            engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this);
+            wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 2);
+            engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1);
+
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
         public void Update(GameTime gameTime)
@@ -29,6 +30,7 @@ namespace Steam_Hunters
             KeyboardState keyboardState = Keyboard.GetState();
             engineer.Update(gameTime);
             camera.Update(gameTime, engineer);
+
             //wiz.Update(gameTime);
             //if (playerLife == 0)
             //{
