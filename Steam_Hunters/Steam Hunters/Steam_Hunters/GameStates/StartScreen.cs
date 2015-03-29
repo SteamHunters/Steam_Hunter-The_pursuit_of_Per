@@ -14,7 +14,7 @@ namespace Steam_Hunters
         Button singleplayerStart, multiplayerStart, instruction, exit;
 
         public GamePadState gamePadState, oldgamePadState = GamePad.GetState(PlayerIndex.One);
-        bool showInstruction;
+        bool showInstruction, showCharacterSelectSingle, showCharacterSelectMulti;
 
         public StartScreen(Game1 game)
         {
@@ -31,58 +31,76 @@ namespace Steam_Hunters
             oldgamePadState = gamePadState;
             gamePadState = GamePad.GetState(PlayerIndex.One);
 
-            if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+            #region moveStartMenu
+            if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
                 multiplayerStart.selected = true;
                 singleplayerStart.selected = false;
                 exit.selected = false;
                 instruction.selected = false;
             }
-            if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+            if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
                 singleplayerStart.selected = true;
                 multiplayerStart.selected = false;
                 exit.selected = false;
                 instruction.selected = false;
             }
-            if (gamePadState.DPad.Left == ButtonState.Pressed && oldgamePadState.DPad.Left == ButtonState.Released)
+            if (gamePadState.DPad.Left == ButtonState.Pressed && oldgamePadState.DPad.Left == ButtonState.Released && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
                 instruction.selected = true;
                 multiplayerStart.selected = false;
                 singleplayerStart.selected = false;
                 exit.selected = false;
             }
-            if (gamePadState.DPad.Right == ButtonState.Pressed && oldgamePadState.DPad.Right == ButtonState.Released)
+            if (gamePadState.DPad.Right == ButtonState.Pressed && oldgamePadState.DPad.Right == ButtonState.Released && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
                 instruction.selected = false;
                 multiplayerStart.selected = false;
                 singleplayerStart.selected = false;
                 exit.selected = true;
             }
+#endregion
 
-            if (gamePadState.Buttons.A == ButtonState.Pressed && singleplayerStart.selected == true)
+            #region SinglePlayer
+            if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && singleplayerStart.selected == true && showInstruction == false)
+            {
+                showCharacterSelectSingle = true;
+            }
+            if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showCharacterSelectSingle == true && showInstruction == false && showCharacterSelectMulti == false)
+            {
+                showCharacterSelectSingle = false;
+            }
+
+            if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released && showCharacterSelectSingle == true)
             {
                 game.StartGame();
-                ChooseCharacterSinglePlayer();
-            }
-            if (gamePadState.Buttons.A == ButtonState.Pressed && multiplayerStart.selected == true)
-            {
-                //game.StartGame();
-                ChooseCharacterMultiplayer();
             }
 
-            if (gamePadState.Buttons.A == ButtonState.Pressed && exit.selected == true)
+            #endregion
+
+
+            if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && multiplayerStart.selected == true && showCharacterSelectSingle == false && showCharacterSelectMulti == false && showInstruction == false)
+            {
+                showCharacterSelectMulti = true;
+            }
+            if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showCharacterSelectSingle == false && showInstruction == false && showCharacterSelectMulti == true)
+            {
+                showCharacterSelectMulti = false;
+            }
+            if (gamePadState.Buttons.A == ButtonState.Pressed && exit.selected == true && showCharacterSelectSingle == false && showCharacterSelectMulti == false && showInstruction == false)
             {
                 game.Exit();
             }
-            if (gamePadState.Buttons.A == ButtonState.Pressed && instruction.selected == true)
+            if (gamePadState.Buttons.A == ButtonState.Pressed && instruction.selected == true && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
                 showInstruction = true;
             }
-            if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showInstruction == true)
+            if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showInstruction == true && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
                 showInstruction = false;
             }
+
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -98,17 +116,16 @@ namespace Steam_Hunters
             if (showInstruction == true)
                 spriteBatch.Draw(TextureManager.instructionScreen, new Vector2(0f, 0f), Color.White);
 
+            if(showCharacterSelectSingle == true)
+            {
+                spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+            }
+            if (showCharacterSelectMulti == true)
+            {
+                spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);
+            }
+
             spriteBatch.End();
-        }
-
-        public void ChooseCharacterSinglePlayer()
-        {
-            //bla bla
-        }
-
-        public void ChooseCharacterMultiplayer()
-        {
-            //bla bla 
         }
     }
 }
