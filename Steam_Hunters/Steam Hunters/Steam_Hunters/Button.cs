@@ -27,9 +27,9 @@ namespace Steam_Hunters
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (selected)
-                spriteBatch.Draw(tex, hitBox, Color.Tomato);
+                spriteBatch.Draw(tex, pos, Color.SandyBrown);
             else
-                spriteBatch.Draw(tex, hitBox, Color.White);
+                spriteBatch.Draw(tex, pos, Color.White);
         }
 
     }

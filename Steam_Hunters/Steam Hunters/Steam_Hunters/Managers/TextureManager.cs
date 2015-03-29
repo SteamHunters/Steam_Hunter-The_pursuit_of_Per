@@ -77,6 +77,13 @@ namespace Steam_Hunters
 
         public static Texture2D testTexture { get; private set; }
         public static Texture2D startBackground { get; private set; }
+        public static Texture2D singleplayerButton { get; private set; }
+        public static Texture2D multiplayerButton { get; private set; }
+        public static Texture2D instructionButton { get; private set; }
+        public static Texture2D instructionScreen { get; private set; }
+        public static Texture2D exitButton { get; private set; }
+
+
         public static Texture2D map { get; private set; }
         public static SpriteFont font { get; private set; }
         public static Texture2D arrow { get; private set; }
@@ -137,13 +144,20 @@ namespace Steam_Hunters
             #endregion
 
             #region HUD Texturer
+
+            singleplayerButton = game.Content.Load<Texture2D>("Singleplayer");
+            multiplayerButton = game.Content.Load<Texture2D>("Multiplayer");
+            exitButton = game.Content.Load<Texture2D>("Exit");
+            instructionButton = game.Content.Load<Texture2D>("Instructions");
+            instructionScreen = game.Content.Load<Texture2D>("InstructionScreen");
+
             #endregion
 
             #region Bakgrunds Texturer
             #endregion
 
             #region Knapp/Buttons Texturer
-            #endregion
+            #endregion 
 
             #region M.m. Texturer
             #endregion
@@ -151,7 +165,7 @@ namespace Steam_Hunters
             #endregion
 
             testTexture = game.Content.Load<Texture2D>("one frame wizard");
-            startBackground = game.Content.Load<Texture2D>("StartScreen AlphaPix");
+            startBackground = game.Content.Load<Texture2D>("StartScreenTest");
             map = game.Content.Load<Texture2D>("map");
             font = game.Content.Load<SpriteFont>("font");
             arrow = game.Content.Load<Texture2D>("Very big arrow");
