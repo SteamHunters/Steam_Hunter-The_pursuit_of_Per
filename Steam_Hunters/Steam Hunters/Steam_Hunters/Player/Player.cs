@@ -12,14 +12,15 @@ namespace Steam_Hunters
     {
         public GameWindow window;
         public GamePlayScreen gps;
-        private GamePadState oldState;
-
+        
         Vector2 prevThumbStickRightValue;
 
         List<Projectile> listProjectile = new List<Projectile>();
         Projectile projectile;
 
         PlayerIndex playerIndex;
+
+        private GamePadState newState, oldState; 
         
         int bY, bX, speed, hp, mana, projectileTimerLife;
         public Vector2 direction = Vector2.Zero;
@@ -66,15 +67,15 @@ namespace Steam_Hunters
             }
             #endregion
 
-
-
+            
             
         }
 
 
         public override void Update(GameTime gameTime)
         {
-            GamePadState newState = GamePad.GetState(playerIndex);
+            
+            newState = GamePad.GetState(this.playerIndex);
 
             MoveLeftThumbStick(newState);
             ShootRightThumbStick(newState, gameTime);
@@ -91,7 +92,7 @@ namespace Steam_Hunters
             YButton(playerIndex);
 
             #endregion
-
+            oldState = GamePad.GetState(this.playerIndex);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -143,50 +144,52 @@ namespace Steam_Hunters
         #region Get gamePad button
         public void AButton(PlayerIndex playerIndex)
         {
-            GamePadState newState = GamePad.GetState(playerIndex);
             if (newState.Buttons.A == ButtonState.Pressed && oldState.Buttons.A == ButtonState.Released)
             {
                 this.Apress = true;
             }
             else
                 this.Apress = false;
-
-            oldState = newState;
         }
-
         public void BButton(PlayerIndex playerIndex)
         {
-            GamePadState newState = GamePad.GetState(playerIndex);
             if (newState.Buttons.B == ButtonState.Pressed && oldState.Buttons.B == ButtonState.Released)
             {
                 this.Bpress = true;
             }
             else
                 this.Bpress = false;
-            oldState = newState;
         }
         public void XButton(PlayerIndex playerIndex)
         {
-            GamePadState newState = GamePad.GetState(playerIndex);
             if (newState.Buttons.X == ButtonState.Pressed && oldState.Buttons.X == ButtonState.Released)
             {
                 this.Xpress = true;
             }
             else
                 this.Xpress = false;
-            oldState = newState;
         }
         public void YButton(PlayerIndex playerIndex)
         {
-            GamePadState newState = GamePad.GetState(playerIndex);
             if (newState.Buttons.Y == ButtonState.Pressed && oldState.Buttons.Y == ButtonState.Released)
             {
                 this.Ypress = true;
             }
             else
-                this.Ypress = false;
-           oldState = newState;
+                this.Ypress = false;  
         }
+        public void RTButton(PlayerIndex playerIndex)
+        {
+            if (newState.Buttons.RightShoulder == ButtonState.Pressed)
+            {
+                this.RTpress = true;
+            }
+            else
+                this.RTpress = false;
+        }
+
+
+        
         #endregion
         
 
