@@ -21,10 +21,10 @@ namespace Steam_Hunters
             this.game = game;
             TextureManager.LoadContent(game);
 
-            singleplayerStart = new Button(TextureManager.testTexture, new Vector2(300, 300));
-            multiplayerStart = new Button(TextureManager.testTexture, new Vector2(300, 400));
-            instruction = new Button(TextureManager.testTexture, new Vector2(100, 400));
-            exit = new Button(TextureManager.testTexture, new Vector2(500, 400));
+            singleplayerStart = new Button(TextureManager.singleplayerButton, new Vector2(500, 300));
+            multiplayerStart = new Button(TextureManager.multiplayerButton, new Vector2(500, 500));
+            instruction = new Button(TextureManager.instructionButton, new Vector2(170, 400));
+            exit = new Button(TextureManager.exitButton, new Vector2(720, 400));
         }
         public void Update()
         {
@@ -96,7 +96,7 @@ namespace Steam_Hunters
             exit.Draw(spriteBatch);
 
             if (showInstruction == true)
-                spriteBatch.Draw(TextureManager.testTexture, new Vector2(400, 400), Color.White);
+                spriteBatch.Draw(TextureManager.instructionScreen, new Vector2(0f, 0f), Color.White);
 
             spriteBatch.End();
         }
