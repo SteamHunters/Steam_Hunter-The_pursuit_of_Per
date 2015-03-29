@@ -30,7 +30,7 @@ namespace Steam_Hunters
                 spriteBatch.DrawString(TextureManager.font, "B", new Vector2(0, 20), Color.White);
             if (Xpress == true)
                 spriteBatch.DrawString(TextureManager.font, "X", new Vector2(0, 20), Color.White);
-            if (Ypress == true)
+            if (RTpress == true)
                 spriteBatch.DrawString(TextureManager.font, "Y", new Vector2(0, 20), Color.White);
 
             base.Draw(spriteBatch);
