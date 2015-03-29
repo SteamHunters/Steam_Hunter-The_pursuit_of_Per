@@ -24,6 +24,12 @@ namespace Steam_Hunters
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+
+
+
+
+
+            #region Test button komand
             if (Apress == true)
                 spriteBatch.DrawString(TextureManager.font, "A", new Vector2(0, 20), Color.White);
             if (Bpress == true)
@@ -50,6 +56,7 @@ namespace Steam_Hunters
                 spriteBatch.DrawString(TextureManager.font, "right", new Vector2(0, 20), Color.White);
             if (Dlefthpress == true)
                 spriteBatch.DrawString(TextureManager.font, "lefth", new Vector2(0, 20), Color.White);
+            #endregion
 
             base.Draw(spriteBatch);
         }

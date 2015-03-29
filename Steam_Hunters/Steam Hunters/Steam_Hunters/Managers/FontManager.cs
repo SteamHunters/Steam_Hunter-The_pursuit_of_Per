@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Steam_Hunters
 {
-    class FontManager
+    static class FontManager
     {
         //Vad man ska skriva
         //public static SpriteFont "Namn på variablen" { get; private set; }

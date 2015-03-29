@@ -23,8 +23,8 @@ namespace Steam_Hunters
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (Apress == true)
-                spriteBatch.DrawString(TextureManager.font, "Hejsan", new Vector2(0, 40), Color.White);
+           
+            
 
             base.Draw(spriteBatch);
         }

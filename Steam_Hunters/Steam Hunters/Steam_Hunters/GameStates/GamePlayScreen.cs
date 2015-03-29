@@ -20,7 +20,7 @@ namespace Steam_Hunters
             this.game = game;
             TextureManager.LoadContent(game);
 
-            wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1);
+            wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 2);
             engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1);
 
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -31,13 +31,6 @@ namespace Steam_Hunters
             engineer.Update(gameTime);
             wiz.Update(gameTime);
             camera.Update(gameTime, engineer);
-
-            //wiz.Update(gameTime);
-            //if (playerLife == 0)
-            //{
-            //    game.EndGame();
-            //    GetHighscores();
-            //}
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -51,11 +44,6 @@ namespace Steam_Hunters
             spriteBatch.Draw(TextureManager.testTexture, new Vector2(0f, 0f), Color.White);
 
             spriteBatch.End();
-
-            ////static 
-            //spriteBatch.Begin();
-            //spriteBatch.Draw(TextureManager.testTexture, new Vector2(0f, 0f), Color.White);
-            //spriteBatch.End();
         }
     }
 }
