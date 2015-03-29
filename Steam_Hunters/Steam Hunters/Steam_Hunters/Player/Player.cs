@@ -10,8 +10,6 @@ namespace Steam_Hunters
 {
     class Player : GameObject
     {
-
-        public char c;
         public GameWindow window;
         public GamePlayScreen gps;
         private GamePadState oldState;
@@ -33,6 +31,9 @@ namespace Steam_Hunters
         int showButton;
         double sec;
         bool showButtonCounter;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LTpress, LBpress, Duppress, Drightpress, Dlefth, Ddownpress, Startpress, Backpress;
+
+
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int playerIndex)
             : base(tex, pos)
@@ -81,10 +82,15 @@ namespace Steam_Hunters
 
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
 
-            //ButtonPress(gameTime);
+           // ButtonPress(gameTime);
 
+            #region Update button presss and with player index
             AButton(playerIndex);
+            XButton(playerIndex);
+            BButton(playerIndex);
+            YButton(playerIndex);
 
+            #endregion
 
         }
 
@@ -130,29 +136,57 @@ namespace Steam_Hunters
                     break;
             }
             #endregion
-
-
-            if (AButton(playerIndex) == true)
-            {
-                spriteBatch.DrawString(TextureManager.font, " X ", new Vector2(0, -50), Color.Black);
-            }
         }
 
         //  oldState = newState;
 
         #region Get gamePad button
-        public bool AButton(PlayerIndex playerIndex)
+        public void AButton(PlayerIndex playerIndex)
         {
             GamePadState newState = GamePad.GetState(playerIndex);
-            if (newState.Buttons.A == ButtonState.Pressed)
+            if (newState.Buttons.A == ButtonState.Pressed && oldState.Buttons.A == ButtonState.Released)
             {
-                return true &&  false;
+                this.Apress = true;
             }
             else
-                return false;
+                this.Apress = false;
+
+            oldState = newState;
         }
 
-
+        public void BButton(PlayerIndex playerIndex)
+        {
+            GamePadState newState = GamePad.GetState(playerIndex);
+            if (newState.Buttons.B == ButtonState.Pressed && oldState.Buttons.B == ButtonState.Released)
+            {
+                this.Bpress = true;
+            }
+            else
+                this.Bpress = false;
+            oldState = newState;
+        }
+        public void XButton(PlayerIndex playerIndex)
+        {
+            GamePadState newState = GamePad.GetState(playerIndex);
+            if (newState.Buttons.X == ButtonState.Pressed && oldState.Buttons.X == ButtonState.Released)
+            {
+                this.Xpress = true;
+            }
+            else
+                this.Xpress = false;
+            oldState = newState;
+        }
+        public void YButton(PlayerIndex playerIndex)
+        {
+            GamePadState newState = GamePad.GetState(playerIndex);
+            if (newState.Buttons.Y == ButtonState.Pressed && oldState.Buttons.Y == ButtonState.Released)
+            {
+                this.Ypress = true;
+            }
+            else
+                this.Ypress = false;
+           oldState = newState;
+        }
         #endregion
         
 
