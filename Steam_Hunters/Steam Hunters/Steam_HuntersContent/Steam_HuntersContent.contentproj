@@ -30,12 +30,17 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Fonts\" />
     <Folder Include="Maps\" />
+    <Folder Include="Texturer\Background\" />
+    <Folder Include="Texturer\Buttons\" />
     <Folder Include="Texturer\Enimes\Bosses\" />
     <Folder Include="Texturer\Enimes\Mobs 1\" />
     <Folder Include="Texturer\Enimes\Mobs 2\" />
     <Folder Include="Texturer\Enimes\Mobs 3\" />
     <Folder Include="Texturer\Enimes\Mobs 4\" />
+    <Folder Include="Texturer\Items\Potions\" />
+    <Folder Include="Texturer\Items\Weponds\" />
     <Folder Include="Texturer\Karakter\Archer\" />
     <Folder Include="Texturer\Karakter\Enginer\" />
     <Folder Include="Texturer\Karakter\Warrior\" />

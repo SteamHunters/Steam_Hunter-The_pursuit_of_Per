@@ -80,9 +80,9 @@
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="GameObject\GameObject.cs" />
     <Compile Include="GameStates\GamePlayScreen.cs" />
-    <Compile Include="Interface.cs" />
-    <Compile Include="InventoryWindow.cs" />
-    <Compile Include="StatusWindow.cs" />
+    <Compile Include="Interface\Interface.cs" />
+    <Compile Include="Interface\InventoryWindow.cs" />
+    <Compile Include="Interface\StatusWindow.cs" />
     <Compile Include="Player\Player classes\Archer.cs" />
     <Compile Include="Player\Player classes\Engineer.cs" />
     <Compile Include="Player\Player classes\Warrior.cs" />
