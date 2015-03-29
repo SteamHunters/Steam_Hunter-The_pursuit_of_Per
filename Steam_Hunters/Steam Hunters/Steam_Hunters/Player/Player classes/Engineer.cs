@@ -30,8 +30,26 @@ namespace Steam_Hunters
                 spriteBatch.DrawString(TextureManager.font, "B", new Vector2(0, 20), Color.White);
             if (Xpress == true)
                 spriteBatch.DrawString(TextureManager.font, "X", new Vector2(0, 20), Color.White);
-            if (RTpress == true)
+            if (Ypress == true)
                 spriteBatch.DrawString(TextureManager.font, "Y", new Vector2(0, 20), Color.White);
+
+            if (RTpress == true)
+                spriteBatch.DrawString(TextureManager.font, "RT", new Vector2(0, 20), Color.White);
+            if (RBpress == true)
+                spriteBatch.DrawString(TextureManager.font, "RB", new Vector2(0, 20), Color.White);
+            if (LTpress == true)
+                spriteBatch.DrawString(TextureManager.font, "LT", new Vector2(0, 20), Color.White);
+            if (LBpress == true)
+                spriteBatch.DrawString(TextureManager.font, "LB", new Vector2(0, 20), Color.White);
+
+            if (Duppress == true)
+                spriteBatch.DrawString(TextureManager.font, "up", new Vector2(0, 20), Color.White);
+            if (Ddownpress == true)
+                spriteBatch.DrawString(TextureManager.font, "down", new Vector2(0, 20), Color.White);
+            if (Drightpress == true)
+                spriteBatch.DrawString(TextureManager.font, "right", new Vector2(0, 20), Color.White);
+            if (Dlefthpress == true)
+                spriteBatch.DrawString(TextureManager.font, "lefth", new Vector2(0, 20), Color.White);
 
             base.Draw(spriteBatch);
         }

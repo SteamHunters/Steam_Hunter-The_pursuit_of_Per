@@ -26,13 +26,14 @@ namespace Steam_Hunters
         public Vector2 direction = Vector2.Zero;
         public Vector2 bulletDirection, force;
 
-        float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue;
+        float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
         bool notMoved, shootOneAtTime;
 
         int showButton;
         double sec;
         bool showButtonCounter;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LTpress, LBpress, Duppress, Drightpress, Dlefth, Ddownpress, Startpress, Backpress;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LTpress, LBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
+
 
 
 
@@ -76,6 +77,22 @@ namespace Steam_Hunters
         {
             
             newState = GamePad.GetState(this.playerIndex);
+            #region Update button presss and with player index
+            AButton(playerIndex);
+            XButton(playerIndex);
+            BButton(playerIndex);
+            YButton(playerIndex);
+
+            RTButton(playerIndex);
+            RBButton(playerIndex);
+            LTButton(playerIndex);
+            LBButton(playerIndex);
+
+            DUpButton(playerIndex);
+            DDownButton(playerIndex);
+            DRightButton(playerIndex);
+            DLefthButton(playerIndex);
+            #endregion
 
             MoveLeftThumbStick(newState);
             ShootRightThumbStick(newState, gameTime);
@@ -83,15 +100,8 @@ namespace Steam_Hunters
 
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
 
-           // ButtonPress(gameTime);
+           
 
-            #region Update button presss and with player index
-            AButton(playerIndex);
-            XButton(playerIndex);
-            BButton(playerIndex);
-            YButton(playerIndex);
-
-            #endregion
             oldState = GamePad.GetState(this.playerIndex);
         }
 
@@ -107,36 +117,7 @@ namespace Steam_Hunters
             spriteBatch.DrawString(TextureManager.font, "value: " + prevThumbStickRightValue +
                                                         "\npos: " + pos +
                                                         "\nshoot timer: " + shootTimer +
-                                                        "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);
-            #region asfaf
-            switch (showButton)
-            {
-                case 1:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n X " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-                case 2:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Y " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-                case 3:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n A " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-                case 4:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n B " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-                case 5:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Right Shoulder " + sec, new Vector2(200, 200), Color.Red);                   
-                    break;
-                case 6:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Left Shoulder " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-                case 7:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Left Trigger " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-                case 8:
-                    spriteBatch.DrawString(TextureManager.font, "\n\n\n\n\n Right Trigger " + sec, new Vector2(200, 200), Color.Red);
-                    break;
-            }
-            #endregion
+                                                        "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);  
         }
 
         //  oldState = newState;
@@ -178,117 +159,103 @@ namespace Steam_Hunters
             else
                 this.Ypress = false;  
         }
+
         public void RTButton(PlayerIndex playerIndex)
         {
-            if (newState.Buttons.RightShoulder == ButtonState.Pressed)
+            rightTriggerValue = newState.Triggers.Right;
+           if (rightTriggerValue != 0)
             {
                 this.RTpress = true;
             }
             else
                 this.RTpress = false;
         }
-
-
-        
-        #endregion
-        
-
-        private void ButtonPress(GameTime gT)
+        public void LTButton(PlayerIndex playerIndex)
         {
-            GamePadState newState = GamePad.GetState(playerIndex);
-            if (newState.Buttons.X == ButtonState.Pressed &&
-                                oldState.Buttons.X == ButtonState.Released)
+            lefthTriggerValue = newState.Triggers.Left;
+            if (lefthTriggerValue != 0)
             {
-                // the button has just been pressed
-                // do something here
-                showButton = 1;
-                showButtonCounter = true;
-                
-
-            }
-            else if (newState.Buttons.Y == ButtonState.Pressed &&
-                                oldState.Buttons.Y == ButtonState.Released)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 2;
-                showButtonCounter = true;
-
-            }
-            else if (newState.Buttons.A == ButtonState.Pressed &&
-                                oldState.Buttons.A == ButtonState.Released)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 3;
-                showButtonCounter = true;
-
-            }
-            else if (newState.Buttons.B == ButtonState.Pressed &&
-                                oldState.Buttons.B == ButtonState.Released)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 4;
-                showButtonCounter = true;
-
-            }
-            else if (newState.Buttons.RightShoulder == ButtonState.Pressed &&
-                                oldState.Buttons.RightShoulder == ButtonState.Released)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 5;
-                showButtonCounter = true;
-
-            }
-            else if (newState.Buttons.LeftShoulder == ButtonState.Pressed &&
-                                oldState.Buttons.LeftShoulder == ButtonState.Released)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 6;
-                showButtonCounter = true;
-
-            }
-            else if (newState.Triggers.Left != 0)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 7;
-                showButtonCounter = true;
-
-            }
-            else if (newState.Triggers.Right != 0)
-            {
-                // the button has just been pressed
-                // do something here
-                showButton = 8;
-                showButtonCounter = true;
+                this.LTpress = true;
             }
             else
+                this.LTpress = false;
+        }
+        public void LBButton(PlayerIndex playerIndex)
+        {
+            if (newState.Buttons.LeftShoulder == ButtonState.Pressed && oldState.Buttons.LeftShoulder == ButtonState.Released)
             {
-                showButton = 0;
+                this.LBpress = true;
             }
-
-            if (showButtonCounter == true)
+            else
+                this.LBpress = false;
+        }
+        public void RBButton(PlayerIndex playerIndex)
+        {
+            if (newState.Buttons.RightShoulder == ButtonState.Pressed && oldState.Buttons.RightShoulder == ButtonState.Released)
             {
-                sec += gT.ElapsedGameTime.TotalSeconds;
-
-                if (sec >= 1)
-                {
-                    showButton = 0;
-                    sec = 0;
-                    showButtonCounter = false;
-                }
+                this.RBpress = true;
             }
-            
-
-            // At the end, we update old state to the state we grabbed at the start of this update.
-            // This allows us to reuse it in the next update.
-            oldState = newState;
+            else
+                this.RBpress = false;
         }
 
+        public void StartButton(PlayerIndex playerIndex)
+        {
+            if (newState.Buttons.Start == ButtonState.Pressed && oldState.Buttons.Start == ButtonState.Released)
+            {
+                this.Startpress = true;
+            }
+            else
+                this.Startpress = false;
+        }
+        public void BackButton(PlayerIndex playerIndex)
+        {
+            if (newState.Buttons.Back == ButtonState.Pressed && oldState.Buttons.Back == ButtonState.Released)
+            {
+                this.Backpress = true;
+            }
+            else
+                this.Backpress = false;
+        }
+
+        public void DUpButton(PlayerIndex playerIndex)
+        {
+            if (newState.DPad.Up == ButtonState.Pressed && oldState.DPad.Up == ButtonState.Released)
+            {
+                this.Duppress = true;
+            }
+            else
+                this.Duppress = false;
+        }
+        public void DDownButton(PlayerIndex playerIndex)
+        {
+            if (newState.DPad.Down == ButtonState.Pressed && oldState.DPad.Down == ButtonState.Released)
+            {
+                this.Ddownpress = true;
+            }
+            else
+                this.Ddownpress = false;
+        }
+        public void DRightButton(PlayerIndex playerIndex)
+        {
+            if (newState.DPad.Right == ButtonState.Pressed && oldState.DPad.Right == ButtonState.Released)
+            {
+                this.Drightpress = true;
+            }
+            else
+                this.Drightpress = false;
+        }
+        public void DLefthButton(PlayerIndex playerIndex)
+        {
+            if (newState.DPad.Left == ButtonState.Pressed && oldState.DPad.Left == ButtonState.Released)
+            {
+                this.Dlefthpress = true;
+            }
+            else
+                this.Dlefthpress = false;
+        }
+        #endregion
+        
         private void changeDirection()
         {
             PrevAngle = angle;

@@ -46,5 +46,14 @@ C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunte
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Exit.xnb
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\InstructionScreen.xnb
+<<<<<<< HEAD
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterSingle.xnb
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterMulti.xnb
+=======
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Multiplayer.xnb
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Singleplayer.xnb
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\InstructionScreen.xnb
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreenTest.xnb
+C:\Users\Anton Svensson\Desktop\Steam Hunters\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Exit.xnb
+>>>>>>> origin/master

@@ -11,5 +11,8 @@ Content\Singleplayer.xnb
 Content\InstructionScreen.xnb
 Content\StartScreenTest.xnb
 Content\Exit.xnb
+<<<<<<< HEAD
 Content\PickACharacterSingle.xnb
 Content\PickACharacterMulti.xnb
+=======
+>>>>>>> origin/master
