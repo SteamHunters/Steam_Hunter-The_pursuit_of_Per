@@ -64,6 +64,15 @@
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Very big arrow.xnb</Output>
       <Time>2015-03-29T14:05:09.4536127+02:00</Time>
     </Item>
+    <Item>
+      <Source>StartScreenTest.png</Source>
+      <Name>StartScreenTest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreenTest.xnb</Output>
+      <Time>2015-03-29T14:32:08.0140206+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{946BCA56-C2D4-452C-B8E8-758BAA41D664}</ContentProjectGUID>

@@ -40,3 +40,4 @@ C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunte
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.exe
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.pdb
+C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreenTest.xnb

@@ -151,7 +151,7 @@ namespace Steam_Hunters
             #endregion
 
             testTexture = game.Content.Load<Texture2D>("one frame wizard");
-            startBackground = game.Content.Load<Texture2D>("StartScreen AlphaPix");
+            startBackground = game.Content.Load<Texture2D>("StartScreenTest");
             map = game.Content.Load<Texture2D>("map");
             font = game.Content.Load<SpriteFont>("font");
             arrow = game.Content.Load<Texture2D>("Very big arrow");
