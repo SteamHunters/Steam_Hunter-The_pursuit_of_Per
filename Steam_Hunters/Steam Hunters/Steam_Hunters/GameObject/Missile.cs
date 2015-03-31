@@ -7,7 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Steam_Hunters
 {
-    class Missile:GameObject
+    abstract class Missile:GameObject
     {
+
+        public Missile(Texture2D tex, Vector2 pos)
+            : base(tex, pos)
+        {
+
+        }
     }
 }

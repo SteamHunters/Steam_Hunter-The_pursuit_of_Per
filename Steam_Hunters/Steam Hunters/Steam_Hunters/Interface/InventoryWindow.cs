@@ -8,7 +8,7 @@ namespace Steam_Hunters
 {
     class InventoryWindow
     {
-        int[,] inventoryID;
+       // int[,] inventoryID;
 
         public InventoryWindow()
         {

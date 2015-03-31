@@ -37,13 +37,15 @@ namespace Steam_Hunters
 
 
 
-        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int playerIndex)
+        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos)
         {
-            this.gps = gps;
             this.window = window;
+            this.gps = gps;
+            this.hp = hp;
+            this.mana = mana;
+            this.speed = speed;
             notMoved = true;
-            speed = 10;
             projectileTimerLife = 2000;
             shootOneAtTime = true;
             showButton = 0;

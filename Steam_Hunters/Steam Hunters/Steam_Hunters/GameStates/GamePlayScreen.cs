@@ -20,8 +20,8 @@ namespace Steam_Hunters
             this.game = game;
             TextureManager.LoadContent(game);
 
-            wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 2);
-            engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1);
+            //wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this,1,1,5, 2);
+            engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5, 1);
 
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
@@ -29,7 +29,7 @@ namespace Steam_Hunters
         {
             KeyboardState keyboardState = Keyboard.GetState();
             engineer.Update(gameTime);
-            wiz.Update(gameTime);
+            //wiz.Update(gameTime);
             camera.Update(gameTime, engineer);
         }
 
@@ -39,7 +39,7 @@ namespace Steam_Hunters
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             spriteBatch.Draw(TextureManager.map, new Vector2(-200, -200), Color.White);
             engineer.Draw(spriteBatch);
-            wiz.Draw(spriteBatch);
+            //wiz.Draw(spriteBatch);
             //wiz.Draw(spriteBatch);
             spriteBatch.Draw(TextureManager.testTexture, new Vector2(0f, 0f), Color.White);
 

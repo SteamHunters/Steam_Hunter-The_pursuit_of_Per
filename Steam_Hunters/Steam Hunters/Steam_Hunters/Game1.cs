@@ -62,6 +62,7 @@ namespace Steam_Hunters
 
             startScreen = new StartScreen(this);
             currentScreen = Screen.StartScreen;
+            
 
             base.LoadContent();
 
