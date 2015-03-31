@@ -76,6 +76,8 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameObject\Dispenser.cs" />
+    <Compile Include="GameObject\EngineerTower.cs" />
     <Compile Include="GameObject\Button.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="GameObject\GameObject.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Interface\Interface.cs" />
     <Compile Include="Interface\InventoryWindow.cs" />
     <Compile Include="Interface\StatusWindow.cs" />
+    <Compile Include="GameObject\Missile.cs" />
     <Compile Include="Player\Player classes\Archer.cs" />
     <Compile Include="Player\Player classes\Engineer.cs" />
     <Compile Include="Player\Player classes\Warrior.cs" />
