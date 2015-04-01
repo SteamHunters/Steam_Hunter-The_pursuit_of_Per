@@ -380,13 +380,13 @@ namespace Steam_Hunters
         {
             for (int i = 0; i < listProjectile.Count; i++)
             {
-                shootTimer += gameTime.ElapsedGameTime.Milliseconds;
+                //shootTimer += gameTime.ElapsedGameTime.Milliseconds;
 
-                if (shootTimer > projectileTimerLife)
+                if (listProjectile[i].StepRemove)
                 {
                     listProjectile.RemoveAt(i);
-                    i--;
-                    shootTimer = 0;
+                    //i--;
+                    //shootTimer = 0;
                 }
 
             }

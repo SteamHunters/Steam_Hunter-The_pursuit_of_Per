@@ -13,6 +13,8 @@ namespace Steam_Hunters
         private float speed = 0.4f;
         int projectileLife;
         bool stepRemove;
+        double timerRemove;
+
         public bool StepRemove
         {
             get { return stepRemove; }
@@ -24,6 +26,7 @@ namespace Steam_Hunters
             this.pos = pos;
             origin = new Vector2(tex.Width / 2, tex.Height / 2);
             direction = movement;
+            projectileLife = 500;
 
             if (movement != Vector2.Zero)
                 direction.Normalize();
@@ -35,9 +38,10 @@ namespace Steam_Hunters
         {
             pos += direction * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
-            projectileLife++;
+            //projectileLife++;
+            timerRemove += gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (projectileLife == 75)
+            if (timerRemove >= projectileLife)
             {
                 stepRemove = true;
             }
