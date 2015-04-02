@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2015-04-01T12:50:12.0419342+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2015-04-02T10:46:12.6323291+02:00</Time>
     </Item>
     <Item>
       <Source>map.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\map.xnb</Output>
-      <Time>2015-04-01T12:50:12.0459344+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\map.xnb</Output>
+      <Time>2015-04-02T10:46:12.6343301+02:00</Time>
     </Item>
     <Item>
       <Source>one frame wizard.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\one frame wizard.xnb</Output>
-      <Time>2015-04-01T12:50:12.0499346+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\one frame wizard.xnb</Output>
+      <Time>2015-04-02T10:46:12.6563401+02:00</Time>
     </Item>
     <Item>
       <Source>StartScreen AlphaPix.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreen AlphaPix.xnb</Output>
-      <Time>2015-04-01T12:50:12.0289334+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreen AlphaPix.xnb</Output>
+      <Time>2015-04-02T10:46:12.5934451+02:00</Time>
     </Item>
     <Item>
       <Source>arrow.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\arrow.xnb</Output>
-      <Time>2015-04-01T12:50:12.0419342+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\arrow.xnb</Output>
+      <Time>2015-04-02T10:46:12.6303228+02:00</Time>
     </Item>
     <Item>
       <Source>arrow big.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\arrow big.xnb</Output>
-      <Time>2015-04-01T12:50:12.0419342+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\arrow big.xnb</Output>
+      <Time>2015-04-02T10:46:12.6293223+02:00</Time>
     </Item>
     <Item>
       <Source>Very big arrow.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Very big arrow.xnb</Output>
-      <Time>2015-04-01T12:50:12.0409341+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Very big arrow.xnb</Output>
+      <Time>2015-04-02T10:46:12.6293223+02:00</Time>
     </Item>
     <Item>
       <Source>Instructions.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb</Output>
-      <Time>2015-04-01T12:50:12.0229331+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb</Output>
+      <Time>2015-04-02T10:46:12.5874363+02:00</Time>
     </Item>
     <Item>
       <Source>Multiplayer.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Multiplayer.xnb</Output>
-      <Time>2015-04-01T12:50:12.0229331+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Multiplayer.xnb</Output>
+      <Time>2015-04-02T10:46:12.5874363+02:00</Time>
     </Item>
     <Item>
       <Source>Singleplayer.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Singleplayer.xnb</Output>
-      <Time>2015-04-01T12:50:12.0289334+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Singleplayer.xnb</Output>
+      <Time>2015-04-02T10:46:12.5934451+02:00</Time>
     </Item>
     <Item>
       <Source>InstructionScreen.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\InstructionScreen.xnb</Output>
-      <Time>2015-04-01T12:50:12.0199329+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\InstructionScreen.xnb</Output>
+      <Time>2015-04-02T10:46:12.5864363+02:00</Time>
     </Item>
     <Item>
       <Source>StartScreenTest.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreenTest.xnb</Output>
-      <Time>2015-04-01T12:50:12.038934+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreenTest.xnb</Output>
+      <Time>2015-04-02T10:46:12.595446+02:00</Time>
     </Item>
     <Item>
       <Source>Exit.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Exit.xnb</Output>
-      <Time>2015-04-01T12:50:12.0179328+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Exit.xnb</Output>
+      <Time>2015-04-02T10:46:12.5844363+02:00</Time>
     </Item>
     <Item>
       <Source>PickACharacterSingle.png</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterSingle.xnb</Output>
-      <Time>2015-04-01T12:50:12.0279334+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterSingle.xnb</Output>
+      <Time>2015-04-02T10:46:12.5924446+02:00</Time>
     </Item>
     <Item>
       <Source>PickACharacterMulti.png</Source>
@@ -133,8 +133,35 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterMulti.xnb</Output>
-      <Time>2015-04-01T12:50:12.0259332+02:00</Time>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterMulti.xnb</Output>
+      <Time>2015-04-02T10:46:12.5904371+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Dispenser.png</Source>
+      <Name>Dispenser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Dispenser.xnb</Output>
+      <Time>2015-04-02T13:57:29.0218206+02:00</Time>
+    </Item>
+    <Item>
+      <Source>turret bot.png</Source>
+      <Name>turret bot</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret bot.xnb</Output>
+      <Time>2015-04-02T14:43:48.1074186+02:00</Time>
+    </Item>
+    <Item>
+      <Source>turret top .png</Source>
+      <Name>turret top</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret top.xnb</Output>
+      <Time>2015-04-02T14:59:24.9145641+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -143,10 +170,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_HuntersContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_HuntersContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -175,7 +202,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-09-15T11:47:36.1730448+02:00</Value>
+        <Value>2014-08-18T15:31:39.322524+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

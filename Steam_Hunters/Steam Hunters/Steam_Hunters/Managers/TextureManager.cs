@@ -84,6 +84,9 @@ namespace Steam_Hunters
         public static Texture2D instructionButton { get; private set; }
         public static Texture2D instructionScreen { get; private set; }
         public static Texture2D exitButton { get; private set; }
+        public static Texture2D dispenserTex { get; private set; }
+        public static Texture2D turretTexBot { get; private set; }
+        public static Texture2D turretTexTop { get; private set; }
 
 
         public static Texture2D map { get; private set; }
@@ -126,6 +129,12 @@ namespace Steam_Hunters
             #endregion
 
             #region Enginer Textur
+
+
+            dispenserTex = game.Content.Load<Texture2D>(@"Dispenser");
+            turretTexBot = game.Content.Load<Texture2D>(@"turret bot");
+            turretTexTop = game.Content.Load<Texture2D>(@"turret top");
+
             #endregion
 
             #endregion

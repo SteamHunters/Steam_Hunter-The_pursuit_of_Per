@@ -12,6 +12,7 @@ namespace Steam_Hunters
     {
         public GameWindow window;
         public GamePlayScreen gps;
+        public Color color = Color.White;
         
         Vector2 prevThumbStickRightValue;
 
@@ -22,9 +23,9 @@ namespace Steam_Hunters
 
         private GamePadState newState, oldState; 
         
-        int bY, bX, speed, hp, mana, projectileTimerLife;
+        public int bY, bX, speed, hp, mana, projectileTimerLife;
         public Vector2 direction = Vector2.Zero;
-        public Vector2 bulletDirection, force;
+        public Vector2 bulletDirection, force, prevPos;
 
         float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
         bool notMoved, shootOneAtTime;
@@ -77,7 +78,7 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            
+            prevPos = pos;
             newState = GamePad.GetState(this.playerIndex);
             #region Update button presss and with player index
             AButton(playerIndex);
@@ -109,7 +110,7 @@ namespace Steam_Hunters
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, Color.White, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
             spriteBatch.Draw(tex, hitBox, Color.Red);
 
             foreach (Projectile e in listProjectile)
@@ -392,6 +393,10 @@ namespace Steam_Hunters
             }
         }
 
+        public void HandleCollision()
+        {
+            pos = prevPos;
+        }
 
         // skriv om så items används
         //private void DpadControl()

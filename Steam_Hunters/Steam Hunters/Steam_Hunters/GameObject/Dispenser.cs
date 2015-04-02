@@ -32,8 +32,8 @@ namespace Steam_Hunters
         public Dispenser(Texture2D tex, Vector2 pos, float radius)
             : base(tex,pos)
         {
-            spriteWidth = 50;//måste titta vad den har för värden! 
-            spriteHeight = 50;//måste titta vad den har för värden! 
+            spriteWidth = 40;//måste titta vad den har för värden! 
+            spriteHeight = 40;//måste titta vad den har för värden! 
             this.radius = radius;
  
             center = new Vector2(pos.X + spriteWidth / 2, pos.Y + spriteHeight / 2);
@@ -43,9 +43,12 @@ namespace Steam_Hunters
          public override void Update(GameTime gameTime)
          {
              this.center = new Vector2(pos.X + tex.Width / 2, pos.Y + tex.Height / 2);
-             dispenserPower += (float)gameTime.ElapsedGameTime.TotalSeconds;
+             dispenserPower += 1;
 
-             if (dispenserPower == 20)
+             if (dispenserPower > 400)
+                 color = Color.Red;
+
+             if (dispenserPower >= 500)
                  dispenserRemove = true;
 
              hitBox = new Rectangle((int)pos.X, (int)pos.Y, spriteWidth, spriteHeight);

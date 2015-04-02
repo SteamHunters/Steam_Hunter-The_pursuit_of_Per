@@ -13,3 +13,6 @@ Content\StartScreenTest.xnb
 Content\Exit.xnb
 Content\PickACharacterSingle.xnb
 Content\PickACharacterMulti.xnb
+Content\Dispenser.xnb
+Content\turret bot.xnb
+Content\turret top.xnb

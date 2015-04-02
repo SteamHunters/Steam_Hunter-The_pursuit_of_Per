@@ -36,9 +36,9 @@ namespace Steam_Hunters
 
          public override void Update(GameTime gameTime)
          {
-             towerPower+= (float)gameTime.ElapsedGameTime.TotalSeconds;
+             towerPower+= 1;
 
-             if (towerPower == 90)
+             if (towerPower == 700)
              {
                  towerRemove = true;
              }
@@ -54,7 +54,8 @@ namespace Steam_Hunters
          }
          public override void Draw(SpriteBatch spriteBatch)
          {
-             spriteBatch.Draw(tex, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
+             spriteBatch.Draw(TextureManager.turretTexBot, center, null, color, 0, origin, 1.0f, SpriteEffects.None, 0);
+             spriteBatch.Draw(TextureManager.turretTexTop, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
          }
     }
 }
