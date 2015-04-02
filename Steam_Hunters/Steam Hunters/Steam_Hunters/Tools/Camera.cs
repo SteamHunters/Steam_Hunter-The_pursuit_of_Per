@@ -18,9 +18,9 @@ namespace Steam_Hunters
             view = newView;
         }
 
-        public void Update(GameTime gameTime, Player engineer)
+        public void Update(GameTime gameTime, Vector2 cameraCenter)
         {
-            centre = new Vector2(engineer.pos.X + (engineer.hitBox.Width / 2) - view.Width / 2, engineer.pos.Y + (engineer.hitBox.Height / 2) - view.Height / 2);
+            centre = new Vector2(cameraCenter.X - view.Width / 2, cameraCenter.Y - view.Height / 2);
             transform = Matrix.CreateScale(new Vector3(1, 1, 0)) * Matrix.CreateTranslation(new Vector3(-centre.X, -centre.Y, 0));
         }
     }

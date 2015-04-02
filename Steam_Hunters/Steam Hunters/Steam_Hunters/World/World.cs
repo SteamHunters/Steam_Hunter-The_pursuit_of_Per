@@ -50,18 +50,18 @@ namespace Steam_Hunters
 
         private void LoadLevel1()
         {
-            //this.gridDataStream = new FileStream("Content/Maps/testTiled2.tmx", FileMode.Open, FileAccess.Read);
-            //this.tileBankStream = new FileStream("Content/Maps/tileBank2.xml", FileMode.Open, FileAccess.Read);
+            this.gridDataStream = new FileStream("Content/Maps/TestMap.tmx", FileMode.Open, FileAccess.Read);
+            this.tileBankStream = new FileStream("Content/Maps/TileBank.xml", FileMode.Open, FileAccess.Read);
 
-            //GridData gridData = GridData.NewFromStreamAndWorldPosition(gridDataStream, new Vector2(1, 0));
-            //TileBank tileBank = TileBank.CreateFromSerializedData(tileBankStream, content);
+            GridData gridData = GridData.NewFromStreamAndWorldPosition(gridDataStream, new Vector2(1, 0));
+            TileBank tileBank = TileBank.CreateFromSerializedData(tileBankStream, content);
 
-            //gridDataStream.Position = 0;
-            //SerializedGridFactory gridFactory = SerializedGridFactory.NewFromData(gridDataStream, gridData, tileBank);
+            gridDataStream.Position = 0;
+            SerializedGridFactory gridFactory = SerializedGridFactory.NewFromData(gridDataStream, gridData, tileBank);
 
-            //level1 = Grid.NewGrid(gridData, gridFactory, DefaultGridDrawer.NewFromGridData(gridData, content, Color.Black));
+            level1 = Grid.NewGrid(gridData, gridFactory, DefaultGridDrawer.NewFromGridData(gridData, content, Color.Black));
 
-            // YEY detta funkar
+            //// YEY detta funkar
             //Predicate<Tile> temp = FindHitboxTiles;
             //tiles = level1.GetLayer("Hitbox").GetAllMatchingTiles(temp);
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Steam_Hunters
         //Vad man ska skriva
         //public static SpriteFont "Namn på variablen" { get; private set; }
 
-        #region Något
+        #region Fonts
+        public static SpriteFont font { get; private set; }
+
         #endregion
 
         public static void LoadContent(ContentManager Content)
@@ -19,7 +22,8 @@ namespace Steam_Hunters
             //Vad man ska skriva                           Vart fonten är i content
             //"Namn på variablen" = Content.Load<SpriteFont>(@"Fonts/HudFont");
 
-            #region Något
+            #region Fonts
+            font = Content.Load<SpriteFont>(@"font");
             #endregion
 
         }

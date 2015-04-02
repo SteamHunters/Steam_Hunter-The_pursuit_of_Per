@@ -10,12 +10,11 @@ namespace Steam_Hunters
     class GameOverScreen
     {
         private Game1 game;
-        private KeyboardState lastState;
+        //private KeyboardState lastState;
 
         public GameOverScreen(Game1 game)
         {
             this.game = game;
-            TextureManager.LoadContent(game);
         }
         public void Update()
         {

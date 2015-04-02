@@ -12,12 +12,18 @@ namespace Steam_Hunters
     {
         private Game1 game;
         public Camera camera;
+        private Vector2 cameraCenter;
+
+
         Wizard wizard;
         Warrior warrior;
         Archer archer;
 
-        //engineer
+        List<Player> playerlist = new List<Player>();
+
+        //engineer 
         Engineer engineer;
+        //Anton: bör detta inte finnas i enginer klassen? (antar du ska flytta det sen?)
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
@@ -25,21 +31,60 @@ namespace Steam_Hunters
         public GamePlayScreen(Game1 game)
         {
             this.game = game;
-            TextureManager.LoadContent(game);
 
             //wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this,1,1,5, 2);
-            engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
+            //engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
+
+            //Test build det ska sedan funka så här sen //Anton
+            Player e = new Engineer(TextureManager.testTexture, new Vector2(50, 400), game.Window, this, 1, 1, 5, 2);
+            playerlist.Add(e);
+            e = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
+            playerlist.Add(e);
+            Player w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5, 1);
+            playerlist.Add(w);
+            //
 
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            engineer.Update(gameTime);
+            //engineer.Update(gameTime);
             //wizard.Update(gameTime);
-            camera.Update(gameTime, engineer);
 
-#region engineerstuff(turret, dispenser etc)
+            #region Set Camera center
+            if (playerlist.Count == 1)
+            {
+                cameraCenter = playerlist[0].pos / playerlist.Count;
+                camera.Update(gameTime, cameraCenter);
+            }
+            if (playerlist.Count == 2)
+            {
+                cameraCenter = (playerlist[0].pos + playerlist[1].pos) / playerlist.Count;
+                camera.Update(gameTime, cameraCenter);
+            }
+            if (playerlist.Count == 3)
+            {
+                cameraCenter = (playerlist[0].pos + playerlist[1].pos + playerlist[2].pos) / playerlist.Count;
+                camera.Update(gameTime, cameraCenter);
+            }
+            if (playerlist.Count == 4)
+            {
+                cameraCenter = (playerlist[0].pos + playerlist[1].pos + playerlist[2].pos + playerlist[3].pos) / playerlist.Count;
+                camera.Update(gameTime, cameraCenter);
+            }
+            #endregion
+
+            // Test build
+            foreach (Player p in playerlist)
+            {
+                p.Update(gameTime);
+            }
+            // 
+
+
+            //Anton: bör detta inte finnas i enginer klassen? (antar du ska flytta det sen?)
+            #region engineerstuff(turret, dispenser etc)
 
             #region dispenser
             foreach (Dispenser d in dispensers)
@@ -122,13 +167,15 @@ namespace Steam_Hunters
 
              }
             #endregion
+
             #region missile
             foreach (Missile m in missiles)
             {
                 m.Update(gameTime);
             }
             #endregion
-#endregion
+            
+            #endregion
 
         }
 
@@ -137,11 +184,20 @@ namespace Steam_Hunters
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             spriteBatch.Draw(TextureManager.map, new Vector2(-200, -200), Color.White);
-            engineer.Draw(spriteBatch);
+
+            //engineer.Draw(spriteBatch);
             //wizard.Draw(spriteBatch);
             //wizard.Draw(spriteBatch);
+
+
             spriteBatch.Draw(TextureManager.testTexture, new Vector2(0f, 0f), Color.White);
 
+            // Test build
+            foreach (Player p in playerlist)
+            {
+                p.Draw(spriteBatch);
+            }
+            //
             foreach(Dispenser d in dispensers)
             {
                 d.Draw(spriteBatch);

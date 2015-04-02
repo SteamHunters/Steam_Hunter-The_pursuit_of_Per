@@ -57,8 +57,13 @@ namespace Steam_Hunters
        
         protected override void LoadContent()
         {
-
+            
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            TextureManager.LoadContent(Content);
+            FontManager.LoadContent(Content);
+            MusicManager.LoadContent(Content);
+            SoundEffectManager.LoadContent(Content);
 
             startScreen = new StartScreen(this);
             currentScreen = Screen.StartScreen;

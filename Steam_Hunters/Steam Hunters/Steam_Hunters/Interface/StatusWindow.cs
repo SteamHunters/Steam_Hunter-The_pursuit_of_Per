@@ -7,14 +7,15 @@ using System.Text;
 
 namespace Steam_Hunters
 {
-    class StatusWindow
+    class StatusWindow: GameObject
     {
         // byta namn på dess sen då vi kommer på de rätta namnen på dem
         protected int intelegens, styrka, agility, livskraft, tur, hp, maxHp, mana, maxMana,  lvl, money, nextLvl, exp;
         private string karakterName;
         private PlayerIndex playerIndex;
 
-        public StatusWindow(string karakterName, int hp, int maxHp, int mana, int lvl, PlayerIndex playerIndex)
+        public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int hp, int maxHp, int mana, int lvl, PlayerIndex playerIndex)
+            :base(tex, pos)
         {
             this.karakterName = karakterName;
             this.hp = hp;
@@ -25,13 +26,12 @@ namespace Steam_Hunters
             this.playerIndex = playerIndex;
         }
 
-
-        public void Update()
+        public override void Update(GameTime gameTime)
         {
-
+                        
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
 
         }
@@ -46,9 +46,6 @@ namespace Steam_Hunters
             Double Percent = (Double)CurrentMana / MaxMana;
             //spriteBatch.Draw(ManaTexture, new Rectangle(pos, storlek), Color.White);
         }
-
-
-
 
         #region Get and Set methods
 
@@ -155,11 +152,6 @@ namespace Steam_Hunters
         #endregion
 
         #endregion
-
-
-
-
-
 
     }
 }

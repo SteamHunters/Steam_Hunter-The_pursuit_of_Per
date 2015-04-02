@@ -71,15 +71,14 @@ namespace Steam_Hunters
             }
             #endregion
 
-            
-            
         }
 
 
         public override void Update(GameTime gameTime)
         {
             prevPos = pos;
-            newState = GamePad.GetState(this.playerIndex);
+            newState = GamePad.GetState(playerIndex);
+
             #region Update button presss and with player index
             AButton(playerIndex);
             XButton(playerIndex);
@@ -105,7 +104,7 @@ namespace Steam_Hunters
 
            
 
-            oldState = GamePad.GetState(this.playerIndex);
+            oldState = GamePad.GetState(playerIndex);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -117,13 +116,11 @@ namespace Steam_Hunters
             {
                 e.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(TextureManager.font, "value: " + prevThumbStickRightValue +
+            spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
                                                         "\npos: " + pos +
                                                         "\nshoot timer: " + shootTimer +
                                                         "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);  
         }
-
-        //  oldState = newState;
 
         #region Get gamePad button
         public void AButton(PlayerIndex playerIndex)
@@ -364,7 +361,7 @@ namespace Steam_Hunters
 
         private void AddProjectile(Vector2 insertDirection)
         {
-            projectile = new Projectile(pos, TextureManager.arrow, insertDirection, angle, new Point(), new Point());
+            projectile = new Projectile(pos, TextureManager.arrowBasic, insertDirection, angle, new Point(), new Point());
             listProjectile.Add(projectile);
             rightTriggerTimer = 0;
         }
@@ -421,3 +418,4 @@ namespace Steam_Hunters
 
     }
 }
+

@@ -42,6 +42,12 @@ namespace Steam_Hunters
         #endregion
 
         #region Enginer Textur
+
+
+        // Turrent
+        public static Texture2D dispenserTex { get; private set; }
+        public static Texture2D turretTexBot { get; private set; }
+        public static Texture2D turretTexTop { get; private set; }
         #endregion
 
         #endregion
@@ -59,15 +65,29 @@ namespace Steam_Hunters
         #endregion
 
         #region Projektil Texturer
+        public static Texture2D arrowBasic { get; private set; }
         #endregion
 
         #region HUD Texturer
+        
         #endregion
 
         #region Bakgrunds Texturer
+
+        public static Texture2D startBackground { get; private set; }
+        public static Texture2D instructionScreen { get; private set; }
+        public static Texture2D chooseSingleplayer { get; private set; }
+        public static Texture2D chooseMultiplayer { get; private set; }
+        
         #endregion
 
         #region Knapp/Buttons Texturer
+
+        public static Texture2D singleplayerButton { get; private set; }
+        public static Texture2D multiplayerButton { get; private set; }
+        public static Texture2D instructionButton { get; private set; }
+        public static Texture2D exitButton { get; private set; }
+
         #endregion
 
         #region M.m. Texturer
@@ -75,26 +95,14 @@ namespace Steam_Hunters
 
         #endregion
 
+        // Ta bort sen
         public static Texture2D testTexture { get; private set; }
-        public static Texture2D startBackground { get; private set; }
-        public static Texture2D singleplayerButton { get; private set; }
-        public static Texture2D chooseSingleplayer { get; private set; }
-        public static Texture2D multiplayerButton { get; private set; }
-        public static Texture2D chooseMultiplayer { get; private set; }
-        public static Texture2D instructionButton { get; private set; }
-        public static Texture2D instructionScreen { get; private set; }
-        public static Texture2D exitButton { get; private set; }
-        public static Texture2D dispenserTex { get; private set; }
-        public static Texture2D turretTexBot { get; private set; }
-        public static Texture2D turretTexTop { get; private set; }
-
-
         public static Texture2D map { get; private set; }
-        public static SpriteFont font { get; private set; }
-        public static Texture2D arrow { get; private set; }
+        //        
 
 
-        public static void LoadContent(Game1 game)
+
+        public static void LoadContent(ContentManager Content)
         {
             // Vad man ska skriva                        Vart den finns i content mappen ex:
             //"Namn på variablen" = Content.Load<Texture2D>(@"Texture/Tower/LazerTower");
@@ -130,10 +138,9 @@ namespace Steam_Hunters
 
             #region Enginer Textur
 
-
-            dispenserTex = game.Content.Load<Texture2D>(@"Dispenser");
-            turretTexBot = game.Content.Load<Texture2D>(@"turret bot");
-            turretTexTop = game.Content.Load<Texture2D>(@"turret top");
+            dispenserTex = Content.Load<Texture2D>(@"Dispenser");
+            turretTexBot = Content.Load<Texture2D>(@"turret bot");
+            turretTexTop = Content.Load<Texture2D>(@"turret top");
 
             #endregion
 
@@ -152,24 +159,26 @@ namespace Steam_Hunters
             #endregion
 
             #region Projektil Texturer
+
+            arrowBasic = Content.Load<Texture2D>(@"Arrow");
+
             #endregion
 
             #region HUD Texturer
 
-            singleplayerButton = game.Content.Load<Texture2D>(@"Singleplayer");
-            multiplayerButton = game.Content.Load<Texture2D>(@"Multiplayer");
-            exitButton = game.Content.Load<Texture2D>(@"Exit");
-            instructionButton = game.Content.Load<Texture2D>(@"Instructions");
-            instructionScreen = game.Content.Load<Texture2D>(@"InstructionScreen");
-            chooseSingleplayer = game.Content.Load<Texture2D>(@"PickACharacterSingle");
-            chooseMultiplayer = game.Content.Load<Texture2D>(@"PickACharacterMulti");
-
             #endregion
 
             #region Bakgrunds Texturer
+            instructionScreen = Content.Load<Texture2D>(@"InstructionScreen");
+            chooseSingleplayer = Content.Load<Texture2D>(@"PickACharacterSingle");
+            chooseMultiplayer = Content.Load<Texture2D>(@"PickACharacterMulti");
             #endregion
 
             #region Knapp/Buttons Texturer
+            singleplayerButton = Content.Load<Texture2D>(@"Singleplayer");
+            multiplayerButton = Content.Load<Texture2D>(@"Multiplayer");
+            exitButton = Content.Load<Texture2D>(@"Exit");
+            instructionButton = Content.Load<Texture2D>(@"Instructions");
             #endregion 
 
             #region M.m. Texturer
@@ -177,11 +186,16 @@ namespace Steam_Hunters
 
             #endregion
 
-            testTexture = game.Content.Load<Texture2D>(@"one frame wizard");
-            startBackground = game.Content.Load<Texture2D>(@"StartScreenTest");
-            map = game.Content.Load<Texture2D>(@"map");
-            font = game.Content.Load<SpriteFont>(@"font");
-            arrow = game.Content.Load<Texture2D>(@"Very big arrow");
+            // Ta bort sen
+            testTexture = Content.Load<Texture2D>(@"one frame wizard");
+            map = Content.Load<Texture2D>(@"map");
+            // 
+            // Ska flyttas
+           
+            startBackground = Content.Load<Texture2D>(@"StartScreenTest");
+            
+            
+
 
 
         }

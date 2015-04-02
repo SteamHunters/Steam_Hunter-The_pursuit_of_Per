@@ -19,7 +19,6 @@ namespace Steam_Hunters
         public StartScreen(Game1 game)
         {
             this.game = game;
-            TextureManager.LoadContent(game);
 
             singleplayerStart = new Button(TextureManager.singleplayerButton, new Vector2(500, 300));
             multiplayerStart = new Button(TextureManager.multiplayerButton, new Vector2(500, 500));
@@ -60,7 +59,7 @@ namespace Steam_Hunters
                 singleplayerStart.selected = false;
                 exit.selected = true;
             }
-#endregion
+            #endregion
 
             #region SinglePlayer
             if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && singleplayerStart.selected == true && showInstruction == false)

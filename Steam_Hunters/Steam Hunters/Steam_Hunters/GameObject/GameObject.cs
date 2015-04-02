@@ -21,6 +21,7 @@ namespace Steam_Hunters
             this.hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
             center = new Vector2(pos.X + tex.Width / 2, pos.Y + tex.Height / 2);
         }
+
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(SpriteBatch spriteBatch);
 
