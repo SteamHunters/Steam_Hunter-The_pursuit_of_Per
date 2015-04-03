@@ -204,3 +204,4 @@ C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_H
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\pixel.xnb
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank.xml
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank2.xml
+C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TestMap.tmx

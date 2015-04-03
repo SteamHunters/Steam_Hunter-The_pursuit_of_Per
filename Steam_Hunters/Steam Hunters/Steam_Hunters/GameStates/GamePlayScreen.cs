@@ -10,7 +10,7 @@ namespace Steam_Hunters
 {
     class GamePlayScreen
     {
-        private World level1;
+        private World level1;//, level2, level3;
         private Game1 game;
         public Camera camera;
         private Vector2 cameraCenter;
@@ -19,12 +19,11 @@ namespace Steam_Hunters
 
         //engineer 
         public Engineer engineer;
-        //Allt ska inte vara i engineerklassen, det är inte objektorienterat även om det ser ut så, kan förklara på skype om du svarar:P 
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
         public List<Projectile> turretProjectile = new List<Projectile>();
-
+        //
 
         public Player e1;
         Player e2;
@@ -40,21 +39,22 @@ namespace Steam_Hunters
             //Test build det ska sedan funka så här sen //Anton
             e1 = new Engineer(TextureManager.testTexture, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
             playerlist.Add(e1);
-            e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
-            playerlist.Add(e2);
-            w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
-            playerlist.Add(w);
+
+            //e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
+            //playerlist.Add(e2);
+            //w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
+            //playerlist.Add(w);
             //
+
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
+
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            //engineer.Update(gameTime);
-            //wizard.Update(gameTime);
 
-            #region Set Camera center
+            #region Set Camera center by how many players
             if (playerlist.Count == 1)
             {
                 cameraCenter = playerlist[0].pos / playerlist.Count;
@@ -83,7 +83,6 @@ namespace Steam_Hunters
                 p.Update(gameTime);
             }
             // 
-
 
             #region engineerstuff(turret, dispenser etc)
 
@@ -220,6 +219,7 @@ namespace Steam_Hunters
                 p.Draw(spriteBatch);
             }
             //
+            #region Enginers things
             foreach (Projectile tp in turretProjectile)
             {
                 tp.Draw(spriteBatch);
@@ -236,7 +236,7 @@ namespace Steam_Hunters
             {
                 t.Draw(spriteBatch);
             }
-
+            #endregion
 
             spriteBatch.End();
         }

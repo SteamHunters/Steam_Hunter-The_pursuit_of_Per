@@ -84,5 +84,6 @@ Content\Tiles\Terrain\Path\dirt_3-1.xnb
 Content\Tiles\Terrain\Path\dirt_3-2.xnb
 Content\Tiles\Terrain\Path\dirt_3-3.xnb
 Content\pixel.xnb
+Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

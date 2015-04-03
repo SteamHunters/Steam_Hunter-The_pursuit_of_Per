@@ -165,6 +165,7 @@
   <ItemGroup>
     <None Include="Maps\TestMap.tmx">
       <Name>TestMap</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
