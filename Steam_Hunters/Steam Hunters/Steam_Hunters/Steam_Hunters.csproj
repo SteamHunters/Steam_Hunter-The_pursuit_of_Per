@@ -76,11 +76,13 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameData.cs" />
     <Compile Include="GameObject\Dispenser.cs" />
     <Compile Include="GameObject\EngineerTower.cs" />
     <Compile Include="GameObject\Button.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="GameObject\GameObject.cs" />
+    <Compile Include="GameStates\GameSelectScreen.cs" />
     <Compile Include="GameStates\GamePlayScreen.cs" />
     <Compile Include="Interface\Interface.cs" />
     <Compile Include="Interface\InventoryWindow.cs" />

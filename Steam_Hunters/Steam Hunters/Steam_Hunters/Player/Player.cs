@@ -102,7 +102,7 @@ namespace Steam_Hunters
             ShootRightThumbStick(newState, gameTime);
             changeDirection();
 
-            hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
+            hitBox = new Rectangle((int)pos.X - tex.Width / 2, (int)pos.Y - tex.Height / 2, tex.Width, tex.Height);
 
            
 
@@ -112,7 +112,7 @@ namespace Steam_Hunters
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(tex, hitBox, Color.Red);
+            //spriteBatch.Draw(tex, hitBox, Color.Red);
 
             foreach (Projectile e in listProjectile)
             {

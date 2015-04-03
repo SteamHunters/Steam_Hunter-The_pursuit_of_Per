@@ -53,11 +53,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="map.png">
-      <Name>map</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="one frame wizard.png">
       <Name>one frame wizard</Name>
       <Importer>TextureImporter</Importer>

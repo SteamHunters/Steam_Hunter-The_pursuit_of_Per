@@ -42,8 +42,8 @@ namespace Steam_Hunters
 
             //e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
             //playerlist.Add(e2);
-            //w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
-            //playerlist.Add(w);
+            w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
+            playerlist.Add(w);
             //
 
             level1 = new World(game.Content);
