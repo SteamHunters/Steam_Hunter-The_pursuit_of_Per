@@ -66,6 +66,7 @@ namespace Steam_Hunters
 
         #region Projektil Texturer
         public static Texture2D arrowBasic { get; private set; }
+        public static Texture2D turretBullet { get; private set; }
         #endregion
 
         #region HUD Texturer
@@ -161,6 +162,7 @@ namespace Steam_Hunters
             #region Projektil Texturer
 
             arrowBasic = Content.Load<Texture2D>(@"Arrow");
+            turretBullet = Content.Load<Texture2D>(@"turretBullet");
 
             #endregion
 

@@ -10,6 +10,7 @@ namespace Steam_Hunters
 {
     class Engineer : Player
     {
+        public bool turretShooting; 
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
@@ -33,10 +34,12 @@ namespace Steam_Hunters
             if(LTpress == true)
             {
                 speed = 0;
+                turretShooting = true;
             }
             else
             {
                 speed = 5;
+                turretShooting = false;
             }
             base.Update(gameTime);
         }

@@ -22,11 +22,12 @@ namespace Steam_Hunters
         List<Player> playerlist = new List<Player>();
 
         //engineer 
-        Engineer engineer;
-        //Anton: bör detta inte finnas i enginer klassen? (antar du ska flytta det sen?)
+        public Engineer engineer;
+        //Allt ska inte vara i engineerklassen, det är inte objektorienterat även om det ser ut så, kan förklara på skype om du svarar:P 
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
+        public List<Projectile> turretProjectile = new List<Projectile>();
 
         public GamePlayScreen(Game1 game)
         {
@@ -36,11 +37,11 @@ namespace Steam_Hunters
             //engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
 
             //Test build det ska sedan funka så här sen //Anton
-            Player e = new Engineer(TextureManager.testTexture, new Vector2(50, 400), game.Window, this, 1, 1, 5, 2);
+            Player e = new Engineer(TextureManager.testTexture, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
             playerlist.Add(e);
             e = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
             playerlist.Add(e);
-            Player w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5, 1);
+            Player w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
             playerlist.Add(w);
             //
 
@@ -83,7 +84,6 @@ namespace Steam_Hunters
             // 
 
 
-            //Anton: bör detta inte finnas i enginer klassen? (antar du ska flytta det sen?)
             #region engineerstuff(turret, dispenser etc)
 
             #region dispenser
@@ -152,11 +152,16 @@ namespace Steam_Hunters
              {
                  t.Update(gameTime);
                 
-                if (turrets.Count > 3)
+                if (turrets.Count > 2)
                  {
                      turrets.Remove(t);
                      break;
                  }
+                if(t.towerLife <= 0)
+                {
+                    turrets.Remove(t);
+                    break;
+                }
                  t.rotation = engineer.angle;
 
                  if (t.TowerRemove == true)

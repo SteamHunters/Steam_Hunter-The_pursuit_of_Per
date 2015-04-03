@@ -38,8 +38,7 @@ namespace Steam_Hunters
         {
             pos += direction * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
-            //projectileLife++;
-            timerRemove += gameTime.ElapsedGameTime.TotalMilliseconds;
+            timerRemove += 1;
 
             if (timerRemove >= projectileLife)
             {
