@@ -12,12 +12,12 @@ namespace Steam_Hunters
         private Vector2 direction;
         private float speed = 0.4f;
         int projectileLife;
-        bool stepRemove;
+        bool bulletRemove;
         double timerRemove;
 
-        public bool StepRemove
+        public bool BulletRemove
         {
-            get { return stepRemove; }
+            get { return bulletRemove; }
         }
 
         public Projectile(Vector2 pos, Texture2D tex, Vector2 movement, float angle, Point frameSize, Point sheetSize)
@@ -42,7 +42,7 @@ namespace Steam_Hunters
 
             if (timerRemove >= projectileLife)
             {
-                stepRemove = true;
+                bulletRemove = true;
             }
 
             //base.Update(gameTime);

@@ -29,6 +29,11 @@ namespace Steam_Hunters
         public List<EngineerTower> turrets = new List<EngineerTower>();
         public List<Projectile> turretProjectile = new List<Projectile>();
 
+
+        public Player e1;
+        Player e2;
+        Player w;
+
         public GamePlayScreen(Game1 game)
         {
             this.game = game;
@@ -37,11 +42,11 @@ namespace Steam_Hunters
             //engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
 
             //Test build det ska sedan funka så här sen //Anton
-            Player e = new Engineer(TextureManager.testTexture, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
-            playerlist.Add(e);
-            e = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
-            playerlist.Add(e);
-            Player w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
+            e1 = new Engineer(TextureManager.testTexture, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
+            playerlist.Add(e1);
+            e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
+            playerlist.Add(e2);
+            w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
             playerlist.Add(w);
             //
 
@@ -87,63 +92,71 @@ namespace Steam_Hunters
             #region engineerstuff(turret, dispenser etc)
 
             #region dispenser
-            foreach (Dispenser d in dispensers)
-            {
-                d.Update(gameTime);
 
-                if(dispensers.Count > 1)
+            for (int i = 0; i < playerlist.Count; i++)
                 {
-                    dispensers.Remove(d);
-                    break;
-                }
-                if(d.DispenserRemove == true)
-                {
-                    dispensers.Remove(d);
-                    break;
-                }
+                    if (playerlist[i] is Engineer)
+                    {
 
-                #region dispenser heal
-                if (d.IsInRange(engineer.pos))
-                {
-                    engineer.color = Color.Green;
-                }
-                else
-                {
-                    engineer.color = Color.White;
-                }
+                        foreach (Dispenser d in dispensers)
+                        {
+                            d.Update(gameTime);
 
-                //måste titta om de finns i spelet först, hur gör det?
-                //if (d.IsInRange(archer.pos))
-                //{
-                //    archer.color = Color.Green;
-                //}
-                //else
-                //{
-                //    archer.color = Color.White;
-                //}
-                //if (d.IsInRange(warrior.pos))
-                //{
-                //    warrior.color = Color.Green;
-                //}
-                //else
-                //{
-                //    warrior.color = Color.White;
-                //}
-                //if (d.IsInRange(wizard.pos))
-                //{
-                //    wizard.color = Color.Green;
-                //}
-                //else
-                //{
-                //    wizard.color = Color.White;
-                //}
-                #endregion
+                            if (dispensers.Count > 1)
+                            {
+                                dispensers.Remove(d);
+                                break;
+                            }
+                            if (d.DispenserRemove == true)
+                            {
+                                dispensers.Remove(d);
+                                break;
+                            }
 
-                //collison spelare alla utom engineer
-                //if (wizard.IsCollidingObject(d))
-                //{
-                //    wizard.HandleCollision();
-                //}
+                            #region dispenser heal
+                            if (d.IsInRange(e1.pos))
+                            {
+                                e1.color = Color.Green;
+                            }
+                            else
+                            {
+                                e1.color = Color.White;
+                            }
+
+                            //måste titta om de finns i spelet först, hur gör det?
+                            //if (d.IsInRange(archer.pos))
+                            //{
+                            //    archer.color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    archer.color = Color.White;
+                            //}
+                            //if (d.IsInRange(warrior.pos))
+                            //{
+                            //    warrior.color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    warrior.color = Color.White;
+                            //}
+                            //if (d.IsInRange(wizard.pos))
+                            //{
+                            //    wizard.color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    wizard.color = Color.White;
+                            //}
+                            #endregion
+
+                            //collison spelare alla utom engineer
+                            //if (wizard.IsCollidingObject(d))
+                            //{
+                            //    wizard.HandleCollision();
+                            //}
+                        }
+                    }
             }
             #endregion
 
@@ -162,7 +175,7 @@ namespace Steam_Hunters
                     turrets.Remove(t);
                     break;
                 }
-                 t.rotation = engineer.angle;
+                 t.rotation = e1.angle;
 
                  if (t.TowerRemove == true)
                  {
@@ -179,7 +192,19 @@ namespace Steam_Hunters
                 m.Update(gameTime);
             }
             #endregion
-            
+
+
+            foreach (Projectile tp in turretProjectile)
+            {
+                tp.Update(gameTime);
+
+                if(tp.BulletRemove == true)
+                {
+                    turretProjectile.Remove(tp);
+                    break;
+                }
+            }
+
             #endregion
 
         }
@@ -214,6 +239,10 @@ namespace Steam_Hunters
             foreach(EngineerTower t in turrets)
             {
                 t.Draw(spriteBatch);
+            }
+            foreach (Projectile tp in turretProjectile)
+            {
+                tp.Draw(spriteBatch);
             }
 
             spriteBatch.End();

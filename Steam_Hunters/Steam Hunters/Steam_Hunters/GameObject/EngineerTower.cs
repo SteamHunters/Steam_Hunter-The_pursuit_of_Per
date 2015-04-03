@@ -45,9 +45,10 @@ namespace Steam_Hunters
              if (bulletTimer < 50)
                  bulletTimer++;
 
-             if (bulletTimer >= 50 && gps.engineer.turretShooting == true)
+             if (bulletTimer >= 50 && gps.e1.LTpress == true)
              {
-                 Projectile turretBullet = new Projectile(pos, TextureManager.arrowBasic, gps.engineer.direction, angle, new Point(), new Point());
+
+                 Projectile turretBullet = new Projectile(pos, TextureManager.arrowBasic, gps.e1.towerDirection, rotation, new Point(), new Point());
 
                  gps.turretProjectile.Add(turretBullet);
                  bulletTimer = 0;

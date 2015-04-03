@@ -1,7 +1,7 @@
 Content\font.xnb
 Content\map.xnb
 Content\one frame wizard.xnb
-Content\arrow.xnb
+Content\Arrow.xnb
 Content\Instructions.xnb
 Content\Multiplayer.xnb
 Content\Singleplayer.xnb
@@ -13,5 +13,4 @@ Content\PickACharacterMulti.xnb
 Content\Dispenser.xnb
 Content\turret bot.xnb
 Content\turret top.xnb
-Content\Maps\TestMap.tmx
-Content\Maps\TileBank.xml
+Content\turretBullet.xnb

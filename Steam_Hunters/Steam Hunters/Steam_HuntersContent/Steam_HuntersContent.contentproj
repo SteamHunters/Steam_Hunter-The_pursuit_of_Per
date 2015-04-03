@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
+    <Folder Include="Maps\" />
     <Folder Include="Texturer\Background\" />
     <Folder Include="Texturer\Buttons\" />
     <Folder Include="Texturer\Enimes\Bosses\" />
@@ -149,17 +150,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Maps\TestMap.tmx">
-      <Name>TestMap</Name>
-    </Compile>
-    <None Include="Maps\TileBank.xml">
-      <Name>TileBank</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="turretBullet.png">

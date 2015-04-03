@@ -33,9 +33,11 @@ namespace Steam_Hunters
         int showButton;
         double sec;
         bool showButtonCounter;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LTpress, LBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
+        
+        public bool LTpress;
 
-
+        public Vector2 towerDirection;
 
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
@@ -362,7 +364,9 @@ namespace Steam_Hunters
         private void AddProjectile(Vector2 insertDirection)
         {
             projectile = new Projectile(pos, TextureManager.arrowBasic, insertDirection, angle, new Point(), new Point());
+            towerDirection = insertDirection;
             listProjectile.Add(projectile);
+
             rightTriggerTimer = 0;
         }
 
@@ -380,7 +384,7 @@ namespace Steam_Hunters
             {
                 //shootTimer += gameTime.ElapsedGameTime.Milliseconds;
 
-                if (listProjectile[i].StepRemove)
+                if (listProjectile[i].BulletRemove)
                 {
                     listProjectile.RemoveAt(i);
                     //i--;

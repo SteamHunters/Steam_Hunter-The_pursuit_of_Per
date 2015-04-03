@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T14:05:09.4546042+02:00</Time>
     </Item>
     <Item>
       <Source>map.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\map.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T14:05:09.456615+02:00</Time>
     </Item>
     <Item>
       <Source>one frame wizard.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\one frame wizard.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T14:05:09.4616113+02:00</Time>
     </Item>
     <Item>
       <Source>Arrow.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Arrow.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-04-03T10:19:00.8316115+02:00</Time>
     </Item>
     <Item>
       <Source>Instructions.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T15:37:34.4310022+02:00</Time>
     </Item>
     <Item>
       <Source>Multiplayer.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Multiplayer.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T15:37:39.7284542+02:00</Time>
     </Item>
     <Item>
       <Source>Singleplayer.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Singleplayer.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T15:37:44.2914874+02:00</Time>
     </Item>
     <Item>
       <Source>InstructionScreen.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\InstructionScreen.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T15:41:10.2851225+02:00</Time>
     </Item>
     <Item>
       <Source>StartScreenTest.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreenTest.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T14:47:03.6248344+02:00</Time>
     </Item>
     <Item>
       <Source>Exit.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Exit.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T15:37:27.3207987+02:00</Time>
     </Item>
     <Item>
       <Source>PickACharacterSingle.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterSingle.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T16:57:45.3393584+02:00</Time>
     </Item>
     <Item>
       <Source>PickACharacterMulti.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\PickACharacterMulti.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-03-29T16:57:45.3363551+02:00</Time>
     </Item>
     <Item>
       <Source>Dispenser.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Dispenser.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-04-02T19:53:36.5986723+02:00</Time>
     </Item>
     <Item>
       <Source>turret bot.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret bot.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-04-02T19:53:36.6026758+02:00</Time>
     </Item>
     <Item>
       <Source>turret top .png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret top.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-04-02T19:53:36.603677+02:00</Time>
     </Item>
     <Item>
       <Source>turretBullet.png</Source>
@@ -143,9 +143,9 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turretBullet.xnb</Output>
-      <Time>0001-01-01T00:00:00</Time>
+      <Time>2015-04-03T10:42:06.784679+02:00</Time>
     </Item>
-    <BuildSuccessful>false</BuildSuccessful>
+    <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{946BCA56-C2D4-452C-B8E8-758BAA41D664}</ContentProjectGUID>
       <TargetPlatform>Windows</TargetPlatform>
