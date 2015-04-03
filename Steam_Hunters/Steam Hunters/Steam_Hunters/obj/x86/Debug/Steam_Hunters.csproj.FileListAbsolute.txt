@@ -58,10 +58,7 @@ C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\St
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\font.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\map.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\one frame wizard.xnb
-C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\StartScreen AlphaPix.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\arrow.xnb
-C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\arrow big.xnb
-C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Very big arrow.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Multiplayer.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Singleplayer.xnb
@@ -205,3 +202,81 @@ C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_H
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank.xml
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank2.xml
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TestMap.tmx
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Dispenser.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret bot.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret top.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turretBullet.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\teleportLocation.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\GriddyDefault\blankTile.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\GriddyDefault\unknownTile.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_1-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_1-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_1-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_1-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_1-5.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_1-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_2-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_2-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_2-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_2-5.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_2-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_3-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_3-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Cave\cave_3-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Ground\Grass.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_1-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_1-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_1-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_1-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_1-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_2-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_2-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_2-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_2-5.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_2-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_3-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_3-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_3-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_3-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_3-5.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_3-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_4-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_4-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_4-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_4-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_4-5.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_4-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_5-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_5-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_5-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_5-5.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_5-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_6-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_6-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_6-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_6-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_6-6.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_7-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_7-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_7-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_7-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_8-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_8-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_8-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\House\house_8-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_1-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_1-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_1-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_1-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_2-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_2-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_2-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_2-4.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_3-1.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_3-2.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_3-3.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\pixel.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TestMap.tmx
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank.xml
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank2.xml
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\ArcherTest.xnb

@@ -28,7 +28,7 @@ namespace Steam_Hunters
             direction = movement;
             projectileLife = 80;
 
-            if (movement != Vector2.Zero)
+            //if (movement != Vector2.Zero)
                 direction.Normalize();
 
             this.angle = angle;
@@ -52,7 +52,7 @@ namespace Steam_Hunters
         {
             //spriteBatch.Draw(tex, pos, hitBox, Color.Blue);
 
-            spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, Color.White, angle, origin, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, new Rectangle((int)pos.X , (int)pos.Y, tex.Width, tex.Height), null, Color.White, angle, origin, SpriteEffects.None, 0);
         }
     }
 }

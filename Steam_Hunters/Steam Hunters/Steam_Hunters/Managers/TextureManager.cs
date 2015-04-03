@@ -191,7 +191,7 @@ namespace Steam_Hunters
             #endregion
 
             // Ta bort sen
-            testTexture = Content.Load<Texture2D>(@"one frame wizard");
+            testTexture = Content.Load<Texture2D>(@"ArcherTest");
             map = Content.Load<Texture2D>(@"map");
             // 
             // Ska flyttas

@@ -10,6 +10,14 @@ namespace Steam_Hunters
 {
     class Player : GameObject
     {
+        protected SpriteEffects EntityFx = 0;
+        protected Point frameSize = new Point(44, 42);
+        protected Point currentFrame = new Point(0, 0);
+        protected Point sheetSize = new Point(4, 2);
+
+        protected int timerSinceLastFrame = 0;
+        protected int milliSecondsPerFrame = 60;
+
         public GameWindow window;
         public GamePlayScreen gps;
         public Color color = Color.White;
@@ -101,17 +109,23 @@ namespace Steam_Hunters
             MoveLeftThumbStick(newState);
             ShootRightThumbStick(newState, gameTime);
             changeDirection();
+            WalkAnimation(gameTime);
 
-            hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
+            hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
            
 
             oldState = GamePad.GetState(playerIndex);
+
+
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
+
+            //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
             spriteBatch.Draw(tex, hitBox, Color.Red);
 
             foreach (Projectile e in listProjectile)
@@ -267,6 +281,50 @@ namespace Steam_Hunters
             if (GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Length() == 0)
             {
                 angle = PrevAngle;
+            }
+        }
+
+        private void WalkAnimation(GameTime gameTime)
+        {
+            if (newState.ThumbSticks.Left.X != 0.0f)
+            {
+                timerSinceLastFrame += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (timerSinceLastFrame > milliSecondsPerFrame)
+                {
+                    timerSinceLastFrame -= milliSecondsPerFrame;
+                    ++currentFrame.X;
+                    if (currentFrame.X >= sheetSize.X)
+                    {
+                        currentFrame.X = 0;
+                        ++currentFrame.Y;
+                        if (currentFrame.Y >= sheetSize.Y)
+                            currentFrame.Y = 0;
+                    }
+                }
+            }
+            else if (newState.ThumbSticks.Left.Y != 0.0f)
+            {
+                timerSinceLastFrame += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (timerSinceLastFrame > milliSecondsPerFrame)
+                {
+                    timerSinceLastFrame -= milliSecondsPerFrame;
+                    ++currentFrame.X;
+                    if (currentFrame.X >= sheetSize.X)
+                    {
+                        currentFrame.X = 0;
+                        ++currentFrame.Y;
+                        if (currentFrame.Y >= sheetSize.Y)
+                            currentFrame.Y = 0;
+                    }
+                }
+            }
+            else
+            {
+                currentFrame.X = 0;
+                currentFrame.Y = 0;
+                timerSinceLastFrame = 0;
             }
         }
 
