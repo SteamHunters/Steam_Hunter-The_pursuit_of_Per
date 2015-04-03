@@ -108,7 +108,6 @@ C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunte
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turretBullet.xnb
 C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\teleportLocation.xnb
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\font.xnb
-C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\map.xnb
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\one frame wizard.xnb
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Arrow.xnb
 C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Instructions.xnb
@@ -280,3 +279,4 @@ C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank.xml
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank2.xml
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\ArcherTest.xnb
+C:\Users\Anton Svensson\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\ArcherTest.xnb

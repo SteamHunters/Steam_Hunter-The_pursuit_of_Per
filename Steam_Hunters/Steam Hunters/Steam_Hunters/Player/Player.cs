@@ -111,11 +111,11 @@ namespace Steam_Hunters
             changeDirection();
             WalkAnimation(gameTime);
 
-<<<<<<< HEAD
-            hitBox = new Rectangle((int)pos.X - tex.Width / 2, (int)pos.Y - tex.Height / 2, tex.Width, tex.Height);
-=======
-            hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
->>>>>>> origin/master
+            // lekte lite med hitboxen så den stämmer //Anton ^^
+            hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height/1.3f  ), tex.Width / 6, tex.Height/ 2);
+
+            //hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
+
 
            
 
@@ -127,15 +127,15 @@ namespace Steam_Hunters
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-<<<<<<< HEAD
-            spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
+
+            //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
             //spriteBatch.Draw(tex, hitBox, Color.Red);
-=======
+
             spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
             spriteBatch.Draw(tex, hitBox, Color.Red);
->>>>>>> origin/master
+
 
             foreach (Projectile e in listProjectile)
             {

@@ -1,5 +1,4 @@
 Content\font.xnb
-Content\map.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb
@@ -84,10 +83,7 @@ Content\Tiles\Terrain\Path\dirt_3-1.xnb
 Content\Tiles\Terrain\Path\dirt_3-2.xnb
 Content\Tiles\Terrain\Path\dirt_3-3.xnb
 Content\pixel.xnb
-<<<<<<< HEAD
-=======
 Content\ArcherTest.xnb
->>>>>>> origin/master
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

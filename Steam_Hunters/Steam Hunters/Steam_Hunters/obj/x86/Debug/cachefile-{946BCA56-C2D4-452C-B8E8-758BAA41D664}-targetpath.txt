@@ -1,5 +1,4 @@
 Content\font.xnb
-Content\map.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb

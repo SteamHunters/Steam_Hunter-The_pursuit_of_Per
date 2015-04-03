@@ -192,7 +192,6 @@ namespace Steam_Hunters
 
             // Ta bort sen
             testTexture = Content.Load<Texture2D>(@"ArcherTest");
-            map = Content.Load<Texture2D>(@"map");
             // 
             // Ska flyttas
            
