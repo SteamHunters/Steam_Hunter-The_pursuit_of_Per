@@ -38,17 +38,17 @@ namespace Steam_Hunters
          {
              towerPower+= 1;
 
-             if (towerPower == 600)
+             if (towerPower == 900)
              {
                  towerRemove = true;
              }
-             if (bulletTimer < 50)
+             if (bulletTimer < 20)
                  bulletTimer++;
 
-             if (bulletTimer >= 50 && gps.e1.LTpress == true)
+             if (bulletTimer >= 20 && gps.e1.LTpress == true)
              {
 
-                 Projectile turretBullet = new Projectile(pos, TextureManager.arrowBasic, gps.e1.towerDirection, rotation, new Point(), new Point());
+                 Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, gps.e1.prevThumbStickRightValue, rotation, new Point(), new Point());
 
                  gps.turretProjectile.Add(turretBullet);
                  bulletTimer = 0;

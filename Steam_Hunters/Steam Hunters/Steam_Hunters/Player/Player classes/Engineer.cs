@@ -10,7 +10,8 @@ namespace Steam_Hunters
 {
     class Engineer : Player
     {
-        public bool turretShooting; 
+        public bool turretShooting;
+        bool teleport; 
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
@@ -28,54 +29,34 @@ namespace Steam_Hunters
             }
             if(Apress == true)
             {
-               
                 gps.turrets.Add(turret);
             }
             if(LTpress == true)
             {
-                speed = 0;
+                speed -= 0.4f;
                 turretShooting = true;
+
+                if (speed <= 0)
+                    speed = 0;
             }
             else
             {
                 speed = 5;
                 turretShooting = false;
             }
+            if(Bpress == true)
+            {
+                teleport = true;
+            }
             base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-
-            #region Test button komand
-            if (Apress == true)
-                spriteBatch.DrawString(FontManager.font, "A", new Vector2(0, 20), Color.White);
-            if (Bpress == true)
-                spriteBatch.DrawString(FontManager.font, "B", new Vector2(0, 20), Color.White);
-            if (Xpress == true)
-                spriteBatch.DrawString(FontManager.font, "X", new Vector2(0, 20), Color.White);
-            if (Ypress == true)
-                spriteBatch.DrawString(FontManager.font, "Y", new Vector2(0, 20), Color.White);
-
-            if (RTpress == true)
-                spriteBatch.DrawString(FontManager.font, "RT", new Vector2(0, 20), Color.White);
-            if (RBpress == true)
-                spriteBatch.DrawString(FontManager.font, "RB", new Vector2(0, 20), Color.White);
-            if (LTpress == true)
-                spriteBatch.DrawString(FontManager.font, "LT", new Vector2(0, 20), Color.White);
-            if (LBpress == true)
-                spriteBatch.DrawString(FontManager.font, "LB", new Vector2(0, 20), Color.White);
-
-            if (Duppress == true)
-                spriteBatch.DrawString(FontManager.font, "up", new Vector2(0, 20), Color.White);
-            if (Ddownpress == true)
-                spriteBatch.DrawString(FontManager.font, "down", new Vector2(0, 20), Color.White);
-            if (Drightpress == true)
-                spriteBatch.DrawString(FontManager.font, "right", new Vector2(0, 20), Color.White);
-            if (Dlefthpress == true)
-                spriteBatch.DrawString(FontManager.font, "lefth", new Vector2(0, 20), Color.White);
-            #endregion
-
+            if(teleport == true)
+            {
+                spriteBatch.Draw(TextureManager.teleportLocation, pos, Color.White);
+            }
             base.Draw(spriteBatch);
         }
     }

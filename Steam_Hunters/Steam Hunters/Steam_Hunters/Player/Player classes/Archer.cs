@@ -13,6 +13,13 @@ namespace Steam_Hunters
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
 
+            //Kod för att leapa, inte riktigt färdig! Men kan byggas på för att få rätt resultat
+            //if (prevThumbStickRightValue.X != 0 || prevThumbStickRightValue.Y != 0)
+            //{
+            //    jump += prevThumbStickRightValue;
+            //    jump.Normalize();
+            //    pos += jump * 100;
+            //}
         }
 
 

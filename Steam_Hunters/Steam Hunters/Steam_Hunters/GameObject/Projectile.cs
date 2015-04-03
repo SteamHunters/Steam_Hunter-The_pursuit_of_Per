@@ -26,7 +26,7 @@ namespace Steam_Hunters
             this.pos = pos;
             origin = new Vector2(tex.Width / 2, tex.Height / 2);
             direction = movement;
-            projectileLife = 500;
+            projectileLife = 80;
 
             if (movement != Vector2.Zero)
                 direction.Normalize();
@@ -50,7 +50,7 @@ namespace Steam_Hunters
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, hitBox, Color.Blue);
+            //spriteBatch.Draw(tex, pos, hitBox, Color.Blue);
 
             spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, Color.White, angle, origin, SpriteEffects.None, 0);
         }

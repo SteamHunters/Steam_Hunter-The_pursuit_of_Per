@@ -14,7 +14,7 @@ namespace Steam_Hunters
         public GamePlayScreen gps;
         public Color color = Color.White;
         
-        Vector2 prevThumbStickRightValue;
+        public Vector2 prevThumbStickRightValue;
 
         List<Projectile> listProjectile = new List<Projectile>();
         Projectile projectile;
@@ -23,9 +23,9 @@ namespace Steam_Hunters
 
         private GamePadState newState, oldState; 
         
-        public int bY, bX, speed, hp, mana, projectileTimerLife;
-        public Vector2 direction = Vector2.Zero;
-        public Vector2 bulletDirection, force, prevPos;
+        public int bY, bX, hp, mana, projectileTimerLife;
+        public float speed;
+        public Vector2 direction = Vector2.Zero, prevPos;
 
         float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
         bool notMoved, shootOneAtTime;

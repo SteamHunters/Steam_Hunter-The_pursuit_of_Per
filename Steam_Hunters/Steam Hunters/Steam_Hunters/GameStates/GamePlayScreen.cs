@@ -228,6 +228,10 @@ namespace Steam_Hunters
                 p.Draw(spriteBatch);
             }
             //
+            foreach (Projectile tp in turretProjectile)
+            {
+                tp.Draw(spriteBatch);
+            }
             foreach(Dispenser d in dispensers)
             {
                 d.Draw(spriteBatch);
@@ -240,10 +244,7 @@ namespace Steam_Hunters
             {
                 t.Draw(spriteBatch);
             }
-            foreach (Projectile tp in turretProjectile)
-            {
-                tp.Draw(spriteBatch);
-            }
+
 
             spriteBatch.End();
         }

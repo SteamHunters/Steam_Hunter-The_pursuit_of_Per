@@ -145,6 +145,15 @@
       <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turretBullet.xnb</Output>
       <Time>2015-04-03T10:42:06.784679+02:00</Time>
     </Item>
+    <Item>
+      <Source>teleportLocation.png</Source>
+      <Name>teleportLocation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Simon Lind\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\teleportLocation.xnb</Output>
+      <Time>2015-04-03T13:13:14.4596141+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{946BCA56-C2D4-452C-B8E8-758BAA41D664}</ContentProjectGUID>

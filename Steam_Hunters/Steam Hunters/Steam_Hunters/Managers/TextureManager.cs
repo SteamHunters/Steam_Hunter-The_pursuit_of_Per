@@ -48,6 +48,7 @@ namespace Steam_Hunters
         public static Texture2D dispenserTex { get; private set; }
         public static Texture2D turretTexBot { get; private set; }
         public static Texture2D turretTexTop { get; private set; }
+        public static Texture2D teleportLocation { get; private set; }
         #endregion
 
         #endregion
@@ -142,6 +143,7 @@ namespace Steam_Hunters
             dispenserTex = Content.Load<Texture2D>(@"Dispenser");
             turretTexBot = Content.Load<Texture2D>(@"turret bot");
             turretTexTop = Content.Load<Texture2D>(@"turret top");
+            teleportLocation = Content.Load<Texture2D>(@"teleportLocation");
 
             #endregion
 
