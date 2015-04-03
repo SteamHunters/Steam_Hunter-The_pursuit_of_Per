@@ -10,14 +10,10 @@ namespace Steam_Hunters
 {
     class GamePlayScreen
     {
+        private World level1;
         private Game1 game;
         public Camera camera;
         private Vector2 cameraCenter;
-
-
-        Wizard wizard;
-        Warrior warrior;
-        Archer archer;
 
         List<Player> playerlist = new List<Player>();
 
@@ -49,7 +45,7 @@ namespace Steam_Hunters
             w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
             playerlist.Add(w);
             //
-
+            level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
         public void Update(GameTime gameTime)
@@ -213,12 +209,8 @@ namespace Steam_Hunters
         {
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
-            spriteBatch.Draw(TextureManager.map, new Vector2(-200, -200), Color.White);
 
-            //engineer.Draw(spriteBatch);
-            //wizard.Draw(spriteBatch);
-            //wizard.Draw(spriteBatch);
-
+            level1.Draw(spriteBatch);
 
             spriteBatch.Draw(TextureManager.testTexture, new Vector2(0f, 0f), Color.White);
 

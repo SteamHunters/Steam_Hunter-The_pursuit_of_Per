@@ -12,7 +12,6 @@ namespace Steam_Hunters
 {
     class World
     {
-        // Anton ska koda här imorgon rör ej
         Grid level1;
         ContentManager content;
         List<Tile> hitbox, EnimesMonsterType, SpawnPlayer1, SpawnPlayer2, SpawnPlayer3, SpawnPlayer4, traps, npc, mm;
@@ -21,6 +20,8 @@ namespace Steam_Hunters
         public World(ContentManager content)
         {
             this.content = content;
+            LoadLevel1();
+
         }
 
         public void Update(/*Playerlist*/)
@@ -42,10 +43,9 @@ namespace Steam_Hunters
             //}
         }
 
-
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-
+            level1.Draw(spriteBatch);
         }
 
         private void LoadLevel1()
@@ -64,14 +64,12 @@ namespace Steam_Hunters
             //// YEY detta funkar
             //Predicate<Tile> temp = FindHitboxTiles;
             //tiles = level1.GetLayer("Hitbox").GetAllMatchingTiles(temp);
-
         }
 
         //private static bool FindHitboxTiles(Tile obj)
         //{
         //    return obj.Name == "hitbox";
         //}
-
 
         #region Get and Set method
         #endregion
