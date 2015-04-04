@@ -99,6 +99,7 @@ namespace Steam_Hunters
 
         // Ta bort sen
         public static Texture2D testTexture { get; private set; }
+        public static Texture2D EnemyTestTexture { get; private set; }
         public static Texture2D map { get; private set; }
         //        
 
@@ -192,6 +193,7 @@ namespace Steam_Hunters
 
             // Ta bort sen
             testTexture = Content.Load<Texture2D>(@"ArcherTest");
+            EnemyTestTexture = Content.Load<Texture2D>(@"one frame wizard");
             // 
             // Ska flyttas
            

@@ -29,7 +29,7 @@ namespace Steam_Hunters
         Player e2;
         Player w;
 
-
+        bool TestRange;
         Enemies enemyTest;
         Enemies enemyTest2;
         public GamePlayScreen(Game1 game)
@@ -48,8 +48,8 @@ namespace Steam_Hunters
             w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,1);
             playerlist.Add(w);
             //
-            enemyTest = new Enemies(TextureManager.testTexture, new Vector2(100, -50), new Point(20, 20), new Point(20, 20), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
-            enemyTest2 = new Enemies(TextureManager.testTexture, new Vector2(200, -50), new Point(20, 20), new Point(20, 20), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
+            enemyTest = new Enemies(TextureManager.EnemyTestTexture, new Vector2(100, -50), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 100, 1, 1, 1, 1, false, 1);
+            enemyTest2 = new Enemies(TextureManager.EnemyTestTexture, new Vector2(200, -50), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
        
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -86,6 +86,10 @@ namespace Steam_Hunters
             foreach (Player p in playerlist)
             {
                 p.Update(gameTime);
+                if (enemyTest.IsInRange(p.pos)==true)
+                {
+                    TestRange = true;
+                }
             }
             // 
 
@@ -222,6 +226,7 @@ namespace Steam_Hunters
             foreach (Player p in playerlist)
             {
                 p.Draw(spriteBatch);
+           
             }
             //
             #region Enginers things

@@ -17,8 +17,8 @@ namespace Steam_Hunters
         protected int Gold;
         //om de ska dropa items
         protected int Item;
-        protected int AttackRangeRadius;
-        protected int SearchRadius;
+        protected float AttackRangeRadius;
+        protected float SearchRadius;
         protected float MovementSpeed;
         protected float AttackSpeed;
         //vilken map den ska spawnas i och pos är var i den mapen den är
@@ -39,7 +39,7 @@ namespace Steam_Hunters
         protected int milliSecondsPerFrame = 30;
 
         protected int size = 50;
-        public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, int AttackRangeRadius, int SearchRadius, float MovementSpeed,
+        public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, float AttackRangeRadius, float SearchRadius, float MovementSpeed,
            float AttackSpeed, float MapPos, bool Aggro, double AttackCooldown)
             : base(tex, pos)
         {
@@ -94,7 +94,10 @@ namespace Steam_Hunters
         {
             spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, 0, origin, 1, EntityFx, 1);
         }
-
+        public bool IsInRange(Vector2 pos)
+        {
+            return Vector2.Distance(center, pos) <= this.SearchRadius;
+        }
 
     }
 }
