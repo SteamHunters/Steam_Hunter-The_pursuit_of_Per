@@ -10,7 +10,7 @@ namespace Steam_Hunters
     class Enemies : Entity
     {
         public Enemies(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, float AttackRangeRadius, float SearchRadius, float MovementSpeed,
-         float AttackSpeed, float MapPos, bool Aggro, double AttackCooldown)
+         float AttackSpeed, float MapPos, bool Aggro, float AttackCooldown)
             : base(tex, pos, frameSize, sheetSize, Hp, MaxHp, Gold, Item, AttackRangeRadius, SearchRadius, MovementSpeed, AttackSpeed, MapPos, Aggro, AttackCooldown)
         {
         }

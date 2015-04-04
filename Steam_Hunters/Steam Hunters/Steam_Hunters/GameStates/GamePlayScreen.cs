@@ -48,7 +48,7 @@ namespace Steam_Hunters
             w = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this, 1, 1, 5,1);
             playerlist.Add(w);
             //
-            enemyTest = new Enemies(TextureManager.EnemyTestTexture, new Vector2(100, -50), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 100, 1, 1, 1, 1, false, 1);
+            enemyTest = new Enemies(TextureManager.EnemyTestTexture, new Vector2(100, -50), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1);
             enemyTest2 = new Enemies(TextureManager.EnemyTestTexture, new Vector2(200, -50), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
        
             level1 = new World(game.Content);

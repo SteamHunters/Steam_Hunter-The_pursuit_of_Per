@@ -26,7 +26,7 @@ namespace Steam_Hunters
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
         protected bool Aggro;
         protected double AttackCooldown;
-        public Vector2 Center
+        protected Vector2 Center
         {
             get { return center; }
         }
@@ -40,7 +40,7 @@ namespace Steam_Hunters
 
         protected int size = 50;
         public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, float AttackRangeRadius, float SearchRadius, float MovementSpeed,
-           float AttackSpeed, float MapPos, bool Aggro, double AttackCooldown)
+           float AttackSpeed, float MapPos, bool Aggro, float AttackCooldown)
             : base(tex, pos)
         {
             this.tex = tex;
