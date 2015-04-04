@@ -39,12 +39,13 @@ namespace Steam_Hunters
         protected int milliSecondsPerFrame = 30;
 
         protected int size = 50;
-        public Entity(Vector2 pos, Texture2D tex, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, int AttackRangeRadius, int SearchRadius, float MovementSpeed,
+        public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, int AttackRangeRadius, int SearchRadius, float MovementSpeed,
            float AttackSpeed, float MapPos, bool Aggro, double AttackCooldown)
             : base(tex, pos)
         {
-            this.pos = pos;
             this.tex = tex;
+            this.pos = pos;
+
             this.frameSize = frameSize;
             this.sheetSize = sheetSize;
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
@@ -68,7 +69,7 @@ namespace Steam_Hunters
         public override void Update(GameTime gameTime)
         {
 
-            // pos += MovementSpeed;
+
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
