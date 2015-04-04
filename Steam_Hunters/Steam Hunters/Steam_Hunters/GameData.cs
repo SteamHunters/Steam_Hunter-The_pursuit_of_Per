@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Steam_Hunters
 {
-    class GameData
+    static class GameData
     {
+       public static List<Player> playerList = new List<Player>();
+
+
     }
 }
