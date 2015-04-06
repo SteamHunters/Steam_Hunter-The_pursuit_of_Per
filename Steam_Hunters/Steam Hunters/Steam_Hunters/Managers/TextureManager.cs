@@ -71,7 +71,7 @@ namespace Steam_Hunters
         #endregion
 
         #region HUD Texturer
-        
+
         #endregion
 
         #region Bakgrunds Texturer
@@ -80,7 +80,7 @@ namespace Steam_Hunters
         public static Texture2D instructionScreen { get; private set; }
         public static Texture2D chooseSingleplayer { get; private set; }
         public static Texture2D chooseMultiplayer { get; private set; }
-        
+
         #endregion
 
         #region Knapp/Buttons Texturer
@@ -98,8 +98,11 @@ namespace Steam_Hunters
         #endregion
 
         // Ta bort sen
-        public static Texture2D testTexture { get; private set; }
-        public static Texture2D EnemyTestTexture { get; private set; }
+        public static Texture2D testTextureEngineer { get; private set; }
+        public static Texture2D testTextureArcher { get; private set; }
+        public static Texture2D reload { get; private set; }
+
+
         public static Texture2D map { get; private set; }
         //        
 
@@ -184,7 +187,7 @@ namespace Steam_Hunters
             multiplayerButton = Content.Load<Texture2D>(@"Multiplayer");
             exitButton = Content.Load<Texture2D>(@"Exit");
             instructionButton = Content.Load<Texture2D>(@"Instructions");
-            #endregion 
+            #endregion
 
             #region M.m. Texturer
             #endregion
@@ -192,14 +195,16 @@ namespace Steam_Hunters
             #endregion
 
             // Ta bort sen
-            testTexture = Content.Load<Texture2D>(@"ArcherTest");
-            EnemyTestTexture = Content.Load<Texture2D>(@"one frame wizard");
+            testTextureEngineer = Content.Load<Texture2D>(@"engineerTest");
+            testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
+            reload = Content.Load<Texture2D>(@"reload");
+
             // 
             // Ska flyttas
-           
+
             startBackground = Content.Load<Texture2D>(@"StartScreenTest");
-            
-            
+
+
 
 
 

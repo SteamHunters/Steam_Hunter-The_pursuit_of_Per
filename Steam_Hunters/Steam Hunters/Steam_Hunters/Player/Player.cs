@@ -21,7 +21,7 @@ namespace Steam_Hunters
         public GameWindow window;
         public GamePlayScreen gps;
         public Color color = Color.White;
-        
+
         public Vector2 prevThumbStickRightValue;
 
         List<Projectile> listProjectile = new List<Projectile>();
@@ -29,8 +29,8 @@ namespace Steam_Hunters
 
         PlayerIndex playerIndex;
 
-        private GamePadState newState, oldState; 
-        
+        private GamePadState newState, oldState;
+
         public int bY, bX, hp, mana, projectileTimerLife;
         public float speed;
         public Vector2 direction = Vector2.Zero, prevPos;
@@ -41,12 +41,15 @@ namespace Steam_Hunters
         int showButton;
         double sec;
         bool showButtonCounter;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
-        
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RSpress, LSpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
+
         public bool LTpress;
 
         public Vector2 towerDirection;
 
+        public GraphicsDevice graphics;
+
+        public int reloadCount;
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos)
@@ -56,6 +59,7 @@ namespace Steam_Hunters
             this.hp = hp;
             this.mana = mana;
             this.speed = speed;
+            this.graphics = graphics;
             notMoved = true;
             projectileTimerLife = 2000;
             shootOneAtTime = true;
@@ -96,9 +100,9 @@ namespace Steam_Hunters
             YButton(playerIndex);
 
             RTButton(playerIndex);
-            RBButton(playerIndex);
+            RSButton(playerIndex);
             LTButton(playerIndex);
-            LBButton(playerIndex);
+            LSButton(playerIndex);
 
             DUpButton(playerIndex);
             DDownButton(playerIndex);
@@ -112,17 +116,17 @@ namespace Steam_Hunters
             WalkAnimation(gameTime);
 
             // lekte lite med hitboxen så den stämmer //Anton ^^
-            hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height/1.3f  ), tex.Width / 6, tex.Height/ 2);
+            hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height / 1.3f), tex.Width / 6, tex.Height / 2);
 
             //hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
 
-           
+
 
             oldState = GamePad.GetState(playerIndex);
 
 
-            
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -130,21 +134,36 @@ namespace Steam_Hunters
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
             //spriteBatch.Draw(tex, hitBox, Color.Red);
+            spriteBatch.Draw(tex, hitBox, Color.Red);
+
 
             spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(tex, hitBox, Color.Red);
 
 
             foreach (Projectile e in listProjectile)
             {
                 e.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
-                                                        "\npos: " + pos +
-                                                        "\nshoot timer: " + shootTimer +
-                                                        "\namount of proj: " + listProjectile.Count, new Vector2(200, 200), Color.Red);  
+            if (playerIndex == PlayerIndex.One)
+            {
+                spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
+                                                             "\npos: " + pos +
+                                                             "\nshoot timer: " + shootTimer +
+                                                             "\namount of proj: " + listProjectile.Count +
+                                                             "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
+
+            }
+            if (playerIndex == PlayerIndex.Two)
+            {
+                spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
+                                                             "\npos: " + pos +
+                                                             "\nshoot timer: " + shootTimer +
+                                                             "\namount of proj: " + listProjectile.Count +
+                                                             "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
+
+            }
         }
 
         #region Get gamePad button
@@ -182,13 +201,13 @@ namespace Steam_Hunters
                 this.Ypress = true;
             }
             else
-                this.Ypress = false;  
+                this.Ypress = false;
         }
 
         public void RTButton(PlayerIndex playerIndex)
         {
             rightTriggerValue = newState.Triggers.Right;
-           if (rightTriggerValue != 0)
+            if (rightTriggerValue != 0)
             {
                 this.RTpress = true;
             }
@@ -205,23 +224,23 @@ namespace Steam_Hunters
             else
                 this.LTpress = false;
         }
-        public void LBButton(PlayerIndex playerIndex)
+        public void LSButton(PlayerIndex playerIndex)
         {
             if (newState.Buttons.LeftShoulder == ButtonState.Pressed && oldState.Buttons.LeftShoulder == ButtonState.Released)
             {
-                this.LBpress = true;
+                this.LSpress = true;
             }
             else
-                this.LBpress = false;
+                this.LSpress = false;
         }
-        public void RBButton(PlayerIndex playerIndex)
+        public void RSButton(PlayerIndex playerIndex)
         {
             if (newState.Buttons.RightShoulder == ButtonState.Pressed && oldState.Buttons.RightShoulder == ButtonState.Released)
             {
-                this.RBpress = true;
+                this.RSpress = true;
             }
             else
-                this.RBpress = false;
+                this.RSpress = false;
         }
 
         public void StartButton(PlayerIndex playerIndex)
@@ -280,7 +299,7 @@ namespace Steam_Hunters
                 this.Dlefthpress = false;
         }
         #endregion
-        
+
         private void changeDirection()
         {
             PrevAngle = angle;
@@ -354,6 +373,7 @@ namespace Steam_Hunters
                     if (shootOneAtTime == true)
                     {
                         AddProjectile(new Vector2(0, -1));
+                        reloadCount++;
                     }
                     shootOneAtTime = false;
 
@@ -378,11 +398,13 @@ namespace Steam_Hunters
                         {
                             AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
                                                      -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                            reloadCount++;
                         }
                         else if (newState.ThumbSticks.Right.Y != 0.0f)
                         {
                             AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
                                                      -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                            reloadCount++;
                         }
 
                         if (newState.ThumbSticks.Right.X == 0.0f && newState.ThumbSticks.Right.Y == 0.0f)
@@ -390,6 +412,7 @@ namespace Steam_Hunters
                             if (rightTriggerValue != 0)
                             {
                                 AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
+                                reloadCount++;
                             }
                         }
                         shootOneAtTime = false;
