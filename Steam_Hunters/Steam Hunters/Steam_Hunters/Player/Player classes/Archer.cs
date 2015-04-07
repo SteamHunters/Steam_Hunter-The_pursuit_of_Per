@@ -38,7 +38,7 @@ namespace Steam_Hunters
             lifeTransparent = 2000;
             isReloading = false;
             //circle = CreateCircle(circleSize);
-
+            projectileTimerLife = 200;
         }
 
         public override void Update(GameTime gameTime)
@@ -120,7 +120,7 @@ namespace Steam_Hunters
             //spriteBatch.Draw(tex, pos, new Rectangle(0 ,0 , 20, 20), Color.Blue);
 
             base.Draw(spriteBatch);
-            spriteBatch.Draw(tex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, 20, 20), Color.Blue, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
+            //spriteBatch.Draw(tex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, 20, 20), Color.Blue, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
             //spriteBatch.Draw(circle, pos, new Rectangle(0, 0, circleSize * 2, circleSize * 2), Color.Red, 0, new Vector2(origin.X, origin.Y ), 1, SpriteEffects.None, 0);
 
             if (isReloading == true)

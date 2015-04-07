@@ -15,7 +15,7 @@ namespace Steam_Hunters
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
-
+            projectileTimerLife = 700;
         }
 
         public override void Update(GameTime gameTime)

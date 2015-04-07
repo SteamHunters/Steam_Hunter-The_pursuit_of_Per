@@ -29,7 +29,7 @@ namespace Steam_Hunters
             projectileLife = 80;
 
             //if (movement != Vector2.Zero)
-                direction.Normalize();
+            direction.Normalize();
 
             this.angle = angle;
         }

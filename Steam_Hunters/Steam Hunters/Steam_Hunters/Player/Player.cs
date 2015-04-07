@@ -61,7 +61,7 @@ namespace Steam_Hunters
             this.speed = speed;
             this.graphics = graphics;
             notMoved = true;
-            projectileTimerLife = 2000;
+            //projectileTimerLife = 2000;
             shootOneAtTime = true;
             showButton = 0;
             showButtonCounter = true;
@@ -84,7 +84,6 @@ namespace Steam_Hunters
                 this.playerIndex = PlayerIndex.Four;
             }
             #endregion
-
         }
 
 
@@ -380,7 +379,7 @@ namespace Steam_Hunters
                     if (shootOneAtTime == false)
                     {
                         rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
-                        if (rightTriggerTimer > 100)
+                        if (rightTriggerTimer > projectileTimerLife)
                         {
                             shootOneAtTime = true;
                         }
@@ -418,10 +417,10 @@ namespace Steam_Hunters
                         shootOneAtTime = false;
 
                     }
-                    else if (shootOneAtTime == false)
+                    else if (shootOneAtTime == false)//skjuta
                     {
                         rightTriggerTimer += gameTime.ElapsedGameTime.Milliseconds;
-                        if (rightTriggerTimer > 100)
+                        if (rightTriggerTimer > projectileTimerLife)
                         {
                             shootOneAtTime = true;
                         }
