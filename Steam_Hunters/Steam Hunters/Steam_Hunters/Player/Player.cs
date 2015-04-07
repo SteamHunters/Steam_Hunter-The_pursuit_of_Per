@@ -35,7 +35,7 @@ namespace Steam_Hunters
         public float speed;
         public Vector2 direction = Vector2.Zero, prevPos;
 
-        float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
+        public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
         bool notMoved, shootOneAtTime;
 
         int showButton;
@@ -51,6 +51,8 @@ namespace Steam_Hunters
 
         public int reloadCount;
 
+        protected bool isShooting;
+
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos)
         {
@@ -65,7 +67,7 @@ namespace Steam_Hunters
             shootOneAtTime = true;
             showButton = 0;
             showButtonCounter = true;
-
+            isShooting = true;
             #region Identify player index
             if (playerIndex == 1)
             {
@@ -110,6 +112,7 @@ namespace Steam_Hunters
             #endregion
 
             MoveLeftThumbStick(newState);
+
             ShootRightThumbStick(newState, gameTime);
             changeDirection();
             WalkAnimation(gameTime);
@@ -376,8 +379,11 @@ namespace Steam_Hunters
                 {
                     if (shootOneAtTime == true)
                     {
-                        AddProjectile(new Vector2(0, -1));
-                        reloadCount++;
+                        if (isShooting)
+                        {
+                            AddProjectile(new Vector2(0, -1));
+                            reloadCount++;
+                        }
                     }
                     shootOneAtTime = false;
 
@@ -400,23 +406,32 @@ namespace Steam_Hunters
                     {
                         if (newState.ThumbSticks.Right.X != 0.0f)
                         {
-                            AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
-                                                     -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
-                            reloadCount++;
+                            if (isShooting)
+                            {
+                                AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                                             -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                                reloadCount++;
+                            }
                         }
                         else if (newState.ThumbSticks.Right.Y != 0.0f)
                         {
-                            AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
-                                                     -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
-                            reloadCount++;
+                            if (isShooting)
+                            {
+                                AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
+                                                                             -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
+                                reloadCount++;
+                            }
                         }
 
                         if (newState.ThumbSticks.Right.X == 0.0f && newState.ThumbSticks.Right.Y == 0.0f)
                         {
                             if (rightTriggerValue != 0)
                             {
-                                AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
-                                reloadCount++;
+                                if (isShooting)
+                                {
+                                    AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
+                                    reloadCount++;
+                                }
                             }
                         }
                         shootOneAtTime = false;

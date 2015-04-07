@@ -54,6 +54,9 @@ namespace Steam_Hunters
             //}
             //CreateCircle(500);
 
+
+
+
             if (reloadCount >= 20)
             {
                 isReloading = true;
@@ -127,7 +130,11 @@ namespace Steam_Hunters
             {
                 //spriteBatch.Draw(TextureManager.reload, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, TextureManager.reload.Width, TextureManager.reload.Height), Color.Blue, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
                 spriteBatch.Draw(TextureManager.reload, pos, new Rectangle(currentFrameReload.X * frameSizeReload.X, currentFrameReload.Y * frameSizeReload.Y, frameSizeReload.X, frameSizeReload.Y), Color.White, 0, new Vector2(frameSizeReload.X / 2, frameSizeReload.Y / 2), 1, SpriteEffects.None, 0);
-
+                isShooting = false;
+            }
+            else
+            {
+                isShooting = true;
             }
             spriteBatch.DrawString(FontManager.font, "tid" + timerSinceLastFrameReload + "  " + milliSecondsPerFrameReload, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
 

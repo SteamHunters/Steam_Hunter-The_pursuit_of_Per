@@ -366,7 +366,6 @@ D:\Users\Markus\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\S
 D:\Users\Markus\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\Users\Markus\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.exe
 D:\Users\Markus\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\obj\x86\Debug\Steam_Hunters.pdb
-C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineerTest.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\reload.xnb
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Dispenser.xnb
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\turret bot.xnb
@@ -525,3 +524,4 @@ C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunte
 C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank.xml
 C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank2.xml
 C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineer animation walking.xnb
+C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineer animation walking.xnb
