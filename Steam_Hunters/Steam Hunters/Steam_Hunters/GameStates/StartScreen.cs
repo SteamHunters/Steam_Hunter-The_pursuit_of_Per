@@ -64,17 +64,19 @@ namespace Steam_Hunters
             #region SinglePlayer
             if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && singleplayerStart.selected == true && showInstruction == false)
             {
-                showCharacterSelectSingle = true;
-            }
-            if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showCharacterSelectSingle == true && showInstruction == false && showCharacterSelectMulti == false)
-            {
-                showCharacterSelectSingle = false;
+                GameData.SinglePlayMode = true;
+                game.SelectScreen();
             }
 
-            if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released && showCharacterSelectSingle == true)
-            {
-                game.StartGame();
-            }
+            //if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showCharacterSelectSingle == true && showInstruction == false && showCharacterSelectMulti == false)
+            //{
+            //    showCharacterSelectSingle = false;
+            //}
+
+            //if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released && showCharacterSelectSingle == true)
+            //{
+            //    game.StartGame();
+            //}
 
             #endregion
 
@@ -115,10 +117,10 @@ namespace Steam_Hunters
             if (showInstruction == true)
                 spriteBatch.Draw(TextureManager.instructionScreen, new Vector2(0f, 0f), Color.White);
 
-            if(showCharacterSelectSingle == true)
-            {
-                spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
-            }
+            //if(showCharacterSelectSingle == true)
+            //{
+            //    spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+            //}
             if (showCharacterSelectMulti == true)
             {
                 spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);

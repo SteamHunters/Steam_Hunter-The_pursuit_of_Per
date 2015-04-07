@@ -32,6 +32,10 @@ namespace Steam_Hunters
 
         public GamePlayScreen(Game1 game)
         {
+            foreach (Player p in GameData.playerList)
+            {
+                p.SetGPS = this;
+            }
             this.game = game;
 
             //wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this,1,1,5, 2);
@@ -59,30 +63,30 @@ namespace Steam_Hunters
             KeyboardState keyboardState = Keyboard.GetState();
 
             #region Set Camera center by how many players
-            if (playerlist.Count == 1)
+            if (GameData.playerList.Count == 1)
             {
-                cameraCenter = playerlist[0].pos / playerlist.Count;
+                cameraCenter = GameData.playerList[0].pos / GameData.playerList.Count;
                 camera.Update(gameTime, cameraCenter);
             }
-            if (playerlist.Count == 2)
+            if (GameData.playerList.Count == 2)
             {
-                cameraCenter = (playerlist[0].pos + playerlist[1].pos) / playerlist.Count;
+                cameraCenter = (GameData.playerList[0].pos + GameData.playerList[1].pos) / GameData.playerList.Count;
                 camera.Update(gameTime, cameraCenter);
             }
-            if (playerlist.Count == 3)
+            if (GameData.playerList.Count == 3)
             {
-                cameraCenter = (playerlist[0].pos + playerlist[1].pos + playerlist[2].pos) / playerlist.Count;
+                cameraCenter = (GameData.playerList[0].pos + GameData.playerList[1].pos + GameData.playerList[2].pos) / GameData.playerList.Count;
                 camera.Update(gameTime, cameraCenter);
             }
-            if (playerlist.Count == 4)
+            if (GameData.playerList.Count == 4)
             {
-                cameraCenter = (playerlist[0].pos + playerlist[1].pos + playerlist[2].pos + playerlist[3].pos) / playerlist.Count;
+                cameraCenter = (GameData.playerList[0].pos + GameData.playerList[1].pos + GameData.playerList[2].pos + GameData.playerList[3].pos) / GameData.playerList.Count;
                 camera.Update(gameTime, cameraCenter);
             }
             #endregion
 
             // Test build
-            foreach (Player p in playerlist)
+            foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
             }
@@ -92,9 +96,9 @@ namespace Steam_Hunters
 
             #region dispenser
 
-            for (int i = 0; i < playerlist.Count; i++)
+            for (int i = 0; i < GameData.playerList.Count; i++)
             {
-                if (playerlist[i] is Engineer)
+                if (GameData.playerList[i] is Engineer)
                 {
 
                     foreach (Dispenser d in dispensers)
@@ -113,14 +117,18 @@ namespace Steam_Hunters
                         }
 
                         #region dispenser heal
-                        if (d.IsInRange(e1.pos))
+                        foreach (Player p in GameData.playerList)
                         {
-                            e1.color = Color.Green;
+                            if (d.IsInRange(p.pos))
+                            {
+                                p.color = Color.Green;
+                            }
+                            else
+                            {
+                                p.color = Color.White;
+                            }
                         }
-                        else
-                        {
-                            e1.color = Color.White;
-                        }
+
 
                         //måste titta om de finns i spelet först, hur gör det?
                         //if (d.IsInRange(archer.pos))
@@ -174,7 +182,7 @@ namespace Steam_Hunters
                     turrets.Remove(t);
                     break;
                 }
-                t.rotation = e1.angle;
+                t.rotation = GameData.playerList[0].angle;
 
                 if (t.TowerRemove == true)
                 {
@@ -192,7 +200,7 @@ namespace Steam_Hunters
             }
             #endregion
 
-
+            #region Turret projectile
             foreach (Projectile tp in turretProjectile)
             {
                 tp.Update(gameTime);
@@ -203,6 +211,7 @@ namespace Steam_Hunters
                     break;
                 }
             }
+            #endregion
 
             #endregion
 
@@ -218,9 +227,10 @@ namespace Steam_Hunters
             spriteBatch.Draw(TextureManager.testTextureEngineer, new Vector2(0f, 0f), Color.White);
 
             // Test build
-            foreach (Player p in playerlist)
+            foreach (Player p in GameData.playerList)
             {
                 p.Draw(spriteBatch);
+
             }
             //
             #region Enginers things

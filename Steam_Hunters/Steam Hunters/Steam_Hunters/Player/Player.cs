@@ -487,6 +487,11 @@ namespace Steam_Hunters
         {
             pos = prevPos;
         }
+        public GamePlayScreen SetGPS
+        {
+            get { return gps; }
+            set { gps = value; }
+        }
 
         // skriv om så items används
         //private void DpadControl()

@@ -8,7 +8,7 @@ namespace Steam_Hunters
     static class GameData
     {
        public static List<Player> playerList = new List<Player>();
-
+       public static bool SinglePlayMode, MultiplayerMode;
 
     }
 }

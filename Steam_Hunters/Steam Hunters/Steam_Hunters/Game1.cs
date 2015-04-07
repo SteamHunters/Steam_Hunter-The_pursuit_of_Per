@@ -14,6 +14,7 @@ namespace Steam_Hunters
     enum Screen
     {
         StartScreen,
+        GameSelectScreen,
         GamePlayScreen,
         GameOverScreen
     }
@@ -24,6 +25,7 @@ namespace Steam_Hunters
         SpriteBatch spriteBatch;
 
         StartScreen startScreen;
+        GameSelectScreen gameSelectScreen;
         GamePlayScreen gamePlayScreen;
         GameOverScreen gameOverScreen;
 
@@ -96,6 +98,10 @@ namespace Steam_Hunters
                     if (startScreen != null)
                         startScreen.Update();
                     break;
+                case Screen.GameSelectScreen:
+                    if (gameSelectScreen != null)
+                        gameSelectScreen.Update();
+                    break;
                 case Screen.GamePlayScreen:
                     if (gamePlayScreen != null)
                         gamePlayScreen.Update(gameTime);
@@ -122,6 +128,10 @@ namespace Steam_Hunters
                     if (startScreen != null)
                         startScreen.Draw(spriteBatch);
                     break;
+                case Screen.GameSelectScreen:
+                    if (gameSelectScreen != null)
+                        gameSelectScreen.Draw(spriteBatch);
+                    break;
                 case Screen.GamePlayScreen:
                     if (gamePlayScreen != null)
                         gamePlayScreen.Draw(spriteBatch);
@@ -143,6 +153,24 @@ namespace Steam_Hunters
 
             startScreen = null;
             gameOverScreen = null;
+        }
+        public void SelectScreen()
+        {
+            gameSelectScreen = new GameSelectScreen(this);
+            currentScreen = Screen.GameSelectScreen;
+
+            startScreen = null;
+            gameOverScreen = null;
+            gamePlayScreen = null;
+        }
+        public void StartScreen()
+        {
+            startScreen = new StartScreen(this);
+            currentScreen = Screen.StartScreen;
+
+            gameSelectScreen = null;
+            gameOverScreen = null;
+            gamePlayScreen = null;
         }
 
         public void EndGame()

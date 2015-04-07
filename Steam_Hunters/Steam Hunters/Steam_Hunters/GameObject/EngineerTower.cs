@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Steam_Hunters
 {
-    class EngineerTower:GameObject
+    class EngineerTower : GameObject
     {
         public Color color = Color.White;
         int spriteWidth, spriteHeight;
@@ -22,42 +22,42 @@ namespace Steam_Hunters
             get { return towerRemove; }
         }
 
-         public EngineerTower(Texture2D tex, Vector2 pos, GamePlayScreen gps, int towerLife)
-            : base(tex,pos)
+        public EngineerTower(Texture2D tex, Vector2 pos, GamePlayScreen gps, int towerLife)
+            : base(tex, pos)
         {
             this.gps = gps;
             spriteWidth = 50;
             spriteHeight = 50;
             this.towerLife = towerLife;
- 
+
             center = new Vector2(pos.X + spriteWidth / 2, pos.Y + spriteHeight / 2);
             origin = new Vector2(spriteWidth / 2, spriteHeight / 2);
         }
 
-         public override void Update(GameTime gameTime)
-         {
-             towerPower+= 1;
+        public override void Update(GameTime gameTime)
+        {
+            towerPower += 1;
 
-             if (towerPower == 900)
-             {
-                 towerRemove = true;
-             }
-             if (bulletTimer < 20)
-                 bulletTimer++;
+            if (towerPower == 900)
+            {
+                towerRemove = true;
+            }
+            if (bulletTimer < 20)
+                bulletTimer++;
 
-             if (bulletTimer >= 20 && gps.e1.LTpress == true)
-             {
+            if (bulletTimer >= 20 && GameData.playerList[0].LTpress == true)
+            {
 
-                 Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, gps.e1.prevThumbStickRightValue, rotation, new Point(), new Point());
+                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, GameData.playerList[0].prevThumbStickRightValue, rotation, new Point(), new Point());
 
-                 gps.turretProjectile.Add(turretBullet);
-                 bulletTimer = 0;
-             }
-         }
-         public override void Draw(SpriteBatch spriteBatch)
-         {
-             spriteBatch.Draw(TextureManager.turretTexBot, center, null, color, 0, origin, 1.0f, SpriteEffects.None, 0);
-             spriteBatch.Draw(TextureManager.turretTexTop, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
-         }
+                gps.turretProjectile.Add(turretBullet);
+                bulletTimer = 0;
+            }
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(TextureManager.turretTexBot, center, null, color, 0, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureManager.turretTexTop, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
+        }
     }
 }
