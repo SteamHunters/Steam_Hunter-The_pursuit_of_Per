@@ -33,17 +33,19 @@ namespace Steam_Hunters
         #region Karaktär Texturer
 
         #region Warrior Textur
+        public static Texture2D WarriorPic { get; private set; }
         #endregion
 
         #region Archer Textur
+        public static Texture2D ArcherPic { get; private set; }
         #endregion
 
         #region Wizard Textur
+        public static Texture2D WizardPic { get; private set; }
         #endregion
 
         #region Enginer Textur
-
-
+        public static Texture2D EngineerPic { get; private set; }
         // Turrent
         public static Texture2D dispenserTex { get; private set; }
         public static Texture2D turretTexBot { get; private set; }
@@ -134,16 +136,20 @@ namespace Steam_Hunters
             #region Karaktär Texturer
 
             #region Warrior Textur
+            WarriorPic = Content.Load<Texture2D>(@"Texturer/Karakter/Warrior/WarriorPic");
             #endregion
 
             #region Archer Textur
+            ArcherPic = Content.Load<Texture2D>(@"Texturer/Karakter/Archer/Archer Pic");
             #endregion
 
             #region Wizard Textur
+            WizardPic = Content.Load<Texture2D>(@"Texturer/Karakter/Wizard/Wizard Pic");
             #endregion
 
             #region Enginer Textur
-
+            EngineerPic = Content.Load<Texture2D>(@"Texturer/Karakter/Engineer/Engineer Pic");
+            // Turent
             dispenserTex = Content.Load<Texture2D>(@"Dispenser");
             turretTexBot = Content.Load<Texture2D>(@"turret bot");
             turretTexTop = Content.Load<Texture2D>(@"turret top");

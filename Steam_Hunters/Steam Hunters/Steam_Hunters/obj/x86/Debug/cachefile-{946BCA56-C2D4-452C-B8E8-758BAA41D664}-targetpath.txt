@@ -86,6 +86,10 @@ Content\pixel.xnb
 Content\ArcherTest.xnb
 Content\reload.xnb
 Content\engineer animation walking.xnb
+Content\Texturer\Karakter\Archer\Archer Pic.xnb
+Content\Texturer\Karakter\Warrior\WarriorPic.xnb
+Content\Texturer\Karakter\Wizard\Wizard Pic.xnb
+Content\Texturer\Karakter\Engineer\Engineer Pic.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

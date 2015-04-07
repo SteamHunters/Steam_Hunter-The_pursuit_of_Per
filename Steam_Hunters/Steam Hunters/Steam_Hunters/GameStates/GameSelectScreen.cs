@@ -137,31 +137,38 @@ namespace Steam_Hunters
             #region Draw Single player select
             if (GameData.SinglePlayMode == true)
             {
-                spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
                 switch (SelectedCharacter)
                 {
                     case Character.Archer:
                         #region Archer
-
+                        spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(414,277), Color.White);
+                        spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+                        spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(450, 410), Color.White);
                         #endregion
                         break;
                     case Character.Warrior:
                         #region Warrior
-
-
+                        spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(414,282), Color.White);
+                        spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+                        spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(450, 410), Color.White);
                         #endregion
                         break;
                     case Character.Engineer:
                         #region Engineer
-
+                        spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(414,277), Color.White);
+                        spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+                        spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(450, 410), Color.White);
                         #endregion
                         break;
                     case Character.Wizard:
                         #region Wizard
-
+                        spriteBatch.Draw(TextureManager.WizardPic, new Vector2(414,277), Color.White);
+                        spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+                        spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(450, 410), Color.White);
                         #endregion
                         break;
                 }
+                
             }
             #endregion
 

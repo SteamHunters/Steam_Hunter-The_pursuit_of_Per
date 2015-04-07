@@ -40,10 +40,6 @@
     <Folder Include="Texturer\Enimes\Mobs 4\" />
     <Folder Include="Texturer\Items\Potions\" />
     <Folder Include="Texturer\Items\Weponds\" />
-    <Folder Include="Texturer\Karakter\Archer\" />
-    <Folder Include="Texturer\Karakter\Enginer\" />
-    <Folder Include="Texturer\Karakter\Warrior\" />
-    <Folder Include="Texturer\Karakter\Wizard\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="font.spritefont">
@@ -104,13 +100,6 @@
   <ItemGroup>
     <Compile Include="Exit.png">
       <Name>Exit</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="PickACharacterSingle.png">
-      <Name>PickACharacterSingle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -553,6 +542,41 @@
   <ItemGroup>
     <Compile Include="engineer animation walking.png">
       <Name>engineer animation walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Texturer\Karakter\Archer\Archer Pic.png">
+      <Name>Archer Pic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Texturer\Karakter\Engineer\Engineer Pic.png">
+      <Name>Engineer Pic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Texturer\Karakter\Warrior\WarriorPic.png">
+      <Name>WarriorPic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Texturer\Karakter\Wizard\Wizard Pic.png">
+      <Name>Wizard Pic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PickACharacterSingle.png">
+      <Name>PickACharacterSingle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

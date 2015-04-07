@@ -442,7 +442,6 @@ C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\St
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Tiles\Terrain\Path\dirt_3-3.xnb
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\pixel.xnb
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\ArcherTest.xnb
-C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineerTest.xnb
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\reload.xnb
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TestMap.tmx
 C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank.xml
@@ -525,3 +524,8 @@ C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunte
 C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Maps\TileBank2.xml
 C:\Users\Spellabbet\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineer animation walking.xnb
 C:\Users\Kenneth\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineer animation walking.xnb
+C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\engineer animation walking.xnb
+C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Texturer\Karakter\Archer\Archer Pic.xnb
+C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Texturer\Karakter\Warrior\WarriorPic.xnb
+C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Texturer\Karakter\Wizard\Wizard Pic.xnb
+C:\Users\Anton\Documents\GitHub\Steam_Hunter-The_pursuit_of_Per\Steam_Hunters\Steam Hunters\Steam_Hunters\bin\x86\Debug\Content\Texturer\Karakter\Engineer\Engineer Pic.xnb
