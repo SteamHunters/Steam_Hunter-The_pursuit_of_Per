@@ -11,7 +11,7 @@ namespace Steam_Hunters
     class Player : GameObject
     {
         protected SpriteEffects EntityFx = 0;
-        protected Point frameSize = new Point(44, 42);
+        protected Point frameSize = new Point(45, 45);
         protected Point currentFrame = new Point(0, 0);
         protected Point sheetSize = new Point(4, 2);
 
@@ -27,9 +27,9 @@ namespace Steam_Hunters
         List<Projectile> listProjectile = new List<Projectile>();
         Projectile projectile;
 
-        PlayerIndex playerIndex;
+        protected PlayerIndex playerIndex;
 
-        private GamePadState newState, oldState;
+        protected GamePadState newState, oldState;
 
         public int bY, bX, hp, mana, projectileTimerLife;
         public float speed;
@@ -41,7 +41,7 @@ namespace Steam_Hunters
         int showButton;
         double sec;
         bool showButtonCounter;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RSpress, LSpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
 
         public bool LTpress;
 
@@ -227,19 +227,19 @@ namespace Steam_Hunters
         {
             if (newState.Buttons.LeftShoulder == ButtonState.Pressed && oldState.Buttons.LeftShoulder == ButtonState.Released)
             {
-                this.LSpress = true;
+                this.LBpress = true;
             }
             else
-                this.LSpress = false;
+                this.LBpress = false;
         }
         public void RSButton(PlayerIndex playerIndex)
         {
             if (newState.Buttons.RightShoulder == ButtonState.Pressed && oldState.Buttons.RightShoulder == ButtonState.Released)
             {
-                this.RSpress = true;
+                this.RBpress = true;
             }
             else
-                this.RSpress = false;
+                this.RBpress = false;
         }
 
         public void StartButton(PlayerIndex playerIndex)
@@ -359,6 +359,11 @@ namespace Steam_Hunters
         {
             pos.X += newState.ThumbSticks.Left.X * speed;
             pos.Y -= newState.ThumbSticks.Left.Y * speed;
+        }
+        public void MoveLeftThumbStickTeleport(GamePadState newState)
+        {
+            pos.X += newState.ThumbSticks.Right.X * speed;
+            pos.Y -= newState.ThumbSticks.Right.Y * speed;
         }
 
         private void ShootRightThumbStick(GamePadState newState, GameTime gameTime)

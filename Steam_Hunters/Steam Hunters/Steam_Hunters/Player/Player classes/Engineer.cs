@@ -11,17 +11,19 @@ namespace Steam_Hunters
     class Engineer : Player
     {
         public bool turretShooting;
-        bool teleport; 
+        bool teleportIsOn, teleportToLocation;
+        public Vector2 teleportPos;
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
             projectileTimerLife = 700;
+            teleportPos = pos;
         }
 
         public override void Update(GameTime gameTime)
         {
             EngineerTower turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
-
+           
             if(Xpress == true)
             {
                 Dispenser dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
@@ -46,16 +48,29 @@ namespace Steam_Hunters
             }
             if(Bpress == true)
             {
-                teleport = true;
+                teleportIsOn = true;
+                teleportPos = pos;
+            }
+            if (teleportIsOn == true)
+            {
+                teleportPos.X += newState.ThumbSticks.Right.X * speed;
+                teleportPos.Y -= newState.ThumbSticks.Right.Y * speed;
+
+                if (RBpress == true)
+                {
+                    pos.X = teleportPos.X + TextureManager.teleportLocation.Width/2;
+                    pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
+                    teleportIsOn = false;
+                }
             }
             base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(teleport == true)
+            if (teleportIsOn == true)
             {
-                spriteBatch.Draw(TextureManager.teleportLocation, pos, Color.White);
+                spriteBatch.Draw(TextureManager.teleportLocation, teleportPos, Color.White);
             }
             base.Draw(spriteBatch);
         }

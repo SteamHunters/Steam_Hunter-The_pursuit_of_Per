@@ -195,7 +195,7 @@ namespace Steam_Hunters
             #endregion
 
             // Ta bort sen
-            testTextureEngineer = Content.Load<Texture2D>(@"engineerTest");
+            testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
             reload = Content.Load<Texture2D>(@"reload");
 

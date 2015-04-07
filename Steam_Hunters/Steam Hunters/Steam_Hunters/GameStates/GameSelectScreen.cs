@@ -10,7 +10,7 @@ namespace Steam_Hunters
 {
     class GameSelectScreen
     {
-        enum Charakter
+        enum Character
         {
             Archer,
             Warrior,
@@ -22,12 +22,12 @@ namespace Steam_Hunters
         private Player p1, p2, p3, p4;
         private Game1 game;
         public GamePadState gamePadState, oldgamePadState = GamePad.GetState(PlayerIndex.One);
-        Charakter SelectedCharakter;
+        Character SelectedCharacter;
         public GameSelectScreen(Game1 game)
         {
             this.game = game;
             this.gps = new GamePlayScreen(game);
-            this.SelectedCharakter = Charakter.Archer;
+            this.SelectedCharacter = Character.Archer;
         }
 
         public void Update()
@@ -38,17 +38,17 @@ namespace Steam_Hunters
             #region Singleplayer
             if (GameData.SinglePlayMode == true)
             {
-                switch (SelectedCharakter)
+                switch (SelectedCharacter)
                 {
-                    case Charakter.Archer:
+                    case Character.Archer:
                         #region Archer
                         if (gamePadState.DPad.Right == ButtonState.Pressed && oldgamePadState.DPad.Right == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Warrior;
+                            SelectedCharacter = Character.Warrior;
                         }
                         if (gamePadState.DPad.Left == ButtonState.Pressed && oldgamePadState.DPad.Left == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Wizard;
+                            SelectedCharacter = Character.Wizard;
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
@@ -57,15 +57,15 @@ namespace Steam_Hunters
                         }
                         #endregion
                         break;
-                    case Charakter.Warrior:
+                    case Character.Warrior:
                         #region Warrior
                         if (gamePadState.DPad.Right == ButtonState.Pressed && oldgamePadState.DPad.Right == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Engineer;
+                            SelectedCharacter = Character.Engineer;
                         }
                         if (gamePadState.DPad.Left == ButtonState.Pressed && oldgamePadState.DPad.Left == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Archer;
+                            SelectedCharacter = Character.Archer;
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
@@ -74,15 +74,15 @@ namespace Steam_Hunters
                         }
                         #endregion
                         break;
-                    case Charakter.Engineer:
+                    case Character.Engineer:
                         #region Engineer
                         if (gamePadState.DPad.Right == ButtonState.Pressed && oldgamePadState.DPad.Right == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Wizard;
+                            SelectedCharacter = Character.Wizard;
                         }
                         if (gamePadState.DPad.Left == ButtonState.Pressed && oldgamePadState.DPad.Left == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Warrior;
+                            SelectedCharacter = Character.Warrior;
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
@@ -91,15 +91,15 @@ namespace Steam_Hunters
                         }
                         #endregion
                         break;
-                    case Charakter.Wizard:
+                    case Character.Wizard:
                         #region Wizard
                         if (gamePadState.DPad.Right == ButtonState.Pressed && oldgamePadState.DPad.Right == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Archer;
+                            SelectedCharacter = Character.Archer;
                         }
                         if (gamePadState.DPad.Left == ButtonState.Pressed && oldgamePadState.DPad.Left == ButtonState.Released)
                         {
-                            SelectedCharakter = Charakter.Warrior;
+                            SelectedCharacter = Character.Warrior;
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
@@ -138,25 +138,25 @@ namespace Steam_Hunters
             if (GameData.SinglePlayMode == true)
             {
                 spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
-                switch (SelectedCharakter)
+                switch (SelectedCharacter)
                 {
-                    case Charakter.Archer:
+                    case Character.Archer:
                         #region Archer
 
                         #endregion
                         break;
-                    case Charakter.Warrior:
+                    case Character.Warrior:
                         #region Warrior
 
 
                         #endregion
                         break;
-                    case Charakter.Engineer:
+                    case Character.Engineer:
                         #region Engineer
 
                         #endregion
                         break;
-                    case Charakter.Wizard:
+                    case Character.Wizard:
                         #region Wizard
 
                         #endregion

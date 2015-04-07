@@ -544,15 +544,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="engineerTest.png">
-      <Name>engineerTest</Name>
+    <Compile Include="reload.png">
+      <Name>reload</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="reload.png">
-      <Name>reload</Name>
+    <Compile Include="engineer animation walking.png">
+      <Name>engineer animation walking</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
