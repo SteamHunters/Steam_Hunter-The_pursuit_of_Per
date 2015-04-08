@@ -96,6 +96,7 @@
     <Compile Include="GameObject\Projectile.cs" />
     <Compile Include="GameStates\GameOverScreen.cs" />
     <Compile Include="GameStates\StartScreen.cs" />
+    <Compile Include="SelectCharacter.cs" />
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Particle\Particle.cs" />
     <Compile Include="Engins\ParticleEngine.cs" />
@@ -115,6 +116,8 @@
     <Content Include="Anoying shit\GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
+    <Content Include="Rör ej2.txt" />
+    <Content Include="Rör ej.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Steam_HuntersContent\Steam_HuntersContent.contentproj">

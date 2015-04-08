@@ -1,0 +1,108 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Steam_Hunters
+{
+    class GameSelectScreen
+    {
+        
+        private GamePlayScreen gps;
+        private Player p1, p2, p3, p4;
+        private Game1 game;
+        private GamePadState gamePadState1, gamePadState2, gamePadState3, gamePadState4;
+        private GamePadState oldgamePadState1 = GamePad.GetState(PlayerIndex.One);
+        private GamePadState oldgamePadState2 = GamePad.GetState(PlayerIndex.Two);
+        private GamePadState oldgamePadState3 = GamePad.GetState(PlayerIndex.Three);
+        private GamePadState oldgamePadState4 = GamePad.GetState(PlayerIndex.Four);
+        private PlayerIndex playerIndex1, playerIndex2, playerIndex3, playerIndex4;       
+
+        public GameSelectScreen(Game1 game)
+        {
+            this.game = game;
+            this.gps = new GamePlayScreen(game);
+        }
+
+        public void Update()
+        {
+            oldgamePadState1 = gamePadState1;
+            gamePadState2 = GamePad.GetState(PlayerIndex.One);
+            #region Singleplayer
+            if (GameData.SinglePlayMode == true)
+            {
+
+                
+
+            }
+            #endregion
+
+            #region Multiplayer
+            if (GameData.MultiplayerMode == true)
+            {
+                #region uppdate gamepad state for 2-4
+                oldgamePadState2 = gamePadState2;
+                gamePadState2 = GamePad.GetState(PlayerIndex.Two);
+                oldgamePadState3 = gamePadState3;
+                gamePadState3 = GamePad.GetState(PlayerIndex.Three);
+                oldgamePadState4 = gamePadState4;
+                gamePadState4 = GamePad.GetState(PlayerIndex.Four);
+                #endregion
+
+
+
+
+            }
+            #endregion
+
+            if (gamePadState1.Buttons.B == ButtonState.Pressed && oldgamePadState1.Buttons.B == ButtonState.Released)
+                game.StartScreen();
+            if (gamePadState1.Buttons.Start == ButtonState.Pressed && oldgamePadState1.Buttons.Start == ButtonState.Released && GameData.playerList.Count != 0)
+                game.StartGame();
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+
+            #region Draw Single player select
+            if (GameData.SinglePlayMode == true)
+            {
+                
+                
+            }
+            #endregion
+
+            #region Draw Multi player Select
+            if (GameData.MultiplayerMode == true)
+            {
+              
+
+
+
+            }
+            #endregion
+
+            spriteBatch.End();
+        }
+
+        public int GetCharacter()
+        {
+
+
+
+
+
+
+
+
+
+
+            return 1;
+        }
+
+    }
+}
