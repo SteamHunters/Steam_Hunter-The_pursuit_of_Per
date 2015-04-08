@@ -42,8 +42,8 @@ namespace Steam_Hunters
             //engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
 
             //Test build det ska sedan funka så här sen //Anton
-            e1 = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
-            playerlist.Add(e1);
+            //e1 = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
+            //playerlist.Add(e1);
 
             //e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
             //playerlist.Add(e2);
@@ -51,8 +51,8 @@ namespace Steam_Hunters
             //playerlist.Add(w);
             //
 
-            a1 = new Archer(TextureManager.testTextureArcher, new Vector2(200, 200), game.Window, this, 1, 1, 5, 2);
-            playerlist.Add(a1);
+            //a1 = new Archer(TextureManager.testTextureArcher, new Vector2(200, 200), game.Window, this, 1, 1, 5, 2);
+            //playerlist.Add(a1);
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);

@@ -22,7 +22,7 @@ namespace Steam_Hunters
         protected int milliSecondsPerFrameReload = 200;
         int sheetNbr;
 
-        public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
+        public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
 

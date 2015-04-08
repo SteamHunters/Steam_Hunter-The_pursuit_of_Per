@@ -13,7 +13,7 @@ namespace Steam_Hunters
         public bool turretShooting;
         bool teleportIsOn, teleportToLocation;
         public Vector2 teleportPos;
-        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
+        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
             projectileTimerLife = 700;
@@ -61,6 +61,7 @@ namespace Steam_Hunters
                     pos.X = teleportPos.X + TextureManager.teleportLocation.Width/2;
                     pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
                     teleportIsOn = false;
+                    rumble.Vibrate(3, 0.75f);
                 }
             }
             base.Update(gameTime);

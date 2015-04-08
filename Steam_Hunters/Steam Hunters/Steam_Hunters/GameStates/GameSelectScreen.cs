@@ -52,7 +52,7 @@ namespace Steam_Hunters
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
-                            p1 = new Archer(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, 1);
+                            p1 = new Archer(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, PlayerIndex.One);
                             GameData.playerList.Add(p1);
                         }
                         #endregion
@@ -69,7 +69,7 @@ namespace Steam_Hunters
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
-                            p1 = new Warrior(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, 1);
+                            p1 = new Warrior(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, PlayerIndex.One);
                             GameData.playerList.Add(p1);
                         }
                         #endregion
@@ -86,7 +86,7 @@ namespace Steam_Hunters
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
-                            p1 = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 1, 1, 5, 1);
+                            p1 = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 1, 1, 5, PlayerIndex.One);
                             GameData.playerList.Add(p1);
                         }
                         #endregion
@@ -103,7 +103,7 @@ namespace Steam_Hunters
                         }
                         if (gamePadState.Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released)
                         {
-                            p1 = new Wizard(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, 1);
+                            p1 = new Wizard(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, PlayerIndex.One);
                             GameData.playerList.Add(p1);
                         }
                         #endregion

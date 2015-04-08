@@ -53,7 +53,9 @@ namespace Steam_Hunters
 
         protected bool isShooting;
 
-        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int playerIndex)
+        protected Rumble rumble;
+
+        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos)
         {
             this.window = window;
@@ -62,18 +64,22 @@ namespace Steam_Hunters
             this.mana = mana;
             this.speed = speed;
             this.graphics = graphics;
+            this.rumble = new Rumble(playerIndex);
             notMoved = true;
             //projectileTimerLife = 2000;
             shootOneAtTime = true;
             showButton = 0;
             showButtonCounter = true;
             isShooting = true;
-            #region Identify player index
-            if (playerIndex == 1)
+           
+            this.playerIndex = playerIndex;
+            
+            /*#region Identify player index
+            if (playerIndex == PlayerIndex.One)
             {
                 this.playerIndex = PlayerIndex.One;
             }
-            if (playerIndex == 2)
+            if (playerIndex == PlayerIndex.Two)
             {
                 this.playerIndex = PlayerIndex.Two;
             }
@@ -84,8 +90,8 @@ namespace Steam_Hunters
             if (playerIndex == 4)
             {
                 this.playerIndex = PlayerIndex.Four;
-            }
-            #endregion
+            }*/
+            //#endregion
         }
 
 
@@ -127,7 +133,7 @@ namespace Steam_Hunters
 
             oldState = GamePad.GetState(playerIndex);
 
-
+            rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
 
         }
 
@@ -444,7 +450,6 @@ namespace Steam_Hunters
                         {
                             shootOneAtTime = true;
                         }
-
                     }
                 }
             }
@@ -533,7 +538,6 @@ namespace Steam_Hunters
         //    else if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Released)
         //        direction.Y = 0;
         //}
-
     }
 }
 
