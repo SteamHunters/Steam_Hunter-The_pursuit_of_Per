@@ -60,9 +60,8 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Griddy2D_v1.0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Griddy2D_v1.0.dll</HintPath>
+    <Reference Include="Griddy2D_v1.0">
+      <HintPath>DLLs\Griddy2D_v1.0.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -96,11 +95,8 @@
     <Compile Include="GameObject\Projectile.cs" />
     <Compile Include="GameStates\GameOverScreen.cs" />
     <Compile Include="GameStates\StartScreen.cs" />
-<<<<<<< HEAD
     <Compile Include="Rumble.cs" />
-=======
     <Compile Include="SelectCharacter.cs" />
->>>>>>> origin/master
     <Compile Include="Tools\Camera.cs" />
     <Compile Include="Particle\Particle.cs" />
     <Compile Include="Engins\ParticleEngine.cs" />
