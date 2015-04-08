@@ -32,11 +32,13 @@ namespace Steam_Hunters
             if(Apress == true)
             {
                 gps.turrets.Add(turret);
+                rumble.Vibrate(0.15f, 0.25f);
             }
             if(LTpress == true)
             {
                 speed -= 0.4f;
                 turretShooting = true;
+                rumble.Vibrate(0.0015f, 0.5f);
 
                 if (speed <= 0)
                     speed = 0;
@@ -61,7 +63,7 @@ namespace Steam_Hunters
                     pos.X = teleportPos.X + TextureManager.teleportLocation.Width/2;
                     pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
                     teleportIsOn = false;
-                    rumble.Vibrate(3, 0.75f);
+                    rumble.Vibrate(0.15f, 0.75f);
                 }
             }
             base.Update(gameTime);
