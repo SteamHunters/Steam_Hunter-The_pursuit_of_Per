@@ -37,7 +37,7 @@ namespace Steam_Hunters
         public void Update()
         {
             #region Singleplayer
-            if (GameData.MultiplayerMode == true)
+            if (GameData.SinglePlayMode == true)
             {
                 selectCharacterP1.Update();
             }            
@@ -69,7 +69,7 @@ namespace Steam_Hunters
             spriteBatch.Begin();
 
             #region Singleplayer
-            if (GameData.MultiplayerMode == true)
+            if (GameData.SinglePlayMode == true)
             {
                 selectCharacterP1.Draw(spriteBatch);
 

@@ -65,7 +65,7 @@ namespace Steam_Hunters
             #region SinglePlayer
             if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && singleplayerStart.selected == true && showInstruction == false)
             {
-                GameData.MultiplayerMode = true;
+                GameData.SinglePlayMode = true;
                 game.SelectScreen();
             }
 
