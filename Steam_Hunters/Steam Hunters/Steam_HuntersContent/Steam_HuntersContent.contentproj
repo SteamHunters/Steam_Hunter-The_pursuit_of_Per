@@ -105,13 +105,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PickACharacterMulti.png">
-      <Name>PickACharacterMulti</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Dispenser.png">
       <Name>Dispenser</Name>
       <Importer>TextureImporter</Importer>
@@ -577,6 +570,13 @@
   <ItemGroup>
     <Compile Include="PickACharacterSingle.png">
       <Name>PickACharacterSingle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PickACharacterMulti.png">
+      <Name>PickACharacterMulti</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

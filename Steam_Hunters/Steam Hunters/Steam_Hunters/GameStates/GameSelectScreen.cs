@@ -50,13 +50,14 @@ namespace Steam_Hunters
                 selectCharacterP2.Update();
                 selectCharacterP3.Update();
                 selectCharacterP4.Update();
-
             }
             #endregion
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed && oldgamePadStateP1.Buttons.B == ButtonState.Released)
             {
                 GameData.playerList.Clear();
+                GameData.SinglePlayMode = false;
+                GameData.MultiplayerMode = false;
                 game.StartScreen();
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed && oldgamePadStateP1.Buttons.Start == ButtonState.Released && GameData.playerList.Count != 0)
@@ -79,6 +80,7 @@ namespace Steam_Hunters
             #region Multiplayer
             if (GameData.MultiplayerMode == true)
             {
+                spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);
                 selectCharacterP1.Draw(spriteBatch);
                 selectCharacterP2.Draw(spriteBatch);
                 selectCharacterP3.Draw(spriteBatch);

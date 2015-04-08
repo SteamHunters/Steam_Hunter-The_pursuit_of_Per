@@ -84,12 +84,13 @@ namespace Steam_Hunters
 
             if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && multiplayerStart.selected == true && showCharacterSelectSingle == false && showCharacterSelectMulti == false && showInstruction == false)
             {
-                showCharacterSelectMulti = true;
+                GameData.MultiplayerMode = true;
+                game.SelectScreen();
             }
-            if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showCharacterSelectSingle == false && showInstruction == false && showCharacterSelectMulti == true)
-            {
-                showCharacterSelectMulti = false;
-            }
+            //if (gamePadState.Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released && showCharacterSelectSingle == false && showInstruction == false && showCharacterSelectMulti == true)
+            //{
+            //    showCharacterSelectMulti = false;
+            //}
             if (gamePadState.Buttons.A == ButtonState.Pressed && exit.selected == true && showCharacterSelectSingle == false && showCharacterSelectMulti == false && showInstruction == false)
             {
                 game.Exit();

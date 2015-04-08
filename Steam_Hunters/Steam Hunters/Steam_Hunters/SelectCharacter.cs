@@ -169,52 +169,136 @@ namespace Steam_Hunters
                     case Character.Archer:
                         #region Archer
                         if(playerIndex == PlayerIndex.One)
-                            spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(400, 277), Color.White);
+                            spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(27, 203), Color.White);
                         if (playerIndex == PlayerIndex.Two)
-                            spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(600, 277), Color.White);
-                       // if (playerIndex == PlayerIndex.Three)
-                       // if (playerIndex == PlayerIndex.Four)
+                            spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(827, 203), Color.White);
+                        if (playerIndex == PlayerIndex.Three)
+                            spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(27, 500), Color.White);
+                       if (playerIndex == PlayerIndex.Four)
+                           spriteBatch.Draw(TextureManager.ArcherPic, new Vector2(815, 500), Color.White);
 
-                       // spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
-                        spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(450, 410), Color.White);
+                        
+
+                        #region Text
+                         if (playerIndex == PlayerIndex.One)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 400), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Two)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 350), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Three)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 650), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Four)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 650), Color.White);
+                         }
+                        #endregion
+                                       
                         #endregion
                         break;
                     case Character.Warrior:
                         #region Warrior
-                         if(playerIndex == PlayerIndex.One)
-                             spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(400, 282), Color.White);
+                        if (playerIndex == PlayerIndex.One)
+                            spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(27, 203), Color.White);
+                        if (playerIndex == PlayerIndex.Two)
+                            spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(827, 203), Color.White);
+                        if (playerIndex == PlayerIndex.Three)
+                            spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(27, 500), Color.White);
+                        if (playerIndex == PlayerIndex.Four)
+                            spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(827, 500), Color.White);
+
+                       // spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);
+
+                        #region Text
+                         if (playerIndex == PlayerIndex.One)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 350), Color.White);
+                         }
                          if (playerIndex == PlayerIndex.Two)
-                             spriteBatch.Draw(TextureManager.WarriorPic, new Vector2(600, 282), Color.White);
-                        // if (playerIndex == PlayerIndex.Three)
-                        // if (playerIndex == PlayerIndex.Four)
-                        
-                       // spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
-                        spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(450, 410), Color.White);
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 350), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Three)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 650), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Four)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 650), Color.White);
+                         }
+                        #endregion
+
                         #endregion
                         break;
                     case Character.Engineer:
                         #region Engineer
-                         if(playerIndex == PlayerIndex.One)
-                             spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(400, 277), Color.White);
+                         if (playerIndex == PlayerIndex.One)
+                            spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(27, 203), Color.White);
                          if (playerIndex == PlayerIndex.Two)
-                             spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(600, 277), Color.White);
-                        // if (playerIndex == PlayerIndex.Three)
-                        // if (playerIndex == PlayerIndex.Four)
-                       
-                       // spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
-                        spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(450, 410), Color.White);
+                             spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(827, 203), Color.White);
+                         if (playerIndex == PlayerIndex.Three)
+                             spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(27, 500), Color.White);
+                         if (playerIndex == PlayerIndex.Four)
+                             spriteBatch.Draw(TextureManager.EngineerPic, new Vector2(827, 500), Color.White);
+
+                       // spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);
+
+                         #region Text
+                         if (playerIndex == PlayerIndex.One)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 350), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Two)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 350), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Three)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 650), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Four)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 650), Color.White);
+                         }
+                        #endregion
+
                         #endregion
                         break;
                     case Character.Wizard:
                         #region Wizard
-                         if(playerIndex == PlayerIndex.One)
-                             spriteBatch.Draw(TextureManager.WizardPic, new Vector2(400, 277), Color.White);
+                         if (playerIndex == PlayerIndex.One)
+                            spriteBatch.Draw(TextureManager.WizardPic, new Vector2(27, 203), Color.White);
                          if (playerIndex == PlayerIndex.Two)
-                             spriteBatch.Draw(TextureManager.WizardPic, new Vector2(600, 277), Color.White);
-                        // if (playerIndex == PlayerIndex.Three)
-                        // if (playerIndex == PlayerIndex.Four)
-                      //  spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
-                        spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(450, 410), Color.White);
+                             spriteBatch.Draw(TextureManager.WizardPic, new Vector2(827, 203), Color.White);
+                         if (playerIndex == PlayerIndex.Three)
+                             spriteBatch.Draw(TextureManager.WizardPic, new Vector2(27, 500), Color.White);
+                         if (playerIndex == PlayerIndex.Four)
+                             spriteBatch.Draw(TextureManager.WizardPic, new Vector2(827, 500), Color.White);
+                             
+                       //  spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);
+                         #region Text
+                         if (playerIndex == PlayerIndex.One)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 350), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Two)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 350), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Three)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 650), Color.White);
+                         }
+                         if (playerIndex == PlayerIndex.Four)
+                         {
+                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 650), Color.White);
+                         }
+                        #endregion
+
                         #endregion
                         break;
                 }
