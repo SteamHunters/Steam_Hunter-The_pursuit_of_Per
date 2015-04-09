@@ -36,7 +36,12 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+           
+        }
+        public void UpdateTrue(GameTime gameTime, Player e)
+        {
             towerPower += 1;
+            hitBox = new Rectangle((int)pos.X, (int)pos.Y, spriteWidth, spriteHeight);
 
             if (towerPower == 900)
             {
@@ -45,10 +50,9 @@ namespace Steam_Hunters
             if (bulletTimer < 20)
                 bulletTimer++;
 
-            if (bulletTimer >= 20 && GameData.playerList[0].LTpress == true)
+            if (bulletTimer >= 20 && e.LTpress == true)
             {
-
-                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, GameData.playerList[0].prevThumbStickRightValue, rotation, new Point(), new Point());
+                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, e.prevThumbStickRightValue, rotation, new Point(), new Point());
 
                 gps.turretProjectile.Add(turretBullet);
                 bulletTimer = 0;

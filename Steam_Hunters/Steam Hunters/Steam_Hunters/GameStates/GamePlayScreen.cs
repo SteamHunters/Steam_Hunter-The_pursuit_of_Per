@@ -18,7 +18,7 @@ namespace Steam_Hunters
         List<Player> playerlist = new List<Player>();
 
         //engineer 
-        public Engineer engineer;
+        public List<Player> engineerList = new List<Player>();
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
@@ -38,22 +38,13 @@ namespace Steam_Hunters
             }
             this.game = game;
 
-            //wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this,1,1,5, 2);
-            //engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
-
-            //Test build det ska sedan funka så här sen //Anton
-            //e1 = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
-            //playerlist.Add(e1);
-
-            //e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
-            //playerlist.Add(e2);
-            //w = new Wizard(TextureManager.testTextureEngineer, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
-            //playerlist.Add(w);
-            //
-
-            //a1 = new Archer(TextureManager.testTextureArcher, new Vector2(200, 200), game.Window, this, 1, 1, 5, 2);
-            //playerlist.Add(a1);
-
+           foreach(Player p in GameData.playerList)
+            {
+                if (p is Engineer)
+                {
+                    engineerList.Add(p);
+                }
+            }
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
@@ -105,7 +96,7 @@ namespace Steam_Hunters
                     {
                         d.Update(gameTime);
 
-                        if (dispensers.Count > 1)
+                        if (dispensers.Count > 2)
                         {
                             dispensers.Remove(d);
                             break;
@@ -168,28 +159,30 @@ namespace Steam_Hunters
             #endregion
 
             #region turret
+            foreach (Player e in engineerList)
+            {
             foreach (EngineerTower t in turrets)
             {
-                t.Update(gameTime);
+                    t.UpdateTrue(gameTime, e);
 
-                if (turrets.Count > 2)
-                {
-                    turrets.Remove(t);
-                    break;
-                }
-                if (t.towerLife <= 0)
-                {
-                    turrets.Remove(t);
-                    break;
-                }
-                t.rotation = GameData.playerList[0].angle;
+                    if (turrets.Count > 2)
+                    {
+                        turrets.Remove(t);
+                        break;
+                    }
+                    if (t.towerLife <= 0)
+                    {
+                        turrets.Remove(t);
+                        break;
+                    }
+                    t.rotation = e.angle;
 
-                if (t.TowerRemove == true)
-                {
-                    turrets.Remove(t);
-                    break;
+                    if (t.TowerRemove == true)
+                    {
+                        turrets.Remove(t);
+                        break;
+                    }
                 }
-
             }
             #endregion
 
