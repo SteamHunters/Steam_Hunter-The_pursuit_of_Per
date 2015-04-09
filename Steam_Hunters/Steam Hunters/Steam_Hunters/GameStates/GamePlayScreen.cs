@@ -30,6 +30,11 @@ namespace Steam_Hunters
         Player w;
         Player a1;
 
+        bool TestRange;
+        Enemies enemyTest;
+        Enemies enemyTest2;
+        Enemies enemyTest3;
+        Enemies enemyTest4;
         public GamePlayScreen(Game1 game)
         {
             foreach (Player p in GameData.playerList)
@@ -45,6 +50,14 @@ namespace Steam_Hunters
                     engineerList.Add(p);
                 }
             }
+
+
+           enemyTest = new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1);
+           enemyTest2 = new Enemies(TextureManager.testTextureArcher, new Vector2(200, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
+           enemyTest3 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 100), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
+           enemyTest4 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 200), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
+         
+
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
@@ -80,7 +93,52 @@ namespace Steam_Hunters
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
+                #region Enemy patrolling
+                // Enemy 1
+                if (enemyTest.pos.X < enemyTest.pos.X + 50)
+                {
+                    enemyTest.pos.X += 2;
+                }
+                else if (enemyTest.pos.X >= enemyTest.pos.X + 50)
+                {
+                    enemyTest.pos.X -= 2;
+                }
+                // Enemy 2
+                if (enemyTest2.pos.Y < enemyTest2.pos.Y + 50)
+                {
+                    enemyTest2.pos.Y += 2;
+                }
+                else if (enemyTest2.pos.Y >= enemyTest2.pos.Y + 50)
+                {
+                    enemyTest2.pos.Y -= 2;
+                }
+                // Enemy 3
+                if (enemyTest3.pos.X < enemyTest3.pos.X - 50)
+                {
+                    enemyTest3.pos.X += 2;
+                }
+                else if (enemyTest3.pos.X >= enemyTest3.pos.X - 50)
+                {
+                    enemyTest3.pos.X -= 2;
+                }
+                // Enemy 4
+                if (enemyTest4.pos.Y < enemyTest4.pos.Y - 50)
+                {
+                    enemyTest4.pos.Y += 2;
+                }
+                else if (enemyTest4.pos.Y >= enemyTest4.pos.Y - 50)
+                {
+                    enemyTest4.pos.Y -= 2;
+                }
+                #endregion
+
+                if (enemyTest.IsInRange(p.pos) == true)
+                {
+                    TestRange = true;
+                }
+
             }
+
             // 
 
             #region engineerstuff(turret, dispenser etc)
@@ -245,7 +303,12 @@ namespace Steam_Hunters
                 m.Draw(spriteBatch);
             }
             #endregion
-
+            #region Enemies
+            enemyTest.Draw(spriteBatch);
+            enemyTest2.Draw(spriteBatch);
+            enemyTest3.Draw(spriteBatch);
+            enemyTest4.Draw(spriteBatch);
+            #endregion
             spriteBatch.End();
         }
     }
