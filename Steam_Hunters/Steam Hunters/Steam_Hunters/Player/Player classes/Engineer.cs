@@ -13,6 +13,12 @@ namespace Steam_Hunters
         public bool turretShooting;
         bool teleportIsOn, teleportToLocation;
         public Vector2 teleportPos;
+        Dispenser dispenser;
+        EngineerTower turret;
+        Vector2 distancevalue;
+
+        public static bool createMissile;
+
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
@@ -22,12 +28,26 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            EngineerTower turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
-           
+            turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
+            particleEngineSteam.Update();
+            
             if(Xpress == true)
             {
-                Dispenser dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
+                dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
+                rumble.Vibrate(0.15f, 0.5f);
                 gps.dispensers.Add(dispenser);
+            }
+            if (Ypress == true)
+            {
+                if (gps.turrets.Count >= 1)
+                {
+                    createMissile = true;
+                    rumble.Vibrate(0.2f, 1f);
+                }
+            }
+            else
+            {
+                createMissile = false;
             }
             if(Apress == true)
             {
@@ -38,7 +58,9 @@ namespace Steam_Hunters
             {
                 speed -= 0.4f;
                 turretShooting = true;
-                rumble.Vibrate(0.0015f, 0.5f);
+
+                if(gps.turrets.Count >= 1)
+                    rumble.Vibrate(0.0015f, 0.5f);
 
                 if (speed <= 0)
                     speed = 0;
@@ -55,16 +77,30 @@ namespace Steam_Hunters
             }
             if (teleportIsOn == true)
             {
-                teleportPos.X += newState.ThumbSticks.Right.X * speed;
-                teleportPos.Y -= newState.ThumbSticks.Right.Y * speed;
-
+                distancevalue = pos - teleportPos;
+                if (Vector2.Distance(pos, teleportPos) <= 400)
+                {
+                    teleportPos.X += newState.ThumbSticks.Right.X * speed;
+                    teleportPos.Y -= newState.ThumbSticks.Right.Y * speed;
+                }
+                else
+                {
+                    teleportPos.X = pos.X;
+                    teleportPos.Y = pos.Y;
+                }
                 if (RBpress == true)
                 {
                     pos.X = teleportPos.X + TextureManager.teleportLocation.Width/2;
                     pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
                     teleportIsOn = false;
                     rumble.Vibrate(0.15f, 0.75f);
+                    particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
+                    particleEngineSteam.total = 150;
                 }
+            }
+            else
+            {
+                particleEngineSteam.total = 0;
             }
             base.Update(gameTime);
         }
@@ -73,8 +109,9 @@ namespace Steam_Hunters
         {
             if (teleportIsOn == true)
             {
-                spriteBatch.Draw(TextureManager.teleportLocation, teleportPos, Color.White);
+                spriteBatch.Draw(TextureManager.teleportLocation, teleportPos, Color.Lerp(Color.White,Color.Red,distancevalue.Length()/400));
             }
+            particleEngineSteam.Draw(spriteBatch);
             base.Draw(spriteBatch);
         }
     }

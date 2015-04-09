@@ -55,6 +55,8 @@ namespace Steam_Hunters
 
         protected Rumble rumble;
 
+        protected ParticleEngine particleEngineSteam;
+
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos)
         {
@@ -71,6 +73,8 @@ namespace Steam_Hunters
             showButton = 0;
             showButtonCounter = true;
             isShooting = true;
+
+            particleEngineSteam = new ParticleEngine(TextureManager.steamTextures, pos, Color.White);
            
             this.playerIndex = playerIndex;
             
@@ -142,7 +146,6 @@ namespace Steam_Hunters
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
             //spriteBatch.Draw(tex, hitBox, Color.Red);
-            spriteBatch.Draw(tex, hitBox, Color.Red);
 
 
             spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
@@ -400,7 +403,6 @@ namespace Steam_Hunters
                         {
                             shootOneAtTime = true;
                         }
-
                     }
                 }
             }

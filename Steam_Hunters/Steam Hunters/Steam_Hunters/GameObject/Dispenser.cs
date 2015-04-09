@@ -13,6 +13,7 @@ namespace Steam_Hunters
         public int spriteWidth, spriteHeight;
         private float radius, dispenserPower;
         bool dispenserRemove;
+        protected ParticleEngine particleEngineSteam;
 
         public float Radius
         {
@@ -38,6 +39,8 @@ namespace Steam_Hunters
  
             center = new Vector2(pos.X + spriteWidth / 2, pos.Y + spriteHeight / 2);
             origin = new Vector2(spriteWidth / 2, spriteHeight / 2);
+
+            particleEngineSteam = new ParticleEngine(TextureManager.steamTextures, pos, Color.White);
         }
 
          public override void Update(GameTime gameTime)
@@ -45,17 +48,19 @@ namespace Steam_Hunters
              this.center = new Vector2(pos.X + tex.Width / 2, pos.Y + tex.Height / 2);
              dispenserPower += 1;
 
-             if (dispenserPower > 400)
-                 color = Color.Red;
+             hitBox = new Rectangle((int)pos.X, (int)pos.Y, spriteWidth, spriteHeight);
 
              if (dispenserPower >= 500)
                  dispenserRemove = true;
 
-             hitBox = new Rectangle((int)pos.X, (int)pos.Y, spriteWidth, spriteHeight);
+             particleEngineSteam.EmitterLocation = new Vector2(center.X, center.Y);
+             particleEngineSteam.total = 1;
+             particleEngineSteam.Update();
          }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);     
+            spriteBatch.Draw(tex, center, null, Color.Lerp(Color.White, Color.Red, dispenserPower/ 500), rotation, origin, 1.0f, SpriteEffects.None, 0);
+            particleEngineSteam.Draw(spriteBatch);
         }
 
         public bool IsInRange(Vector2 pos)

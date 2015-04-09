@@ -26,7 +26,7 @@ namespace Steam_Hunters
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
         protected bool Aggro;
         protected double AttackCooldown;
-        protected Vector2 Center
+        public Vector2 Center
         {
             get { return center; }
         }
@@ -68,8 +68,6 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-
-
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);

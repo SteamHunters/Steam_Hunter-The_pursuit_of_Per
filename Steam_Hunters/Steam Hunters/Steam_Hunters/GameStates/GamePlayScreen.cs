@@ -14,11 +14,11 @@ namespace Steam_Hunters
         private Game1 game;
         public Camera camera;
         private Vector2 cameraCenter;
-
+        
         List<Player> playerlist = new List<Player>();
 
         //engineer 
-        public Engineer engineer;
+        public List<Player> engineerList = new List<Player>();
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
@@ -30,6 +30,16 @@ namespace Steam_Hunters
         Player w;
         Player a1;
 
+        bool TestRange;
+
+        public List<Enemies> enemyList = new List<Enemies>();
+
+        Enemies enemyTest;
+        Enemies enemyTest2;
+        Enemies enemyTest3;
+        Enemies enemyTest4;
+
+
         public GamePlayScreen(Game1 game)
         {
             foreach (Player p in GameData.playerList)
@@ -38,21 +48,22 @@ namespace Steam_Hunters
             }
             this.game = game;
 
-            //wiz = new Wizard(TextureManager.testTexture, new Vector2(400, 400), game.Window, this,1,1,5, 2);
-            //engineer = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this,1,1,5,1);
+           foreach(Player p in GameData.playerList)
+            {
+                if (p is Engineer)
+                {
+                    engineerList.Add(p);
+                }
+            }
 
-            //Test build det ska sedan funka så här sen //Anton
-            //e1 = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, this, 1, 1, 5, 1);
-            //playerlist.Add(e1);
+           enemyTest = new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1);
+           enemyTest2 = new Enemies(TextureManager.testTextureArcher, new Vector2(200, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
+           enemyTest3 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 100), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
+           enemyTest4 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 200), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
 
-            //e2 = new Engineer(TextureManager.testTexture, new Vector2(200, 200), game.Window, this, 1, 1, 5, 3);
-            //playerlist.Add(e2);
-            //w = new Wizard(TextureManager.testTextureEngineer, new Vector2(400, 400), game.Window, this, 1, 1, 5,2);
-            //playerlist.Add(w);
-            //
 
-            //a1 = new Archer(TextureManager.testTextureArcher, new Vector2(200, 200), game.Window, this, 1, 1, 5, 2);
-            //playerlist.Add(a1);
+           enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -61,6 +72,12 @@ namespace Steam_Hunters
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
+            MouseState ms = new MouseState();
+
+            //if (ms.RightButton == ButtonState.Pressed)
+            //{
+            //    enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+            //} 
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -89,8 +106,57 @@ namespace Steam_Hunters
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
+                #region Enemy patrolling
+                // Enemy 1
+                if (enemyTest.pos.X < enemyTest.pos.X + 50)
+                {
+                    enemyTest.pos.X += 2;
+                }
+                else if (enemyTest.pos.X >= enemyTest.pos.X + 50)
+                {
+                    enemyTest.pos.X -= 2;
+                }
+                // Enemy 2
+                if (enemyTest2.pos.Y < enemyTest2.pos.Y + 50)
+                {
+                    enemyTest2.pos.Y += 2;
+                }
+                else if (enemyTest2.pos.Y >= enemyTest2.pos.Y + 50)
+                {
+                    enemyTest2.pos.Y -= 2;
+                }
+                // Enemy 3
+                if (enemyTest3.pos.X < enemyTest3.pos.X - 50)
+                {
+                    enemyTest3.pos.X += 2;
+                }
+                else if (enemyTest3.pos.X >= enemyTest3.pos.X - 50)
+                {
+                    enemyTest3.pos.X -= 2;
+                }
+                // Enemy 4
+                if (enemyTest4.pos.Y < enemyTest4.pos.Y - 50)
+                {
+                    enemyTest4.pos.Y += 2;
+                }
+                else if (enemyTest4.pos.Y >= enemyTest4.pos.Y - 50)
+                {
+                    enemyTest4.pos.Y -= 2;
+                }
+                #endregion
+
+                if (enemyTest.IsInRange(p.pos) == true)
+                {
+                    TestRange = true;
+                }
+
+                foreach(Enemies e in enemyList)
+                {
+                    //e.Update(gameTime);
+                }
             }
-            // 
+
+           
 
             #region engineerstuff(turret, dispenser etc)
 
@@ -105,7 +171,7 @@ namespace Steam_Hunters
                     {
                         d.Update(gameTime);
 
-                        if (dispensers.Count > 1)
+                        if (dispensers.Count > 2)
                         {
                             dispensers.Remove(d);
                             break;
@@ -168,28 +234,30 @@ namespace Steam_Hunters
             #endregion
 
             #region turret
+            foreach (Player e in engineerList)
+            {
             foreach (EngineerTower t in turrets)
             {
-                t.Update(gameTime);
+                    t.UpdateTrue(gameTime, e);
 
-                if (turrets.Count > 2)
-                {
-                    turrets.Remove(t);
-                    break;
-                }
-                if (t.towerLife <= 0)
-                {
-                    turrets.Remove(t);
-                    break;
-                }
-                t.rotation = GameData.playerList[0].angle;
+                    if (turrets.Count > 2)
+                    {
+                        turrets.Remove(t);
+                        break;
+                    }
+                    if (t.towerLife <= 0)
+                    {
+                        turrets.Remove(t);
+                        break;
+                    }
+                    t.rotation = e.angle;
 
-                if (t.TowerRemove == true)
-                {
-                    turrets.Remove(t);
-                    break;
+                    if (t.TowerRemove == true)
+                    {
+                        turrets.Remove(t);
+                        break;
+                    }
                 }
-
             }
             #endregion
 
@@ -197,6 +265,20 @@ namespace Steam_Hunters
             foreach (Missile m in missiles)
             {
                 m.Update(gameTime);
+
+                foreach (Enemies e in enemyList)
+                {
+                    if (m.Target == null)
+                    {
+                        m.GetClosestEnemy(enemyList);
+                    }
+                }
+
+                if(m.missileRemove == true)
+                {
+                    missiles.Remove(m);
+                    break;
+                }
             }
             #endregion
 
@@ -221,18 +303,11 @@ namespace Steam_Hunters
         {
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
-
+            
             level1.Draw(spriteBatch);
 
             spriteBatch.Draw(TextureManager.testTextureEngineer, new Vector2(0f, 0f), Color.White);
 
-            // Test build
-            foreach (Player p in GameData.playerList)
-            {
-                p.Draw(spriteBatch);
-
-            }
-            //
             #region Enginers things
             foreach (Projectile tp in turretProjectile)
             {
@@ -242,16 +317,31 @@ namespace Steam_Hunters
             {
                 d.Draw(spriteBatch);
             }
-            foreach (Missile m in missiles)
-            {
-                m.Draw(spriteBatch);
-            }
+           
             foreach (EngineerTower t in turrets)
             {
                 t.Draw(spriteBatch);
             }
+            foreach (Missile m in missiles)
+            {
+                m.Draw(spriteBatch);
+            }
             #endregion
+            #region Enemies
+            enemyTest.Draw(spriteBatch);
+            enemyTest2.Draw(spriteBatch);
+            enemyTest3.Draw(spriteBatch);
+            enemyTest4.Draw(spriteBatch);
 
+            foreach (Enemies e in enemyList)
+            {
+                e.Draw(spriteBatch);
+            }
+            foreach (Player p in GameData.playerList)
+            {
+                p.Draw(spriteBatch);
+            }
+            #endregion
             spriteBatch.End();
         }
     }

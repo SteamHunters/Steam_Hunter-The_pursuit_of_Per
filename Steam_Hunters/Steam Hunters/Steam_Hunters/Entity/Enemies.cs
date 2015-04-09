@@ -14,17 +14,15 @@ namespace Steam_Hunters
             : base(tex, pos, frameSize, sheetSize, Hp, MaxHp, Gold, Item, AttackRangeRadius, SearchRadius, MovementSpeed, AttackSpeed, MapPos, Aggro, AttackCooldown)
         {
         }
-        //public override void Update()
-        //{
-        //    base.Update();
-        //}
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
         public override void Draw(SpriteBatch spriteBatch)
-        {   
-           
+        {
+
             base.Draw(spriteBatch);
         }
-
-
     }
 }
 
@@ -32,7 +30,7 @@ namespace Steam_Hunters
 
 
 
-             
+
 //if (Aggro == true)
 //             {
 //                 if (target != null)
@@ -50,26 +48,26 @@ namespace Steam_Hunters
 //             }
 
 
-        //public void GetClosestEnemy(List<Enemy> enemies)
-        //{
-        //    target = null;
-        //    float smallestRange = radius;
+//public void GetClosestEnemy(List<Enemy> enemies)
+//{
+//    target = null;
+//    float smallestRange = radius;
 
-        //    foreach(Enemy e in enemies)
-        //    {
-        //        if (Vector2.Distance(center, e.Center) < smallestRange)
-        //        {
-        //            smallestRange = Vector2.Distance(center, e.Center);
-        //            target = e;
-        //        }
-        //    }
-        //}
-        //protected void FaceTarget()
-        //{
-        //    Vector2 direction = center - target.Center;
-        //    direction.Normalize();
-        //    rotation = (float)Math.Atan2(-direction.X, direction.Y);
-        //}
+//    foreach(Enemy e in enemies)
+//    {
+//        if (Vector2.Distance(center, e.Center) < smallestRange)
+//        {
+//            smallestRange = Vector2.Distance(center, e.Center);
+//            target = e;
+//        }
+//    }
+//}
+//protected void FaceTarget()
+//{
+//    Vector2 direction = center - target.Center;
+//    direction.Normalize();
+//    rotation = (float)Math.Atan2(-direction.X, direction.Y);
+//}
 
 
 

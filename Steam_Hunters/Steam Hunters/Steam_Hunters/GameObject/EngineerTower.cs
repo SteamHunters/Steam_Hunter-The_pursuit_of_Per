@@ -11,7 +11,7 @@ namespace Steam_Hunters
     {
         public Color color = Color.White;
         int spriteWidth, spriteHeight;
-        private float radius, bulletTimer;
+        private float bulletTimer;
         GamePlayScreen gps;
         bool towerRemove;
         float towerPower;
@@ -36,7 +36,12 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+           
+        }
+        public void UpdateTrue(GameTime gameTime, Player e)
+        {
             towerPower += 1;
+            hitBox = new Rectangle((int)pos.X, (int)pos.Y, spriteWidth, spriteHeight);
 
             if (towerPower == 900)
             {
@@ -45,19 +50,24 @@ namespace Steam_Hunters
             if (bulletTimer < 20)
                 bulletTimer++;
 
-            if (bulletTimer >= 20 && GameData.playerList[0].LTpress == true)
+            if (bulletTimer >= 20 && e.LTpress == true)
             {
-
-                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, GameData.playerList[0].prevThumbStickRightValue, rotation, new Point(), new Point());
+                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, e.prevThumbStickRightValue, rotation, new Point(), new Point());
 
                 gps.turretProjectile.Add(turretBullet);
                 bulletTimer = 0;
             }
+            if(Engineer.createMissile == true)
+            {
+                Missile missile = new Missile(TextureManager.missile, center, 800, rotation);
+
+                gps.missiles.Add(missile);
+            }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureManager.turretTexBot, center, null, color, 0, origin, 1.0f, SpriteEffects.None, 0);
-            spriteBatch.Draw(TextureManager.turretTexTop, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureManager.turretTexBot, center, null, Color.Lerp(Color.White, Color.Red, towerPower / 1500), 0, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureManager.turretTexTop, center, null, Color.Lerp(Color.White, Color.Red, towerPower / 1500), rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
     }
 }
