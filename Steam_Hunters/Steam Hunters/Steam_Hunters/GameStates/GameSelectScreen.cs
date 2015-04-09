@@ -16,9 +16,6 @@ namespace Steam_Hunters
         private Player p1;
         private Game1 game;
         private GamePadState gamePadStateP1, oldgamePadStateP1 = GamePad.GetState(PlayerIndex.One);
-        private GamePadState gamePadStateP2, oldgamePadStateP2 = GamePad.GetState(PlayerIndex.Two);
-        private GamePadState gamePadStateP3, oldgamePadStateP3 = GamePad.GetState(PlayerIndex.Three);
-        private GamePadState gamePadStateP4, oldgamePadStateP4 = GamePad.GetState(PlayerIndex.Four);
 
         public GameSelectScreen(Game1 game)
         {
@@ -40,6 +37,7 @@ namespace Steam_Hunters
             if (GameData.SinglePlayMode == true)
             {
                 selectCharacterP1.Update();
+                
             }            
             #endregion
 
@@ -72,7 +70,9 @@ namespace Steam_Hunters
             #region Singleplayer
             if (GameData.SinglePlayMode == true)
             {
-                selectCharacterP1.Draw(spriteBatch);
+                selectCharacterP1.DrawPic(spriteBatch);
+                spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
+                selectCharacterP1.DrawText(spriteBatch);
 
             }
             #endregion
@@ -80,11 +80,16 @@ namespace Steam_Hunters
             #region Multiplayer
             if (GameData.MultiplayerMode == true)
             {
+                selectCharacterP1.DrawPic(spriteBatch);
+                selectCharacterP2.DrawPic(spriteBatch);
+                selectCharacterP3.DrawPic(spriteBatch);
+                selectCharacterP4.DrawPic(spriteBatch);
                 spriteBatch.Draw(TextureManager.chooseMultiplayer, new Vector2(0f, 0f), Color.White);
-                selectCharacterP1.Draw(spriteBatch);
-                selectCharacterP2.Draw(spriteBatch);
-                selectCharacterP3.Draw(spriteBatch);
-                selectCharacterP4.Draw(spriteBatch);
+                selectCharacterP1.DrawText(spriteBatch);
+                selectCharacterP2.DrawText(spriteBatch);
+                selectCharacterP3.DrawText(spriteBatch);
+                selectCharacterP4.DrawText(spriteBatch);
+
             }
             #endregion
 

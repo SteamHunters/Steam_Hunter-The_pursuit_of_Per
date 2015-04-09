@@ -10,24 +10,36 @@ namespace Steam_Hunters
     class StatusWindow: GameObject
     {
         // byta namn på dess sen då vi kommer på de rätta namnen på dem
-        protected int intelegens, styrka, agility, livskraft, tur, hp, maxHp, mana, maxMana,  lvl, money, nextLvl, exp;
+        protected int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp;
         private string karakterName;
         private PlayerIndex playerIndex;
 
-        public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int hp, int maxHp, int mana, int lvl, PlayerIndex playerIndex)
+        public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int intelligence, int strength, int agility, int vitality, int luck, int hp, int mana, int lvl, PlayerIndex playerIndex)
             :base(tex, pos)
         {
             this.karakterName = karakterName;
+            this.intelligence = intelligence;
+            this.strength = strength;
+            this.agility = agility;
+            this.vitality = vitality;
+            this.luck = luck;
             this.hp = hp;
             this.maxHp = hp;
             this.mana = mana;
             this.maxMana = mana;
             this.lvl = lvl;
+            this.money = 0;
             this.playerIndex = playerIndex;
         }
 
         public override void Update(GameTime gameTime)
         {
+
+
+
+
+
+
                         
         }
 
@@ -54,11 +66,11 @@ namespace Steam_Hunters
         #region Get stats
         public int GetInteligens()
         {
-            return intelegens;
+            return intelligence;
         }
         public int GetStyrka()
         {
-            return styrka;
+            return strength;
         }
         public int GetAgility()
         {
@@ -66,11 +78,11 @@ namespace Steam_Hunters
         }
         public int GetLivskraft()
         {
-            return livskraft ;
+            return vitality ;
         }
         public int GetTur()
         {
-            return tur;
+            return luck;
         }
         public int GetMoney()
         {
@@ -101,13 +113,13 @@ namespace Steam_Hunters
         #region Set stats
         public int SetInteligens
         {
-            get { return intelegens; }
-            set { intelegens = value; }
+            get { return intelligence; }
+            set { intelligence = value; }
         }
         public int SetStyrka
         {
-            get { return styrka; }
-            set { styrka = value; }
+            get { return strength; }
+            set { strength = value; }
         }
         public int SetAgility
         {
@@ -116,13 +128,13 @@ namespace Steam_Hunters
         }
         public int SetLivskraft
         {
-            get { return livskraft; }
-            set { livskraft = value; }
+            get { return vitality; }
+            set { vitality = value; }
         }
         public int SetTur
         {
-            get { return tur; }
-            set { tur = value; }
+            get { return luck; }
+            set { luck = value; }
         }
         public int SetMoney
         {
