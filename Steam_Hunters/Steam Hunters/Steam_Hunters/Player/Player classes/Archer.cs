@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace Steam_Hunters
 {
@@ -21,6 +22,11 @@ namespace Steam_Hunters
         float timerSinceLastFrameReload;
         protected int milliSecondsPerFrameReload = 200;
         int sheetNbr;
+        float spin1, spin2, spin3, spin4, spin5, spin6, spin7;
+
+        Vector2 rainAttack;
+        Vector2 savePos;
+        bool isPosSaved;
 
         public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
@@ -37,6 +43,7 @@ namespace Steam_Hunters
             isTransparent = false;
             lifeTransparent = 2000;
             isReloading = false;
+            isPosSaved = true;
             //circle = CreateCircle(circleSize);
             projectileTimerLife = 200;
         }
@@ -54,6 +61,34 @@ namespace Steam_Hunters
             //}
             //CreateCircle(500);
 
+            
+
+            if (newState.Buttons.X == ButtonState.Pressed)
+            {
+                if (isPosSaved)
+                {
+                    savePos = pos;
+                    //isPosSaved = false;
+                }
+
+                rainAttack.X += newState.ThumbSticks.Right.X * speed;
+                rainAttack.Y -= newState.ThumbSticks.Right.Y * speed;
+
+                spin1 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin2 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin3 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin4 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin5 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin6 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin7 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                
+
+
+
+                //speed = 0;
+                //pos.X += newState.ThumbSticks.Left.X * speed;
+                //pos.Y -= newState.ThumbSticks.Left.Y * speed;
+            }
 
 
 
@@ -137,6 +172,19 @@ namespace Steam_Hunters
                 isShooting = true;
             }
             spriteBatch.DrawString(FontManager.font, "tid" + timerSinceLastFrameReload + "  " + milliSecondsPerFrameReload, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
+
+
+
+            if (newState.Buttons.X == ButtonState.Pressed)
+            {
+                spriteBatch.Draw(TextureManager.circles[0], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin1, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[1], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin2, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[2], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin3, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[3], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin4, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[4], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin5, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[5], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin6, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[6], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin7, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+            }
 
         }
 

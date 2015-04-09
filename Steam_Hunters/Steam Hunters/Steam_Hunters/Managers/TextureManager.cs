@@ -109,6 +109,16 @@ namespace Steam_Hunters
         public static Texture2D testTextureEngineer { get; private set; }
         public static Texture2D testTextureArcher { get; private set; }
         public static Texture2D reload { get; private set; }
+        //public static Texture2D [] circle { get; private set; }
+        public static List<Texture2D> circles = new List<Texture2D>();
+        public static Texture2D circle1 { get; private set; }
+        public static Texture2D circle2 { get; private set; }
+        public static Texture2D circle3 { get; private set; }
+        public static Texture2D circle4 { get; private set; }
+        public static Texture2D circle5 { get; private set; }
+        public static Texture2D circle6 { get; private set; }
+        public static Texture2D circle7 { get; private set; }
+
 
 
         public static Texture2D map { get; private set; }
@@ -212,6 +222,23 @@ namespace Steam_Hunters
             testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
             reload = Content.Load<Texture2D>(@"reload");
+
+            circles.Add(circle1 = Content.Load<Texture2D>(@"circle/circle1"));
+            circles.Add(circle2 = Content.Load<Texture2D>(@"circle/circle2"));
+            circles.Add(circle3 = Content.Load<Texture2D>(@"circle/circle3"));
+            circles.Add(circle4 = Content.Load<Texture2D>(@"circle/circle4"));
+            circles.Add(circle5 = Content.Load<Texture2D>(@"circle/circle5"));
+            circles.Add(circle6 = Content.Load<Texture2D>(@"circle/circle6"));
+            circles.Add(circle7 = Content.Load<Texture2D>(@"circle/circle7"));
+
+            //circles.Add(Content.Load<Texture2D>(@"circle2"));
+            //circles.Add(Content.Load<Texture2D>(@"circle3"));
+            //circles.Add(Content.Load<Texture2D>(@"circle4"));
+            //circles.Add(Content.Load<Texture2D>(@"circle5"));
+            //circles.Add(Content.Load<Texture2D>(@"circle6"));
+            //circles.Add(Content.Load<Texture2D>(@"circle7"));
+
+
 
             steamTextures.Add(steam1 = Content.Load<Texture2D>(@"steamSmoke1"));
             steamTextures.Add(steam2 = Content.Load<Texture2D>(@"steamSmoke2"));

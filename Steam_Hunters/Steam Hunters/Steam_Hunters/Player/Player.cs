@@ -372,11 +372,11 @@ namespace Steam_Hunters
             pos.X += newState.ThumbSticks.Left.X * speed;
             pos.Y -= newState.ThumbSticks.Left.Y * speed;
         }
-        public void MoveLeftThumbStickTeleport(GamePadState newState)
-        {
-            pos.X += newState.ThumbSticks.Right.X * speed;
-            pos.Y -= newState.ThumbSticks.Right.Y * speed;
-        }
+        //public void MoveLeftThumbStickTeleport(GamePadState newState)
+        //{
+        //    pos.X += newState.ThumbSticks.Right.X * speed;
+        //    pos.Y -= newState.ThumbSticks.Right.Y * speed;
+        //}
 
         private void ShootRightThumbStick(GamePadState newState, GameTime gameTime)
         {
