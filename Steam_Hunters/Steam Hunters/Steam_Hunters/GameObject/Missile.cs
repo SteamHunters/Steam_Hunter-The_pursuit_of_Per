@@ -33,12 +33,13 @@ namespace Steam_Hunters
             }
         }
 
-        public Missile(Texture2D tex, Vector2 pos, float radius)
+        public Missile(Texture2D tex, Vector2 pos, float radius,float rotation)
             : base(tex,pos)
         {
             spriteWidth = 50;//måste titta vad den har för värden! 
             spriteHeight = 50;//måste titta vad den har för värden! 
             this.radius = radius;
+            this.rotation = rotation;
  
             center = new Vector2(pos.X + spriteWidth / 2, pos.Y + spriteHeight / 2);
             origin = new Vector2(spriteWidth / 2, spriteHeight / 2);

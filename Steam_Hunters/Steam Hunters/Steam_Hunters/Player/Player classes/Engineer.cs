@@ -37,7 +37,8 @@ namespace Steam_Hunters
             }
             if (Ypress == true)
             {
-                createMissile = true;
+                if (gps.turrets.Count >= 1)
+                    createMissile = true;
             }
             else
             {

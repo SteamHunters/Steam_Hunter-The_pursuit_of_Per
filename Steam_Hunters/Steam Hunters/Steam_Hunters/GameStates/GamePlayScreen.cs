@@ -235,13 +235,14 @@ namespace Steam_Hunters
             {
                 d.Draw(spriteBatch);
             }
-            foreach (Missile m in missiles)
-            {
-                m.Draw(spriteBatch);
-            }
+           
             foreach (EngineerTower t in turrets)
             {
                 t.Draw(spriteBatch);
+            }
+            foreach (Missile m in missiles)
+            {
+                m.Draw(spriteBatch);
             }
             #endregion
 

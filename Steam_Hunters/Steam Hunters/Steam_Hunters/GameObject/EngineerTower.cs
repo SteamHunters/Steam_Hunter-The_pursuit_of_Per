@@ -11,7 +11,7 @@ namespace Steam_Hunters
     {
         public Color color = Color.White;
         int spriteWidth, spriteHeight;
-        private float radius, bulletTimer;
+        private float bulletTimer;
         GamePlayScreen gps;
         bool towerRemove;
         float towerPower;
@@ -57,11 +57,17 @@ namespace Steam_Hunters
                 gps.turretProjectile.Add(turretBullet);
                 bulletTimer = 0;
             }
+            if(Engineer.createMissile == true)
+            {
+                Missile missile = new Missile(TextureManager.missile, center, 800, rotation);
+
+                gps.missiles.Add(missile);
+            }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureManager.turretTexBot, center, null, color, 0, origin, 1.0f, SpriteEffects.None, 0);
-            spriteBatch.Draw(TextureManager.turretTexTop, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureManager.turretTexBot, center, null, Color.Lerp(Color.White, Color.Red, towerPower / 1500), 0, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureManager.turretTexTop, center, null, Color.Lerp(Color.White, Color.Red, towerPower / 1500), rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
     }
 }

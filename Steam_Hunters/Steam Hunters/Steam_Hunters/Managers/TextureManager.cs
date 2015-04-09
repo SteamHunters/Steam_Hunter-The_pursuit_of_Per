@@ -51,6 +51,7 @@ namespace Steam_Hunters
         public static Texture2D turretTexBot { get; private set; }
         public static Texture2D turretTexTop { get; private set; }
         public static Texture2D teleportLocation { get; private set; }
+        public static Texture2D missile { get; private set; }
         #endregion
 
         #endregion
@@ -154,11 +155,11 @@ namespace Steam_Hunters
 
             #region Enginer Textur
             EngineerPic = Content.Load<Texture2D>(@"Texturer/Karakter/Engineer/Engineer Pic");
-            // Turent
             dispenserTex = Content.Load<Texture2D>(@"Dispenser");
             turretTexBot = Content.Load<Texture2D>(@"turret bot");
             turretTexTop = Content.Load<Texture2D>(@"turret top");
             teleportLocation = Content.Load<Texture2D>(@"teleportLocation");
+            missile = Content.Load<Texture2D>(@"missile");
 
             #endregion
 
