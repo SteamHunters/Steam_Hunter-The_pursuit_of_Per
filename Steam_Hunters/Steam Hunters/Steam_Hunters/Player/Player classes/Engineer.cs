@@ -14,6 +14,7 @@ namespace Steam_Hunters
         bool teleportIsOn, teleportToLocation;
         public Vector2 teleportPos;
         Dispenser dispenser;
+        EngineerTower turret;
         Vector2 distancevalue;
 
         public static bool createMissile;
@@ -27,8 +28,9 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            EngineerTower turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
-           
+            turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
+            particleEngineSteam.Update();
+            
             if(Xpress == true)
             {
                 dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
@@ -38,7 +40,10 @@ namespace Steam_Hunters
             if (Ypress == true)
             {
                 if (gps.turrets.Count >= 1)
+                {
                     createMissile = true;
+                    rumble.Vibrate(0.2f, 1f);
+                }
             }
             else
             {
@@ -89,7 +94,13 @@ namespace Steam_Hunters
                     pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
                     teleportIsOn = false;
                     rumble.Vibrate(0.15f, 0.75f);
+                    particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
+                    particleEngineSteam.total = 150;
                 }
+            }
+            else
+            {
+                particleEngineSteam.total = 0;
             }
             base.Update(gameTime);
         }

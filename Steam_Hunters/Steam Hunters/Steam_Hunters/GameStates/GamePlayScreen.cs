@@ -14,7 +14,7 @@ namespace Steam_Hunters
         private Game1 game;
         public Camera camera;
         private Vector2 cameraCenter;
-
+        
         List<Player> playerlist = new List<Player>();
 
         //engineer 
@@ -31,10 +31,15 @@ namespace Steam_Hunters
         Player a1;
 
         bool TestRange;
+
+        public List<Enemies> enemyList = new List<Enemies>();
+
         Enemies enemyTest;
         Enemies enemyTest2;
         Enemies enemyTest3;
         Enemies enemyTest4;
+
+
         public GamePlayScreen(Game1 game)
         {
             foreach (Player p in GameData.playerList)
@@ -51,12 +56,14 @@ namespace Steam_Hunters
                 }
             }
 
-
            enemyTest = new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1);
            enemyTest2 = new Enemies(TextureManager.testTextureArcher, new Vector2(200, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
            enemyTest3 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 100), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
            enemyTest4 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 200), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
-         
+
+
+           enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -65,6 +72,12 @@ namespace Steam_Hunters
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
+            MouseState ms = new MouseState();
+
+            //if (ms.RightButton == ButtonState.Pressed)
+            //{
+            //    enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+            //} 
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -137,9 +150,13 @@ namespace Steam_Hunters
                     TestRange = true;
                 }
 
+                foreach(Enemies e in enemyList)
+                {
+                    //e.Update(gameTime);
+                }
             }
 
-            // 
+           
 
             #region engineerstuff(turret, dispenser etc)
 
@@ -248,6 +265,20 @@ namespace Steam_Hunters
             foreach (Missile m in missiles)
             {
                 m.Update(gameTime);
+
+                foreach (Enemies e in enemyList)
+                {
+                    if (m.Target == null)
+                    {
+                        m.GetClosestEnemy(enemyList);
+                    }
+                }
+
+                if(m.missileRemove == true)
+                {
+                    missiles.Remove(m);
+                    break;
+                }
             }
             #endregion
 
@@ -272,18 +303,11 @@ namespace Steam_Hunters
         {
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
-
+            
             level1.Draw(spriteBatch);
 
             spriteBatch.Draw(TextureManager.testTextureEngineer, new Vector2(0f, 0f), Color.White);
 
-            // Test build
-            foreach (Player p in GameData.playerList)
-            {
-                p.Draw(spriteBatch);
-
-            }
-            //
             #region Enginers things
             foreach (Projectile tp in turretProjectile)
             {
@@ -308,6 +332,15 @@ namespace Steam_Hunters
             enemyTest2.Draw(spriteBatch);
             enemyTest3.Draw(spriteBatch);
             enemyTest4.Draw(spriteBatch);
+
+            foreach (Enemies e in enemyList)
+            {
+                e.Draw(spriteBatch);
+            }
+            foreach (Player p in GameData.playerList)
+            {
+                p.Draw(spriteBatch);
+            }
             #endregion
             spriteBatch.End();
         }

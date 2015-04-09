@@ -14,17 +14,15 @@ namespace Steam_Hunters
             : base(tex, pos, frameSize, sheetSize, Hp, MaxHp, Gold, Item, AttackRangeRadius, SearchRadius, MovementSpeed, AttackSpeed, MapPos, Aggro, AttackCooldown)
         {
         }
-        //public override void Update()
-        //{
-        //    base.Update();
-        //}
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
         public override void Draw(SpriteBatch spriteBatch)
         {
 
             base.Draw(spriteBatch);
         }
-
-
     }
 }
 
