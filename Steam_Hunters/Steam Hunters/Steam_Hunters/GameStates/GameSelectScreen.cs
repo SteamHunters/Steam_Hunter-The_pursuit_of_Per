@@ -13,9 +13,8 @@ namespace Steam_Hunters
     
         private SelectCharacter selectCharacterP1, selectCharacterP2, selectCharacterP3, selectCharacterP4;
         private GamePlayScreen gps;
-        private Player p1;
         private Game1 game;
-        private GamePadState gamePadStateP1, oldgamePadStateP1 = GamePad.GetState(PlayerIndex.One);
+        private GamePadState oldgamePadStateP1 = GamePad.GetState(PlayerIndex.One);
 
         public GameSelectScreen(Game1 game)
         {

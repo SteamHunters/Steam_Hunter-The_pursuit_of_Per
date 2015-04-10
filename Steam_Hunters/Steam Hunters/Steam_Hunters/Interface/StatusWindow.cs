@@ -12,15 +12,21 @@ namespace Steam_Hunters
     {
         private enum Attributs
         {
-
+            intelligence,
+            strength,
+            agility,
+            vitality,
+            luck
         }
 
-
-        protected int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp, points;
+        private Attributs Selectedattributs;
+        private int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp, points;
         private string karakterName;
+        private Color colorint, colorstr, coloragili, colorvitality, colorluck;
         private PlayerIndex playerIndex;
-        private GamePadState newState, oldState;
+        private GamePadState gamePadState, oldgamePadState;
         private bool active;
+        
 
         public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int intelligence, int strength, int agility, int vitality, int luck, int hp, int mana, int lvl, PlayerIndex playerIndex)
             :base(tex, pos)
@@ -38,22 +44,90 @@ namespace Steam_Hunters
             this.lvl = lvl;
             this.money = 0;
             this.playerIndex = playerIndex;
+            this.Selectedattributs = Attributs.intelligence;
         }
 
         public override void Update(GameTime gameTime)
         {
-            newState = GamePad.GetState(playerIndex);
+            gamePadState = GamePad.GetState(playerIndex);
 
+            #region Select attribut
+            switch (Selectedattributs)
+            {
+                case Attributs.intelligence:
+                    #region intelligence
+                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                    {
 
+                    }
+                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                    {
 
+                    }
+                   
+                    #endregion
+                    break;
+                case Attributs.strength:
+                    #region strength
+                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                    {
 
+                    }
+                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                    {
 
-            oldState = GamePad.GetState(playerIndex);          
+                    }
+                   
+                    #endregion
+                    break;
+                case Attributs.agility:
+                    #region agility
+                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                    {
+
+                    }
+                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                    {
+
+                    }
+                   
+                    #endregion
+                    break;
+                case Attributs.vitality:
+                    #region vitality
+                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                    {
+
+                    }
+                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                    {
+
+                    }
+                    
+                    #endregion
+                    break;
+                case Attributs.luck:
+                    #region luck
+                   if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                    {
+
+                    }
+                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                    {
+
+                    }
+
+                    #endregion
+                    break;
+            }
+            #endregion
+
+            oldgamePadState = GamePad.GetState(playerIndex);          
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-
+            //spriteBatch.DrawString(font, "attribut", pos, color);
         }
 
         public void GenerateHealthBar(int CurrentHp, int MaxHp, SpriteBatch spriteBatch)
