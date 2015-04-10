@@ -30,77 +30,79 @@ namespace Steam_Hunters
         {
             turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
             particleEngineSteam.Update();
-            
-            if(Xpress == true)
+            if (buying == false)
             {
-                dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
-                rumble.Vibrate(0.15f, 0.5f);
-                gps.dispensers.Add(dispenser);
-            }
-            if (Ypress == true)
-            {
-                if (gps.turrets.Count >= 1)
+                if (Xpress == true)
                 {
-                    createMissile = true;
-                    rumble.Vibrate(0.2f, 1f);
+                    dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
+                    rumble.Vibrate(0.15f, 0.5f);
+                    gps.dispensers.Add(dispenser);
                 }
-            }
-            else
-            {
-                createMissile = false;
-            }
-            if(Apress == true)
-            {
-                gps.turrets.Add(turret);
-                rumble.Vibrate(0.15f, 0.25f);
-            }
-            if(LTpress == true)
-            {
-                speed -= 0.4f;
-                turretShooting = true;
-
-                if(gps.turrets.Count >= 1)
-                    rumble.Vibrate(0.0015f, 0.5f);
-
-                if (speed <= 0)
-                    speed = 0;
-            }
-            else
-            {
-                speed = 5;
-                turretShooting = false;
-            }
-            if(Bpress == true)
-            {
-                teleportIsOn = true;
-                teleportPos = pos;
-            }
-            if (teleportIsOn == true)
-            {
-                distancevalue = pos - teleportPos;
-                if (Vector2.Distance(pos, teleportPos) <= 400)
+                if (Ypress == true)
                 {
-                    teleportPos.X += newState.ThumbSticks.Right.X * speed;
-                    teleportPos.Y -= newState.ThumbSticks.Right.Y * speed;
+                    if (gps.turrets.Count >= 1)
+                    {
+                        createMissile = true;
+                        rumble.Vibrate(0.2f, 1f);
+                    }
                 }
                 else
                 {
-                    teleportPos.X = pos.X;
-                    teleportPos.Y = pos.Y;
+                    createMissile = false;
                 }
-                if (RBpress == true)
+                if (Apress == true)
                 {
-                    pos.X = teleportPos.X + TextureManager.teleportLocation.Width/2;
-                    pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
-                    teleportIsOn = false;
-                    rumble.Vibrate(0.15f, 0.75f);
-                    particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
-                    particleEngineSteam.total = 150;
+                    gps.turrets.Add(turret);
+                    rumble.Vibrate(0.15f, 0.25f);
                 }
-            }
-            else
-            {
-                particleEngineSteam.total = 0;
+                if (LTpress == true)
+                {
+                    speed -= 0.4f;
+                    turretShooting = true;
+
+                    if (gps.turrets.Count >= 1)
+                        rumble.Vibrate(0.0015f, 0.5f);
+
+                    if (speed <= 0)
+                        speed = 0;
+                }
+                else
+                {
+                    speed = 5;
+                    turretShooting = false;
+                }
+                if (Bpress == true)
+                {
+                    teleportIsOn = true;
+                    teleportPos = pos;
+                }
+                if (teleportIsOn == true)
+                {
+                    distancevalue = pos - teleportPos;
+                    if (Vector2.Distance(pos, teleportPos) <= 400)
+                    {
+                        teleportPos.X += newState.ThumbSticks.Right.X * speed * 1.5f;
+                        teleportPos.Y -= newState.ThumbSticks.Right.Y * speed * 1.5f;
+                    }
+                    else
+                    {
+                        teleportPos.X = pos.X;
+                        teleportPos.Y = pos.Y;
+                    }
+                    if (RBpress == true)
+                    {
+                        pos.X = teleportPos.X + TextureManager.teleportLocation.Width / 2;
+                        pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
+                        teleportIsOn = false;
+                        rumble.Vibrate(0.15f, 0.75f);
+                        particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
+                        particleEngineSteam.total = 150;
+                    }
+                }
+                else
+                {
+                    particleEngineSteam.total = 0;
+                }
             }
             base.Update(gameTime);
         }

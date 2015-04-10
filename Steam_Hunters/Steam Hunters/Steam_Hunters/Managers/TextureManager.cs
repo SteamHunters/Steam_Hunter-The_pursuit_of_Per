@@ -54,6 +54,12 @@ namespace Steam_Hunters
         public static Texture2D missile { get; private set; }
         #endregion
 
+        #region NPC
+
+        public static Texture2D NPCTexture { get; private set; }
+
+        #endregion
+
         #endregion
 
         #region Potion Texturer
@@ -250,7 +256,7 @@ namespace Steam_Hunters
             startBackground = Content.Load<Texture2D>(@"StartScreenTest");
 
 
-
+            NPCTexture = Content.Load<Texture2D>(@"NPC");
 
 
         }

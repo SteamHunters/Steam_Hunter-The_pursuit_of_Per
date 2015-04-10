@@ -28,7 +28,6 @@ namespace Steam_Hunters
         Projectile projectile;
 
         protected PlayerIndex playerIndex;
-
         protected GamePadState newState, oldState;
 
         public int bY, bX, hp, mana, projectileTimerLife;
@@ -38,23 +37,19 @@ namespace Steam_Hunters
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
         bool notMoved, shootOneAtTime;
 
-        int showButton;
         double sec;
         bool showButtonCounter;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, LBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, Backpress;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting;
 
-        public bool LTpress;
+        public bool LTpress, LBpress, buying, Backpress;
 
         public Vector2 towerDirection;
 
         public GraphicsDevice graphics;
 
-        public int reloadCount;
-
-        protected bool isShooting;
+        public int reloadCount, healthPotion,manaPotion, ressPotion,buffPotion;
 
         protected Rumble rumble;
-
         protected ParticleEngine particleEngineSteam;
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
@@ -70,10 +65,10 @@ namespace Steam_Hunters
             notMoved = true;
             //projectileTimerLife = 2000;
             shootOneAtTime = true;
-            showButton = 0;
             showButtonCounter = true;
             isShooting = true;
 
+            this.center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             particleEngineSteam = new ParticleEngine(TextureManager.steamTextures, pos, Color.White);
            
             this.playerIndex = playerIndex;
@@ -103,6 +98,7 @@ namespace Steam_Hunters
         {
             prevPos = pos;
             newState = GamePad.GetState(playerIndex);
+            center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
 
             #region Update button presss and with player index
             AButton(playerIndex);
@@ -119,9 +115,20 @@ namespace Steam_Hunters
             DDownButton(playerIndex);
             DRightButton(playerIndex);
             DLefthButton(playerIndex);
+
+            StartButton(playerIndex);
+            BackButton(playerIndex);
             #endregion
 
-            MoveLeftThumbStick(newState);
+            if (buying == false)
+            {
+                MoveLeftThumbStick(newState);
+            }
+            if(buying == true)
+            {
+                if (Backpress == true)
+                    buying = false;
+            }
 
             ShootRightThumbStick(newState, gameTime);
             changeDirection();
@@ -479,7 +486,7 @@ namespace Steam_Hunters
 
         private void AddProjectile(Vector2 insertDirection)
         {
-            projectile = new Projectile(pos, TextureManager.arrowBasic, insertDirection, angle, new Point(), new Point());
+            projectile = new Projectile(new Vector2(pos.X+10,pos.Y), TextureManager.arrowBasic, insertDirection, angle, new Point(), new Point());
             towerDirection = insertDirection;
             listProjectile.Add(projectile);
 

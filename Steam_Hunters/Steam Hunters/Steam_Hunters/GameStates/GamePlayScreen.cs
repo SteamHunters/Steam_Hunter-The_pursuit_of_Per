@@ -23,6 +23,7 @@ namespace Steam_Hunters
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
         public List<Projectile> turretProjectile = new List<Projectile>();
+
         //
 
         public Player e1;
@@ -39,6 +40,7 @@ namespace Steam_Hunters
         Enemies enemyTest3;
         Enemies enemyTest4;
 
+        public List<NPC> npcList = new List<NPC>();
 
         public GamePlayScreen(Game1 game)
         {
@@ -62,7 +64,9 @@ namespace Steam_Hunters
            enemyTest4 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 200), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
 
 
+
            enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(700, 700), 200));
 
 
             level1 = new World(game.Content);
@@ -156,7 +160,28 @@ namespace Steam_Hunters
                 }
             }
 
-           
+            #region NPC
+            foreach (NPC n in npcList)
+            {
+                n.Update(gameTime);
+
+                foreach (Player p in GameData.playerList)
+                {
+                    if (n.Buyer == null)
+                    {
+                        n.GetClosestBuyer(GameData.playerList);
+                    }
+                    if (p.LBpress)
+                    {
+                        n.buy = true;
+                        p.buying = true;
+                    }
+                    if (p.Backpress)
+                        n.buy = false;
+                }
+
+            }
+            #endregion
 
             #region engineerstuff(turret, dispenser etc)
 
@@ -317,7 +342,6 @@ namespace Steam_Hunters
             {
                 d.Draw(spriteBatch);
             }
-           
             foreach (EngineerTower t in turrets)
             {
                 t.Draw(spriteBatch);
@@ -325,6 +349,10 @@ namespace Steam_Hunters
             foreach (Missile m in missiles)
             {
                 m.Draw(spriteBatch);
+            }
+            foreach(NPC n in npcList)
+            {
+                n.Draw(spriteBatch);
             }
             #endregion
             #region Enemies
