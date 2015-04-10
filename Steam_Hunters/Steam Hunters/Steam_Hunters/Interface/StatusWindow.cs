@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,17 @@ namespace Steam_Hunters
 {
     class StatusWindow: GameObject
     {
-        // byta namn på dess sen då vi kommer på de rätta namnen på dem
-        protected int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp;
+        private enum Attributs
+        {
+
+        }
+
+
+        protected int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp, points;
         private string karakterName;
         private PlayerIndex playerIndex;
+        private GamePadState newState, oldState;
+        private bool active;
 
         public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int intelligence, int strength, int agility, int vitality, int luck, int hp, int mana, int lvl, PlayerIndex playerIndex)
             :base(tex, pos)
@@ -34,13 +42,13 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+            newState = GamePad.GetState(playerIndex);
 
 
 
 
 
-
-                        
+            oldState = GamePad.GetState(playerIndex);          
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -106,6 +114,11 @@ namespace Steam_Hunters
 
         #endregion
 
+        public bool StatusWinwosActiv()
+        {
+            return active;
+        }
+
         #endregion
         //
         #region Set metods
@@ -161,8 +174,13 @@ namespace Steam_Hunters
         }
         #endregion
 
-        #endregion
+        public bool SetStatusWinwosActiv
+        {
+            get { return active; }
+            set { active = value; }
+        }
 
+        #endregion
         #endregion
 
     }
