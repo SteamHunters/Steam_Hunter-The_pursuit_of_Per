@@ -7,6 +7,7 @@ Content\Singleplayer.xnb
 Content\InstructionScreen.xnb
 Content\StartScreenTest.xnb
 Content\Exit.xnb
+Content\PickACharacterMulti.xnb
 Content\Dispenser.xnb
 Content\turret bot.xnb
 Content\turret top.xnb
@@ -89,7 +90,6 @@ Content\Texturer\Karakter\Engineer\Engineer Pic.xnb
 Content\Texturer\Karakter\Warrior\WarriorPic.xnb
 Content\Texturer\Karakter\Wizard\Wizard Pic.xnb
 Content\PickACharacterSingle.xnb
-Content\PickACharacterMulti.xnb
 Content\steamSmoke1.xnb
 Content\steamSmoke2.xnb
 Content\steamSmoke3.xnb
@@ -101,6 +101,7 @@ Content\circle\circle4.xnb
 Content\circle\circle5.xnb
 Content\circle\circle6.xnb
 Content\circle\circle7.xnb
+Content\NPC.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

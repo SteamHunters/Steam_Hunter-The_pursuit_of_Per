@@ -92,7 +92,7 @@ namespace Steam_Hunters
 
 
 
-            if (reloadCount >= 20)
+            if (reloadCount >= 12)
             {
                 isReloading = true;
                 reloadCount = 0;

@@ -88,6 +88,7 @@
     <Compile Include="Interface\InventoryWindow.cs" />
     <Compile Include="Interface\StatusWindow.cs" />
     <Compile Include="GameObject\Missile.cs" />
+    <Compile Include="NPC.cs" />
     <Compile Include="Player\Player classes\Archer.cs" />
     <Compile Include="Player\Player classes\Engineer.cs" />
     <Compile Include="Player\Player classes\Warrior.cs" />
