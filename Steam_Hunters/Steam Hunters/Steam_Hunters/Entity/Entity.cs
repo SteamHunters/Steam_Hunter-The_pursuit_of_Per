@@ -45,7 +45,7 @@ namespace Steam_Hunters
         public Point sheetSize;
 
         protected int timerSinceLastFrame = 0;
-        protected int milliSecondsPerFrame = 30;
+        protected int milliSecondsPerFrame = 90;
 
         protected int size = 50;
         public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, float AttackRangeRadius, float SearchRadius, float MovementSpeed,
