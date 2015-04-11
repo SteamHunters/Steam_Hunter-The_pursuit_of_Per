@@ -57,7 +57,7 @@ namespace Steam_Hunters
          
 
 
-           enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 75, 150, 5, 1, 1, false, 1));
+           enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 125, 250, 200, 1, 1, false, 1));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(700, 700), 200));
 
 
