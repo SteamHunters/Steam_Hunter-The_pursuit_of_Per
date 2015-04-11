@@ -80,7 +80,10 @@ namespace Steam_Hunters
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
+            if (Aggro == true) 
+            { 
             pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
 
             if (target != null)
             {
@@ -90,7 +93,7 @@ namespace Steam_Hunters
                     target = null;
                 }
             }
-
+      
 
             //Animation loop
             timerSinceLastFrame += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
