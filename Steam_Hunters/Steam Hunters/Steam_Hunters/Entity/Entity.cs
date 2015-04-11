@@ -85,6 +85,10 @@ namespace Steam_Hunters
             if (target != null)
             {
                 FaceTarget();
+                if (!IsInRange(target.center))
+                {
+                    target = null;
+                }
             }
 
 
@@ -106,7 +110,8 @@ namespace Steam_Hunters
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, center, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, 0, origin, 1, EntityFx, 1);
+            //spriteBatch.Draw(tex, center, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, rotation, origin, 1, EntityFx, 1);
+            spriteBatch.Draw(tex, center, new Rectangle(45,45, 45, 45), Color.White, rotation, origin, 1, EntityFx, 1);
 
         }
         public bool IsInRange(Vector2 pos)
