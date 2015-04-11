@@ -125,7 +125,7 @@ namespace Steam_Hunters
         public static Texture2D circle6 { get; private set; }
         public static Texture2D circle7 { get; private set; }
 
-
+        public static Texture2D MonsterTest { get; private set; }
 
         public static Texture2D map { get; private set; }
         //        
@@ -228,7 +228,7 @@ namespace Steam_Hunters
             testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
             reload = Content.Load<Texture2D>(@"reload");
-
+            MonsterTest = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob");
             circles.Add(circle1 = Content.Load<Texture2D>(@"circle/circle1"));
             circles.Add(circle2 = Content.Load<Texture2D>(@"circle/circle2"));
             circles.Add(circle3 = Content.Load<Texture2D>(@"circle/circle3"));

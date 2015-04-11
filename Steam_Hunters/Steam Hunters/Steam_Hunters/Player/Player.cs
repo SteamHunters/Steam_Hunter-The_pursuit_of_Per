@@ -135,14 +135,15 @@ namespace Steam_Hunters
             changeDirection();
             WalkAnimation(gameTime);
 
-            if (Drightpress == true)
-            {
-                statusWindow.SetStatusWinwosActiv = true;
-            }
-
+            
 
             if (statusWindow != null)
             {
+                if (Drightpress == true)
+                {
+                    statusWindow.SetStatusWinwosActiv = true;
+                }
+
                 if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
                     statusWindow.SetStatusWinwosActiv = false;
             }

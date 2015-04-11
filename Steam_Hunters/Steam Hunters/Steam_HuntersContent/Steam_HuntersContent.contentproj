@@ -34,7 +34,6 @@
     <Folder Include="Texturer\Background\" />
     <Folder Include="Texturer\Buttons\" />
     <Folder Include="Texturer\Enimes\Bosses\" />
-    <Folder Include="Texturer\Enimes\Mobs 1\" />
     <Folder Include="Texturer\Enimes\Mobs 2\" />
     <Folder Include="Texturer\Enimes\Mobs 3\" />
     <Folder Include="Texturer\Enimes\Mobs 4\" />
@@ -649,6 +648,13 @@
   <ItemGroup>
     <Compile Include="NPC.png">
       <Name>NPC</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Texturer\Enimes\Mobs 1\Melee mob.png">
+      <Name>Melee mob</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
