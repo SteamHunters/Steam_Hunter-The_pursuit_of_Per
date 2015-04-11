@@ -10,47 +10,46 @@ namespace Steam_Hunters
 {
     class Player : GameObject
     {
+        #region Variabler
         protected SpriteEffects EntityFx = 0;
-        protected Point frameSize = new Point(45, 45);
-        protected Point currentFrame = new Point(0, 0);
-        protected Point sheetSize = new Point(4, 2);
 
-        protected int timerSinceLastFrame = 0;
-        protected int milliSecondsPerFrame = 60;
+        protected PlayerIndex playerIndex;
+
+        protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize = new Point(45, 45);
+
+        public Vector2 direction = Vector2.Zero, prevPos, towerDirection, prevThumbStickRightValue;
 
         public GameWindow window;
         public GamePlayScreen gps;
+
         public Color color = Color.White;
 
-        public Vector2 prevThumbStickRightValue;
+        protected List<Projectile> listProjectile = new List<Projectile>();
+        protected Projectile projectile;
 
-        List<Projectile> listProjectile = new List<Projectile>();
-        Projectile projectile;
-
-        protected PlayerIndex playerIndex;
         protected GamePadState newState, oldState;
 
-        public int bY, bX, hp, mana, projectileTimerLife;
-        public float speed;
-        public Vector2 direction = Vector2.Zero, prevPos;
+        protected Rumble rumble;
 
-        public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue;
-        bool notMoved, shootOneAtTime;
+        protected ParticleEngine particleEngineSteam;
 
+        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, bY, bX, hp, mana, projectileTimerLife;
+        protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 60;
+
+        public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed;
+
+        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting;
+        #endregion
+
+        protected StatusWindow statusWindow;
+
+
+        // Varför? vi använder den inte?
+        public GraphicsDevice graphics;
+        // ta bort sen?
         double sec;
         bool showButtonCounter;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting;
-
-        public bool LTpress, LBpress, buying, Backpress;
-
-        public Vector2 towerDirection;
-
-        public GraphicsDevice graphics;
-
-        public int reloadCount, healthPotion,manaPotion, ressPotion,buffPotion;
-
-        protected Rumble rumble;
-        protected ParticleEngine particleEngineSteam;
 
         public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos)
@@ -96,10 +95,7 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            prevPos = pos;
             newState = GamePad.GetState(playerIndex);
-            center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
-
             #region Update button presss and with player index
             AButton(playerIndex);
             XButton(playerIndex);
@@ -119,7 +115,11 @@ namespace Steam_Hunters
             StartButton(playerIndex);
             BackButton(playerIndex);
             #endregion
+            prevPos = pos;
+            center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
+            hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height / 1.3f), tex.Width / 6, tex.Height / 2);
 
+            #region Buying
             if (buying == false)
             {
                 MoveLeftThumbStick(newState);
@@ -129,23 +129,24 @@ namespace Steam_Hunters
                 if (Backpress == true)
                     buying = false;
             }
+            #endregion
 
             ShootRightThumbStick(newState, gameTime);
             changeDirection();
             WalkAnimation(gameTime);
 
-            // lekte lite med hitboxen så den stämmer //Anton ^^
-            hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height / 1.3f), tex.Width / 6, tex.Height / 2);
-
-            //hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
-
+            if (Drightpress == true)
+            {
+                statusWindow.SetStatusWinwosActiv = true;
+            }
+                
+            if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
+                statusWindow.SetStatusWinwosActiv = false;
 
 
 
             oldState = GamePad.GetState(playerIndex);
-
             rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -175,12 +176,11 @@ namespace Steam_Hunters
             }
             if (playerIndex == PlayerIndex.Two)
             {
-                spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
+                spriteBatch.DrawString(FontManager.font, "\value: " + prevThumbStickRightValue +
                                                              "\npos: " + pos +
                                                              "\nshoot timer: " + shootTimer +
                                                              "\namount of proj: " + listProjectile.Count +
                                                              "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
-
             }
         }
 
