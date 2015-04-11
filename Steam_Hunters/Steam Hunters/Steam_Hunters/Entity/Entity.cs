@@ -159,7 +159,6 @@ namespace Steam_Hunters
 //                     if (!IsInRange(target.Center) || target.IsDead == true)
 //                     {
 //                         target = null;
-//                         bulletTimer = 0;
 //                     }
 //                 }
 
