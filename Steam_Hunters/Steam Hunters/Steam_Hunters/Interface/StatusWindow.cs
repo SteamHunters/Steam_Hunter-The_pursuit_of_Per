@@ -51,104 +51,140 @@ namespace Steam_Hunters
         {
             gamePadState = GamePad.GetState(playerIndex);
 
-            #region Select attribut
-            switch (Selectedattributs)
+            if (active == true)
             {
-                case Attributs.intelligence:
-                    #region intelligence
-                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
-                    {
-                        colorint = Color.White;
-                        Selectedattributs = Attributs.luck;
-                    }
-                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
-                    {
-                        colorint = Color.White;
-                        Selectedattributs = Attributs.strength;
-                    }
-                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
-                    {
-                        if (points > 0)
+                #region Select attribut
+                switch (Selectedattributs)
+                {
+                    case Attributs.intelligence:
+                        #region intelligence
+                        if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            intelligence++;
-                            points--;
+                            colorint = Color.White;
+                            Selectedattributs = Attributs.luck;
                         }
-                    }
-                    colorint = Color.Red;
-
-                    #endregion
-                    break;
-                case Attributs.strength:
-                    #region strength
-                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
-                    {
-                        colorstr = Color.White;
-                        Selectedattributs = Attributs.luck;
-                    }
-                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
-                    {
-                        colorstr = Color.White;
-                        Selectedattributs = Attributs.strength;
-                    }
-                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
-                    {
-                        if (points > 0)
+                        if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            intelligence++;
-                            points--;
+                            colorint = Color.White;
+                            Selectedattributs = Attributs.strength;
                         }
-                    }
-
-                    #endregion
-                    break;
-                case Attributs.agility:
-                    #region agility
-                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
-                    {
-
-                    }
-                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
-                    {
-
-                    }
-                   
-                    #endregion
-                    break;
-                case Attributs.vitality:
-                    #region vitality
-                    if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
-                    {
-
-                    }
-                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
-                    {
-
-                    }
-                    
-                    #endregion
-                    break;
-                case Attributs.luck:
-                    #region luck
-                   if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
-                    {
-
-                    }
-                    if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
-                    {
-
-                    }
-
-                    #endregion
-                    break;
+                        if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                        {
+                            if (points > 0)
+                            {
+                                intelligence++;
+                                points--;
+                            }
+                        }
+                        colorint = Color.Red;
+                        #endregion
+                        break;
+                    case Attributs.strength:
+                        #region strength
+                        if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                        {
+                            colorstr = Color.White;
+                            Selectedattributs = Attributs.intelligence;
+                        }
+                        if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                        {
+                            colorstr = Color.White;
+                            Selectedattributs = Attributs.agility;
+                        }
+                        if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                        {
+                            if (points > 0)
+                            {
+                                strength++;
+                                points--;
+                            }
+                        }
+                        colorstr = Color.Red;
+                        #endregion
+                        break;
+                    case Attributs.agility:
+                        #region agility
+                        if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                        {
+                            coloragili = Color.White;
+                            Selectedattributs = Attributs.strength;
+                        }
+                        if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                        {
+                            coloragili = Color.White;
+                            Selectedattributs = Attributs.vitality;
+                        }
+                        if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                        {
+                            if (points > 0)
+                            {
+                                agility++;
+                                points--;
+                            }
+                        }
+                        coloragili = Color.Red;
+                        #endregion
+                        break;
+                    case Attributs.vitality:
+                        #region vitality
+                        if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                        {
+                            colorvitality = Color.White;
+                            Selectedattributs = Attributs.agility;
+                        }
+                        if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                        {
+                            colorvitality = Color.White;
+                            Selectedattributs = Attributs.luck;
+                        }
+                        if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                        {
+                            if (points > 0)
+                            {
+                                vitality++;
+                                points--;
+                            }
+                        }
+                        colorvitality = Color.Red;
+                        #endregion
+                        break;
+                    case Attributs.luck:
+                        #region luck
+                        if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
+                        {
+                            colorluck = Color.White;
+                            Selectedattributs = Attributs.vitality;
+                        }
+                        if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
+                        {
+                            colorluck = Color.White;
+                            Selectedattributs = Attributs.intelligence;
+                        }
+                        if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                        {
+                            if (points > 0)
+                            {
+                                luck++;
+                                points--;
+                            }
+                        }
+                        colorluck = Color.Red;
+                        #endregion
+                        break;
+                }
+                #endregion
             }
-            #endregion
 
             oldgamePadState = GamePad.GetState(playerIndex);          
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.DrawString(font, "attribut", pos, color);
+            if (active == true)
+            {
+                spriteBatch.DrawString(FontManager.font, "Int", new Vector2(0,0), colorint);
+            }
+            
         }
 
         public void GenerateHealthBar(int CurrentHp, int MaxHp, SpriteBatch spriteBatch)

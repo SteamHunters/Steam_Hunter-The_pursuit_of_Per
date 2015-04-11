@@ -57,7 +57,7 @@ namespace Steam_Hunters
          
 
 
-           enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+           enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 100, 1, 1, 1, false, 1));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(700, 700), 200));
 
 
@@ -112,6 +112,7 @@ namespace Steam_Hunters
                     }
                     else
                         p.color = Color.White;
+                    e.GetClosestPlayer(GameData.playerList);
 
                     //e.Update(gameTime);
                 }
@@ -313,7 +314,7 @@ namespace Steam_Hunters
             }
             #endregion
             #region Enemies
-       
+
 
             foreach (Enemies e in enemyList)
             {

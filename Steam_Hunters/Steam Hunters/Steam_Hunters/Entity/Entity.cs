@@ -26,6 +26,7 @@ namespace Steam_Hunters
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
         protected bool Aggro;
         protected double AttackCooldown;
+        protected Vector2 direction;
         public Player target;
 
         public Vector2 Center
@@ -79,6 +80,13 @@ namespace Steam_Hunters
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
+            pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (target != null)
+            {
+                FaceTarget();
+            }
+
 
             //Animation loop
             timerSinceLastFrame += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -98,39 +106,40 @@ namespace Steam_Hunters
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, 0, origin, 1, EntityFx, 1);
+            spriteBatch.Draw(tex, center, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, 0, origin, 1, EntityFx, 1);
+
         }
         public bool IsInRange(Vector2 pos)
         {
             if (Vector2.Distance(center, pos) <= SearchRadius)
             {
-                return true;
+                return Aggro = true;
             }
             else
-                return false;
+                return Aggro = false;
         }
 
 
-        //public void GetClosestPlayer(List<Player> playerList)
-        //     {
-        //         target = null;
-        //         float smallestRange = SearchRadius;
+        public void GetClosestPlayer(List<Player> playerList)
+        {
+            target = null;
+            float smallestRange = SearchRadius;
 
-        //         foreach (Player p in playerList)
-        //         {
-        //             if (Vector2.Distance(center, p.Center) < smallestRange)
-        //             {
-        //                 smallestRange = Vector2.Distance(center, p.Center);
-        //                 target = p;
-        //             }
-        //         }
-        //     }
-        //     protected void FaceTarget()
-        //     {
-        //         direction = center - target.Center;
-        //         direction.Normalize();
-        //         rotation = (float)Math.Atan2(-direction.X, direction.Y);
-        //     }
+            foreach (Player p in playerList)
+            {
+                if (Vector2.Distance(center, p.center) < smallestRange)
+                {
+                    smallestRange = Vector2.Distance(center, p.center);
+                    target = p;
+                }
+            }
+        }
+        protected void FaceTarget()
+        {
+            direction = center - target.center;
+            direction.Normalize();
+            rotation = (float)Math.Atan2(-direction.X, direction.Y);
+        }
     }
 }
 //if (Aggro == true)
@@ -148,16 +157,4 @@ namespace Steam_Hunters
 
 
 //             }
-
-
-
-
-
-
-
-//if (EnemyPos >PlayerPos)
-//  EnemyPos --;
-//else if (EnemyPos < PlayerPos)
-//  EnemyPos ++;
-
 

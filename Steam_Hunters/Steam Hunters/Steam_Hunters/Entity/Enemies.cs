@@ -18,10 +18,10 @@ namespace Steam_Hunters
         {
             base.Update(gameTime);
 
-            //if (IsInRange = false)
-            //{
+            if (Aggro == false)
+            {
 
-            //}
+            }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
