@@ -139,10 +139,13 @@ namespace Steam_Hunters
             {
                 statusWindow.SetStatusWinwosActiv = true;
             }
-                
-            if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
-                statusWindow.SetStatusWinwosActiv = false;
 
+
+            if (statusWindow != null)
+            {
+                if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
+                    statusWindow.SetStatusWinwosActiv = false;
+            }
 
 
             oldState = GamePad.GetState(playerIndex);
