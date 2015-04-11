@@ -26,9 +26,17 @@ namespace Steam_Hunters
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
         protected bool Aggro;
         protected double AttackCooldown;
+        public Player target;
+
         public Vector2 Center
         {
             get { return center; }
+        }
+
+
+        public Player Target
+        {
+            get { return target; }
         }
         //Animation
         public Point frameSize;
@@ -94,8 +102,62 @@ namespace Steam_Hunters
         }
         public bool IsInRange(Vector2 pos)
         {
-            return Vector2.Distance(center, pos) <= this.SearchRadius;
+            if (Vector2.Distance(center, pos) <= SearchRadius)
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
+
+        //public void GetClosestPlayer(List<Player> playerList)
+        //     {
+        //         target = null;
+        //         float smallestRange = SearchRadius;
+
+        //         foreach (Player p in playerList)
+        //         {
+        //             if (Vector2.Distance(center, p.Center) < smallestRange)
+        //             {
+        //                 smallestRange = Vector2.Distance(center, p.Center);
+        //                 target = p;
+        //             }
+        //         }
+        //     }
+        //     protected void FaceTarget()
+        //     {
+        //         direction = center - target.Center;
+        //         direction.Normalize();
+        //         rotation = (float)Math.Atan2(-direction.X, direction.Y);
+        //     }
     }
 }
+//if (Aggro == true)
+//             {
+//                 if (target != null)
+//                 {
+//                     FaceTarget();
+
+//                     if (!IsInRange(target.Center) || target.IsDead == true)
+//                     {
+//                         target = null;
+//                         bulletTimer = 0;
+//                     }
+//                 }
+
+
+//             }
+
+
+
+
+
+
+
+//if (EnemyPos >PlayerPos)
+//  EnemyPos --;
+//else if (EnemyPos < PlayerPos)
+//  EnemyPos ++;
+
+

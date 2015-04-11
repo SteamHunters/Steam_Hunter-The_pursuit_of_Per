@@ -17,64 +17,40 @@ namespace Steam_Hunters
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            //if (IsInRange = false)
+            //{
+
+            //}
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
 
             base.Draw(spriteBatch);
         }
+        //Vector2 GetRandomDirection()
+        //{
+        //    Random random = new Random();
+        //    int randomDirection = random.Next(4);
+
+        //    switch (randomDirection)
+        //    {
+        //        case 1:
+        //            return new Vector2(-1, 0);
+        //        case 2:
+        //            return new Vector2(1, 0);
+        //        case 3:
+        //            return new Vector2(0, -1);
+        //        case 4:
+        //            return new Vector2(0, 1);
+        //        default:
+        //            return Vector2.Zero;
+        //    }
+        //}
     }
 }
 
 
 
-
-
-
-//if (Aggro == true)
-//             {
-//                 if (target != null)
-//                 {
-//                     FaceTarget();
-
-//                     if (!IsInRange(target.Center) || target.IsDead == true)
-//                     {
-//                         target = null;
-//                         bulletTimer = 0;
-//                     }
-//                 }
-
-
-//             }
-
-
-//public void GetClosestEnemy(List<Enemy> enemies)
-//{
-//    target = null;
-//    float smallestRange = radius;
-
-//    foreach(Enemy e in enemies)
-//    {
-//        if (Vector2.Distance(center, e.Center) < smallestRange)
-//        {
-//            smallestRange = Vector2.Distance(center, e.Center);
-//            target = e;
-//        }
-//    }
-//}
-//protected void FaceTarget()
-//{
-//    Vector2 direction = center - target.Center;
-//    direction.Normalize();
-//    rotation = (float)Math.Atan2(-direction.X, direction.Y);
-//}
-
-
-
-
-//if (EnemyPos >PlayerPos)
-//  EnemyPos --;
-//else if (EnemyPos < PlayerPos)
-//  EnemyPos ++;
 
 

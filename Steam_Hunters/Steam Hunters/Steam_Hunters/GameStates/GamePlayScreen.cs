@@ -35,11 +35,7 @@ namespace Steam_Hunters
 
         public List<Enemies> enemyList = new List<Enemies>();
 
-        Enemies enemyTest;
-        Enemies enemyTest2;
-        Enemies enemyTest3;
-        Enemies enemyTest4;
-
+      
         public List<NPC> npcList = new List<NPC>();
 
         public GamePlayScreen(Game1 game)
@@ -58,11 +54,7 @@ namespace Steam_Hunters
                 }
             }
 
-           enemyTest = new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1);
-           enemyTest2 = new Enemies(TextureManager.testTextureArcher, new Vector2(200, 150), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
-           enemyTest3 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 100), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
-           enemyTest4 = new Enemies(TextureManager.testTextureArcher, new Vector2(150, 200), new Point(31, 35), new Point(31, 35), 1, 1, 1, 1, 1, 1, 1, 1, 1, false, 1);
-
+         
 
 
            enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(100, 150), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
@@ -110,52 +102,17 @@ namespace Steam_Hunters
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
-                #region Enemy patrolling
-                // Enemy 1
-                if (enemyTest.pos.X < enemyTest.pos.X + 50)
-                {
-                    enemyTest.pos.X += 2;
-                }
-                else if (enemyTest.pos.X >= enemyTest.pos.X + 50)
-                {
-                    enemyTest.pos.X -= 2;
-                }
-                // Enemy 2
-                if (enemyTest2.pos.Y < enemyTest2.pos.Y + 50)
-                {
-                    enemyTest2.pos.Y += 2;
-                }
-                else if (enemyTest2.pos.Y >= enemyTest2.pos.Y + 50)
-                {
-                    enemyTest2.pos.Y -= 2;
-                }
-                // Enemy 3
-                if (enemyTest3.pos.X < enemyTest3.pos.X - 50)
-                {
-                    enemyTest3.pos.X += 2;
-                }
-                else if (enemyTest3.pos.X >= enemyTest3.pos.X - 50)
-                {
-                    enemyTest3.pos.X -= 2;
-                }
-                // Enemy 4
-                if (enemyTest4.pos.Y < enemyTest4.pos.Y - 50)
-                {
-                    enemyTest4.pos.Y += 2;
-                }
-                else if (enemyTest4.pos.Y >= enemyTest4.pos.Y - 50)
-                {
-                    enemyTest4.pos.Y -= 2;
-                }
-                #endregion
 
-                if (enemyTest.IsInRange(p.pos) == true)
-                {
-                    TestRange = true;
-                }
 
-                foreach(Enemies e in enemyList)
+                foreach (Enemies e in enemyList)
                 {
+                    if (e.IsInRange(p.pos) == true)
+                    {
+                        p.color = Color.Red;
+                    }
+                    else
+                        p.color = Color.White;
+
                     //e.Update(gameTime);
                 }
             }
@@ -356,10 +313,7 @@ namespace Steam_Hunters
             }
             #endregion
             #region Enemies
-            enemyTest.Draw(spriteBatch);
-            enemyTest2.Draw(spriteBatch);
-            enemyTest3.Draw(spriteBatch);
-            enemyTest4.Draw(spriteBatch);
+       
 
             foreach (Enemies e in enemyList)
             {
