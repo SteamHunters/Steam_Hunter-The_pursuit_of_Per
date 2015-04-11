@@ -58,26 +58,47 @@ namespace Steam_Hunters
                     #region intelligence
                     if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                     {
-
+                        colorint = Color.White;
+                        Selectedattributs = Attributs.luck;
                     }
                     if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                     {
-
+                        colorint = Color.White;
+                        Selectedattributs = Attributs.strength;
                     }
-                   
+                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                    {
+                        if (points > 0)
+                        {
+                            intelligence++;
+                            points--;
+                        }
+                    }
+                    colorint = Color.Red;
+
                     #endregion
                     break;
                 case Attributs.strength:
                     #region strength
                     if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                     {
-
+                        colorstr = Color.White;
+                        Selectedattributs = Attributs.luck;
                     }
                     if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                     {
-
+                        colorstr = Color.White;
+                        Selectedattributs = Attributs.strength;
                     }
-                   
+                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
+                    {
+                        if (points > 0)
+                        {
+                            intelligence++;
+                            points--;
+                        }
+                    }
+
                     #endregion
                     break;
                 case Attributs.agility:
