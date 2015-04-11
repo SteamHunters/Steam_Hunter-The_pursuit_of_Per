@@ -16,7 +16,6 @@ namespace Steam_Hunters
         Dispenser dispenser;
         EngineerTower turret;
         Vector2 distancevalue;
-
         public static bool createMissile;
 
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
@@ -24,13 +23,16 @@ namespace Steam_Hunters
         {
             projectileTimerLife = 700;
             teleportPos = pos;
+
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, 0, 0, 1 , playerIndex);
         }
 
         public override void Update(GameTime gameTime)
         {
             turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
             particleEngineSteam.Update();
-            if (buying == false)
+
+            if (buying == false )
             {
                 if (Xpress == true)
                 {
@@ -103,6 +105,8 @@ namespace Steam_Hunters
                 {
                     particleEngineSteam.total = 0;
                 }
+                statusWindow.SetPos = pos;
+                statusWindow.Update(gameTime);
             }
             base.Update(gameTime);
         }
@@ -115,6 +119,8 @@ namespace Steam_Hunters
             }
             particleEngineSteam.Draw(spriteBatch);
             base.Draw(spriteBatch);
+
+            statusWindow.Draw(spriteBatch);
         }
     }
 }

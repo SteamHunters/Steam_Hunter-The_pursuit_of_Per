@@ -22,7 +22,7 @@ namespace Steam_Hunters
         private Attributs Selectedattributs;
         private int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp, points;
         private string karakterName;
-        private Color colorint, colorstr, coloragili, colorvitality, colorluck;
+        private Color colorint = Color.White, colorstr = Color.White, coloragili = Color.White, colorvitality = Color.White, colorluck = Color.White;
         private PlayerIndex playerIndex;
         private GamePadState gamePadState, oldgamePadState;
         private bool active;
@@ -44,6 +44,7 @@ namespace Steam_Hunters
             this.lvl = lvl;
             this.money = 0;
             this.playerIndex = playerIndex;
+            this.points = 100;
             this.Selectedattributs = Attributs.intelligence;
         }
 
@@ -58,14 +59,15 @@ namespace Steam_Hunters
                 {
                     case Attributs.intelligence:
                         #region intelligence
+                        colorint = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            colorint = Color.White;
+                            this.colorint = Color.White;
                             Selectedattributs = Attributs.luck;
                         }
                         if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            colorint = Color.White;
+                            this.colorint = Color.White;
                             Selectedattributs = Attributs.strength;
                         }
                         if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
@@ -76,11 +78,11 @@ namespace Steam_Hunters
                                 points--;
                             }
                         }
-                        colorint = Color.Red;
                         #endregion
                         break;
                     case Attributs.strength:
                         #region strength
+                        colorstr = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
                             colorstr = Color.White;
@@ -99,11 +101,11 @@ namespace Steam_Hunters
                                 points--;
                             }
                         }
-                        colorstr = Color.Red;
                         #endregion
                         break;
                     case Attributs.agility:
                         #region agility
+                        coloragili = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
                             coloragili = Color.White;
@@ -122,11 +124,11 @@ namespace Steam_Hunters
                                 points--;
                             }
                         }
-                        coloragili = Color.Red;
                         #endregion
                         break;
                     case Attributs.vitality:
                         #region vitality
+                        colorvitality = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
                             colorvitality = Color.White;
@@ -145,11 +147,11 @@ namespace Steam_Hunters
                                 points--;
                             }
                         }
-                        colorvitality = Color.Red;
                         #endregion
                         break;
                     case Attributs.luck:
                         #region luck
+                        colorluck = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
                             colorluck = Color.White;
@@ -168,7 +170,6 @@ namespace Steam_Hunters
                                 points--;
                             }
                         }
-                        colorluck = Color.Red;
                         #endregion
                         break;
                 }
@@ -182,7 +183,11 @@ namespace Steam_Hunters
         {
             if (active == true)
             {
-                spriteBatch.DrawString(FontManager.font, "Int", new Vector2(0,0), colorint);
+                spriteBatch.DrawString(FontManager.font, " Int: "+ intelligence, new Vector2(pos.X -200 , pos.Y - 100 ), colorint);
+                spriteBatch.DrawString(FontManager.font, "\n str: " + strength, new Vector2(pos.X - 200, pos.Y - 100), colorstr);
+                spriteBatch.DrawString(FontManager.font, "\n\n agil: "+ agility, new Vector2(pos.X - 200, pos.Y - 100), coloragili);
+                spriteBatch.DrawString(FontManager.font, "\n\n\n vita: "+ vitality, new Vector2(pos.X - 200, pos.Y - 100), colorvitality);
+                spriteBatch.DrawString(FontManager.font, "\n\n\n\n luck: "+ luck, new Vector2(pos.X - 200, pos.Y - 100), colorluck);
             }
             
         }
@@ -309,6 +314,11 @@ namespace Steam_Hunters
         {
             get { return active; }
             set { active = value; }
+        }
+        public Vector2 SetPos
+        {
+            get { return pos; }
+            set { pos = value; }
         }
 
         #endregion
