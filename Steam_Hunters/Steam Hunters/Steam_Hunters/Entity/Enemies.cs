@@ -16,7 +16,7 @@ namespace Steam_Hunters
 
         }
         double totalElapsedSeconds = 0;
-        const double MovementChangeTimeSeconds = 2.0; //seconds
+        const double MovementChangeTimeSeconds = 1.0; //seconds
 
 
         public override void Update(GameTime gameTime)
@@ -45,7 +45,7 @@ namespace Steam_Hunters
         Vector2 GetRandomDirection()
         {
             Random random = new Random();
-            int randomDirection = random.Next(4);
+            int randomDirection = random.Next(5);
 
             switch (randomDirection)
             {
