@@ -169,23 +169,23 @@ namespace Steam_Hunters
             {
                 e.Draw(spriteBatch);
             }
-            if (playerIndex == PlayerIndex.One)
-            {
+            //if (playerIndex == PlayerIndex.One)
+            //{
                 spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
                                                              "\npos: " + pos +
                                                              "\nshoot timer: " + shootTimer +
                                                              "\namount of proj: " + listProjectile.Count +
                                                              "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
 
-            }
-            if (playerIndex == PlayerIndex.Two)
-            {
-                spriteBatch.DrawString(FontManager.font, "\value: " + prevThumbStickRightValue +
-                                                             "\npos: " + pos +
-                                                             "\nshoot timer: " + shootTimer +
-                                                             "\namount of proj: " + listProjectile.Count +
-                                                             "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
-            }
+            //}
+            //if (playerIndex == PlayerIndex.Two)
+            //{
+            //    spriteBatch.DrawString(FontManager.font, "\value: " + prevThumbStickRightValue +
+            //                                                 "\npos: " + pos +
+            //                                                 "\nshoot timer: " + shootTimer +
+            //                                                 "\namount of proj: " + listProjectile.Count +
+            //                                                 "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
+            //}
         }
 
         #region Get gamePad button
