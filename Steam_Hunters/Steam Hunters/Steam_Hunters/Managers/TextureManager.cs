@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -84,7 +84,7 @@ namespace Steam_Hunters
         #endregion
 
         #region Bakgrunds Texturer
-
+        public static Texture2D StatusWindowTexture { get; private set; }
         public static Texture2D startBackground { get; private set; }
         public static Texture2D instructionScreen { get; private set; }
         public static Texture2D chooseSingleplayer { get; private set; }
@@ -107,6 +107,9 @@ namespace Steam_Hunters
         public static Texture2D steam1 { get; private set; }
         public static Texture2D steam2 { get; private set; }
         public static Texture2D steam3 { get; private set; }
+
+        public static Texture2D hpTexture { get; private set; }
+        public static Texture2D manaTexture { get; private set; }
         #endregion
 
         #endregion
@@ -115,6 +118,7 @@ namespace Steam_Hunters
         public static Texture2D testTextureEngineer { get; private set; }
         public static Texture2D testTextureArcher { get; private set; }
         public static Texture2D reload { get; private set; }
+
         //public static Texture2D [] circle { get; private set; }
         public static List<Texture2D> circles = new List<Texture2D>();
         public static Texture2D circle1 { get; private set; }
@@ -254,8 +258,9 @@ namespace Steam_Hunters
             // Ska flyttas
 
             startBackground = Content.Load<Texture2D>(@"StartScreenTest");
-
-
+            StatusWindowTexture = Content.Load<Texture2D>(@"StatusWindow");
+            hpTexture = Content.Load<Texture2D>(@"HpPixel");
+            manaTexture = Content.Load<Texture2D>(@"ManaPixel");
             NPCTexture = Content.Load<Texture2D>(@"NPC");
 
 

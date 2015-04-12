@@ -17,11 +17,12 @@ namespace Steam_Hunters
             Engineer,
             Wizard
         }
+
         private Character SelectedCharacter;
+        private PlayerIndex playerIndex;
         private GamePlayScreen gps;
         private Player p;
-        private PlayerIndex playerIndex;
-        protected GamePadState gamePadState, oldgamePadState;
+        private GamePadState gamePadState, oldgamePadState;
         private Game1 game;
         private bool Selected = false;
         public SelectCharacter(Game1 game, PlayerIndex playerIndex)
@@ -35,7 +36,6 @@ namespace Steam_Hunters
         {
            
             gamePadState = GamePad.GetState(playerIndex);
-
 
             #region Select character
             switch (SelectedCharacter)
@@ -88,7 +88,7 @@ namespace Steam_Hunters
                     }
                     if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false)
                     {
-                        p = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 1, 1, 5, playerIndex);
+                        p = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 100, 100, 5, playerIndex);
                         GameData.playerList.Add(p);
                         Selected = true;
                     }
@@ -115,7 +115,6 @@ namespace Steam_Hunters
 
             }
             #endregion
-
 
             oldgamePadState = GamePad.GetState(playerIndex);
         }

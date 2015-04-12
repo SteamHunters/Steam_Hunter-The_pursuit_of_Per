@@ -117,8 +117,6 @@
     <Content Include="Anoying shit\GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
-    <Content Include="Rör ej2.txt" />
-    <Content Include="Rör ej.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Steam_HuntersContent\Steam_HuntersContent.contentproj">

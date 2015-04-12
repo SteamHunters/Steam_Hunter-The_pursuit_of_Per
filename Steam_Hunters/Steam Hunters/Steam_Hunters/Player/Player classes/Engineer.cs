@@ -23,8 +23,8 @@ namespace Steam_Hunters
         {
             projectileTimerLife = 700;
             teleportPos = pos;
-
-            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, 0, 0, 1 , playerIndex);
+            //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
         }
 
         public override void Update(GameTime gameTime)
@@ -32,7 +32,7 @@ namespace Steam_Hunters
             turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
             particleEngineSteam.Update();
 
-            if (buying == false )
+            if (buying == false)
             {
                 if (Xpress == true)
                 {
@@ -106,8 +106,9 @@ namespace Steam_Hunters
                     particleEngineSteam.total = 0;
                 }
                 statusWindow.SetPos = pos;
-                statusWindow.Update(gameTime);
+                
             }
+            statusWindow.Update(gameTime);
             base.Update(gameTime);
         }
 

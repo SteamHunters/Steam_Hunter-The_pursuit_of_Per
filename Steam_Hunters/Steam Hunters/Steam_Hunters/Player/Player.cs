@@ -45,7 +45,7 @@ namespace Steam_Hunters
         protected StatusWindow statusWindow;
 
 
-        // Varför? vi använder den inte?
+        // Varför? vi använder den inte? eller?
         public GraphicsDevice graphics;
         // ta bort sen?
         double sec;
@@ -141,7 +141,7 @@ namespace Steam_Hunters
             {
                 if (Drightpress == true)
                 {
-                    statusWindow.SetStatusWinwosActiv = true;
+                    statusWindow.active = true;
                 }
 
                 if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
