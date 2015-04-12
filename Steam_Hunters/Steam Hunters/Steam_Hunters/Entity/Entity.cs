@@ -24,7 +24,7 @@ namespace Steam_Hunters
         //vilken map den ska spawnas i och pos är var i den mapen den är
         protected float MapPos;
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
-        protected bool Aggro;
+        protected bool Aggro, canAttack;
         protected double AttackCooldown;
         protected Vector2 direction;
         public Player target;
@@ -80,22 +80,28 @@ namespace Steam_Hunters
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
-            if (Aggro == true) 
+            if (Aggro == true && canAttack == false) 
             { 
             pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
             if (target != null)
             {
+                if (!IsInAttackRange(target.center))
+                {
+
+                }
                 FaceTarget();
                 if (!IsInRange(target.center))
                 {
                     target = null;
                 }
+               
+               
             }
       
 
-            //Animation loop
+                //Animation loop
             timerSinceLastFrame += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             if (timerSinceLastFrame > milliSecondsPerFrame)
@@ -126,7 +132,20 @@ namespace Steam_Hunters
             else
                 return Aggro = false;
         }
-
+        public bool IsInAttackRange(Vector2 pos)
+        {
+            if (pos != null)
+            {
+                if (Vector2.Distance(center, pos) <= AttackRangeRadius)
+                {
+                    return canAttack = true;
+                }
+                else
+                    return canAttack = false;
+            }
+            else
+                return canAttack = false;
+        }
 
         public void GetClosestPlayer(List<Player> playerList)
         {

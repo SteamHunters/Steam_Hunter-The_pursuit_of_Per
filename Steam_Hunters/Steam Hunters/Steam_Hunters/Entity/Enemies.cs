@@ -17,8 +17,8 @@ namespace Steam_Hunters
         }
         double totalElapsedSeconds = 0;
         const double MovementChangeTimeSeconds = 1.0; //seconds
-
-
+        
+        
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -30,40 +30,61 @@ namespace Steam_Hunters
                 if (totalElapsedSeconds >= MovementChangeTimeSeconds)
                 {
                     totalElapsedSeconds -= MovementChangeTimeSeconds;
-                    this.direction = GetRandomDirection();
+                     GetRandomDirection2();
                 }
 
                 pos += direction;
 
             }
+
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
 
-            base.Draw(spriteBatch);
+            spriteBatch.Draw(tex, center, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, rotation, origin, 1, EntityFx, 1);
         }
-        Vector2 GetRandomDirection()
+     
+        private void GetRandomDirection2()
         {
             Random random = new Random();
             int randomDirection = random.Next(5);
 
             switch (randomDirection)
-            {
+            {   
+                    
                 case 1:
-                    return new Vector2(-1, 0);
+                    // Går vänster
+                    this.rotation = -67.5f;
+                    this.direction = new Vector2 (-1, 0);
+                    
+                    break;
                 case 2:
-                    return new Vector2(1, 0);
+                    // Går höger
+                    this.rotation = 67.5f;
+                    this.direction = new Vector2 (1, 0);
+                   
+                    break;
                 case 3:
-                    return new Vector2(0, -1);
+                    // Går upp
+                    this.rotation = 135;
+                    this.direction = new Vector2 (0, -1);
+                  
+                    break;
                 case 4:
-                    return new Vector2(0, 1);
+                    // Går ner
+                    this.rotation = 0f;
+                    this.direction = new Vector2 (0, 1);
+                    
+                    break;
                 default:
-                    return Vector2.Zero;
+                    this.direction = Vector2.Zero;
+                    break;
+
             }
         }
+       
     }
 }
-
 
 
 
