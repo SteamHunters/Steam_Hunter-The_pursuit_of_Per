@@ -106,7 +106,6 @@ namespace Steam_Hunters
                     particleEngineSteam.total = 0;
                 }
                 statusWindow.SetPos = pos;
-                
             }
             statusWindow.Update(gameTime);
             base.Update(gameTime);

@@ -46,6 +46,8 @@ namespace Steam_Hunters
             isPosSaved = true;
             //circle = CreateCircle(circleSize);
             projectileTimerLife = 200;
+            //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
         }
 
         public override void Update(GameTime gameTime)
@@ -149,12 +151,14 @@ namespace Steam_Hunters
             }
 
 
-
+            statusWindow.SetPos = pos;
+            statusWindow.Update(gameTime);
             base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            statusWindow.Draw(spriteBatch);
             //spriteBatch.Draw(tex, pos, new Rectangle(0 ,0 , 20, 20), Color.Blue);
 
             base.Draw(spriteBatch);
