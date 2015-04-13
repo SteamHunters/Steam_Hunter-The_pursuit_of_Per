@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Steam_Hunters.Program" Collapsed="true">
+    <Position X="31.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Anoying shit\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.ParticleEngine" Collapsed="true">
+    <Position X="29.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAgAAAAgBAAAAAAAEAACAAEQAAAAAAAA=</HashCode>
+      <FileName>Engins\ParticleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Enemies" Collapsed="true">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAACAAgAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Enemies.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Entity" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAABAKgBAAIogAIIAAACAEBggAgAIAAAABQAAIRAk=</HashCode>
+      <FileName>Entity\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Game1" Collapsed="true">
+    <Position X="31.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAEEAAAAAAAwQAQAAAgAAiAIAAAAgAAAAgAAAYACQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.GameData" Collapsed="true">
+    <Position X="33" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAgAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>GameData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Button" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>GameObject\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Dispenser" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQYAAAACAAAAgAAEAAAAAAAAAAAAACAAAAAhAAQAAw=</HashCode>
+      <FileName>GameObject\Dispenser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.EngineerTower" Collapsed="true">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAACAAAAAggAEAAAAAEAEIAAAACAAAgAAAAQAAA=</HashCode>
+      <FileName>GameObject\EngineerTower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.GameObject" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAwAAAAAAAAAAwAAAICAAIAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>GameObject\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Missile" Collapsed="true">
+    <Position X="25.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAACAAAIggAMAAAACABAAAAAQSAAAAAgAAQgAg=</HashCode>
+      <FileName>GameObject\Missile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Projectile" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAEIgAAAAAAAAAAEAAAARAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObject\Projectile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.GameOverScreen" Collapsed="true">
+    <Position X="34.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\GameOverScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.GamePlayScreen" Collapsed="true">
+    <Position X="27.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gASAAIAAAoAAAgBAACAAAAAAAAEAABAIACAAAAAAAIA=</HashCode>
+      <FileName>GameStates\GamePlayScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.GameSelectScreen" Collapsed="true">
+    <Position X="29.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEABAAAAAAAgggAACAAAAAAAAAAAAIAAgAAAAAAAA=</HashCode>
+      <FileName>GameStates\GameSelectScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.StartScreen" Collapsed="true">
+    <Position X="31.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAABAAgABAAAAAAAAAABAAAAICAAAgCAQAAA=</HashCode>
+      <FileName>GameStates\StartScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Interface" Collapsed="true">
+    <Position X="31.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAAAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\Interface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.InventoryWindow" Collapsed="true">
+    <Position X="33" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\InventoryWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.StatusWindow" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GoUAIBiAAAAKqgEBAMAAAQDICAAEABQJQAFAoBAAkvE=</HashCode>
+      <FileName>Interface\StatusWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.FontManager" Collapsed="true">
+    <Position X="29.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Managers\FontManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.MusicManager" Collapsed="true">
+    <Position X="34.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Managers\MusicManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.SoundControllManager" Collapsed="true">
+    <Position X="27.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\SoundControllManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.SoundEffectManager" Collapsed="true">
+    <Position X="29.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Managers\SoundEffectManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.TextureManager" Collapsed="true">
+    <Position X="33" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQKEEQBAAEIAAAEAIAQBIQAEACAK9i1AgAAAAFAAAAY=</HashCode>
+      <FileName>Managers\TextureManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.NPC" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQIAAACCAAAIhAAAAAQAAAAAAgAAAAAAAAAAABAAAg=</HashCode>
+      <FileName>NPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Particle" Collapsed="true">
+    <Position X="27.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAggAgAAAAAAABAAAAAAAAAEIAgAAEAAQ=</HashCode>
+      <FileName>Particle\Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Archer" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAQAAQAAEAEAAkAASAwAQCAIQAIAAAAAAAEACAAAABg=</HashCode>
+      <FileName>Player\Player classes\Archer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Engineer" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQQgAAAAAAAAhAAAACABAAAAAAAACAAAAAAAAQAAAA=</HashCode>
+      <FileName>Player\Player classes\Engineer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Warrior" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Player\Player classes\Warrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Wizard" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Player\Player classes\Wizard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Player" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>c4SwOkGGyJgAI8GAsJWBAIEJNgICAQiIEDjAhCAAhOA=</HashCode>
+      <FileName>Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Rumble" Collapsed="true">
+    <Position X="33" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAACABAAE=</HashCode>
+      <FileName>Rumble.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.Camera" Collapsed="true">
+    <Position X="27.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAAAAAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Tools\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.SelectCharacter" Collapsed="true">
+    <Position X="34.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAABAAAAAQAAAAAAIAAIAEgAgAAAAMI=</HashCode>
+      <FileName>Tools\SelectCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steam_Hunters.World" Collapsed="true">
+    <Position X="34.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQCAAQIAAEAAgEAIAAAAAAAAAEAAAAAAAAQAACAAQA=</HashCode>
+      <FileName>World\World.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Steam_Hunters.Screen" Collapsed="true">
+    <Position X="27.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAgAAAAAAAAgAAAAgAAAAAAAA=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

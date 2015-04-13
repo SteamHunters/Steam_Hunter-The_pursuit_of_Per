@@ -21,6 +21,50 @@ namespace Steam_Hunters
         {
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
+
+            #region Attack A
+            if (Apress == true)
+            {
+
+            }
+            #endregion
+
+            #region Attack X
+            if (Xpress == true)
+            {
+
+            }
+            #endregion
+
+            #region Attack B
+            if (Bpress == true)
+            {
+
+            }
+            #endregion
+
+            #region Attack Y
+            if (Ypress == true)
+            {
+
+            }
+            #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             base.Update(gameTime);
         }
 

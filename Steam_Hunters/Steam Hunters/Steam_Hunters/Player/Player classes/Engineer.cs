@@ -31,15 +31,21 @@ namespace Steam_Hunters
         {
             turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
             particleEngineSteam.Update();
+            statusWindow.SetPos = pos;
+            statusWindow.Update(gameTime);
 
             if (buying == false)
             {
+                #region Dispenser 
                 if (Xpress == true)
                 {
                     dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
                     rumble.Vibrate(0.15f, 0.5f);
                     gps.dispensers.Add(dispenser);
                 }
+                #endregion
+
+                #region Missile
                 if (Ypress == true)
                 {
                     if (gps.turrets.Count >= 1)
@@ -52,6 +58,9 @@ namespace Steam_Hunters
                 {
                     createMissile = false;
                 }
+                #endregion
+
+                #region Turret
                 if (Apress == true)
                 {
                     gps.turrets.Add(turret);
@@ -73,6 +82,9 @@ namespace Steam_Hunters
                     speed = 5;
                     turretShooting = false;
                 }
+                #endregion
+
+                #region Teleport
                 if (Bpress == true)
                 {
                     teleportIsOn = true;
@@ -105,9 +117,10 @@ namespace Steam_Hunters
                 {
                     particleEngineSteam.total = 0;
                 }
-                statusWindow.SetPos = pos;
+                #endregion
+
             }
-            statusWindow.Update(gameTime);
+           
             base.Update(gameTime);
         }
 

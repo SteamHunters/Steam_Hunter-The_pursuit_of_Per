@@ -52,7 +52,7 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            if (LBpress == true)
+            if (LTpress == true)
             {
                 isTransparent = true;
             }

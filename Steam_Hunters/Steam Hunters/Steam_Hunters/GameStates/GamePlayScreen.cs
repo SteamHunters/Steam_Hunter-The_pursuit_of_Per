@@ -23,23 +23,13 @@ namespace Steam_Hunters
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
         public List<Projectile> turretProjectile = new List<Projectile>();
-
         //
-
-        public Player e1;
-        Player e2;
-        Player w;
-        Player a1;
-
-        bool TestRange;
-
         public List<Enemies> enemyList = new List<Enemies>();
-
-      
         public List<NPC> npcList = new List<NPC>();
 
         public GamePlayScreen(Game1 game)
         {
+            #region Få ut / sätter in data i GameData.playerlist
             foreach (Player p in GameData.playerList)
             {
                 p.SetGPS = this;
@@ -53,9 +43,7 @@ namespace Steam_Hunters
                     engineerList.Add(p);
                 }
             }
-
-         
-
+            #endregion
 
            enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 50, 1, 1, false, 1));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(700, 700), 200));
@@ -68,12 +56,6 @@ namespace Steam_Hunters
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            MouseState ms = new MouseState();
-
-            //if (ms.RightButton == ButtonState.Pressed)
-            //{
-            //    enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
-            //} 
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -98,36 +80,16 @@ namespace Steam_Hunters
             }
             #endregion
 
-            // Test build
+            #region Update player/players, Enimes and NPC
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
-
-
-                foreach (Enemies e in enemyList)
+                
+                #region NPC
+                foreach (NPC n in npcList)
                 {
+                    n.Update(gameTime);
 
-                    
-
-                    if (e.target == null)
-                    {
-                        p.color = Color.White;
-                        e.GetClosestPlayer(GameData.playerList);
-                    }
-                    else
-                    p.color = Color.Red;
-
-                    e.Update(gameTime);
-                }
-            }
-
-            #region NPC
-            foreach (NPC n in npcList)
-            {
-                n.Update(gameTime);
-
-                foreach (Player p in GameData.playerList)
-                {
                     if (n.Buyer == null)
                     {
                         n.GetClosestBuyer(GameData.playerList);
@@ -140,9 +102,49 @@ namespace Steam_Hunters
                     if (p.Backpress)
                         n.buy = false;
                 }
+                #endregion
 
+                #region Enimes
+                foreach (Enemies e in enemyList)
+                {
+                    e.Update(gameTime);
+
+                    if (e.target == null)
+                    {
+                        p.color = Color.White;
+                        e.GetClosestPlayer(GameData.playerList);
+                    }
+                    else
+                        p.color = Color.Red;
+                }
+                #endregion
             }
             #endregion
+
+            // jag ändrade så denna bit finns i den ovanför
+            #region NPC 
+            //foreach (NPC n in npcList)
+            //{
+            //    n.Update(gameTime);
+
+            //    foreach (Player p in GameData.playerList)
+            //    {
+            //        if (n.Buyer == null)
+            //        {
+            //            n.GetClosestBuyer(GameData.playerList);
+            //        }
+            //        if (p.LBpress)
+            //        {
+            //            n.buy = true;
+            //            p.buying = true;
+            //        }
+            //        if (p.Backpress)
+            //            n.buy = false;
+            //    }
+
+            //}
+            #endregion 
+            //
 
             #region engineerstuff(turret, dispenser etc)
 
