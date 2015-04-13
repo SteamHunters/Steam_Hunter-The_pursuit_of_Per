@@ -106,6 +106,15 @@ Content\Texturer\Enimes\Mobs 1\Melee mob.xnb
 Content\HpPixel.xnb
 Content\ManaPixel.xnb
 Content\StatusWindow.xnb
+Content\BuffPotionHUD.xnb
+Content\BuffPotionSHOP.xnb
+Content\HealthPotionHUD.xnb
+Content\HealthPotionSHOP.xnb
+Content\ManaPotionHUD.xnb
+Content\ManaPotionSHOP.xnb
+Content\RessPotionHUD.xnb
+Content\RessPotionSHOP.xnb
+Content\WizardAnimation.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

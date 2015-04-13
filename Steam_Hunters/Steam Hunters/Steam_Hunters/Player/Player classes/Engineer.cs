@@ -24,7 +24,7 @@ namespace Steam_Hunters
             projectileTimerLife = 700;
             teleportPos = pos;
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
-            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sebastian", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
         }
 
         public override void Update(GameTime gameTime)
@@ -34,7 +34,7 @@ namespace Steam_Hunters
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
 
-            if (buying == false)
+            if (buying == false && statusWindow.active == false)
             {
                 #region Dispenser 
                 if (Xpress == true)
@@ -119,6 +119,7 @@ namespace Steam_Hunters
                 }
                 #endregion
 
+                
             }
            
             base.Update(gameTime);

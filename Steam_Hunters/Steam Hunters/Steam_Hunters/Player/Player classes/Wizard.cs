@@ -50,21 +50,6 @@ namespace Steam_Hunters
             }
             #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             base.Update(gameTime);
         }
 

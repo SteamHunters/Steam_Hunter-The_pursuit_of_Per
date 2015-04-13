@@ -10,11 +10,19 @@ namespace Steam_Hunters
 {
     class Player : GameObject
     {
+          private enum Potion
+        {
+            Health,
+            Mana,
+            Ress,
+            Buff
+        }
+
         #region Variabler
         protected SpriteEffects EntityFx = 0;
 
         protected PlayerIndex playerIndex;
-
+        private Potion selectedPotion;
         protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize = new Point(45, 45);
 
         public Vector2 direction = Vector2.Zero, prevPos, towerDirection, prevThumbStickRightValue;
@@ -33,13 +41,13 @@ namespace Steam_Hunters
 
         protected ParticleEngine particleEngineSteam;
 
-        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, bY, bX, hp, mana, projectileTimerLife;
+        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold;
         protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 60;
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed;
 
         public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting, isOccupied;
         #endregion
 
         protected StatusWindow statusWindow;
@@ -71,25 +79,7 @@ namespace Steam_Hunters
             particleEngineSteam = new ParticleEngine(TextureManager.steamTextures, pos, Color.White);
            
             this.playerIndex = playerIndex;
-            
-            /*#region Identify player index
-            if (playerIndex == PlayerIndex.One)
-            {
-                this.playerIndex = PlayerIndex.One;
-            }
-            if (playerIndex == PlayerIndex.Two)
-            {
-                this.playerIndex = PlayerIndex.Two;
-            }
-            if (playerIndex == 3)
-            {
-                this.playerIndex = PlayerIndex.Three;
-            }
-            if (playerIndex == 4)
-            {
-                this.playerIndex = PlayerIndex.Four;
-            }*/
-            //#endregion
+           
         }
 
 
@@ -135,23 +125,31 @@ namespace Steam_Hunters
             changeDirection();
             WalkAnimation(gameTime);
 
+            BuyPotions();
+
+
             
 
             if (statusWindow != null)
             {
-                if (Drightpress == true)
+                if (buying == false)
                 {
-                    statusWindow.active = true;
-                }
+                    if (Drightpress == true)
+                    {
+                        statusWindow.active = true;
+                    }
 
-                if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
-                    statusWindow.SetStatusWinwosActiv = false;
+                    if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
+                        statusWindow.SetStatusWinwosActiv = false;
+                }
             }
 
 
             oldState = GamePad.GetState(playerIndex);
             rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
         }
+
+
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -169,23 +167,38 @@ namespace Steam_Hunters
             {
                 e.Draw(spriteBatch);
             }
-            //if (playerIndex == PlayerIndex.One)
-            //{
                 spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
                                                              "\npos: " + pos +
                                                              "\nshoot timer: " + shootTimer +
                                                              "\namount of proj: " + listProjectile.Count +
                                                              "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
 
-            //}
-            //if (playerIndex == PlayerIndex.Two)
-            //{
-            //    spriteBatch.DrawString(FontManager.font, "\value: " + prevThumbStickRightValue +
-            //                                                 "\npos: " + pos +
-            //                                                 "\nshoot timer: " + shootTimer +
-            //                                                 "\namount of proj: " + listProjectile.Count +
-            //                                                 "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
-            //}
+                if (buying == true)
+                {
+                    switch (selectedPotion)
+                    {
+                        case Potion.Health:
+                            #region intelligence
+                            spriteBatch.Draw(TextureManager.healthPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            #endregion
+                            break;
+                        case Potion.Mana:
+                            #region strength
+                            spriteBatch.Draw(TextureManager.manaPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            #endregion
+                            break;
+                        case Potion.Buff:
+                            #region agility
+                            spriteBatch.Draw(TextureManager.buffPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            #endregion
+                            break;
+                        case Potion.Ress:
+                            #region vitality
+                            spriteBatch.Draw(TextureManager.ressPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            #endregion
+                            break;
+                    }
+                }
         }
 
         #region Get gamePad button
@@ -322,6 +335,116 @@ namespace Steam_Hunters
         }
         #endregion
 
+        private void BuyPotions()
+        {
+            if (buying == true)
+            {
+                switch (selectedPotion)
+                {
+                    case Potion.Health:
+                        #region Health
+                        if (Drightpress == true)
+                        {
+                            selectedPotion = Potion.Mana;
+                        }
+                        if (Dlefthpress == true)
+                        {
+                            selectedPotion = Potion.Ress;
+                        }
+                        if (Apress == true)
+                        {
+                            if (manaPotion == 0 && ressPotion == 0 && buffPotion == 0)
+                            {
+                                healthPotion += 1;
+                                gold -= 100;
+                            }
+                            if (Bpress == true && healthPotion >= 1)
+                            {
+                                healthPotion -= 1;
+                                gold += 50;
+                            }
+                        }
+                        #endregion
+                        break;
+                    case Potion.Mana:
+                        #region Mana
+                        if (Drightpress == true)
+                        {
+                            selectedPotion = Potion.Buff;
+                        }
+                        if (Dlefthpress == true)
+                        {
+                            selectedPotion = Potion.Health;
+                        }
+                        if (Apress == true)
+                        {
+                            if (healthPotion == 0 && ressPotion == 0 && buffPotion == 0)
+                            {
+                                manaPotion += 1;
+                                gold -= 100;
+                            }
+                            if (Bpress == true && manaPotion >= 1)
+                            {
+                                manaPotion -= 1;
+                                gold += 50;
+                            }
+                        }
+                        #endregion
+                        break;
+                    case Potion.Buff:
+                        #region Buff
+                        if (Drightpress == true)
+                        {
+                            selectedPotion = Potion.Ress;
+                        }
+                        if (Dlefthpress == true)
+                        {
+                            selectedPotion = Potion.Mana;
+                        }
+                        if (Apress == true)
+                        {
+                            if (healthPotion == 0 && ressPotion == 0 && manaPotion == 0)
+                            {
+                                buffPotion += 1;
+                                gold -= 100;
+                            }
+                            if (Bpress == true && buffPotion >= 1)
+                            {
+                                buffPotion -= 1;
+                                gold += 50;
+                            }
+                        }
+                        #endregion
+                        break;
+                    case Potion.Ress:
+                        #region Ress
+                        if (Drightpress == true)
+                        {
+                            selectedPotion = Potion.Health;
+                        }
+                        if (Dlefthpress == true)
+                        {
+                            selectedPotion = Potion.Buff;
+                        }
+                        if (Apress == true)
+                        {
+                            if (healthPotion == 0 && manaPotion == 0 && buffPotion == 0)
+                            {
+                                ressPotion += 1;
+                                gold -= 100;
+                            }
+                            if (Bpress == true && ressPotion >= 1)
+                            {
+                                ressPotion -= 1;
+                                gold += 50;
+                            }
+                        }
+                        #endregion
+                        break;
+                }
+            }
+        }
+
         private void changeDirection()
         {
             PrevAngle = angle;
@@ -383,11 +506,7 @@ namespace Steam_Hunters
             pos.X += newState.ThumbSticks.Left.X * speed;
             pos.Y -= newState.ThumbSticks.Left.Y * speed;
         }
-        //public void MoveLeftThumbStickTeleport(GamePadState newState)
-        //{
-        //    pos.X += newState.ThumbSticks.Right.X * speed;
-        //    pos.Y -= newState.ThumbSticks.Right.Y * speed;
-        //}
+       
 
         private void ShootRightThumbStick(GamePadState newState, GameTime gameTime)
         {
@@ -525,32 +644,13 @@ namespace Steam_Hunters
         {
             pos = prevPos;
         }
+
+
         public GamePlayScreen SetGPS
         {
             get { return gps; }
             set { gps = value; }
         }
 
-        // skriv om så items används
-        //private void DpadControl()
-        //{
-        //    if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
-        //        direction.X = -1;
-
-        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed)
-        //        direction.X = 1;
-        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Released)
-        //        direction.X = 0;
-
-        //    if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed)
-        //        direction.Y = -1;
-
-        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed)
-        //        direction.Y = 1;
-
-        //    else if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Released && GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Released)
-        //        direction.Y = 0;
-        //}
     }
 }
-

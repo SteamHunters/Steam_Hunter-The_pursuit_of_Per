@@ -56,8 +56,6 @@ namespace Steam_Hunters
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-<<<<<<< HEAD
-=======
             MouseState ms = new MouseState();
             
 
@@ -65,7 +63,6 @@ namespace Steam_Hunters
             {
                 enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
             } 
->>>>>>> origin/master
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -172,7 +169,7 @@ namespace Steam_Hunters
                     {
                         d.Update(gameTime);
 
-                        if (dispensers.Count > 2)
+                        if (dispensers.Count > 1)
                         {
                             dispensers.Remove(d);
                             break;

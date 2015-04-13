@@ -22,7 +22,7 @@ namespace Steam_Hunters
         private Attributs Selectedattributs;
         private int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp, points;
         private string karakterName;
-        private Color colorint = Color.White, colorstr = Color.White, coloragili = Color.White, colorvitality = Color.White, colorluck = Color.White;
+        private Color colorint = Color.Black, colorstr = Color.Black, coloragili = Color.Black, colorvitality = Color.Black, colorluck = Color.Black;
         private PlayerIndex playerIndex;
         private GamePadState gamePadState, oldgamePadState;
         public bool active;
@@ -62,12 +62,12 @@ namespace Steam_Hunters
                         colorint = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            this.colorint = Color.White;
+                            this.colorint = Color.Black;
                             Selectedattributs = Attributs.luck;
                         }
                         if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            this.colorint = Color.White;
+                            this.colorint = Color.Black;
                             Selectedattributs = Attributs.strength;
                         }
                         if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
@@ -85,12 +85,12 @@ namespace Steam_Hunters
                         colorstr = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            colorstr = Color.White;
+                            colorstr = Color.Black;
                             Selectedattributs = Attributs.intelligence;
                         }
                         if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            colorstr = Color.White;
+                            colorstr = Color.Black;
                             Selectedattributs = Attributs.agility;
                         }
                         if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
@@ -108,12 +108,12 @@ namespace Steam_Hunters
                         coloragili = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            coloragili = Color.White;
+                            coloragili = Color.Black;
                             Selectedattributs = Attributs.strength;
                         }
                         if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            coloragili = Color.White;
+                            coloragili = Color.Black;
                             Selectedattributs = Attributs.vitality;
                         }
                         if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
@@ -131,12 +131,12 @@ namespace Steam_Hunters
                         colorvitality = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            colorvitality = Color.White;
+                            colorvitality = Color.Black;
                             Selectedattributs = Attributs.agility;
                         }
                         if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            colorvitality = Color.White;
+                            colorvitality = Color.Black;
                             Selectedattributs = Attributs.luck;
                         }
                         if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)
@@ -154,12 +154,12 @@ namespace Steam_Hunters
                         colorluck = Color.Red;
                         if (gamePadState.DPad.Up == ButtonState.Pressed && oldgamePadState.DPad.Up == ButtonState.Released)
                         {
-                            colorluck = Color.White;
+                            colorluck = Color.Black;
                             Selectedattributs = Attributs.vitality;
                         }
                         if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released)
                         {
-                            colorluck = Color.White;
+                            colorluck = Color.Black;
                             Selectedattributs = Attributs.intelligence;
                         }
                         if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released)

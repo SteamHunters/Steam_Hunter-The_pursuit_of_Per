@@ -15,6 +15,7 @@ namespace Steam_Hunters
         private GamePlayScreen gps;
         private Game1 game;
         private GamePadState oldgamePadStateP1 = GamePad.GetState(PlayerIndex.One);
+        private bool archerSelect, warriorSelect, wizardSelect, engineerSelect;
 
         public GameSelectScreen(Game1 game)
         {
@@ -53,6 +54,10 @@ namespace Steam_Hunters
             if (GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed && oldgamePadStateP1.Buttons.B == ButtonState.Released)
             {
                 GameData.playerList.Clear();
+                GameData.archerSelect = false;
+                GameData.engineerSelect = false;
+                GameData.warriorSelect = false;
+                GameData.engineerSelect = false;
                 GameData.SinglePlayMode = false;
                 GameData.MultiplayerMode = false;
                 game.StartScreen();

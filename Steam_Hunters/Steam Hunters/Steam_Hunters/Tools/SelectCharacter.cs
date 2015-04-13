@@ -50,11 +50,12 @@ namespace Steam_Hunters
                     {
                         SelectedCharacter = Character.Wizard;
                     }
-                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false)
+                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.archerSelect == false)
                     {
                         p = new Archer(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, playerIndex);
                         GameData.playerList.Add(p);
                         Selected = true;
+                        GameData.archerSelect = true;
                     }
                     #endregion
                     break;
@@ -68,11 +69,12 @@ namespace Steam_Hunters
                     {
                         SelectedCharacter = Character.Archer;
                     }
-                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false)
+                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.warriorSelect == false)
                     {
                         p = new Warrior(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, playerIndex);
                         GameData.playerList.Add(p);
                         Selected = true;
+                        GameData.warriorSelect = true;
                     }
                     #endregion
                     break;
@@ -86,11 +88,12 @@ namespace Steam_Hunters
                     {
                         SelectedCharacter = Character.Warrior;
                     }
-                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false)
+                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.engineerSelect == false)
                     {
                         p = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 100, 100, 5, playerIndex);
                         GameData.playerList.Add(p);
                         Selected = true;
+                        GameData.engineerSelect = true;
                     }
                     #endregion
                     break;
@@ -104,11 +107,12 @@ namespace Steam_Hunters
                     {
                         SelectedCharacter = Character.Engineer;
                     }
-                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false)
+                    if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.wizardSelect == false)
                     {
-                        p = new Wizard(TextureManager.testTextureArcher, new Vector2(50, 400), game.Window, gps, 1, 1, 5, playerIndex);
+                        p = new Wizard(TextureManager.WizardAnimation, new Vector2(50, 400), game.Window, gps, 1, 1, 3, playerIndex);
                         GameData.playerList.Add(p);
                         Selected = true;
+                        GameData.wizardSelect = true;
                     }
                     #endregion
                     break;

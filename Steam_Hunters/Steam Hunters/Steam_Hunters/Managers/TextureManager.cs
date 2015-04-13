@@ -41,6 +41,7 @@ namespace Steam_Hunters
         #endregion
 
         #region Wizard Textur
+        public static Texture2D WizardAnimation { get; private set; }
         public static Texture2D WizardPic { get; private set; }
         #endregion
 
@@ -63,6 +64,15 @@ namespace Steam_Hunters
         #endregion
 
         #region Potion Texturer
+
+        public static Texture2D healthPotionSHOPTexture { get; private set; }
+        public static Texture2D manaPotionSHOPTexture { get; private set; }
+        public static Texture2D buffPotionSHOPTexture { get; private set; }
+        public static Texture2D ressPotionSHOPTexture { get; private set; }
+        public static Texture2D healthPotionHUDTexture { get; private set; }
+        public static Texture2D manaPotionHUDTexture { get; private set; }
+        public static Texture2D buffPotionHUDTexture { get; private set; }
+        public static Texture2D ressPotionHUDTexture { get; private set; }
         #endregion
 
         #region Vapen Texturer
@@ -162,6 +172,7 @@ namespace Steam_Hunters
             #region Karaktär Texturer
 
             #region Warrior Textur
+            WizardAnimation = Content.Load<Texture2D>(@"WizardAnimation");
             WarriorPic = Content.Load<Texture2D>(@"Texturer/Karakter/Warrior/WarriorPic");
             #endregion
 
@@ -186,6 +197,17 @@ namespace Steam_Hunters
             #endregion
 
             #region Potion Texturer
+
+            healthPotionSHOPTexture = Content.Load<Texture2D>(@"HealthPotionSHOP");
+            manaPotionSHOPTexture = Content.Load<Texture2D>(@"ManaPotionSHOP");
+            buffPotionSHOPTexture = Content.Load<Texture2D>(@"BuffPotionSHOP");
+            ressPotionSHOPTexture = Content.Load<Texture2D>(@"RessPotionSHOP");
+
+            healthPotionHUDTexture = Content.Load<Texture2D>(@"HealthPotionHUD");
+            manaPotionHUDTexture = Content.Load<Texture2D>(@"ManaPotionHUD");
+            buffPotionHUDTexture = Content.Load<Texture2D>(@"BuffPotionHUD");
+            ressPotionHUDTexture = Content.Load<Texture2D>(@"RessPotionHUD");
+
             #endregion
 
             #region Vapen Texturer
