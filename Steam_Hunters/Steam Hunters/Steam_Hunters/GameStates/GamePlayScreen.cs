@@ -56,6 +56,16 @@ namespace Steam_Hunters
         public void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
+<<<<<<< HEAD
+=======
+            MouseState ms = new MouseState();
+            
+
+            if (ms.RightButton == ButtonState.Pressed)
+            {
+                enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
+            } 
+>>>>>>> origin/master
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -94,13 +104,16 @@ namespace Steam_Hunters
                     {
                         n.GetClosestBuyer(GameData.playerList);
                     }
-                    if (p.LBpress)
+                    if (n.IsInRange(p.pos))
                     {
-                        n.buy = true;
-                        p.buying = true;
+                        if (p.LBpress)
+                        {
+                            n.buy = true;
+                            p.buying = true;
+                        }
+                        if (p.Backpress)
+                            n.buy = false;
                     }
-                    if (p.Backpress)
-                        n.buy = false;
                 }
                 #endregion
 
