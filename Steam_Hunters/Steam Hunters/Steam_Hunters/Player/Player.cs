@@ -609,7 +609,7 @@ namespace Steam_Hunters
 
         private void AddProjectile(Vector2 insertDirection)
         {
-            projectile = new Projectile(new Vector2(pos.X+10,pos.Y), TextureManager.arrowBasic, insertDirection, angle, new Point(), new Point());
+            projectile = new Projectile(new Vector2(pos.X+10,pos.Y), TextureManager.arrowBasic, insertDirection, angle, 0.4f, 80, new Point(), new Point(), 0, false);
             towerDirection = insertDirection;
             listProjectile.Add(projectile);
 

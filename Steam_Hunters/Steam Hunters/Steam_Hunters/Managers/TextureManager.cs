@@ -85,6 +85,8 @@ namespace Steam_Hunters
         #endregion
 
         #region Projektil Texturer
+        public static Texture2D fireBall { get; private set; }
+        public static Texture2D waterBall { get; private set; }
         public static Texture2D arrowBasic { get; private set; }
         public static Texture2D turretBullet { get; private set; }
         #endregion
@@ -220,7 +222,8 @@ namespace Steam_Hunters
             #endregion
 
             #region Projektil Texturer
-
+            fireBall = Content.Load<Texture2D>(@"Mage FireBall");
+            waterBall = Content.Load<Texture2D>(@"Mage WaterBall");
             arrowBasic = Content.Load<Texture2D>(@"Arrow");
             turretBullet = Content.Load<Texture2D>(@"turretBullet");
 
