@@ -17,18 +17,21 @@ namespace Steam_Hunters
         EngineerTower turret;
         Vector2 distancevalue;
         public static bool createMissile;
+        int oldSpeed;
 
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
             projectileTimerLife = 700;
             teleportPos = pos;
+            oldSpeed = speed;
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sebastian", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
         }
 
         public override void Update(GameTime gameTime)
         {
+            
             turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
             particleEngineSteam.Update();
             statusWindow.SetPos = pos;
@@ -79,7 +82,7 @@ namespace Steam_Hunters
                 }
                 else
                 {
-                    speed = 5;
+                    speed = oldSpeed;
                     turretShooting = false;
                 }
                 #endregion

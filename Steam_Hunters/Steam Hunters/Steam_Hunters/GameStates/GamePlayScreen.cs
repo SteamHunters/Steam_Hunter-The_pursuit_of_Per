@@ -14,6 +14,7 @@ namespace Steam_Hunters
         private Game1 game;
         public Camera camera;
         private Vector2 cameraCenter;
+        private Dialog dialog;
         
         List<Player> playerlist = new List<Player>();
 

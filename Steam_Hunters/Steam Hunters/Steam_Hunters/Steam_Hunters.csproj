@@ -75,6 +75,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog.cs" />
     <Compile Include="Entity\Enemies.cs" />
     <Compile Include="GameData.cs" />
     <Compile Include="GameObject\Dispenser.cs" />

@@ -42,7 +42,7 @@ namespace Steam_Hunters
         protected ParticleEngine particleEngineSteam;
 
         public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold;
-        protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 60;
+        protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 75;
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed;
 
