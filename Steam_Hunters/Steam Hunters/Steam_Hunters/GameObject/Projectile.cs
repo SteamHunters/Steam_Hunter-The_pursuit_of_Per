@@ -10,11 +10,11 @@ namespace Steam_Hunters
     class Projectile : GameObject
     {
         private Vector2 direction;
-        private float speed; // = 0.4f;
+        private float speed;
         int projectileLife;
         bool bulletRemove;
         double timerRemove;
-        protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 75;
+        protected int timerSinceLastFrame = 0, milliSecondsPerFrame;
         private bool animation;
         protected Point sheetSize, currentFrame = new Point(0, 0), frameSize;
 
@@ -38,11 +38,11 @@ namespace Steam_Hunters
             if(animation == false)
             origin = new Vector2(tex.Width / 2, tex.Height / 2);
 
-            direction = movement;
+            this.direction = movement;
             //projectileLife = 80;
 
             //if (movement != Vector2.Zero)
-            direction.Normalize();
+            this.direction.Normalize();
 
 
         }

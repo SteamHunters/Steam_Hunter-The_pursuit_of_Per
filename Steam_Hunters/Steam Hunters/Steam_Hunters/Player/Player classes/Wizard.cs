@@ -10,6 +10,7 @@ namespace Steam_Hunters
     class Wizard : Player
     {
         private List<Projectile> FireBallList = new List<Projectile>();
+        private List<Projectile> WaterBallList = new List<Projectile>();
         private double timerWindRuch;
         private int oldSpeed, timeWindRuch;
         private bool windruch;
@@ -26,24 +27,28 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
+
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
-
+            //klar
             #region Attack A
             if (Apress == true)
             {
-                Projectile f = new Projectile(pos, TextureManager.fireBall, prevThumbStickRightValue, rotation - 45, 0.6f, 80, new Point(40,40), new Point(4,1), 60, true);
+                Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
                 FireBallList.Add(f);
             }
             #endregion
-
+            //klar
             #region Attack X
             if (Xpress == true)
             {
-
+                Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                WaterBallList.Add(w);
             }
             #endregion
-
             //klar
             #region Attack B
             if (Bpress == true)
@@ -76,6 +81,20 @@ namespace Steam_Hunters
             }
             #endregion
 
+            #region Update waterball
+            foreach (Projectile w in WaterBallList)
+            {
+                if (w != null)
+                    w.Update(gameTime);
+
+                if (w.BulletRemove == true)
+                {
+                    WaterBallList.Remove(w);
+                    break;
+                }
+            }
+            #endregion
+
             #region Update Windruch
 
             if (windruch == true)
@@ -99,7 +118,7 @@ namespace Steam_Hunters
                 
             #endregion
 
-            base.Update(gameTime);
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -115,7 +134,21 @@ namespace Steam_Hunters
             }
             #endregion
 
+            #region Draw waterball
+            foreach (Projectile w in WaterBallList)
+            {
+                if (w != null)
+                    w.Draw(spriteBatch);
+            }
+            #endregion
+
             base.Draw(spriteBatch);
+        }
+
+
+        public void BoulderUpdate_Animation()
+        {
+
         }
 
     }
