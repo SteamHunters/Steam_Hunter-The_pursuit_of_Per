@@ -135,6 +135,8 @@ namespace Steam_Hunters
         public static Texture2D testTextureEngineer { get; private set; }
         public static Texture2D testTextureArcher { get; private set; }
         public static Texture2D reload { get; private set; }
+        //public static Texture2D wizard { get; private set; }
+        public static Texture2D warriorAnimation { get; private set; }
 
         //public static Texture2D [] circle { get; private set; }
         public static List<Texture2D> circles = new List<Texture2D>();
@@ -263,6 +265,8 @@ namespace Steam_Hunters
             #endregion
 
             // Ta bort sen
+            //wizard = Content.Load<Texture2D>(@"Wizard done");
+            warriorAnimation = Content.Load<Texture2D>(@"WarriorWalk");
             testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
             reload = Content.Load<Texture2D>(@"reload");
@@ -296,6 +300,7 @@ namespace Steam_Hunters
             hpTexture = Content.Load<Texture2D>(@"HpPixel");
             manaTexture = Content.Load<Texture2D>(@"ManaPixel");
             NPCTexture = Content.Load<Texture2D>(@"NPC");
+
 
 
         }

@@ -59,6 +59,7 @@ namespace Steam_Hunters
             projectileTimerLife = 200;
             offsetBullet = new Vector2(12, 30);
             //color = new Color(100,100,100,100);
+            frameSize = new Point(45, 45);
         }
 
         public override void Update(GameTime gameTime)
@@ -221,7 +222,7 @@ namespace Steam_Hunters
             }
 
             base.Update(gameTime);
-            //ShootRightThumbStick(newState, gameTime);
+            ShootRightThumbStick(newState, gameTime);
 
 
         }

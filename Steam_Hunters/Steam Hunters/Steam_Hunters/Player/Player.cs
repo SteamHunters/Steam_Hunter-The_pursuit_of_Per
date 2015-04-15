@@ -23,7 +23,7 @@ namespace Steam_Hunters
 
         protected PlayerIndex playerIndex;
         private Potion selectedPotion;
-        protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize = new Point(45, 45);
+        protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize;
 
         protected Texture2D projTex;
 
@@ -125,7 +125,7 @@ namespace Steam_Hunters
             }
             #endregion
 
-            ShootRightThumbStick(newState, gameTime);
+            //ShootRightThumbStick(newState, gameTime);
             changeDirection();
             WalkAnimation(gameTime);
 
@@ -512,7 +512,7 @@ namespace Steam_Hunters
         }
        
 
-        private void ShootRightThumbStick(GamePadState newState, GameTime gameTime)
+        protected void ShootRightThumbStick(GamePadState newState, GameTime gameTime)
         {
             rightTriggerValue = newState.Triggers.Right;
 

@@ -22,6 +22,7 @@ namespace Steam_Hunters
         public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
+            frameSize = new Point(45, 45);
             projectileTimerLife = 700;
             teleportPos = pos;
             projTex = TextureManager.bulletEng;
@@ -128,6 +129,8 @@ namespace Steam_Hunters
             }
            
             base.Update(gameTime);
+            ShootRightThumbStick(newState, gameTime);
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)

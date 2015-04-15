@@ -94,7 +94,7 @@ namespace Steam_Hunters
             //spriteBatch.Draw(tex, pos, hitBox, Color.Blue);
             if (animation == false)
             {
-                spriteBatch.Draw(tex, pos, new Rectangle(0, 0, tex.Width, tex.Height), Color.White, angle, origin, 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(tex, pos, new Rectangle(0, 0, tex.Width, tex.Height), Color.White, angle, new Vector2(origin.X + offsetBullet.X, origin.Y + offsetBullet.Y), 1, SpriteEffects.None, 0);
                 //spriteBatch.Draw(tex, hitBox, Color.Black);
             }
 

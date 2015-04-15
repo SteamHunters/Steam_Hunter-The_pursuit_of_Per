@@ -32,6 +32,7 @@ namespace Steam_Hunters
             projTex = TextureManager.bulletWiz;
             projectileTimerLife = 500;
             offsetBullet = new Vector2(-8, 20);
+            frameSize = new Point(45, 45);
         }
 
 
@@ -192,6 +193,7 @@ namespace Steam_Hunters
                 }
 
                 base.Update(gameTime);
+                ShootRightThumbStick(newState, gameTime);
 
         }
 

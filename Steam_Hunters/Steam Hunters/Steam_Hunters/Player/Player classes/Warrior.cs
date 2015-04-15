@@ -14,6 +14,7 @@ namespace Steam_Hunters
         {
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
+            frameSize = new Point(50, 50);
         }
 
 
@@ -22,6 +23,8 @@ namespace Steam_Hunters
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
             base.Update(gameTime);
+            //ShootRightThumbStick(newState, gameTime);
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
