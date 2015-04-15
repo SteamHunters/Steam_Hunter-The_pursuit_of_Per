@@ -226,7 +226,15 @@ namespace Steam_Hunters
             }
             #endregion
 
+            
+
             base.Draw(spriteBatch);
+
+            if (shieldActivated)
+            {
+                spriteBatch.Draw(TextureManager.magicShield, pos, new Rectangle(0, 0, TextureManager.magicShield.Width, TextureManager.magicShield.Height), Color.White, 0, new Vector2(TextureManager.magicShield.Width / 2, TextureManager.magicShield.Height / 2), 1, SpriteEffects.None, 0);
+
+            }
         }
 
         #region Metod
