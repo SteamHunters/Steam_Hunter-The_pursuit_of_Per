@@ -89,6 +89,7 @@ namespace Steam_Hunters
         public static Texture2D waterBall { get; private set; }
         public static Texture2D arrowBasic { get; private set; }
         public static Texture2D turretBullet { get; private set; }
+        public static Texture2D BoulderSheetTexture { get; private set; }
         #endregion
 
         #region HUD Texturer
@@ -226,7 +227,7 @@ namespace Steam_Hunters
             waterBall = Content.Load<Texture2D>(@"Mage WaterBall");
             arrowBasic = Content.Load<Texture2D>(@"Arrow");
             turretBullet = Content.Load<Texture2D>(@"turretBullet");
-
+            BoulderSheetTexture = Content.Load<Texture2D>(@"StoneAnimation");
             #endregion
 
             #region HUD Texturer

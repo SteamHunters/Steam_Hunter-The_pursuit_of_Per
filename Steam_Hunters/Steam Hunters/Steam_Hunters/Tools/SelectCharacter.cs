@@ -25,7 +25,7 @@ namespace Steam_Hunters
         private GamePadState gamePadState, oldgamePadState;
         private Game1 game;
         private bool Selected = false;
-        int speed = 1;
+        int speed = 3;
         public SelectCharacter(Game1 game, PlayerIndex playerIndex)
         {
             this.game = game;
@@ -91,7 +91,7 @@ namespace Steam_Hunters
                     }
                     if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.engineerSelect == false)
                     {
-                        p = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 100, 100, 3, playerIndex);
+                        p = new Engineer(TextureManager.testTextureEngineer, new Vector2(50, 400), game.Window, gps, 100, 100, speed, playerIndex);
                         GameData.playerList.Add(p);
                         Selected = true;
                         GameData.engineerSelect = true;
