@@ -16,13 +16,14 @@ namespace Steam_Hunters
         bool isReloading;
         //Texture2D circle;
         //int circleSize;
+        private List<Projectile> powerShootList = new List<Projectile>();
         protected Point frameSizeReload = new Point(90, 90);
         protected Point currentFrameReload = new Point(0, 0);
         protected Point sheetSizeReload = new Point(8, 1);
         float timerSinceLastFrameReload, timerSinceLastFrameRain;
         protected int milliSecondsPerFrameReload = 200;
         int sheetNbr;
-        float spin1, spin2, spin3, spin4, spin5, spin6, spin7;
+        float spinPlus, spinMinus;
 
         protected Point frameSizeRain = new Point(60, 60);
         protected Point currentFrameRain = new Point(0, 0);
@@ -37,12 +38,15 @@ namespace Steam_Hunters
 
         Projectile powerShoot;
 
+        private ParticleEngine particleEnginePowerShoot;
 
 
         public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
             projTex = TextureManager.arrowBasic;
+            this.particleEnginePowerShoot = new ParticleEngine(TextureManager.steamTextures, pos, Color.Yellow);
+
             //Kod för att leapa, inte riktigt färdig! Men kan byggas på för att få rätt resultat
             //if (prevThumbStickRightValue.X != 0 || prevThumbStickRightValue.Y != 0)
             //{
@@ -64,6 +68,7 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+            particleEnginePowerShoot.Update();
 
             //color = new Color(100, 100, 100, 100);
             if (LTpress == true)
@@ -75,7 +80,16 @@ namespace Steam_Hunters
             if (Apress == true)
             {
                 //projTex = TextureManager.powerShootArc;
+                Vector2 powerShootAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                powerShoot = new Projectile(new Vector2(pos.X + 10, pos.Y), TextureManager.arrowPowerShoot, powerShootAngle, angle, new Vector2(0, 0), 0.5f, 80, new Point(20, 35), new Point(3, 1), 100, true);
+                powerShootList.Add(powerShoot);
+                particleEnginePowerShoot.EmitterLocation = new Vector2(pos.X, pos.Y);
+                particleEnginePowerShoot.total = 5;
+                //projectile = new Projectile(new Vector2(pos.X + 10, pos.Y), projTex, insertDirection, angle, offsetBullet, 0.4f, 80, new Point(), new Point(), 0, false);
             }
+            else
+                particleEnginePowerShoot.total = 0;
+
             //if (circleSize <= 300)
             //{
             //    circleSize--;
@@ -95,13 +109,8 @@ namespace Steam_Hunters
                 rainAttack.X += newState.ThumbSticks.Left.X * 4;//här går du
                 rainAttack.Y -= newState.ThumbSticks.Left.Y * 4;//och här
 
-                spin1 += (float)gameTime.ElapsedGameTime.TotalSeconds;//cirklar snurrar
-                spin2 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                spin3 += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                spin4 += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                spin5 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                spin6 += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                spin7 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spinPlus += (float)gameTime.ElapsedGameTime.TotalSeconds;//cirklar snurrar
+                spinMinus -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 
                 //if (oldState.Buttons.X == ButtonState.Released)
@@ -221,6 +230,11 @@ namespace Steam_Hunters
                 }
             }
 
+            foreach (Projectile p in powerShootList)
+            {
+                p.Update(gameTime);
+            }
+
             base.Update(gameTime);
             ShootRightThumbStick(newState, gameTime);
 
@@ -230,6 +244,7 @@ namespace Steam_Hunters
         public override void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch.Draw(tex, pos, new Rectangle(0 ,0 , 20, 20), Color.Blue);
+            particleEnginePowerShoot.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
             //spriteBatch.Draw(tex, new Vector2(pos.X + 30, pos.Y + 30), new Rectangle(0, 0, 20, 20), col, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
@@ -248,19 +263,20 @@ namespace Steam_Hunters
             spriteBatch.DrawString(FontManager.font, "tid: " + timerSinceLastFrameReload + "  " + milliSecondsPerFrameReload +
                                                      "\nbool: " + isTransparent +
                                                      "\ncolor: " + color +
-                                                     "\npos for rain: " + rainAttack, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
+                                                     "\npos for rain: " + rainAttack +
+                                                     "\namount of powershoot: " + powerShootList.Count, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
 
 
 
             if (newState.Buttons.X == ButtonState.Pressed)
             {
-                spriteBatch.Draw(TextureManager.circles[0], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin1, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
-                spriteBatch.Draw(TextureManager.circles[1], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin2, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
-                spriteBatch.Draw(TextureManager.circles[2], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin3, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
-                spriteBatch.Draw(TextureManager.circles[3], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin4, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
-                spriteBatch.Draw(TextureManager.circles[4], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin5, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
-                spriteBatch.Draw(TextureManager.circles[5], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin6, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
-                spriteBatch.Draw(TextureManager.circles[6], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin7, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[0], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinPlus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[1], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinMinus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[2], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinPlus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[3], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinPlus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[4], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinMinus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[5], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinPlus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TextureManager.circles[6], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spinMinus, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
 
 
 
@@ -285,6 +301,11 @@ namespace Steam_Hunters
             {
                 isPosSaved = true;
 
+            }
+
+            foreach (Projectile p in powerShootList)
+            {
+                p.Draw(spriteBatch);
             }
 
         }

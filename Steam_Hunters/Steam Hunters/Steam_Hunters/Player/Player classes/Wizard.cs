@@ -12,7 +12,7 @@ namespace Steam_Hunters
         private List<Projectile> FireBallList = new List<Projectile>();
         private List<Projectile> WaterBallList = new List<Projectile>();
         private List<Projectile> BoulderList = new List<Projectile>();
-        private ParticleEngine particleEngineWater, particleEngineFire;
+        private ParticleEngine particleEngineWater, particleEngineFire; 
         private double timerWindRuch;
         private int oldSpeed, timeWindRuch;
         private bool windruchOn, boulderOn, shieldActivated;

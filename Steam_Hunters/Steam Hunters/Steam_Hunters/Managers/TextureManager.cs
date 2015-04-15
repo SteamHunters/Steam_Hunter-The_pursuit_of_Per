@@ -89,6 +89,7 @@ namespace Steam_Hunters
         public static Texture2D fireBall { get; private set; }
         public static Texture2D waterBall { get; private set; }
         public static Texture2D arrowBasic { get; private set; }
+        public static Texture2D arrowPowerShoot { get; private set; }
         public static Texture2D turretBullet { get; private set; }
         public static Texture2D BoulderSheetTexture { get; private set; }
         public static Texture2D bulletWiz { get; private set; }
@@ -271,6 +272,7 @@ namespace Steam_Hunters
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
             reload = Content.Load<Texture2D>(@"reload");
             MonsterTest = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob");
+            arrowPowerShoot = Content.Load<Texture2D>(@"PowerShot Arrow");
             circles.Add(circle1 = Content.Load<Texture2D>(@"circle/circle1"));
             circles.Add(circle2 = Content.Load<Texture2D>(@"circle/circle2"));
             circles.Add(circle3 = Content.Load<Texture2D>(@"circle/circle3"));

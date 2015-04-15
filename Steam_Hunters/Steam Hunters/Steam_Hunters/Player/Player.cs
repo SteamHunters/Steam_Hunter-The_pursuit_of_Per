@@ -27,7 +27,7 @@ namespace Steam_Hunters
 
         protected Texture2D projTex;
 
-        public Vector2 direction = Vector2.Zero, prevPos, towerDirection, prevThumbStickRightValue, offsetBullet;
+        public Vector2 direction = Vector2.Zero, prevPos, towerDirection, powerArrowDir, prevThumbStickRightValue, offsetBullet;
 
         public GameWindow window;
         public GamePlayScreen gps;
@@ -615,6 +615,7 @@ namespace Steam_Hunters
         {
             projectile = new Projectile(new Vector2(pos.X + 10, pos.Y), projTex, insertDirection, angle, offsetBullet, 0.4f, 80, new Point(), new Point(), 0, false);
             towerDirection = insertDirection;
+            powerArrowDir = insertDirection;
             listProjectile.Add(projectile);
 
             rightTriggerTimer = 0;
