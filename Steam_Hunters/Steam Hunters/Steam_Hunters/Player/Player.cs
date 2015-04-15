@@ -25,7 +25,9 @@ namespace Steam_Hunters
         private Potion selectedPotion;
         protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize = new Point(45, 45);
 
-        public Vector2 direction = Vector2.Zero, prevPos, towerDirection, prevThumbStickRightValue;
+        protected Texture2D projTex;
+
+        public Vector2 direction = Vector2.Zero, prevPos, towerDirection, prevThumbStickRightValue, offsetBullet;
 
         public GameWindow window;
         public GamePlayScreen gps;
@@ -51,6 +53,8 @@ namespace Steam_Hunters
         #endregion
 
         protected StatusWindow statusWindow;
+
+
 
 
         // Varför? vi använder den inte? eller?
@@ -609,7 +613,7 @@ namespace Steam_Hunters
 
         private void AddProjectile(Vector2 insertDirection)
         {
-            projectile = new Projectile(new Vector2(pos.X+10,pos.Y), TextureManager.arrowBasic, insertDirection, angle, 0.4f, 80, new Point(), new Point(), 0, false);
+            projectile = new Projectile(new Vector2(pos.X + 10, pos.Y), projTex, insertDirection, angle, offsetBullet, 0.4f, 80, new Point(), new Point(), 0, false);
             towerDirection = insertDirection;
             listProjectile.Add(projectile);
 

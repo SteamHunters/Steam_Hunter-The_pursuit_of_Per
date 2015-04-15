@@ -15,8 +15,9 @@ namespace Steam_Hunters
         private ParticleEngine particleEngineWater, particleEngineFire;
         private double timerWindRuch;
         private int oldSpeed, timeWindRuch;
-        private bool windruchOn, boulderOn;
-        private float boulderspeed = 0.08f;
+        private bool windruchOn, boulderOn, shieldActivated;
+        private float boulderspeed = 0.08f, shieldTimer;
+        
 
         public Wizard(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
@@ -27,6 +28,10 @@ namespace Steam_Hunters
             this.particleEngineFire = new ParticleEngine(TextureManager.steamTextures, pos, Color.Red);
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 0, 0, 0, 0, 0, hp, mana, 100, playerIndex);
+
+            projTex = TextureManager.bulletWiz;
+            projectileTimerLife = 500;
+            offsetBullet = new Vector2(-8, 20);
         }
 
 
@@ -45,7 +50,7 @@ namespace Steam_Hunters
                 if (Apress == true)
                 {
                     Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                    Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                    Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
                     FireBallList.Add(f);
                     particleEngineFire.EmitterLocation = new Vector2(pos.X, pos.Y);
                     particleEngineFire.total = 15;
@@ -59,7 +64,7 @@ namespace Steam_Hunters
                 if (Xpress == true)
                 {
                     Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                    Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                    Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
                     WaterBallList.Add(w);
                     particleEngineWater.EmitterLocation = new Vector2(pos.X, pos.Y);
                     particleEngineWater.total = 15;
@@ -80,11 +85,18 @@ namespace Steam_Hunters
                 if (Ypress == true && boulderOn == false)
                 {
                     Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                    Projectile b = new Projectile(pos, TextureManager.BoulderSheetTexture, FireAngle, angle, 0.25f, 120, new Point(72, 72), new Point(5, 4), 45, true);
+                    Projectile b = new Projectile(pos, TextureManager.BoulderSheetTexture, FireAngle, angle, new Vector2(0, 0), 0.25f, 120, new Point(72, 72), new Point(5, 4), 45, true);
                     BoulderList.Add(b);
                     boulderOn = true;
                 }
                 #endregion
+
+                if (LTpress == true)
+                {
+                    shieldActivated = true;
+                }
+
+                
 
             }
 
@@ -168,6 +180,16 @@ namespace Steam_Hunters
 
                 }
                 #endregion
+
+                if (shieldActivated)
+                {
+                    shieldTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                    if (shieldTimer >= 800)
+                    {
+                        shieldActivated = false;
+                        shieldTimer = 0;
+                    }
+                }
 
                 base.Update(gameTime);
 

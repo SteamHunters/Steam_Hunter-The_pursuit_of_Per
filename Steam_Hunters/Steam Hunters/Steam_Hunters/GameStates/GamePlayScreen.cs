@@ -122,7 +122,7 @@ namespace Steam_Hunters
 
                     if (e.target == null)
                     {
-                        p.color = Color.White;
+                       // p.color = Color.White;
                         e.GetClosestPlayer(GameData.playerList);
                     }
                     else

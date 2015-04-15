@@ -52,7 +52,7 @@ namespace Steam_Hunters
 
             if (bulletTimer >= 20 && e.LTpress == true)
             {
-                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, e.prevThumbStickRightValue, rotation, 0.4f, 80, new Point(), new Point(), 0, false);
+                Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, e.prevThumbStickRightValue, rotation, new Vector2(0, 25), 0.4f, 80, new Point(), new Point(), 0, false);
 
                 gps.turretProjectile.Add(turretBullet);
                 bulletTimer = 0;

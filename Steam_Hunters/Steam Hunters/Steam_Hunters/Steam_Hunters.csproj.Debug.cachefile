@@ -118,6 +118,10 @@ Content\WizardAnimation.xnb
 Content\Mage FireBall.xnb
 Content\Mage WaterBall.xnb
 Content\StoneAnimation.xnb
+Content\magic bullet.xnb
+Content\Magic shield.xnb
+Content\bulletEng.xnb
+Content\arrowRain.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

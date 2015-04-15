@@ -24,6 +24,8 @@ namespace Steam_Hunters
         {
             projectileTimerLife = 700;
             teleportPos = pos;
+            projTex = TextureManager.bulletEng;
+            offsetBullet = new Vector2(-7, 20);
             oldSpeed = speed;
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sebastian", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);

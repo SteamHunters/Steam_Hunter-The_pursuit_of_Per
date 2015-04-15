@@ -9,7 +9,7 @@ namespace Steam_Hunters
 {
     class Projectile : GameObject
     {
-        public Vector2 direction;
+        public Vector2 direction, offsetBullet;
         private float speed;
         int projectileLife;
         bool bulletRemove;
@@ -23,11 +23,12 @@ namespace Steam_Hunters
             get { return bulletRemove; }
         }
 
-        public Projectile(Vector2 pos, Texture2D tex, Vector2 movement, float angle, float speed, int projectileLife, Point frameSize, Point sheetSize, int milliSecondsPerFrame, bool animation)
+        public Projectile(Vector2 pos, Texture2D tex, Vector2 movement, float angle, Vector2 offsetBullet, float speed, int projectileLife, Point frameSize, Point sheetSize, int milliSecondsPerFrame, bool animation)
             : base(tex, pos)
         {
             this.pos = pos;
             this.angle = angle;
+            this.offsetBullet = offsetBullet;
             this.speed = speed;
             this.projectileLife = projectileLife;
             this.frameSize = frameSize;
@@ -36,7 +37,7 @@ namespace Steam_Hunters
             this.animation = animation;
 
             if(animation == false)
-            origin = new Vector2(tex.Width / 2, tex.Height / 2);
+                origin = new Vector2(tex.Width / 2, tex.Height / 2);
 
             if(animation == true)
                 origin = new Vector2(frameSize.X / 2, frameSize.Y / 2);
@@ -53,9 +54,9 @@ namespace Steam_Hunters
         public override void Update(GameTime gameTime)
         {
             if(animation == false)
-                hitBox = new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height);
+                hitBox = new Rectangle((int)(pos.X + offsetBullet.X), (int)(pos.Y - offsetBullet.Y), tex.Width, tex.Height);
             if (animation == true)
-                hitBox = new Rectangle((int)pos.X - frameSize.X / 2, (int)pos.Y - frameSize.Y / 2, frameSize.X, frameSize.Y);
+                hitBox = new Rectangle((int)(pos.X - frameSize.X / 2 ), (int)(pos.Y - frameSize.Y / 2 ), frameSize.X, frameSize.Y);
 
             pos += direction * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
@@ -91,12 +92,15 @@ namespace Steam_Hunters
         public override void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch.Draw(tex, pos, hitBox, Color.Blue);
-            if(animation == false)
-                spriteBatch.Draw(tex, new Rectangle((int)pos.X , (int)pos.Y, tex.Width, tex.Height), null, Color.White, angle, origin, SpriteEffects.None, 0);
+            if (animation == false)
+            {
+                spriteBatch.Draw(tex, pos, new Rectangle(0, 0, tex.Width, tex.Height), Color.White, angle, origin, 1, SpriteEffects.None, 0);
+                //spriteBatch.Draw(tex, hitBox, Color.Black);
+            }
 
             if (animation == true)
             {
-                spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, angle, new Vector2((frameSize.X / 2) + offsetBullet.X, (frameSize.Y / 2) + offsetBullet.Y), 1, SpriteEffects.None, 0);
                 //spriteBatch.Draw(tex, hitBox, Color.White);
             }
         }

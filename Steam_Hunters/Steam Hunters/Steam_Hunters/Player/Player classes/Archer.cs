@@ -19,19 +19,30 @@ namespace Steam_Hunters
         protected Point frameSizeReload = new Point(90, 90);
         protected Point currentFrameReload = new Point(0, 0);
         protected Point sheetSizeReload = new Point(8, 1);
-        float timerSinceLastFrameReload;
+        float timerSinceLastFrameReload, timerSinceLastFrameRain;
         protected int milliSecondsPerFrameReload = 200;
         int sheetNbr;
         float spin1, spin2, spin3, spin4, spin5, spin6, spin7;
 
+        protected Point frameSizeRain = new Point(60, 60);
+        protected Point currentFrameRain = new Point(0, 0);
+        protected Point sheetSizeRain = new Point(8, 1);
+
+        //Color col = new Color(100,100,100,100);
         Vector2 rainAttack;
         Vector2 savePos;
         bool isPosSaved;
 
+        int triggerPress;
+
+        Projectile powerShoot;
+
+
+
         public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
             : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
         {
-
+            projTex = TextureManager.arrowBasic;
             //Kod för att leapa, inte riktigt färdig! Men kan byggas på för att få rätt resultat
             //if (prevThumbStickRightValue.X != 0 || prevThumbStickRightValue.Y != 0)
             //{
@@ -46,53 +57,111 @@ namespace Steam_Hunters
             isPosSaved = true;
             //circle = CreateCircle(circleSize);
             projectileTimerLife = 200;
-            //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
-            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
+            offsetBullet = new Vector2(12, 30);
+            //color = new Color(100,100,100,100);
         }
 
         public override void Update(GameTime gameTime)
         {
+
+            //color = new Color(100, 100, 100, 100);
             if (LTpress == true)
             {
                 isTransparent = true;
+                //color = new Color(100, 100, 100, 100);
             }
 
+            if (Apress == true)
+            {
+                //projTex = TextureManager.powerShootArc;
+            }
             //if (circleSize <= 300)
             //{
             //    circleSize--;
             //}
             //CreateCircle(500);
 
-            
 
-            if (newState.Buttons.X == ButtonState.Pressed)
+
+            if (newState.Buttons.X == ButtonState.Pressed)//du trycker ner knappen
             {
-                if (isPosSaved)
-                {
-                    savePos = pos;
-                    //isPosSaved = false;
-                }
+                //if (isPosSaved)
+                //{
+                //    savePos = pos;
+                //    //isPosSaved = false;
+                //}
 
-                rainAttack.X += newState.ThumbSticks.Right.X * speed;
-                rainAttack.Y -= newState.ThumbSticks.Right.Y * speed;
+                rainAttack.X += newState.ThumbSticks.Left.X * 4;//här går du
+                rainAttack.Y -= newState.ThumbSticks.Left.Y * 4;//och här
 
-                spin1 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spin1 += (float)gameTime.ElapsedGameTime.TotalSeconds;//cirklar snurrar
                 spin2 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 spin3 += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 spin4 += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 spin5 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 spin6 += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 spin7 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                
+
+
+                //if (oldState.Buttons.X == ButtonState.Released)
+                //{
+
+                //}
+
+                //speed = 0;
+                //isMoving = false;//ser till att metoden för att gå inte funkar längre
+                //currentFrame = new Point(0, 0);
 
 
 
                 //speed = 0;
                 //pos.X += newState.ThumbSticks.Left.X * speed;
                 //pos.Y -= newState.ThumbSticks.Left.Y * speed;
+
+                if (RTpress == true)
+                {
+                    triggerPress = 1;
+
+                }
+
+            }
+            else//den är sann från början
+            {
+                rainAttack = pos;//regnattacken sparar senaste pos
+               // isMoving = true;//man kan gå igen
+                //isPosSaved = false;
             }
 
+            if (triggerPress == 1 && newState.Buttons.X == ButtonState.Released)
+            {
+                timerSinceLastFrameRain += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
+                //if (timerSinceLastFrameReload > milliSecondsPerFrameReload)
+                //{
+                //    timerSinceLastFrameReload = 0;
+
+                if (timerSinceLastFrameRain >= 80)
+                {
+                    //timerSinceLastFrameReload -= 200;
+                    ++currentFrameRain.X;
+                    //sheetNbr++;
+                    timerSinceLastFrameRain = 0;
+                    if (currentFrameRain.X >= sheetSizeRain.X)
+                    {
+                        currentFrameRain.X = 0;
+                        //++currentFrameReload.Y;
+                        //if (currentFrameReload.Y >= sheetSizeReload.Y)
+                        //    currentFrameReload.Y = 0;
+                    }
+                }
+
+                if (currentFrameRain.X == 7)
+                {
+                    triggerPress = 0;
+                    currentFrameRain.X = 0;
+                }
+
+            }
 
             if (reloadCount >= 12)
             {
@@ -134,6 +203,7 @@ namespace Steam_Hunters
                 sheetNbr = 0;
             }
 
+            color = Color.White;
 
             if (isTransparent == true)
             {
@@ -150,19 +220,18 @@ namespace Steam_Hunters
                 }
             }
 
-
-            statusWindow.SetPos = pos;
-            statusWindow.Update(gameTime);
             base.Update(gameTime);
+            //ShootRightThumbStick(newState, gameTime);
+
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            statusWindow.Draw(spriteBatch);
             //spriteBatch.Draw(tex, pos, new Rectangle(0 ,0 , 20, 20), Color.Blue);
 
             base.Draw(spriteBatch);
-            //spriteBatch.Draw(tex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, 20, 20), Color.Blue, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
+            //spriteBatch.Draw(tex, new Vector2(pos.X + 30, pos.Y + 30), new Rectangle(0, 0, 20, 20), col, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
             //spriteBatch.Draw(circle, pos, new Rectangle(0, 0, circleSize * 2, circleSize * 2), Color.Red, 0, new Vector2(origin.X, origin.Y ), 1, SpriteEffects.None, 0);
 
             if (isReloading == true)
@@ -175,7 +244,10 @@ namespace Steam_Hunters
             {
                 isShooting = true;
             }
-            spriteBatch.DrawString(FontManager.font, "tid" + timerSinceLastFrameReload + "  " + milliSecondsPerFrameReload, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
+            spriteBatch.DrawString(FontManager.font, "tid: " + timerSinceLastFrameReload + "  " + milliSecondsPerFrameReload +
+                                                     "\nbool: " + isTransparent +
+                                                     "\ncolor: " + color +
+                                                     "\npos for rain: " + rainAttack, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
 
 
 
@@ -188,6 +260,30 @@ namespace Steam_Hunters
                 spriteBatch.Draw(TextureManager.circles[4], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin5, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
                 spriteBatch.Draw(TextureManager.circles[5], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin6, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
                 spriteBatch.Draw(TextureManager.circles[6], rainAttack, new Rectangle(0, 0, 300, 300), Color.White, spin7, new Vector2(TextureManager.circles[0].Width / 2, TextureManager.circles[0].Height / 2), 1, SpriteEffects.None, 0);
+
+
+
+            }
+
+            //savePos = rainAttack;
+
+            if (triggerPress == 1 /*&& newState.Buttons.X == ButtonState.Released*/)
+            {
+                //isPosSaved = false;
+                for (int i = 0; i < 15; i++)
+                {
+                    spriteBatch.Draw(TextureManager.rainTex, rainAttack * i, new Rectangle(currentFrameRain.X * frameSizeRain.X, currentFrameRain.Y * frameSizeRain.Y, frameSizeRain.X, frameSizeRain.Y), Color.White, 0, new Vector2(frameSizeRain.X / 2, frameSizeRain.Y / 2), 1, SpriteEffects.None, 0);
+
+                    if (i == 14)
+                    {
+                    }
+                }
+                //rainAttack = pos;
+            }
+            else
+            {
+                isPosSaved = true;
+
             }
 
         }

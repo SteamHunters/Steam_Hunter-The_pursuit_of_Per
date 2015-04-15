@@ -43,6 +43,7 @@ namespace Steam_Hunters
         #region Wizard Textur
         public static Texture2D WizardAnimation { get; private set; }
         public static Texture2D WizardPic { get; private set; }
+        public static Texture2D magicShield { get; private set; }
         #endregion
 
         #region Enginer Textur
@@ -90,6 +91,9 @@ namespace Steam_Hunters
         public static Texture2D arrowBasic { get; private set; }
         public static Texture2D turretBullet { get; private set; }
         public static Texture2D BoulderSheetTexture { get; private set; }
+        public static Texture2D bulletWiz { get; private set; }
+        public static Texture2D bulletEng { get; private set; }
+        public static Texture2D rainTex { get; private set; }
         #endregion
 
         #region HUD Texturer
@@ -185,6 +189,7 @@ namespace Steam_Hunters
 
             #region Wizard Textur
             WizardPic = Content.Load<Texture2D>(@"Texturer/Karakter/Wizard/Wizard Pic");
+            magicShield = Content.Load<Texture2D>(@"Magic shield");
             #endregion
 
             #region Enginer Textur
@@ -228,6 +233,9 @@ namespace Steam_Hunters
             arrowBasic = Content.Load<Texture2D>(@"Arrow");
             turretBullet = Content.Load<Texture2D>(@"turretBullet");
             BoulderSheetTexture = Content.Load<Texture2D>(@"StoneAnimation");
+            bulletWiz = Content.Load<Texture2D>(@"magic bullet");
+            bulletEng = Content.Load<Texture2D>(@"bulletEng");
+            rainTex = Content.Load<Texture2D>(@"arrowRain");
             #endregion
 
             #region HUD Texturer
