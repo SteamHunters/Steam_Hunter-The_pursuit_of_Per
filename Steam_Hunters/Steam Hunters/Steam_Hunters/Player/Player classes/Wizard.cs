@@ -12,7 +12,7 @@ namespace Steam_Hunters
         private List<Projectile> FireBallList = new List<Projectile>();
         private List<Projectile> WaterBallList = new List<Projectile>();
         private List<Projectile> BoulderList = new List<Projectile>();
-        private ParticleEngine particleEngineWater, particleEngineFire; 
+        private ParticleEngine particleEngineWater, particleEngineFire, particleEngineRocks; 
         private double timerWindRuch;
         private int oldSpeed, timeWindRuch;
         private bool windruchOn, boulderOn, shieldActivated;
@@ -26,6 +26,8 @@ namespace Steam_Hunters
             this.timeWindRuch = 1000;
             this.particleEngineWater = new ParticleEngine(TextureManager.steamTextures, pos, Color.Blue);
             this.particleEngineFire = new ParticleEngine(TextureManager.steamTextures, pos, Color.Red);
+            this.particleEngineRocks = new ParticleEngine(TextureManager.steamTextures, pos, Color.Gray);
+
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 0, 0, 0, 0, 0, hp, mana, 100, playerIndex);
 
@@ -41,6 +43,7 @@ namespace Steam_Hunters
             particleEngineSteam.Update();
             particleEngineWater.Update();
             particleEngineFire.Update();
+            particleEngineRocks.Update();
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
 
@@ -162,6 +165,8 @@ namespace Steam_Hunters
                     rumble.Vibrate(0.15f, 0.20f);
                     foreach (Projectile b in BoulderList)
                     {
+                        particleEngineRocks.EmitterLocation = new Vector2(b.pos.X, b.pos.Y);
+                        particleEngineRocks.total = 15;
                         if (b != null)
                         {
                             b.Update(gameTime);
@@ -169,16 +174,14 @@ namespace Steam_Hunters
                             b.direction.Y -= (float)(newState.ThumbSticks.Right.Y * boulderspeed);
                             b.direction.Normalize();
                         }
-
-
                         if (b.BulletRemove == true)
                         {
+                            particleEngineRocks.total = 0;
                             BoulderList.Remove(b);
                             boulderOn = false;
                             break;
                         }
                     }
-
                 }
                 #endregion
 
@@ -203,6 +206,7 @@ namespace Steam_Hunters
             particleEngineFire.Draw(spriteBatch);
             particleEngineWater.Draw(spriteBatch);
             particleEngineSteam.Draw(spriteBatch);
+            particleEngineRocks.Draw(spriteBatch);
 
             #region Draw Fireball
             foreach (Projectile f in FireBallList)

@@ -14,6 +14,7 @@ namespace Steam_Hunters
 
         #region Fonts
         public static SpriteFont font { get; private set; }
+        public static SpriteFont SteamFont { get; private set; }
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace Steam_Hunters
 
             #region Fonts
             font = Content.Load<SpriteFont>(@"font");
+            SteamFont = Content.Load<SpriteFont>(@"SteamFont");
             #endregion
 
         }

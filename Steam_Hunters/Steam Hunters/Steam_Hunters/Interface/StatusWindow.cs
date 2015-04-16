@@ -184,18 +184,18 @@ namespace Steam_Hunters
             if (active == true)
             {
                 spriteBatch.Draw(TextureManager.StatusWindowTexture, new Vector2(pos.X - 420, pos.Y - 220), Color.White);
-                spriteBatch.DrawString(FontManager.font, " Name: " + karakterName, new Vector2(pos.X - 385, pos.Y - 185), Color.Black);
-                spriteBatch.DrawString(FontManager.font, " Level: " + lvl, new Vector2(pos.X - 385, pos.Y - 160), Color.Black);
+                spriteBatch.DrawString(FontManager.SteamFont, " Name: " + karakterName, new Vector2(pos.X - 385, pos.Y - 185), Color.Black);
+                spriteBatch.DrawString(FontManager.SteamFont, " Level: " + lvl, new Vector2(pos.X - 385, pos.Y - 160), Color.Black);
                 //spriteBatch.DrawString(FontManager.font, " Next Level: " + nextLvl, new Vector2(pos.X - 220, pos.Y - 200), Color.White);
                 GenerateHealthBar(hp, maxHp, spriteBatch);
                 GenerateManaBar(mana, maxMana, spriteBatch);
-                spriteBatch.DrawString(FontManager.font, " Int: " + intelligence, new Vector2(pos.X - 385, pos.Y - 15), colorint);
-                spriteBatch.DrawString(FontManager.font, "\n str: " + strength, new Vector2(pos.X - 385, pos.Y - 15), colorstr);
-                spriteBatch.DrawString(FontManager.font, "\n\n agil: " + agility, new Vector2(pos.X - 385, pos.Y - 15), coloragili);
-                spriteBatch.DrawString(FontManager.font, "\n\n\n vita: " + vitality, new Vector2(pos.X - 385, pos.Y - 15), colorvitality);
-                spriteBatch.DrawString(FontManager.font, "\n\n\n\n luck: " + luck, new Vector2(pos.X - 385, pos.Y - 15), colorluck);
-                spriteBatch.DrawString(FontManager.font, "\n\n\n\n\n\n\n Points: " + points, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
-                spriteBatch.DrawString(FontManager.font, "\n\n\n\n\n\n\n\n Money: " + money, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
+                spriteBatch.DrawString(FontManager.SteamFont, " Int: " + intelligence, new Vector2(pos.X - 385, pos.Y - 15), colorint);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n str: " + strength, new Vector2(pos.X - 385, pos.Y - 15), colorstr);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n agil: " + agility, new Vector2(pos.X - 385, pos.Y - 15), coloragili);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n vita: " + vitality, new Vector2(pos.X - 385, pos.Y - 15), colorvitality);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n luck: " + luck, new Vector2(pos.X - 385, pos.Y - 15), colorluck);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n\n\n Points: " + points, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n\n\n\n Money: " + money, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
             }
             
         }
@@ -205,14 +205,14 @@ namespace Steam_Hunters
             Double Percent = (Double)CurrentHp / MaxHp;
             spriteBatch.Draw(TextureManager.hpTexture, new Vector2(pos.X - 340, pos.Y - 80), new Rectangle(0, 0, (int)(Percent * 150), 15), Color.White);
             spriteBatch.DrawString(FontManager.font, CurrentHp + "/" + MaxHp, new Vector2(pos.X - 300, pos.Y - 86), Color.White);
-            spriteBatch.DrawString(FontManager.font, " HP: ", new Vector2(pos.X - 385, pos.Y - 85), Color.Black);
+            spriteBatch.DrawString(FontManager.SteamFont, " HP: ", new Vector2(pos.X - 385, pos.Y - 85), Color.Black);
         }
         public void GenerateManaBar(int CurrentMana, int MaxMana, SpriteBatch spriteBatch)
         {
             Double Percent = (Double)CurrentMana / MaxMana;
             spriteBatch.Draw(TextureManager.manaTexture, new Vector2(pos.X - 340, pos.Y - 60), new Rectangle(0, 0, (int)(Percent * 150), 15), Color.White);
             spriteBatch.DrawString(FontManager.font, CurrentMana + "/" + MaxMana, new Vector2(pos.X - 300, pos.Y - 66), Color.White);
-            spriteBatch.DrawString(FontManager.font, " MP: ", new Vector2(pos.X - 385, pos.Y - 65), Color.Black);
+            spriteBatch.DrawString(FontManager.SteamFont, " MP: ", new Vector2(pos.X - 385, pos.Y - 65), Color.Black);
         }
 
         #region Get and Set methods

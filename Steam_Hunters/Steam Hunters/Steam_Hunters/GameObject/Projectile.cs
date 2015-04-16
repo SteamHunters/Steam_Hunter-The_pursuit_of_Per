@@ -14,9 +14,9 @@ namespace Steam_Hunters
         int projectileLife;
         bool bulletRemove;
         double timerRemove;
-        protected int timerSinceLastFrame = 0, milliSecondsPerFrame;
+        private int timerSinceLastFrame = 0, milliSecondsPerFrame;
         private bool animation;
-        protected Point sheetSize, currentFrame = new Point(0, 0), frameSize;
+        private Point sheetSize, currentFrame = new Point(0, 0), frameSize;
 
         public bool BulletRemove
         {
@@ -35,20 +35,14 @@ namespace Steam_Hunters
             this.sheetSize = sheetSize;
             this.milliSecondsPerFrame = milliSecondsPerFrame;
             this.animation = animation;
+            this.direction = movement;
+            this.direction.Normalize();
 
             if(animation == false)
                 origin = new Vector2(tex.Width / 2, tex.Height / 2);
 
             if(animation == true)
                 origin = new Vector2(frameSize.X / 2, frameSize.Y / 2);
-
-            this.direction = movement;
-            //projectileLife = 80;
-
-            //if (movement != Vector2.Zero)
-            this.direction.Normalize();
-
-
         }
 
         public override void Update(GameTime gameTime)
