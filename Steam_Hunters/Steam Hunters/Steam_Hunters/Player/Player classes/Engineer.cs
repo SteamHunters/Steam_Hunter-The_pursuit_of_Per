@@ -19,8 +19,8 @@ namespace Steam_Hunters
         public static bool createMissile;
         //float oldSpeed;
 
-        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
-            : base(tex, pos, window, gps, hp, mana, speed, damage, playerIndex)
+        public Engineer(Texture2D tex, Texture2D HUDPic, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
+            : base(tex, HUDPic, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
             frameSize = new Point(45, 45);
             projectileTimerLife = 700;

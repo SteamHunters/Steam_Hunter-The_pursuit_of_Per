@@ -19,10 +19,10 @@ namespace Steam_Hunters
         private bool windruchOn, boulderOn, shieldActivated;
         private float boulderspeed = 0.08f, shieldTimer;
 
-        
 
-        public Wizard(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage,PlayerIndex playerIndex)
-            : base(tex, pos, window, gps, hp, mana, speed, damage, playerIndex)
+
+        public Wizard(Texture2D tex, Texture2D HUDPic, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
+            : base(tex, HUDPic, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
             this.timeWindRuch = 1000;
             this.particleEngineWater = new ParticleEngine(TextureManager.steamTextures, pos, Color.Blue);
@@ -54,7 +54,7 @@ namespace Steam_Hunters
                 time = (float)gameTime.ElapsedGameTime.TotalSeconds;
            
 
-            if (buying == false && statusWindow.active == true)
+            if (buying == false && statusWindow.active == false)
             {
                 //klar
                 #region Attack A
@@ -232,7 +232,7 @@ namespace Steam_Hunters
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            statusWindow.Draw(spriteBatch);
+           
             particleEngineFire.Draw(spriteBatch);
             particleEngineWater.Draw(spriteBatch);
             particleEngineSteam.Draw(spriteBatch);
@@ -265,7 +265,7 @@ namespace Steam_Hunters
             
 
             base.Draw(spriteBatch);
-
+            statusWindow.Draw(spriteBatch);
             if (shieldActivated)
             {
                 spriteBatch.Draw(TextureManager.magicShield, pos, new Rectangle(0, 0, TextureManager.magicShield.Width, TextureManager.magicShield.Height), Color.White, 0, new Vector2(TextureManager.magicShield.Width / 2, TextureManager.magicShield.Height / 2), 1, SpriteEffects.None, 0);

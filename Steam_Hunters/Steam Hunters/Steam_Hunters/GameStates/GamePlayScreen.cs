@@ -88,38 +88,14 @@ namespace Steam_Hunters
             }
             #endregion
 
-            #region Update player/players, Enimes and NPC
+            #region Update player/players
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
-                
-                #region NPC
-                foreach (NPC n in npcList)
-                {
-                    n.Update(gameTime);
 
-                    if (n.Buyer == null)
-                    {
-                        n.GetClosestBuyer(GameData.playerList);
-                    }
-                    if (n.IsInRange(p.pos))
-                    {
-                        if (p.LBpress)
-                        {
-                            n.buy = true;
-                            p.buying = true;
-                        }
-                        if (p.Backpress)
-                            n.buy = false;
-                    }
-                }
-                #endregion
-
-                #region Enimes
+                #region Eniemes
                 foreach (Enemies e in enemyList)
                 {
-                    e.Update(gameTime);
-
                     if (e.target == null)
                     {
                        // p.color = Color.White;
@@ -132,30 +108,36 @@ namespace Steam_Hunters
             }
             #endregion
 
-            // jag ändrade så denna bit finns i den ovanför
-            #region NPC 
-            //foreach (NPC n in npcList)
-            //{
-            //    n.Update(gameTime);
+            #region Eniemes
+            foreach (Enemies e in enemyList)
+            {
+                e.Update(gameTime);
+            }
+            #endregion
 
-            //    foreach (Player p in GameData.playerList)
-            //    {
-            //        if (n.Buyer == null)
-            //        {
-            //            n.GetClosestBuyer(GameData.playerList);
-            //        }
-            //        if (p.LBpress)
-            //        {
-            //            n.buy = true;
-            //            p.buying = true;
-            //        }
-            //        if (p.Backpress)
-            //            n.buy = false;
-            //    }
+            #region NPC
+            foreach (NPC n in npcList)
+            {
+                n.Update(gameTime);
 
-            //}
+                foreach (Player p in GameData.playerList)
+                {
+                    if (n.Buyer == null)
+                    {
+                        n.GetClosestBuyer(GameData.playerList);
+                    }
+                    if (p.LBpress)
+                    {
+                        n.buy = true;
+                        p.buying = true;
+                    }
+                    if (p.Backpress)
+                        n.buy = false;
+                }
+
+            }
             #endregion 
-            //
+
 
             #region engineerstuff(turret, dispenser etc)
 
@@ -300,6 +282,7 @@ namespace Steam_Hunters
 
         public void Draw(SpriteBatch spriteBatch)
         {
+     
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             
@@ -342,6 +325,84 @@ namespace Steam_Hunters
             }
             #endregion
             spriteBatch.End();
+
+            //static
+            spriteBatch.Begin();
+            #region Set HUD per player
+            if (GameData.playerList.Count == 1)
+            {
+                spriteBatch.Draw(TextureManager.player1HUD, Vector2.Zero, Color.White);
+                spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
+                GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90,8), spriteBatch);
+                GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+
+            }
+            if (GameData.playerList.Count == 2)
+            {
+                spriteBatch.Draw(TextureManager.player1HUD, Vector2.Zero, Color.White);
+                spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
+                GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
+                GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+               
+                spriteBatch.Draw(TextureManager.player2HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 0), Color.White);
+                spriteBatch.Draw(GameData.playerList[1].HUDPic, new Vector2(1280 - 15 - GameData.playerList[1].HUDPic.Width , 9), Color.White);
+                GenerateHealthBar(GameData.playerList[1].statusWindow.hp, GameData.playerList[1].statusWindow.maxHp, new Vector2(1280 - 90 - 150, 8), spriteBatch);
+                GenerateManaBar(GameData.playerList[1].statusWindow.mana, GameData.playerList[1].statusWindow.maxMana, new Vector2(1280 - 90 - 150, 22), spriteBatch);
+            }
+            if (GameData.playerList.Count == 3)
+            {
+                spriteBatch.Draw(TextureManager.player1HUD, Vector2.Zero, Color.White);
+                spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
+                GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
+                GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+
+                spriteBatch.Draw(TextureManager.player2HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 0), Color.White);
+                spriteBatch.Draw(GameData.playerList[1].HUDPic, new Vector2(1280 - 15 - GameData.playerList[1].HUDPic.Width, 9), Color.White);
+                GenerateHealthBar(GameData.playerList[1].statusWindow.hp, GameData.playerList[1].statusWindow.maxHp, new Vector2(1280 - 90 - 150, 8), spriteBatch);
+                GenerateManaBar(GameData.playerList[1].statusWindow.mana, GameData.playerList[1].statusWindow.maxMana, new Vector2(1280 - 90 - 150, 22), spriteBatch);
+
+                spriteBatch.Draw(TextureManager.player3HUD, new Vector2(0, 720 - TextureManager.player2HUD.Height), Color.White);
+                spriteBatch.Draw(GameData.playerList[2].HUDPic, new Vector2(15, 720 - TextureManager.player2HUD.Height + 6), Color.White);
+                GenerateHealthBar(GameData.playerList[2].statusWindow.hp, GameData.playerList[2].statusWindow.maxHp, new Vector2( 90,720 - 8 - 10), spriteBatch);
+                GenerateManaBar(GameData.playerList[2].statusWindow.mana, GameData.playerList[2].statusWindow.maxMana, new Vector2(90, 720 - 22 - 10), spriteBatch);
+
+            }
+            if (GameData.playerList.Count == 4)
+            {
+                spriteBatch.Draw(TextureManager.player1HUD, Vector2.Zero, Color.White);
+                spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
+                GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
+                GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+
+                spriteBatch.Draw(TextureManager.player2HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 0), Color.White);
+                spriteBatch.Draw(GameData.playerList[1].HUDPic, new Vector2(1280 - 15 - GameData.playerList[1].HUDPic.Width, 9), Color.White);
+                GenerateHealthBar(GameData.playerList[1].statusWindow.hp, GameData.playerList[1].statusWindow.maxHp, new Vector2(1280 - 90 - 150, 8), spriteBatch);
+                GenerateManaBar(GameData.playerList[1].statusWindow.mana, GameData.playerList[1].statusWindow.maxMana, new Vector2(1280 - 90 - 150, 22), spriteBatch);
+
+                spriteBatch.Draw(TextureManager.player3HUD, new Vector2(0, 720 - TextureManager.player2HUD.Height), Color.White);
+                spriteBatch.Draw(GameData.playerList[2].HUDPic, new Vector2(15, 720 - TextureManager.player2HUD.Height + 6), Color.White);
+                GenerateHealthBar(GameData.playerList[2].statusWindow.hp, GameData.playerList[2].statusWindow.maxHp, new Vector2(90, 720 - 8 - 10), spriteBatch);
+                GenerateManaBar(GameData.playerList[2].statusWindow.mana, GameData.playerList[2].statusWindow.maxMana, new Vector2(90, 720 - 22 - 10), spriteBatch);
+
+                spriteBatch.Draw(TextureManager.player4HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 720 - TextureManager.player2HUD.Height), Color.White);
+                spriteBatch.Draw(GameData.playerList[3].HUDPic, new Vector2(1280 - 15 - GameData.playerList[3].HUDPic.Width, 720 - TextureManager.player2HUD.Height + 6), Color.White);
+                GenerateHealthBar(GameData.playerList[3].statusWindow.hp, GameData.playerList[3].statusWindow.maxHp, new Vector2(1280 - 90 - 150, 720 - 8 - 10), spriteBatch);
+                GenerateManaBar(GameData.playerList[3].statusWindow.mana, GameData.playerList[3].statusWindow.maxMana, new Vector2(1280 - 90 - 150, 720 - 22 - 10), spriteBatch);
+            }
+            #endregion
+            spriteBatch.End();
+        }
+
+
+        public void GenerateHealthBar(double CurrentHp, double MaxHp, Vector2 pos, SpriteBatch spriteBatch)
+        {
+            Double Percent = (Double)CurrentHp / MaxHp;
+            spriteBatch.Draw(TextureManager.hpTexture, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)(Percent * 150), 10), Color.White);
+        }
+        public void GenerateManaBar(double CurrentMana, double MaxMana,Vector2 pos, SpriteBatch spriteBatch)
+        {
+            Double Percent = (Double)CurrentMana / MaxMana;
+            spriteBatch.Draw(TextureManager.manaTexture, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)(Percent * 150), 10), Color.White);
         }
     }
 }

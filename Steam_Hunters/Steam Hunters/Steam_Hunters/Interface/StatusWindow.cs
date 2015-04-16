@@ -27,6 +27,7 @@ namespace Steam_Hunters
         private PlayerIndex playerIndex;
         private GamePadState gamePadState, oldgamePadState;
         public bool active;
+        Color color;
         
 
         public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int intelligence, int strength, int agility, int vitality, int luck, float hp, float mana, int lvl, PlayerIndex playerIndex)
@@ -47,6 +48,8 @@ namespace Steam_Hunters
             this.playerIndex = playerIndex;
             this.points = 100;
             this.Selectedattributs = Attributs.intelligence;
+
+            color = new Color(255, 255, 255, 0.75f);
         }
 
         public override void Update(GameTime gameTime)
@@ -186,7 +189,7 @@ namespace Steam_Hunters
         {
             if (active == true)
             {
-                spriteBatch.Draw(TextureManager.StatusWindowTexture, new Vector2(pos.X - 420, pos.Y - 220), Color.White);
+                spriteBatch.Draw(TextureManager.StatusWindowTexture, new Vector2(pos.X - 420, pos.Y - 220), color);
                 spriteBatch.DrawString(FontManager.SteamFont, " Name: " + karakterName, new Vector2(pos.X - 385, pos.Y - 185), Color.Black);
                 spriteBatch.DrawString(FontManager.SteamFont, " Level: " + lvl, new Vector2(pos.X - 385, pos.Y - 160), Color.Black);
                 //spriteBatch.DrawString(FontManager.font, " Next Level: " + nextLvl, new Vector2(pos.X - 220, pos.Y - 200), Color.White);

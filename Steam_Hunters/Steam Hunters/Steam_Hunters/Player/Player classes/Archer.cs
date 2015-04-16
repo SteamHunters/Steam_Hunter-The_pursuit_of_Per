@@ -41,8 +41,8 @@ namespace Steam_Hunters
         private ParticleEngine particleEnginePowerShoot;
 
 
-        public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
-            : base(tex, pos, window, gps, hp, mana, speed, damage, playerIndex)
+        public Archer(Texture2D tex,Texture2D HUDPic, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
+            : base(tex, HUDPic, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
             projTex = TextureManager.arrowBasic;
             this.particleEnginePowerShoot = new ParticleEngine(TextureManager.steamTextures, pos, Color.Yellow);
@@ -64,11 +64,16 @@ namespace Steam_Hunters
             offsetBullet = new Vector2(12, 30);
             //color = new Color(100,100,100,100);
             frameSize = new Point(45, 45);
+
+            //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Andrew", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
         }
 
         public override void Update(GameTime gameTime)
         {
             particleEnginePowerShoot.Update();
+            statusWindow.SetPos = pos;
+            statusWindow.Update(gameTime);
 
             //color = new Color(100, 100, 100, 100);
             if (LTpress == true)
@@ -247,6 +252,7 @@ namespace Steam_Hunters
             particleEnginePowerShoot.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
+            
             //spriteBatch.Draw(tex, new Vector2(pos.X + 30, pos.Y + 30), new Rectangle(0, 0, 20, 20), col, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
             //spriteBatch.Draw(circle, pos, new Rectangle(0, 0, circleSize * 2, circleSize * 2), Color.Red, 0, new Vector2(origin.X, origin.Y ), 1, SpriteEffects.None, 0);
 
@@ -307,7 +313,7 @@ namespace Steam_Hunters
             {
                 p.Draw(spriteBatch);
             }
-
+            statusWindow.Draw(spriteBatch);
         }
 
         //public Texture2D CreateCircle(int radius)

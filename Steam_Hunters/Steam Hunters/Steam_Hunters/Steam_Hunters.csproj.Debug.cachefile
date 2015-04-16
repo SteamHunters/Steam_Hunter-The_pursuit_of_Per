@@ -125,6 +125,15 @@ Content\bulletEng.xnb
 Content\arrowRain.xnb
 Content\WarriorWalk.xnb
 Content\PowerShot Arrow.xnb
+Content\Player1HUD.xnb
+Content\Player2HUD.xnb
+Content\Player3HUD.xnb
+Content\Player4HUD.xnb
+Content\Archer PicHUD.xnb
+Content\Engineer PicHUD.xnb
+Content\WarriorPicHUD.xnb
+Content\Wizard PicHUD.xnb
+Content\ShopMenu.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

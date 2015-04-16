@@ -99,6 +99,18 @@ namespace Steam_Hunters
 
         #region HUD Texturer
 
+        public static Texture2D EngHUD { get; private set; }
+        public static Texture2D WarHUD { get; private set; }
+        public static Texture2D WizHUD { get; private set; }
+        public static Texture2D ArhHUD { get; private set; }
+
+        public static Texture2D player1HUD { get; private set; }
+        public static Texture2D player2HUD { get; private set; }
+        public static Texture2D player3HUD { get; private set; }
+        public static Texture2D player4HUD { get; private set; }
+        public static Texture2D shopHUD { get; private set; }
+
+
         #endregion
 
         #region Bakgrunds Texturer
@@ -242,6 +254,17 @@ namespace Steam_Hunters
             #endregion
 
             #region HUD Texturer
+
+            EngHUD = Content.Load<Texture2D>(@"Engineer PicHUD");
+            WarHUD = Content.Load<Texture2D>(@"WarriorPicHUD");
+            WizHUD = Content.Load<Texture2D>(@"Wizard PicHUD");
+        ArhHUD = Content.Load<Texture2D>(@"Archer PicHUD");
+
+        player1HUD = Content.Load<Texture2D>(@"Player1HUD");
+        player2HUD = Content.Load<Texture2D>(@"Player2HUD");
+        player3HUD = Content.Load<Texture2D>(@"Player3HUD");
+        player4HUD = Content.Load<Texture2D>(@"Player4HUD");
+        shopHUD = Content.Load<Texture2D>(@"ShopMenu");
 
             #endregion
 

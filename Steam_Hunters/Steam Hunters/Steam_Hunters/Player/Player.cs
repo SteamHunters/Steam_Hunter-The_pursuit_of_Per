@@ -25,7 +25,7 @@ namespace Steam_Hunters
         private Potion selectedPotion;
         protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize;
 
-        protected Texture2D projTex;
+        public Texture2D projTex, HUDPic;
 
         public Vector2 direction = Vector2.Zero, prevPos, towerDirection, powerArrowDir, prevThumbStickRightValue, offsetBullet;
 
@@ -63,9 +63,10 @@ namespace Steam_Hunters
         double sec;
         bool showButtonCounter;
 
-        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
+        public Player(Texture2D tex, Texture2D HUDPic, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
             : base(tex, pos)
         {
+            this.HUDPic = HUDPic;
             this.window = window;
             this.gps = gps;
             this.hp = hp;
@@ -197,26 +198,27 @@ namespace Steam_Hunters
 
                 if (buying == true)
                 {
+                    spriteBatch.Draw(TextureManager.shopHUD, new Vector2(pos.X - 199, pos.Y-250), Color.White);
                     switch (selectedPotion)
                     {
                         case Potion.Health:
                             #region intelligence
-                            spriteBatch.Draw(TextureManager.healthPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            spriteBatch.Draw(TextureManager.healthPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
                             #endregion
                             break;
                         case Potion.Mana:
                             #region strength
-                            spriteBatch.Draw(TextureManager.manaPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            spriteBatch.Draw(TextureManager.manaPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
                             #endregion
                             break;
                         case Potion.Buff:
                             #region agility
-                            spriteBatch.Draw(TextureManager.buffPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            spriteBatch.Draw(TextureManager.buffPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
                             #endregion
                             break;
                         case Potion.Ress:
                             #region vitality
-                            spriteBatch.Draw(TextureManager.ressPotionSHOPTexture, new Vector2(pos.X, pos.Y - 150), Color.White);
+                            spriteBatch.Draw(TextureManager.ressPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
                             #endregion
                             break;
                     }
