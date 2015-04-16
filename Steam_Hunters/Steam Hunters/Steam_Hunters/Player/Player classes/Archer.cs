@@ -41,8 +41,8 @@ namespace Steam_Hunters
         private ParticleEngine particleEnginePowerShoot;
 
 
-        public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
-            : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
+        public Archer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
+            : base(tex, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
             projTex = TextureManager.arrowBasic;
             this.particleEnginePowerShoot = new ParticleEngine(TextureManager.steamTextures, pos, Color.Yellow);

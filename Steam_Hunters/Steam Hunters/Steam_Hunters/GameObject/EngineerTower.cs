@@ -52,10 +52,15 @@ namespace Steam_Hunters
 
             if (bulletTimer >= 20 && e.LTpress == true)
             {
+                if (e.statusWindow.mana >= 3)
+                {
+                    e.statusWindow.mana -= 3;
+               
                 Projectile turretBullet = new Projectile(center, TextureManager.turretBullet, e.prevThumbStickRightValue, rotation, new Vector2(0, 25), 0.4f, 80, new Point(), new Point(), 0, false);
 
                 gps.turretProjectile.Add(turretBullet);
                 bulletTimer = 0;
+                }
             }
             if(Engineer.createMissile == true)
             {

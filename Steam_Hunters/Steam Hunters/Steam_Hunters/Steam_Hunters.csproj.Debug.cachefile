@@ -7,6 +7,7 @@ Content\Singleplayer.xnb
 Content\InstructionScreen.xnb
 Content\StartScreenTest.xnb
 Content\Exit.xnb
+Content\PickACharacterMulti.xnb
 Content\Dispenser.xnb
 Content\turret bot.xnb
 Content\turret top.xnb
@@ -89,7 +90,6 @@ Content\Texturer\Karakter\Engineer\Engineer Pic.xnb
 Content\Texturer\Karakter\Warrior\WarriorPic.xnb
 Content\Texturer\Karakter\Wizard\Wizard Pic.xnb
 Content\PickACharacterSingle.xnb
-Content\PickACharacterMulti.xnb
 Content\steamSmoke1.xnb
 Content\steamSmoke2.xnb
 Content\steamSmoke3.xnb
@@ -115,6 +115,7 @@ Content\ManaPotionSHOP.xnb
 Content\RessPotionHUD.xnb
 Content\RessPotionSHOP.xnb
 Content\WizardAnimation.xnb
+Content\SteamFont.xnb
 Content\Mage FireBall.xnb
 Content\Mage WaterBall.xnb
 Content\StoneAnimation.xnb
@@ -124,7 +125,6 @@ Content\bulletEng.xnb
 Content\arrowRain.xnb
 Content\WarriorWalk.xnb
 Content\PowerShot Arrow.xnb
-Content\SteamFont.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml

@@ -43,16 +43,16 @@ namespace Steam_Hunters
 
         protected ParticleEngine particleEngineSteam;
 
-        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold;
+        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold, damage;
         protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 75;
 
-        public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed;
+        public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed, oldSpeed, time;
 
         public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime;
         protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting, isOccupied;
         #endregion
 
-        protected StatusWindow statusWindow;
+        public StatusWindow statusWindow;
 
 
 
@@ -63,7 +63,7 @@ namespace Steam_Hunters
         double sec;
         bool showButtonCounter;
 
-        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
+        public Player(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
             : base(tex, pos)
         {
             this.window = window;
@@ -71,6 +71,8 @@ namespace Steam_Hunters
             this.hp = hp;
             this.mana = mana;
             this.speed = speed;
+            this.damage = damage;
+            this.oldSpeed = speed;
             this.graphics = graphics;
             this.rumble = new Rumble(playerIndex);
             notMoved = true;
@@ -112,7 +114,7 @@ namespace Steam_Hunters
             prevPos = pos;
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height / 1.3f), tex.Width / 6, tex.Height / 2);
-
+            time = (float)gameTime.ElapsedGameTime.TotalSeconds;
             #region Buying
             if (buying == false)
             {
@@ -130,10 +132,26 @@ namespace Steam_Hunters
             WalkAnimation(gameTime);
 
             BuyPotions();
+            #region Stats buff
+            if (statusWindow.mana < statusWindow.maxMana)
+                statusWindow.mana += 3 * ((1 + (statusWindow.intelligence / 20)) * time / 2);
 
-
-            
-
+           if(statusWindow.Selectedattributs == StatusWindow.Attributs.agility)
+           {
+               if(Apress && statusWindow.points > 0)
+               {
+                   speed += statusWindow.agility * 0.002f;
+                   oldSpeed += statusWindow.agility * 0.002f;
+               }
+           }
+           if (statusWindow.Selectedattributs == StatusWindow.Attributs.strength)
+           {
+               if (Apress && statusWindow.points > 0)
+               {
+                   damage += (int)(statusWindow.strength * 0.002f);
+               }
+           }
+           #endregion
             if (statusWindow != null)
             {
                 if (buying == false)

@@ -17,17 +17,17 @@ namespace Steam_Hunters
         EngineerTower turret;
         Vector2 distancevalue;
         public static bool createMissile;
-        int oldSpeed;
+        //float oldSpeed;
 
-        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
-            : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
+        public Engineer(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
+            : base(tex, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
             frameSize = new Point(45, 45);
             projectileTimerLife = 700;
             teleportPos = pos;
             projTex = TextureManager.bulletEng;
             offsetBullet = new Vector2(-7, 20);
-            oldSpeed = speed;
+            //oldSpeed = speed;
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sebastian", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
         }
@@ -45,19 +45,27 @@ namespace Steam_Hunters
                 #region Dispenser 
                 if (Xpress == true)
                 {
-                    dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
-                    rumble.Vibrate(0.15f, 0.5f);
-                    gps.dispensers.Add(dispenser);
+                    if (statusWindow.mana >= 50)
+                    {
+                        dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
+                        rumble.Vibrate(0.15f, 0.5f);
+                        gps.dispensers.Add(dispenser);
+                        statusWindow.mana -= 50;
+                    }
                 }
                 #endregion
 
                 #region Missile
                 if (Ypress == true)
                 {
-                    if (gps.turrets.Count >= 1)
+                    if (statusWindow.mana >= 100)
                     {
-                        createMissile = true;
-                        rumble.Vibrate(0.2f, 1f);
+                        if (gps.turrets.Count >= 1)
+                        {
+                            createMissile = true;
+                            rumble.Vibrate(0.2f, 1f);
+                            statusWindow.mana -= 100;
+                        }
                     }
                 }
                 else
@@ -69,8 +77,13 @@ namespace Steam_Hunters
                 #region Turret
                 if (Apress == true)
                 {
-                    gps.turrets.Add(turret);
-                    rumble.Vibrate(0.15f, 0.25f);
+                    if (statusWindow.mana >= 10)
+                    {
+                        gps.turrets.Add(turret);
+                        rumble.Vibrate(0.15f, 0.25f);
+                        statusWindow.mana -= 10;
+                    }
+
                 }
                 if (LTpress == true)
                 {
@@ -78,7 +91,10 @@ namespace Steam_Hunters
                     turretShooting = true;
 
                     if (gps.turrets.Count >= 1)
+                    {
                         rumble.Vibrate(0.0015f, 0.5f);
+                        
+                    }
 
                     if (speed <= 0)
                         speed = 0;
@@ -101,8 +117,8 @@ namespace Steam_Hunters
                     distancevalue = pos - teleportPos;
                     if (Vector2.Distance(pos, teleportPos) <= 400)
                     {
-                        teleportPos.X += newState.ThumbSticks.Right.X * speed * 1.5f;
-                        teleportPos.Y -= newState.ThumbSticks.Right.Y * speed * 1.5f;
+                        teleportPos.X += newState.ThumbSticks.Right.X * speed * 2f;
+                        teleportPos.Y -= newState.ThumbSticks.Right.Y * speed * 2f;
                     }
                     else
                     {
@@ -127,7 +143,12 @@ namespace Steam_Hunters
 
                 
             }
-           
+
+            if (statusWindow.hp < statusWindow.maxHp)
+            {
+                statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
+            }
+            
             base.Update(gameTime);
             ShootRightThumbStick(newState, gameTime);
 

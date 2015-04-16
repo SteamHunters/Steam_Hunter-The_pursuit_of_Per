@@ -10,7 +10,7 @@ namespace Steam_Hunters
 {
     class StatusWindow: GameObject
     {
-        private enum Attributs
+        public enum Attributs
         {
             intelligence,
             strength,
@@ -19,8 +19,9 @@ namespace Steam_Hunters
             luck
         }
 
-        private Attributs Selectedattributs;
-        private int intelligence, strength, agility, vitality, luck, hp, maxHp, mana, maxMana, lvl, money, nextLvl, exp, points;
+        public Attributs Selectedattributs;
+        public int intelligence, strength, agility, vitality, luck, lvl, money, nextLvl, exp, points;
+        public double hp, maxHp, mana, maxMana;
         private string karakterName;
         private Color colorint = Color.Black, colorstr = Color.Black, coloragili = Color.Black, colorvitality = Color.Black, colorluck = Color.Black;
         private PlayerIndex playerIndex;
@@ -28,7 +29,7 @@ namespace Steam_Hunters
         public bool active;
         
 
-        public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int intelligence, int strength, int agility, int vitality, int luck, int hp, int mana, int lvl, PlayerIndex playerIndex)
+        public StatusWindow(Texture2D tex, Vector2 pos, string karakterName, int intelligence, int strength, int agility, int vitality, int luck, float hp, float mana, int lvl, PlayerIndex playerIndex)
             :base(tex, pos)
         {
             this.karakterName = karakterName;
@@ -76,6 +77,7 @@ namespace Steam_Hunters
                             {
                                 intelligence++;
                                 points--;
+                                maxMana += intelligence;
                             }
                         }
                         #endregion
@@ -145,6 +147,7 @@ namespace Steam_Hunters
                             {
                                 vitality++;
                                 points--;
+                                maxHp += vitality;
                             }
                         }
                         #endregion
@@ -200,18 +203,18 @@ namespace Steam_Hunters
             
         }
 
-        public void GenerateHealthBar(int CurrentHp, int MaxHp, SpriteBatch spriteBatch)
+        public void GenerateHealthBar(double CurrentHp, double MaxHp, SpriteBatch spriteBatch)
         {
             Double Percent = (Double)CurrentHp / MaxHp;
             spriteBatch.Draw(TextureManager.hpTexture, new Vector2(pos.X - 340, pos.Y - 80), new Rectangle(0, 0, (int)(Percent * 150), 15), Color.White);
-            spriteBatch.DrawString(FontManager.font, CurrentHp + "/" + MaxHp, new Vector2(pos.X - 300, pos.Y - 86), Color.White);
+            spriteBatch.DrawString(FontManager.font, (int)CurrentHp + "/" + MaxHp, new Vector2(pos.X - 300, pos.Y - 86), Color.White);
             spriteBatch.DrawString(FontManager.SteamFont, " HP: ", new Vector2(pos.X - 385, pos.Y - 85), Color.Black);
         }
-        public void GenerateManaBar(int CurrentMana, int MaxMana, SpriteBatch spriteBatch)
+        public void GenerateManaBar(double CurrentMana, double MaxMana, SpriteBatch spriteBatch)
         {
             Double Percent = (Double)CurrentMana / MaxMana;
             spriteBatch.Draw(TextureManager.manaTexture, new Vector2(pos.X - 340, pos.Y - 60), new Rectangle(0, 0, (int)(Percent * 150), 15), Color.White);
-            spriteBatch.DrawString(FontManager.font, CurrentMana + "/" + MaxMana, new Vector2(pos.X - 300, pos.Y - 66), Color.White);
+            spriteBatch.DrawString(FontManager.font, (int)CurrentMana + "/" + MaxMana, new Vector2(pos.X - 300, pos.Y - 66), Color.White);
             spriteBatch.DrawString(FontManager.SteamFont, " MP: ", new Vector2(pos.X - 385, pos.Y - 65), Color.Black);
         }
 
@@ -251,14 +254,7 @@ namespace Steam_Hunters
         #endregion
 
         #region Get Hp mana
-        public int GetHP()
-        {
-            return hp;
-        }
-        public int GetMana()
-        {
-            return mana;
-        }
+       
 
         #endregion
 
@@ -310,16 +306,7 @@ namespace Steam_Hunters
         #endregion
 
         #region Set Hp Mana
-        public int SetHp
-        {
-            get { return hp; }
-            set { hp = value; }
-        }
-        public int SetMana
-        {
-            get { return mana; }
-            set { mana = value; }
-        }
+       
         #endregion
 
         public bool SetStatusWinwosActiv

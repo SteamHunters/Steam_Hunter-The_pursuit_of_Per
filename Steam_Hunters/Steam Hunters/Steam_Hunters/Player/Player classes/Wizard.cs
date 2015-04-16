@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Steam_Hunters
 {
+    
     class Wizard : Player
     {
         private List<Projectile> FireBallList = new List<Projectile>();
@@ -14,19 +15,20 @@ namespace Steam_Hunters
         private List<Projectile> BoulderList = new List<Projectile>();
         private ParticleEngine particleEngineWater, particleEngineFire, particleEngineRocks; 
         private double timerWindRuch;
-        private int oldSpeed, timeWindRuch;
+        private int  timeWindRuch;
         private bool windruchOn, boulderOn, shieldActivated;
         private float boulderspeed = 0.08f, shieldTimer;
+
         
 
-        public Wizard(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, PlayerIndex playerIndex)
-            : base(tex, pos, window, gps, hp, mana, speed, playerIndex)
+        public Wizard(Texture2D tex, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage,PlayerIndex playerIndex)
+            : base(tex, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
-            this.oldSpeed = speed;
             this.timeWindRuch = 1000;
             this.particleEngineWater = new ParticleEngine(TextureManager.steamTextures, pos, Color.Blue);
             this.particleEngineFire = new ParticleEngine(TextureManager.steamTextures, pos, Color.Red);
             this.particleEngineRocks = new ParticleEngine(TextureManager.steamTextures, pos, Color.Gray);
+            this.damage = 10;
 
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 0, 0, 0, 0, 0, hp, mana, 100, playerIndex);
@@ -40,6 +42,7 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+            
             particleEngineSteam.Update();
             particleEngineWater.Update();
             particleEngineFire.Update();
@@ -47,18 +50,27 @@ namespace Steam_Hunters
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
 
-            if (buying == false && statusWindow.active == false)
+            if (shieldActivated == true)
+                time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+           
+
+            if (buying == false && statusWindow.active == true)
             {
                 //klar
                 #region Attack A
                 if (Apress == true)
                 {
-                    Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                    Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
-                    FireBallList.Add(f);
-                    particleEngineFire.EmitterLocation = new Vector2(pos.X, pos.Y);
-                    particleEngineFire.total = 15;
-                    rumble.Vibrate(0.1f, 1f);
+                    if (statusWindow.mana >= 35)
+                    {
+                        Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                        Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                        FireBallList.Add(f);
+                        particleEngineFire.EmitterLocation = new Vector2(pos.X, pos.Y);
+                        particleEngineFire.total = 15;
+                        rumble.Vibrate(0.1f, 1f);
+                        statusWindow.mana -= 35;
+                        
+                    }
                 }
                 else
                     particleEngineFire.total = 0;
@@ -67,12 +79,16 @@ namespace Steam_Hunters
                 #region Attack X
                 if (Xpress == true)
                 {
-                    Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                    Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
-                    WaterBallList.Add(w);
-                    particleEngineWater.EmitterLocation = new Vector2(pos.X, pos.Y);
-                    particleEngineWater.total = 15;
-                    rumble.Vibrate(0.1f, 1f);
+                    if (statusWindow.mana >= 35)
+                    {
+                        Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                        Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                        WaterBallList.Add(w);
+                        particleEngineWater.EmitterLocation = new Vector2(pos.X, pos.Y);
+                        particleEngineWater.total = 15;
+                        rumble.Vibrate(0.1f, 1f);
+                        statusWindow.mana -= 35;
+                    }
                 }
                 else
                     particleEngineWater.total = 0;
@@ -81,28 +97,52 @@ namespace Steam_Hunters
                 #region Attack B
                 if (Bpress == true)
                 {
-                    windruchOn = true;
+                    if (statusWindow.mana >= 20)
+                    {
+                        windruchOn = true;
+                        statusWindow.mana -= 20;
+                    }
                 }
                 #endregion
                 //Klar
                 #region Attack Y
                 if (Ypress == true && boulderOn == false)
                 {
-                    Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                    Projectile b = new Projectile(pos, TextureManager.BoulderSheetTexture, FireAngle, angle, new Vector2(0, 0), 0.25f, 120, new Point(72, 72), new Point(5, 4), 45, true);
-                    BoulderList.Add(b);
-                    boulderOn = true;
+                    if (statusWindow.mana >= 100)
+                    {
+                        Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                        Projectile b = new Projectile(pos, TextureManager.BoulderSheetTexture, FireAngle, angle, new Vector2(0, 0), 0.25f, 120, new Point(72, 72), new Point(5, 4), 45, true);
+                        BoulderList.Add(b);
+                        boulderOn = true;
+                        statusWindow.mana -= 100;
+                    }
                 }
                 #endregion
 
                 if (LTpress == true)
                 {
-                    shieldActivated = true;
+                    if (statusWindow.mana > 0)
+                    {
+                        shieldActivated = true;
+                        statusWindow.mana -= 5 * time;
+                    }
+                    else
+                        shieldActivated = false;
                 }
+                else
+                    shieldActivated = false;
+
 
                 
 
             }
+
+
+            if (statusWindow.hp < statusWindow.maxHp)
+            {
+                statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
+            }
+            
 
 
                 #region Update Fireball
@@ -139,7 +179,7 @@ namespace Steam_Hunters
                 {
                     particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
                     particleEngineSteam.total = 20;
-                    if (speed <= 6)
+                    if (speed <= oldSpeed + 3)
                         speed += 0.5f;
 
                     timerWindRuch += gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -184,16 +224,6 @@ namespace Steam_Hunters
                     }
                 }
                 #endregion
-
-                if (shieldActivated)
-                {
-                    shieldTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                    if (shieldTimer >= 800)
-                    {
-                        shieldActivated = false;
-                        shieldTimer = 0;
-                    }
-                }
 
                 base.Update(gameTime);
                 ShootRightThumbStick(newState, gameTime);
