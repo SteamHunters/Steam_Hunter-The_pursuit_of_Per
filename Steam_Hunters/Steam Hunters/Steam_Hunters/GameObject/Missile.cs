@@ -67,7 +67,7 @@ namespace Steam_Hunters
                 FaceTarget();
 
          //target är död måste läggas in!
-                if (!IsInRange(target.Center))
+                if (!IsInRange(target.Center) )
                 {
                     target = null;
                 }

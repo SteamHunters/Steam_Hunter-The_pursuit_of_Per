@@ -46,7 +46,7 @@ namespace Steam_Hunters
             }
             #endregion
 
-           enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 50, 1, 1, false, 1));
+           enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(700, 700), 200));
 
 
@@ -96,13 +96,25 @@ namespace Steam_Hunters
                 #region Eniemes
                 foreach (Enemies e in enemyList)
                 {
-                    if (e.target == null)
+                    if (e.target == null )
                     {
                        // p.color = Color.White;
                         e.GetClosestPlayer(GameData.playerList);
                     }
                     else
                         p.color = Color.Red;
+
+                    if(p.isDead == true)
+                    {
+                        if(p.hitBox.Intersects(e.hitBox))
+                        {
+                            e.MovementSpeed = 50;
+                        }
+                        else
+                        {
+                            e.MovementSpeed = 110;
+                        }
+                    }
                 }
                 #endregion
             }
@@ -112,6 +124,15 @@ namespace Steam_Hunters
             foreach (Enemies e in enemyList)
             {
                 e.Update(gameTime);
+                if (e.target != null)
+                {
+                    if (e.target.isDead == true)
+                    {
+                        e.Aggro = false;
+                        e.target = null;
+                    }
+                }
+
             }
             #endregion
 
@@ -128,8 +149,16 @@ namespace Steam_Hunters
                     }
                     if (p.LBpress)
                     {
-                        n.buy = true;
-                        p.buying = true;
+                        if (n.IsInRange(p.center) == true)
+                        {
+                            n.buy = true;
+                            p.buying = true;
+                        }
+                        else
+                        {
+                            n.buy = false;
+                            p.buying = false;
+                        }
                     }
                     if (p.Backpress)
                         n.buy = false;
@@ -335,6 +364,7 @@ namespace Steam_Hunters
                 spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
                 GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90,8), spriteBatch);
                 GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+                GameData.playerList[0].DrawPotion(new Vector2(81, 42), spriteBatch);
 
             }
             if (GameData.playerList.Count == 2)
@@ -343,7 +373,8 @@ namespace Steam_Hunters
                 spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
                 GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
                 GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
-               
+                GameData.playerList[0].DrawPotion(new Vector2(81, 42), spriteBatch);
+
                 spriteBatch.Draw(TextureManager.player2HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 0), Color.White);
                 spriteBatch.Draw(GameData.playerList[1].HUDPic, new Vector2(1280 - 15 - GameData.playerList[1].HUDPic.Width , 9), Color.White);
                 GenerateHealthBar(GameData.playerList[1].statusWindow.hp, GameData.playerList[1].statusWindow.maxHp, new Vector2(1280 - 90 - 150, 8), spriteBatch);
@@ -355,6 +386,7 @@ namespace Steam_Hunters
                 spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
                 GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
                 GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+                GameData.playerList[0].DrawPotion(new Vector2(81, 42), spriteBatch);
 
                 spriteBatch.Draw(TextureManager.player2HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 0), Color.White);
                 spriteBatch.Draw(GameData.playerList[1].HUDPic, new Vector2(1280 - 15 - GameData.playerList[1].HUDPic.Width, 9), Color.White);
@@ -373,6 +405,7 @@ namespace Steam_Hunters
                 spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
                 GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
                 GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
+                GameData.playerList[0].DrawPotion(new Vector2(81, 42), spriteBatch);
 
                 spriteBatch.Draw(TextureManager.player2HUD, new Vector2(1280 - TextureManager.player2HUD.Width, 0), Color.White);
                 spriteBatch.Draw(GameData.playerList[1].HUDPic, new Vector2(1280 - 15 - GameData.playerList[1].HUDPic.Width, 9), Color.White);

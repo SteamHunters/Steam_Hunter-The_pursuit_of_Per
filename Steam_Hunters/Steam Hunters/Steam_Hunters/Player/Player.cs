@@ -48,7 +48,7 @@ namespace Steam_Hunters
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed, oldSpeed, time;
 
-        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime;
+        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, isDead;
         protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting, isOccupied;
         #endregion
 
@@ -116,6 +116,13 @@ namespace Steam_Hunters
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height / 1.3f), tex.Width / 6, tex.Height / 2);
             time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (statusWindow.hp <= 0)
+            {
+                isDead = true;
+                color = new Color(128,128,128, 0.3f);
+                statusWindow.hp = 0;
+            }
+
             #region Buying
             if (buying == false)
             {
@@ -133,9 +140,13 @@ namespace Steam_Hunters
             WalkAnimation(gameTime);
 
             BuyPotions();
+
+            UsingPotion();
+           
+
             #region Stats buff
             if (statusWindow.mana < statusWindow.maxMana)
-                statusWindow.mana += 3 * ((1 + (statusWindow.intelligence / 20)) * time / 2);
+                statusWindow.mana += 3 * ((1 + (statusWindow.intelligence / 3)) * time / 2);
 
            if(statusWindow.Selectedattributs == StatusWindow.Attributs.agility)
            {
@@ -153,6 +164,7 @@ namespace Steam_Hunters
                }
            }
            #endregion
+
             if (statusWindow != null)
             {
                 if (buying == false)
@@ -172,19 +184,79 @@ namespace Steam_Hunters
             rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
         }
 
+        private void UsingPotion()
+        {
+            if (Dlefthpress == true)
+            {
+                if (healthPotion >= 1)
+                {
+                    healthPotion -= 1;
+                    statusWindow.hp += 50 * ( 1 + statusWindow.vitality / 75);
+                    if (statusWindow.hp > statusWindow.maxHp)
+                        statusWindow.hp = statusWindow.maxHp;
+                }
+                if (manaPotion >= 1)
+                {
+                    manaPotion -= 1;
+                    statusWindow.mana += 50 * (1 + statusWindow.intelligence / 75);
+                    if (statusWindow.mana > statusWindow.maxMana)
+                        statusWindow.mana = statusWindow.maxMana;
+                }
+                if (ressPotion >= 1 && statusWindow.hp <= 0)
+                {
+                    ressPotion -= 1;
+                    statusWindow.hp += 100;
+                    isDead = false;
+                    color = Color.White;
+                    if (statusWindow.hp > statusWindow.maxHp)
+                        statusWindow.hp = statusWindow.maxHp;
+                }
+                if (buffPotion >= 1)
+                {
+                    buffPotion -= 1;
+                    statusWindow.hp += 50;
+                }
+            }
+        }
+
+        public void DrawPotion(Vector2 pos, SpriteBatch spriteBatch)
+        {
+            if (this.healthPotion >= 1)
+            {
+                spriteBatch.Draw(TextureManager.healthPotionHUDTexture, pos, Color.White);
+                spriteBatch.DrawString(FontManager.HUDFont, ""+healthPotion, new Vector2(pos.X + 35, pos.Y-12), Color.Black);
+            }
+            if (this.manaPotion >= 1)
+            {
+                spriteBatch.Draw(TextureManager.manaPotionHUDTexture, pos, Color.White);
+                spriteBatch.DrawString(FontManager.HUDFont, "" + manaPotion, new Vector2(pos.X + 35, pos.Y - 12), Color.Black);
+            }
+            if (this.buffPotion >= 1)
+            {
+                spriteBatch.Draw(TextureManager.buffPotionHUDTexture, pos, Color.White);
+                spriteBatch.DrawString(FontManager.HUDFont, "" + buffPotion, new Vector2(pos.X + 35, pos.Y - 12), Color.Black);
+            }
+            if (this.ressPotion >= 1)
+            {
+                spriteBatch.Draw(TextureManager.ressPotionHUDTexture, pos, Color.White);
+                spriteBatch.DrawString(FontManager.HUDFont, "" + ressPotion, new Vector2(pos.X + 35, pos.Y - 12), Color.Black);
+            }
+        }
+
 
 
         public override void Draw(SpriteBatch spriteBatch)
         {
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
-            //spriteBatch.Draw(tex, hitBox, Color.Red);
+            spriteBatch.Draw(tex, hitBox, Color.Red);
 
 
             spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
 
+     
 
             foreach (Projectile e in listProjectile)
             {
@@ -377,16 +449,16 @@ namespace Steam_Hunters
                         }
                         if (Apress == true)
                         {
-                            if (manaPotion == 0 && ressPotion == 0 && buffPotion == 0)
+                            if (manaPotion == 0 && ressPotion == 0 && buffPotion == 0 && statusWindow.money >= 100)
                             {
                                 healthPotion += 1;
-                                gold -= 100;
+                                statusWindow.money -= 100;
                             }
-                            if (Bpress == true && healthPotion >= 1)
-                            {
-                                healthPotion -= 1;
-                                gold += 50;
-                            }
+                        }
+                        if (Bpress == true && healthPotion >= 1)
+                        {
+                            healthPotion -= 1;
+                            statusWindow.money += 50;
                         }
                         #endregion
                         break;
@@ -402,16 +474,16 @@ namespace Steam_Hunters
                         }
                         if (Apress == true)
                         {
-                            if (healthPotion == 0 && ressPotion == 0 && buffPotion == 0)
+                            if (healthPotion == 0 && ressPotion == 0 && buffPotion == 0 && statusWindow.money >= 100)
                             {
                                 manaPotion += 1;
-                                gold -= 100;
+                                statusWindow.money -= 100;
                             }
-                            if (Bpress == true && manaPotion >= 1)
-                            {
-                                manaPotion -= 1;
-                                gold += 50;
-                            }
+                        }
+                        if (Bpress == true && manaPotion >= 1)
+                        {
+                            manaPotion -= 1;
+                            statusWindow.money += 50;
                         }
                         #endregion
                         break;
@@ -427,16 +499,16 @@ namespace Steam_Hunters
                         }
                         if (Apress == true)
                         {
-                            if (healthPotion == 0 && ressPotion == 0 && manaPotion == 0)
+                            if (healthPotion == 0 && ressPotion == 0 && manaPotion == 0 && statusWindow.money >= 250)
                             {
                                 buffPotion += 1;
-                                gold -= 100;
+                                statusWindow.money -= 250;
                             }
-                            if (Bpress == true && buffPotion >= 1)
-                            {
-                                buffPotion -= 1;
-                                gold += 50;
-                            }
+                        }
+                        if (Bpress == true && buffPotion >= 1)
+                        {
+                            buffPotion -= 1;
+                            statusWindow.money += 125;
                         }
                         #endregion
                         break;
@@ -452,16 +524,16 @@ namespace Steam_Hunters
                         }
                         if (Apress == true)
                         {
-                            if (healthPotion == 0 && manaPotion == 0 && buffPotion == 0)
+                            if (healthPotion == 0 && manaPotion == 0 && buffPotion == 0 && statusWindow.money >= 500)
                             {
                                 ressPotion += 1;
-                                gold -= 100;
+                                statusWindow.money -= 500;
                             }
-                            if (Bpress == true && ressPotion >= 1)
-                            {
-                                ressPotion -= 1;
-                                gold += 50;
-                            }
+                        }
+                        if (Bpress == true && ressPotion >= 1)
+                        {
+                            ressPotion -= 1;
+                            statusWindow.money += 250;
                         }
                         #endregion
                         break;
@@ -542,7 +614,7 @@ namespace Steam_Hunters
                 {
                     if (shootOneAtTime == true)
                     {
-                        if (isShooting)
+                        if (isShooting && isDead == false)
                         {
                             AddProjectile(new Vector2(0, -1));
                             reloadCount++;
@@ -568,7 +640,7 @@ namespace Steam_Hunters
                     {
                         if (newState.ThumbSticks.Right.X != 0.0f)
                         {
-                            if (isShooting)
+                            if (isShooting && isDead == false)
                             {
                                 AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
                                                                              -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
@@ -577,7 +649,7 @@ namespace Steam_Hunters
                         }
                         else if (newState.ThumbSticks.Right.Y != 0.0f)
                         {
-                            if (isShooting)
+                            if (isShooting && isDead == false)
                             {
                                 AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
                                                                              -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
@@ -589,7 +661,7 @@ namespace Steam_Hunters
                         {
                             if (rightTriggerValue != 0)
                             {
-                                if (isShooting)
+                                if (isShooting && isDead == false)
                                 {
                                     AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
                                     reloadCount++;

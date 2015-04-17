@@ -28,6 +28,7 @@ namespace Steam_Hunters
 
             if (statusWindow.hp < statusWindow.maxHp)
             {
+                if(isDead == false)
                 statusWindow.hp += 5 * ((1 + (statusWindow.vitality / 20)) * time / 2);
             }
 

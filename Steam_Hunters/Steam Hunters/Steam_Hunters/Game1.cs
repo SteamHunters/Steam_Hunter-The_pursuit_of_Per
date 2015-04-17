@@ -84,6 +84,19 @@ namespace Steam_Hunters
        
         protected override void Update(GameTime gameTime)
         {
+
+            if (Keyboard.GetState().IsKeyDown(Keys.G))
+            {
+                if (GameData.playerList[0] != null)
+                  GameData.playerList[0].statusWindow.money += 5;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                if (GameData.playerList[0] != null)
+                    GameData.playerList[0].statusWindow.hp -= 10;
+            }
+
             #region Exit game
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             //    this.Exit();

@@ -54,7 +54,7 @@ namespace Steam_Hunters
                 time = (float)gameTime.ElapsedGameTime.TotalSeconds;
            
 
-            if (buying == false && statusWindow.active == false)
+            if (buying == false && statusWindow.active == false && isDead == false)
             {
                 //klar
                 #region Attack A
@@ -119,6 +119,7 @@ namespace Steam_Hunters
                 }
                 #endregion
 
+                #region Mana Shield
                 if (LTpress == true)
                 {
                     if (statusWindow.mana > 0)
@@ -131,19 +132,16 @@ namespace Steam_Hunters
                 }
                 else
                     shieldActivated = false;
-
-
-                
-
+                #endregion
             }
 
 
             if (statusWindow.hp < statusWindow.maxHp)
             {
+                if (isDead == false)
                 statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
             }
             
-
 
                 #region Update Fireball
                 foreach (Projectile f in FireBallList)
@@ -226,6 +224,7 @@ namespace Steam_Hunters
                 #endregion
 
                 base.Update(gameTime);
+
                 ShootRightThumbStick(newState, gameTime);
 
         }

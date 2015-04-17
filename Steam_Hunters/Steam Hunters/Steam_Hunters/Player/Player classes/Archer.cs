@@ -241,7 +241,7 @@ namespace Steam_Hunters
             }
 
             base.Update(gameTime);
-            ShootRightThumbStick(newState, gameTime);
+                ShootRightThumbStick(newState, gameTime);
 
 
         }

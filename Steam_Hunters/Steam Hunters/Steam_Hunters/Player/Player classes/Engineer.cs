@@ -40,7 +40,7 @@ namespace Steam_Hunters
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
 
-            if (buying == false && statusWindow.active == false)
+            if (buying == false && statusWindow.active == false && isDead == false)
             {
                 #region Dispenser 
                 if (Xpress == true)
@@ -146,11 +146,12 @@ namespace Steam_Hunters
 
             if (statusWindow.hp < statusWindow.maxHp)
             {
+                if (isDead == false)
                 statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
             }
             
             base.Update(gameTime);
-            ShootRightThumbStick(newState, gameTime);
+                ShootRightThumbStick(newState, gameTime);
 
         }
 

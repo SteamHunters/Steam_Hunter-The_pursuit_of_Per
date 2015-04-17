@@ -19,12 +19,12 @@ namespace Steam_Hunters
         protected int Item;
         protected float AttackRangeRadius;
         protected float SearchRadius;
-        protected float MovementSpeed;
+        public float MovementSpeed;
         protected float AttackSpeed;
         //vilken map den ska spawnas i och pos är var i den mapen den är
         protected float MapPos;
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
-        protected bool Aggro, canAttack;
+        public bool Aggro, canAttack;
         protected double AttackCooldown;
         protected Vector2 direction;
         public Player target;
@@ -82,19 +82,22 @@ namespace Steam_Hunters
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             if (Aggro == true && canAttack == false) 
             { 
-            pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (target != null)
+            if (target != null && target.isDead == false)
             {
+                FaceTarget();
+
                 if (!IsInAttackRange(target.center))
                 {
 
                 }
-                FaceTarget();
-                if (!IsInRange(target.center))
+                
+                if (IsInRange(target.center) == false || target.isDead == true)
                 {
                     target = null;
+                    Aggro = false;
                 }
                
                
@@ -121,7 +124,7 @@ namespace Steam_Hunters
         {
             spriteBatch.Draw(tex, center, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, rotation, origin, 1, EntityFx, 1);
             //spriteBatch.Draw(tex, center, new Rectangle(50,50, 50, 50), Color.White, rotation, origin, 1, EntityFx, 1);
-
+            spriteBatch.Draw(tex, hitBox, Color.Black);
         }
         public bool IsInRange(Vector2 pos)
         {
@@ -154,10 +157,11 @@ namespace Steam_Hunters
 
             foreach (Player p in playerList)
             {
-                if (Vector2.Distance(center, p.center) < smallestRange)
+                if (Vector2.Distance(center, p.center) < smallestRange && !p.isDead == true)
                 {
                     smallestRange = Vector2.Distance(center, p.center);
                     target = p;
+
                 }
             }
         }

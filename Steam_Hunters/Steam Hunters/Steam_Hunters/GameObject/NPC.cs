@@ -64,9 +64,9 @@ namespace Steam_Hunters
             if(buy == true)
                 spriteBatch.Draw(tex, center, null, Color.Green, rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
-        public bool IsInRange(Vector2 pos)
+        public bool IsInRange(Vector2 center)
         {
-            return Vector2.Distance(center, pos) <= radius;
+            return Vector2.Distance(this.center, center) <= radius;
         }
         public void GetClosestBuyer(List<Player> playerList)
         {
