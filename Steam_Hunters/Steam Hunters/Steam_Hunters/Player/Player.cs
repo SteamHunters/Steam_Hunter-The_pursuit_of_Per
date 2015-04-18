@@ -43,13 +43,13 @@ namespace Steam_Hunters
 
         protected ParticleEngine particleEngineSteam;
 
-        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold, damage;
+        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold, damage,isHurtTimer;
         protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 75;
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed, oldSpeed, time;
 
-        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, isDead;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting, isOccupied;
+        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, isDead, isHurt;
+        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting;
         #endregion
 
         public StatusWindow statusWindow;
@@ -135,6 +135,8 @@ namespace Steam_Hunters
             }
             #endregion
 
+            invurnableAfterHit();
+
             //ShootRightThumbStick(newState, gameTime);
             changeDirection();
             WalkAnimation(gameTime);
@@ -143,7 +145,6 @@ namespace Steam_Hunters
 
             UsingPotion();
            
-
             #region Stats buff
             if (statusWindow.mana < statusWindow.maxMana)
                 statusWindow.mana += 3 * ((1 + (statusWindow.intelligence / 3)) * time / 2);
@@ -182,6 +183,21 @@ namespace Steam_Hunters
 
             oldState = GamePad.GetState(playerIndex);
             rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
+        }
+
+        private void invurnableAfterHit()
+        {
+            if (isHurt == true)
+            {
+                isHurtTimer++;
+                color = new Color(255, 0, 0, 0.75f);
+            }
+            if (isHurtTimer >= 50)
+            {
+                isHurt = false;
+                isHurtTimer = 0;
+                color = new Color(255, 255, 255, 1f);
+            }
         }
 
         private void UsingPotion()

@@ -25,7 +25,11 @@ namespace Steam_Hunters
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(SpriteBatch spriteBatch);
 
-        public virtual bool IsCollidingObject(GameObject e)
+        public virtual bool IsCollidingObject(GameObject g)
+        {
+            return hitBox.Intersects(g.hitBox);
+        }
+        public virtual bool IsCollidingEntity(Entity e)
         {
             return hitBox.Intersects(e.hitBox);
         }

@@ -98,11 +98,8 @@ namespace Steam_Hunters
                 {
                     if (e.target == null )
                     {
-                       // p.color = Color.White;
                         e.GetClosestPlayer(GameData.playerList);
                     }
-                    else
-                        p.color = Color.Red;
 
                     if(p.isDead == true)
                     {
@@ -113,6 +110,15 @@ namespace Steam_Hunters
                         else
                         {
                             e.MovementSpeed = 110;
+                        }
+                    }
+                    if(p.isHurt == false)
+                    {
+                        //Ett test bara ska inte vara så för alla enemies
+                        if(p.IsCollidingEntity(e))
+                        {
+                            p.statusWindow.hp -= 50;
+                            p.isHurt = true;
                         }
                     }
                 }
@@ -130,6 +136,24 @@ namespace Steam_Hunters
                     {
                         e.Aggro = false;
                         e.target = null;
+                    }
+                }
+                foreach(Projectile p in turretProjectile)
+                {
+                    if(p.IsCollidingEntity(e))
+                    {
+                        //e.life = -10;
+                        turretProjectile.Remove(p);
+                        break;
+                    }
+                }
+                foreach (Missile m in missiles)
+                {
+                    if (m.IsCollidingEntity(e))
+                    {
+                        //e.life = -10;
+                        missiles.Remove(m);
+                        break;
                     }
                 }
 

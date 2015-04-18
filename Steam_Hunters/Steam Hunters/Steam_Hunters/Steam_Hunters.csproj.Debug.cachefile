@@ -1,4 +1,6 @@
 Content\font.xnb
+Content\HUDFont.xnb
+Content\SteamFont.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb
@@ -7,7 +9,6 @@ Content\Singleplayer.xnb
 Content\InstructionScreen.xnb
 Content\StartScreenTest.xnb
 Content\Exit.xnb
-Content\PickACharacterMulti.xnb
 Content\Dispenser.xnb
 Content\turret bot.xnb
 Content\turret top.xnb
@@ -90,6 +91,7 @@ Content\Texturer\Karakter\Engineer\Engineer Pic.xnb
 Content\Texturer\Karakter\Warrior\WarriorPic.xnb
 Content\Texturer\Karakter\Wizard\Wizard Pic.xnb
 Content\PickACharacterSingle.xnb
+Content\PickACharacterMulti.xnb
 Content\steamSmoke1.xnb
 Content\steamSmoke2.xnb
 Content\steamSmoke3.xnb
@@ -105,7 +107,6 @@ Content\NPC.xnb
 Content\Texturer\Enimes\Mobs 1\Melee mob.xnb
 Content\HpPixel.xnb
 Content\ManaPixel.xnb
-Content\StatusWindow.xnb
 Content\BuffPotionHUD.xnb
 Content\BuffPotionSHOP.xnb
 Content\HealthPotionHUD.xnb
@@ -115,7 +116,6 @@ Content\ManaPotionSHOP.xnb
 Content\RessPotionHUD.xnb
 Content\RessPotionSHOP.xnb
 Content\WizardAnimation.xnb
-Content\SteamFont.xnb
 Content\Mage FireBall.xnb
 Content\Mage WaterBall.xnb
 Content\StoneAnimation.xnb
@@ -129,12 +129,12 @@ Content\Player1HUD.xnb
 Content\Player2HUD.xnb
 Content\Player3HUD.xnb
 Content\Player4HUD.xnb
+Content\StatusWindow.xnb
 Content\Archer PicHUD.xnb
 Content\Engineer PicHUD.xnb
 Content\WarriorPicHUD.xnb
 Content\Wizard PicHUD.xnb
 Content\ShopMenu.xnb
-Content\HUDFont.xnb
 Content\Maps\TestMap.tmx
 Content\Maps\TileBank.xml
 Content\Maps\TileBank2.xml
