@@ -145,6 +145,7 @@ namespace Steam_Hunters
         #endregion
 
         // Ta bort sen
+        public static Texture2D archerTrap { get; private set; }
         public static Texture2D testTextureEngineer { get; private set; }
         public static Texture2D testTextureArcher { get; private set; }
         public static Texture2D reload { get; private set; }
@@ -290,6 +291,7 @@ namespace Steam_Hunters
 
             // Ta bort sen
             //wizard = Content.Load<Texture2D>(@"Wizard done");
+            archerTrap = Content.Load<Texture2D>(@"archer trap");
             warriorAnimation = Content.Load<Texture2D>(@"WarriorWalk");
             testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");

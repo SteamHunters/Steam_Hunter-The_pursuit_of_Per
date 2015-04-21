@@ -21,6 +21,9 @@ namespace Steam_Hunters
         private bool isTransparent, isReloading, isPosSaved;
         private Vector2 rainAttack, savePos;
 
+        private Trap trap;
+        private List<Trap> trapList = new List<Trap>();
+
         public Archer(Texture2D tex,Texture2D HUDPic, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
             : base(tex, HUDPic, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
@@ -61,6 +64,8 @@ namespace Steam_Hunters
 
             foreach (Projectile p in powerShootList)
                 p.Update(gameTime);
+            foreach (Trap t in trapList)
+                t.Update(gameTime);
 
             #region regnattacken
             if (newState.Buttons.X == ButtonState.Pressed)//du trycker ner knappen
@@ -138,6 +143,12 @@ namespace Steam_Hunters
             }
             #endregion
 
+            if (Xpress == true)
+            {
+                trap = new Trap(pos, TextureManager.archerTrap, new Point(50, 50), new Point(3, 1), 2000, true);
+                trapList.Add(trap);
+            }
+
             base.Update(gameTime);
             ShootRightThumbStick(newState, gameTime);
         }
@@ -150,6 +161,9 @@ namespace Steam_Hunters
 
             //kolla en bit verkligen snurrar rätt runt gubben, gör det för att checka skottens start pos
             //spriteBatch.Draw(tex, new Vector2(pos.X + 30, pos.Y + 30), new Rectangle(0, 0, 20, 20), col, angle, new Vector2(origin.X + 20, origin.Y + 20), 1, EntityFx, 0);
+
+            foreach (Trap t in trapList)
+                t.Draw(spriteBatch);
 
             #region shoot
             if (isReloading == true)
