@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Griddy2D;
 
 namespace Steam_Hunters
 {
@@ -59,6 +60,7 @@ namespace Steam_Hunters
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState ms = new MouseState();
             
+            
 
             if (ms.RightButton == ButtonState.Pressed)
             {
@@ -91,8 +93,19 @@ namespace Steam_Hunters
             #region Update player/players
             foreach (Player p in GameData.playerList)
             {
-                p.Update(gameTime);
 
+                p.Update(gameTime);
+                foreach (Tile h in level1.hitboxList)
+                {
+                    Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
+                    if (p.hitBox.Intersects(rect))
+                    {
+                        p.HandleCollision();
+                    }                  
+                }
+                
+
+                
                 #region Eniemes
                 foreach (Enemies e in enemyList)
                 {
@@ -125,7 +138,7 @@ namespace Steam_Hunters
                 #endregion
             }
             #endregion
-
+            //level1.Update();
             #region Eniemes
             foreach (Enemies e in enemyList)
             {
@@ -331,6 +344,9 @@ namespace Steam_Hunters
 
             #endregion
 
+
+            
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -339,10 +355,7 @@ namespace Steam_Hunters
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             
-            level1.Draw(spriteBatch);
-
-            spriteBatch.Draw(TextureManager.testTextureEngineer, new Vector2(0f, 0f), Color.White);
-
+            level1.DrawLayerBase(spriteBatch);
             #region Enginers things
             foreach (Projectile tp in turretProjectile)
             {
@@ -365,9 +378,7 @@ namespace Steam_Hunters
                 n.Draw(spriteBatch);
             }
             #endregion
-            #region Enemies
-
-
+            #region Draw PLayer and Enimes
             foreach (Enemies e in enemyList)
             {
                 e.Draw(spriteBatch);
@@ -375,6 +386,14 @@ namespace Steam_Hunters
             foreach (Player p in GameData.playerList)
             {
                 p.Draw(spriteBatch);
+            }
+            #endregion
+            level1.DrawLayerTop(spriteBatch);
+            //level1.DrawLayerHitbox(spriteBatch);
+            #region Draw Interface
+            foreach (Player p in GameData.playerList)
+            {
+                p.DrawInterface(spriteBatch);
             }
             #endregion
             spriteBatch.End();
@@ -386,7 +405,7 @@ namespace Steam_Hunters
             {
                 spriteBatch.Draw(TextureManager.player1HUD, Vector2.Zero, Color.White);
                 spriteBatch.Draw(GameData.playerList[0].HUDPic, new Vector2(15, 9), Color.White);
-                GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90,8), spriteBatch);
+                GenerateHealthBar(GameData.playerList[0].statusWindow.hp, GameData.playerList[0].statusWindow.maxHp, new Vector2(90, 8), spriteBatch);
                 GenerateManaBar(GameData.playerList[0].statusWindow.mana, GameData.playerList[0].statusWindow.maxMana, new Vector2(90, 22), spriteBatch);
                 GameData.playerList[0].DrawPotion(new Vector2(81, 42), spriteBatch);
 

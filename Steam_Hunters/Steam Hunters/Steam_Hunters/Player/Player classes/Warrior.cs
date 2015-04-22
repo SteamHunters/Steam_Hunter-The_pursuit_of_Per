@@ -40,7 +40,6 @@ namespace Steam_Hunters
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            statusWindow.Draw(spriteBatch);
         }
     }
 }

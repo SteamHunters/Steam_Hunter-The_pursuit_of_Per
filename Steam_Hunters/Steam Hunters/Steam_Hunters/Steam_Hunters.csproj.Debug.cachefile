@@ -1,6 +1,4 @@
 Content\font.xnb
-Content\HUDFont.xnb
-Content\SteamFont.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb
@@ -16,72 +14,6 @@ Content\turretBullet.xnb
 Content\teleportLocation.xnb
 Content\Tiles\GriddyDefault\blankTile.xnb
 Content\Tiles\GriddyDefault\unknownTile.xnb
-Content\Tiles\Terrain\Cave\cave_1-1.xnb
-Content\Tiles\Terrain\Cave\cave_1-2.xnb
-Content\Tiles\Terrain\Cave\cave_1-3.xnb
-Content\Tiles\Terrain\Cave\cave_1-4.xnb
-Content\Tiles\Terrain\Cave\cave_1-5.xnb
-Content\Tiles\Terrain\Cave\cave_1-6.xnb
-Content\Tiles\Terrain\Cave\cave_2-1.xnb
-Content\Tiles\Terrain\Cave\cave_2-3.xnb
-Content\Tiles\Terrain\Cave\cave_2-4.xnb
-Content\Tiles\Terrain\Cave\cave_2-5.xnb
-Content\Tiles\Terrain\Cave\cave_2-6.xnb
-Content\Tiles\Terrain\Cave\cave_3-1.xnb
-Content\Tiles\Terrain\Cave\cave_3-2.xnb
-Content\Tiles\Terrain\Cave\cave_3-3.xnb
-Content\Tiles\Terrain\Ground\Grass.xnb
-Content\Tiles\Terrain\House\house_1-1.xnb
-Content\Tiles\Terrain\House\house_1-2.xnb
-Content\Tiles\Terrain\House\house_1-3.xnb
-Content\Tiles\Terrain\House\house_1-4.xnb
-Content\Tiles\Terrain\House\house_1-6.xnb
-Content\Tiles\Terrain\House\house_2-1.xnb
-Content\Tiles\Terrain\House\house_2-2.xnb
-Content\Tiles\Terrain\House\house_2-4.xnb
-Content\Tiles\Terrain\House\house_2-5.xnb
-Content\Tiles\Terrain\House\house_2-6.xnb
-Content\Tiles\Terrain\House\house_3-1.xnb
-Content\Tiles\Terrain\House\house_3-2.xnb
-Content\Tiles\Terrain\House\house_3-3.xnb
-Content\Tiles\Terrain\House\house_3-4.xnb
-Content\Tiles\Terrain\House\house_3-5.xnb
-Content\Tiles\Terrain\House\house_3-6.xnb
-Content\Tiles\Terrain\House\house_4-1.xnb
-Content\Tiles\Terrain\House\house_4-2.xnb
-Content\Tiles\Terrain\House\house_4-3.xnb
-Content\Tiles\Terrain\House\house_4-4.xnb
-Content\Tiles\Terrain\House\house_4-5.xnb
-Content\Tiles\Terrain\House\house_4-6.xnb
-Content\Tiles\Terrain\House\house_5-1.xnb
-Content\Tiles\Terrain\House\house_5-2.xnb
-Content\Tiles\Terrain\House\house_5-4.xnb
-Content\Tiles\Terrain\House\house_5-5.xnb
-Content\Tiles\Terrain\House\house_5-6.xnb
-Content\Tiles\Terrain\House\house_6-1.xnb
-Content\Tiles\Terrain\House\house_6-2.xnb
-Content\Tiles\Terrain\House\house_6-3.xnb
-Content\Tiles\Terrain\House\house_6-4.xnb
-Content\Tiles\Terrain\House\house_6-6.xnb
-Content\Tiles\Terrain\House\house_7-1.xnb
-Content\Tiles\Terrain\House\house_7-2.xnb
-Content\Tiles\Terrain\House\house_7-3.xnb
-Content\Tiles\Terrain\House\house_7-4.xnb
-Content\Tiles\Terrain\House\house_8-1.xnb
-Content\Tiles\Terrain\House\house_8-2.xnb
-Content\Tiles\Terrain\House\house_8-3.xnb
-Content\Tiles\Terrain\House\house_8-4.xnb
-Content\Tiles\Terrain\Path\dirt_1-1.xnb
-Content\Tiles\Terrain\Path\dirt_1-2.xnb
-Content\Tiles\Terrain\Path\dirt_1-3.xnb
-Content\Tiles\Terrain\Path\dirt_1-4.xnb
-Content\Tiles\Terrain\Path\dirt_2-1.xnb
-Content\Tiles\Terrain\Path\dirt_2-2.xnb
-Content\Tiles\Terrain\Path\dirt_2-3.xnb
-Content\Tiles\Terrain\Path\dirt_2-4.xnb
-Content\Tiles\Terrain\Path\dirt_3-1.xnb
-Content\Tiles\Terrain\Path\dirt_3-2.xnb
-Content\Tiles\Terrain\Path\dirt_3-3.xnb
 Content\pixel.xnb
 Content\ArcherTest.xnb
 Content\reload.xnb
@@ -107,6 +39,7 @@ Content\NPC.xnb
 Content\Texturer\Enimes\Mobs 1\Melee mob.xnb
 Content\HpPixel.xnb
 Content\ManaPixel.xnb
+Content\StatusWindow.xnb
 Content\BuffPotionHUD.xnb
 Content\BuffPotionSHOP.xnb
 Content\HealthPotionHUD.xnb
@@ -125,16 +58,135 @@ Content\bulletEng.xnb
 Content\arrowRain.xnb
 Content\WarriorWalk.xnb
 Content\PowerShot Arrow.xnb
+Content\SteamFont.xnb
+Content\HUDFont.xnb
 Content\Player1HUD.xnb
 Content\Player2HUD.xnb
 Content\Player3HUD.xnb
 Content\Player4HUD.xnb
-Content\StatusWindow.xnb
 Content\Archer PicHUD.xnb
 Content\Engineer PicHUD.xnb
 Content\WarriorPicHUD.xnb
 Content\Wizard PicHUD.xnb
 Content\ShopMenu.xnb
-Content\Maps\TestMap.tmx
-Content\Maps\TileBank.xml
-Content\Maps\TileBank2.xml
+Content\Tiles\Dirt (50px)\dirt_1-1.xnb
+Content\Tiles\Dirt (50px)\dirt_1-2.xnb
+Content\Tiles\Dirt (50px)\dirt_1-3.xnb
+Content\Tiles\Dirt (50px)\dirt_1-4.xnb
+Content\Tiles\Dirt (50px)\dirt_2-1.xnb
+Content\Tiles\Dirt (50px)\dirt_2-2.xnb
+Content\Tiles\Dirt (50px)\dirt_2-3.xnb
+Content\Tiles\Dirt (50px)\dirt_2-4.xnb
+Content\Tiles\Dirt (50px)\dirt_3-1.xnb
+Content\Tiles\Dirt (50px)\dirt_3-2.xnb
+Content\Tiles\Dirt (50px)\dirt_3-3.xnb
+Content\Tiles\House (50px)\house_1-1.xnb
+Content\Tiles\House (50px)\house_1-2.xnb
+Content\Tiles\House (50px)\house_1-3.xnb
+Content\Tiles\House (50px)\house_1-4.xnb
+Content\Tiles\House (50px)\house_1-6.xnb
+Content\Tiles\House (50px)\house_2-1.xnb
+Content\Tiles\House (50px)\house_2-2.xnb
+Content\Tiles\House (50px)\house_2-4.xnb
+Content\Tiles\House (50px)\house_2-5.xnb
+Content\Tiles\House (50px)\house_2-6.xnb
+Content\Tiles\House (50px)\house_3-1.xnb
+Content\Tiles\House (50px)\house_3-2.xnb
+Content\Tiles\House (50px)\house_3-3.xnb
+Content\Tiles\House (50px)\house_3-4.xnb
+Content\Tiles\House (50px)\house_3-5.xnb
+Content\Tiles\House (50px)\house_3-6.xnb
+Content\Tiles\House (50px)\house_4-1.xnb
+Content\Tiles\House (50px)\house_4-2.xnb
+Content\Tiles\House (50px)\house_4-3.xnb
+Content\Tiles\House (50px)\house_4-4.xnb
+Content\Tiles\House (50px)\house_4-5.xnb
+Content\Tiles\House (50px)\house_4-6.xnb
+Content\Tiles\House (50px)\house_5-1.xnb
+Content\Tiles\House (50px)\house_5-2.xnb
+Content\Tiles\House (50px)\house_5-4.xnb
+Content\Tiles\House (50px)\house_5-5.xnb
+Content\Tiles\House (50px)\house_5-6.xnb
+Content\Tiles\House (50px)\house_6-1.xnb
+Content\Tiles\House (50px)\house_6-2.xnb
+Content\Tiles\House (50px)\house_6-3.xnb
+Content\Tiles\House (50px)\house_6-4.xnb
+Content\Tiles\House (50px)\house_6-6.xnb
+Content\Tiles\House (50px)\house_7-1.xnb
+Content\Tiles\House (50px)\house_7-2.xnb
+Content\Tiles\House (50px)\house_7-3.xnb
+Content\Tiles\House (50px)\house_7-4.xnb
+Content\Tiles\House (50px)\house_7-5.xnb
+Content\Tiles\House (50px)\house_8-1.xnb
+Content\Tiles\House (50px)\house_8-2.xnb
+Content\Tiles\House (50px)\house_8-3.xnb
+Content\Tiles\House (50px)\house_8-4.xnb
+Content\Tiles\red_50.xnb
+Content\Tiles\Rock (50px)\rock_1-1.xnb
+Content\Tiles\Rock (50px)\rock_1-2.xnb
+Content\Tiles\Rock (50px)\rock_1-3.xnb
+Content\Tiles\Rock (50px)\rock_1-4.xnb
+Content\Tiles\Rock (50px)\rock_1-5.xnb
+Content\Tiles\Rock (50px)\rock_2-1.xnb
+Content\Tiles\Rock (50px)\rock_2-2.xnb
+Content\Tiles\Rock (50px)\rock_2-3.xnb
+Content\Tiles\Rock (50px)\rock_2-4.xnb
+Content\Tiles\Rock (50px)\rock_2-5.xnb
+Content\Tiles\Rock (50px)\rock_3-1.xnb
+Content\Tiles\Rock (50px)\rock_3-2.xnb
+Content\Tiles\Rock (50px)\rock_3-3.xnb
+Content\Tiles\Terrain (50px)\terrain_1-1.xnb
+Content\Tiles\Terrain (50px)\terrain_1-2.xnb
+Content\Tiles\Terrain (50px)\terrain_1-3.xnb
+Content\Tiles\Terrain (50px)\terrain_1-4.xnb
+Content\Tiles\Terrain (50px)\terrain_1-5.xnb
+Content\Tiles\Terrain (50px)\terrain_1-6.xnb
+Content\Tiles\Terrain (50px)\terrain_2-1.xnb
+Content\Tiles\Terrain (50px)\terrain_2-2.xnb
+Content\Tiles\Terrain (50px)\terrain_2-3.xnb
+Content\Tiles\Terrain (50px)\terrain_2-4.xnb
+Content\Tiles\Terrain (50px)\terrain_2-5.xnb
+Content\Tiles\Terrain (50px)\terrain_3-1.xnb
+Content\Tiles\Terrain (50px)\terrain_3-2.xnb
+Content\Tiles\Terrain (50px)\terrain_3-3.xnb
+Content\Tiles\Terrain (50px)\terrain_4-1.xnb
+Content\Tiles\Terrain (50px)\terrain_4-2.xnb
+Content\Tiles\Terrain (50px)\terrain_4-3.xnb
+Content\Tiles\Terrain (50px)\terrain_4-4.xnb
+Content\Tiles\Terrain (50px)\terrain_4-5.xnb
+Content\Tiles\Terrain (50px)\terrain_5-1.xnb
+Content\Tiles\Terrain (50px)\terrain_5-2.xnb
+Content\Tiles\Terrain (50px)\terrain_5-3.xnb
+Content\Tiles\Terrain (50px)\terrain_5-4.xnb
+Content\Tiles\Terrain (50px)\terrain_5-5.xnb
+Content\Tiles\Terrain (50px)\terrain_6-1.xnb
+Content\Tiles\Terrain (50px)\terrain_6-2.xnb
+Content\Tiles\Terrain (50px)\terrain_6-3.xnb
+Content\Tiles\Terrain (50px)\terrain_7-1.xnb
+Content\Tiles\Terrain (50px)\terrain_7-2.xnb
+Content\Tiles\Terrain (50px)\terrain_7-3.xnb
+Content\Tiles\Terrain (50px)\terrain_7-4.xnb
+Content\Tiles\Terrain (50px)\terrain_7-5.xnb
+Content\Tiles\Terrain (50px)\terrain_8-1.xnb
+Content\Tiles\Terrain (50px)\terrain_8-2.xnb
+Content\Tiles\Terrain (50px)\terrain_8-3.xnb
+Content\Tiles\Terrain (50px)\terrain_8-4.xnb
+Content\Tiles\Terrain (50px)\terrain_8-5.xnb
+Content\Tiles\Terrain (50px)\terrain_9-1.xnb
+Content\Tiles\Terrain (50px)\terrain_9-2.xnb
+Content\Tiles\Terrain (50px)\terrain_9-3.xnb
+Content\Tiles\Tree (50px)\tree_1-1.xnb
+Content\Tiles\Tree (50px)\tree_1-2.xnb
+Content\Tiles\Tree (50px)\tree_1-3.xnb
+Content\Tiles\Tree (50px)\tree_1-4.xnb
+Content\Tiles\Tree (50px)\tree_1-5.xnb
+Content\Tiles\Tree (50px)\tree_2-1.xnb
+Content\Tiles\Tree (50px)\tree_2-2.xnb
+Content\Tiles\Tree (50px)\tree_2-3.xnb
+Content\Tiles\Tree (50px)\tree_2-4.xnb
+Content\Tiles\Tree (50px)\tree_2-5.xnb
+Content\Tiles\Tree (50px)\tree_3-1.xnb
+Content\Tiles\Tree (50px)\tree_3-2.xnb
+Content\Tiles\Tree (50px)\tree_3-3.xnb
+Content\Maps\tileMap_v1.tmx
+Content\Maps\tileBank_v1.xml

@@ -10,6 +10,7 @@ namespace Steam_Hunters
        public static List<Player> playerList = new List<Player>();
        public static bool SinglePlayMode, MultiplayerMode;
        public static bool archerSelect, warriorSelect, wizardSelect, engineerSelect;
+       public static int Level = 1;
 
     }
 }

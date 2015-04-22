@@ -313,7 +313,7 @@ namespace Steam_Hunters
             {
                 p.Draw(spriteBatch);
             }
-            statusWindow.Draw(spriteBatch);
+            
         }
 
         //public Texture2D CreateCircle(int radius)

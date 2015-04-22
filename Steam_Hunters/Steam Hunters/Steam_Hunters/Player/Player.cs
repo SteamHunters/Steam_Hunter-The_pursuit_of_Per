@@ -37,7 +37,7 @@ namespace Steam_Hunters
         protected List<Projectile> listProjectile = new List<Projectile>();
         protected Projectile projectile;
 
-        protected GamePadState newState, oldState;
+        public GamePadState newState, oldState;
 
         protected Rumble rumble;
 
@@ -92,6 +92,18 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+            prevPos = pos;
+            #region Buying
+            if (buying == false)
+            {
+                MoveLeftThumbStick(newState);
+            }
+            if (buying == true)
+            {
+                if (Backpress == true)
+                    buying = false;
+            }
+            #endregion
             newState = GamePad.GetState(playerIndex);
             #region Update button presss and with player index
             AButton(playerIndex);
@@ -112,9 +124,8 @@ namespace Steam_Hunters
             StartButton(playerIndex);
             BackButton(playerIndex);
             #endregion
-            prevPos = pos;
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
-            hitBox = new Rectangle((int)pos.X - tex.Width / 12, (int)pos.Y - (int)(tex.Height - tex.Height / 1.3f), tex.Width / 6, tex.Height / 2);
+            hitBox = new Rectangle((int)pos.X - frameSize.X / 2, (int)pos.Y - frameSize.Y / 2, 40, 40);
             time = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (statusWindow.hp <= 0)
             {
@@ -123,17 +134,7 @@ namespace Steam_Hunters
                 statusWindow.hp = 0;
             }
 
-            #region Buying
-            if (buying == false)
-            {
-                MoveLeftThumbStick(newState);
-            }
-            if(buying == true)
-            {
-                if (Backpress == true)
-                    buying = false;
-            }
-            #endregion
+          
 
             invurnableAfterHit();
 
@@ -166,7 +167,8 @@ namespace Steam_Hunters
            }
            #endregion
 
-            if (statusWindow != null)
+            #region update statuswindow
+           if (statusWindow != null)
             {
                 if (buying == false)
                 {
@@ -179,10 +181,11 @@ namespace Steam_Hunters
                         statusWindow.SetStatusWinwosActiv = false;
                 }
             }
-
+           #endregion
 
             oldState = GamePad.GetState(playerIndex);
             rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
+            
         }
 
         private void invurnableAfterHit()
@@ -259,13 +262,11 @@ namespace Steam_Hunters
             }
         }
 
-
-
         public override void Draw(SpriteBatch spriteBatch)
         {
 
             //spriteBatch.Draw(tex, new Rectangle((int)pos.X, (int)pos.Y, tex.Width, tex.Height), null, color, angle, new Vector2(tex.Width / 2, tex.Height / 2), SpriteEffects.None, 0);
-            spriteBatch.Draw(tex, hitBox, Color.Red);
+            //spriteBatch.Draw(tex, hitBox, Color.Red);
 
 
             spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
@@ -278,39 +279,46 @@ namespace Steam_Hunters
             {
                 e.Draw(spriteBatch);
             }
-                spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
-                                                             "\npos: " + pos +
-                                                             "\nshoot timer: " + shootTimer +
-                                                             "\namount of proj: " + listProjectile.Count +
-                                                             "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
+            spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
+                                                         "\npos: " + pos +
+                                                         "\nshoot timer: " + shootTimer +
+                                                         "\namount of proj: " + listProjectile.Count +
+                                                         "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
 
-                if (buying == true)
+                
+        }
+
+        public virtual void DrawInterface(SpriteBatch spriteBatch)
+        {
+            statusWindow.Draw(spriteBatch);
+
+            if (buying == true)
+            {
+                spriteBatch.Draw(TextureManager.shopHUD, new Vector2(pos.X - 199, pos.Y - 250), Color.White);
+                switch (selectedPotion)
                 {
-                    spriteBatch.Draw(TextureManager.shopHUD, new Vector2(pos.X - 199, pos.Y-250), Color.White);
-                    switch (selectedPotion)
-                    {
-                        case Potion.Health:
-                            #region intelligence
-                            spriteBatch.Draw(TextureManager.healthPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
-                            #endregion
-                            break;
-                        case Potion.Mana:
-                            #region strength
-                            spriteBatch.Draw(TextureManager.manaPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
-                            #endregion
-                            break;
-                        case Potion.Buff:
-                            #region agility
-                            spriteBatch.Draw(TextureManager.buffPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
-                            #endregion
-                            break;
-                        case Potion.Ress:
-                            #region vitality
-                            spriteBatch.Draw(TextureManager.ressPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
-                            #endregion
-                            break;
-                    }
+                    case Potion.Health:
+                        #region intelligence
+                        spriteBatch.Draw(TextureManager.healthPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
+                        #endregion
+                        break;
+                    case Potion.Mana:
+                        #region strength
+                        spriteBatch.Draw(TextureManager.manaPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
+                        #endregion
+                        break;
+                    case Potion.Buff:
+                        #region agility
+                        spriteBatch.Draw(TextureManager.buffPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
+                        #endregion
+                        break;
+                    case Potion.Ress:
+                        #region vitality
+                        spriteBatch.Draw(TextureManager.ressPotionSHOPTexture, new Vector2(pos.X, pos.Y - 211), Color.White);
+                        #endregion
+                        break;
                 }
+            }
         }
 
         #region Get gamePad button
@@ -617,8 +625,7 @@ namespace Steam_Hunters
         {
             pos.X += newState.ThumbSticks.Left.X * speed;
             pos.Y -= newState.ThumbSticks.Left.Y * speed;
-        }
-       
+        }    
 
         protected void ShootRightThumbStick(GamePadState newState, GameTime gameTime)
         {
@@ -758,12 +765,12 @@ namespace Steam_Hunters
             pos = prevPos;
         }
 
-
         public GamePlayScreen SetGPS
         {
             get { return gps; }
             set { gps = value; }
         }
+       
 
     }
 }

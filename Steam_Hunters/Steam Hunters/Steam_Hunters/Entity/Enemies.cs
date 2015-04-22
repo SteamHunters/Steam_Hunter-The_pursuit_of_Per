@@ -42,7 +42,7 @@ namespace Steam_Hunters
         {
 
             spriteBatch.Draw(tex, center, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), Color.White, rotation, origin, 1, EntityFx, 1);
-            spriteBatch.Draw(tex, hitBox, Color.Black);
+            //spriteBatch.Draw(tex, hitBox, Color.Black);
         }
      
         private void GetRandomDirection2()

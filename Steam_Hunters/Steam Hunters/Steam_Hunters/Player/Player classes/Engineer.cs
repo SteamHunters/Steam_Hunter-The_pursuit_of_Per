@@ -34,7 +34,9 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            
+           
+            ShootRightThumbStick(newState, gameTime);
+
             turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
             particleEngineSteam.Update();
             statusWindow.SetPos = pos;
@@ -149,10 +151,9 @@ namespace Steam_Hunters
                 if (isDead == false)
                 statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
             }
-            
-            base.Update(gameTime);
-                ShootRightThumbStick(newState, gameTime);
 
+
+            base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -164,7 +165,7 @@ namespace Steam_Hunters
             particleEngineSteam.Draw(spriteBatch);
             base.Draw(spriteBatch);
 
-            statusWindow.Draw(spriteBatch);
+            
         }
     }
 }

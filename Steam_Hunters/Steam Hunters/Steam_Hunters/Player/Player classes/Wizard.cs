@@ -31,7 +31,7 @@ namespace Steam_Hunters
             this.damage = 10;
 
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
-            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 0, 0, 0, 0, 0, hp, mana, 100, playerIndex);
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 100, 0, 0, 0, 0, hp, mana, 100, playerIndex);
 
             projTex = TextureManager.bulletWiz;
             projectileTimerLife = 500;
@@ -264,7 +264,7 @@ namespace Steam_Hunters
             
 
             base.Draw(spriteBatch);
-            statusWindow.Draw(spriteBatch);
+            
             if (shieldActivated)
             {
                 spriteBatch.Draw(TextureManager.magicShield, pos, new Rectangle(0, 0, TextureManager.magicShield.Width, TextureManager.magicShield.Height), Color.White, 0, new Vector2(TextureManager.magicShield.Width / 2, TextureManager.magicShield.Height / 2), 1, SpriteEffects.None, 0);
