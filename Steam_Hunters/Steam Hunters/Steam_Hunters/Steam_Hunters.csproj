@@ -111,6 +111,7 @@
     <Compile Include="Managers\SoundEffectManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
     <Compile Include="Managers\SoundControllManager.cs" />
+    <Compile Include="GameObject\Trap.cs" />
     <Compile Include="World\World.cs" />
   </ItemGroup>
   <ItemGroup>
