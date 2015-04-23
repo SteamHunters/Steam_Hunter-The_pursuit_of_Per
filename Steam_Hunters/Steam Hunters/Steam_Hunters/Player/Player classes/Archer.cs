@@ -221,11 +221,8 @@ namespace Steam_Hunters
 
             foreach (Projectile p in powerShootList)
                 p.Draw(spriteBatch);
-<<<<<<< HEAD
-            }
             
-=======
->>>>>>> origin/master
+
         }
 
         private void PowerShoot()

@@ -48,8 +48,8 @@ namespace Steam_Hunters
             #endregion
 
            enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
-           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(700, 700), 200));
-
+           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
+           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -138,7 +138,7 @@ namespace Steam_Hunters
                 #endregion
             }
             #endregion
-            //level1.Update();
+
             #region Eniemes
             foreach (Enemies e in enemyList)
             {
@@ -191,11 +191,11 @@ namespace Steam_Hunters
                             n.buy = true;
                             p.buying = true;
                         }
-                        else
-                        {
-                            n.buy = false;
-                            p.buying = false;
-                        }
+                        //else
+                        //{
+                        //    n.buy = false;
+                        //    p.buying = false;
+                        //}
                     }
                     if (p.Backpress)
                         n.buy = false;

@@ -31,7 +31,7 @@ namespace Steam_Hunters
             this.damage = 10;
 
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
-            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 100, 0, 0, 0, 0, hp, mana, 100, playerIndex);
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sir Anton", 20, 0, 0, 0, 0, hp, mana, 100, playerIndex);
 
             projTex = TextureManager.bulletWiz;
             projectileTimerLife = 500;

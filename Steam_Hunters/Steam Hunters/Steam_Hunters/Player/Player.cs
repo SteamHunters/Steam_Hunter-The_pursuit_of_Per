@@ -92,6 +92,7 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+            newState = GamePad.GetState(playerIndex);
             prevPos = pos;
             #region Buying
             if (buying == false)
@@ -100,11 +101,11 @@ namespace Steam_Hunters
             }
             if (buying == true)
             {
+                BuyPotions();
                 if (Backpress == true)
                     buying = false;
             }
             #endregion
-            newState = GamePad.GetState(playerIndex);
             #region Update button presss and with player index
             AButton(playerIndex);
             XButton(playerIndex);
@@ -142,7 +143,7 @@ namespace Steam_Hunters
             changeDirection();
             WalkAnimation(gameTime);
 
-            BuyPotions();
+            
 
             UsingPotion();
            
@@ -280,7 +281,7 @@ namespace Steam_Hunters
                 e.Draw(spriteBatch);
             }
             spriteBatch.DrawString(FontManager.font, "value: " + prevThumbStickRightValue +
-                                                         "\npos: " + pos +
+                                                         "\npos: " + new Vector2(pos.X, pos.Y) +
                                                          "\nshoot timer: " + shootTimer +
                                                          "\namount of proj: " + listProjectile.Count +
                                                          "\namount of bullets: " + reloadCount, new Vector2(pos.X - 100, pos.Y - 200), Color.Red);
