@@ -237,22 +237,43 @@ namespace Steam_Hunters
                 {
                     case Character.Archer:
                         #region Archer
-                        spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Archer", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Namn: HEjsan"
+                                                                     +"\nType: Range"
+                                                                     +"\nAttribut: Agility"
+                                                                     +"\nHP: 100"
+                                                                     +"\nMP: 100", new Vector2(585, 315), Color.Black);
+
                         #endregion
                         break;
                     case Character.Warrior:
                         #region Warrior
-                        spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Warrior", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Namn: LoL"
+                                                                     + "\nType: Melee"
+                                                                     + "\nAttribut: strength"
+                                                                     + "\nHP: 100"
+                                                                     + "\nMP: 100", new Vector2(585, 315), Color.Black);
                         #endregion
                         break;
                     case Character.Engineer:
                         #region Engineer
-                        spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Engineer", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Namn: Sebastian"
+                                                                     + "\nType: Range"
+                                                                     + "\nAttribut: Balance"
+                                                                     + "\nHP: 100"
+                                                                     + "\nMP: 100", new Vector2(585, 315), Color.Black);
                         #endregion
                         break;
                     case Character.Wizard:
                         #region Wizard
-                        spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Wizard", new Vector2(450, 410), Color.White);
+                        spriteBatch.DrawString(FontManager.SteamFont, "Namn: Sir Anton"
+                                                                     + "\nType: Range"
+                                                                     + "\nAttribut: Intelligence"
+                                                                     + "\nHP: 75"
+                                                                     + "\nMP: 250", new Vector2(585, 315), Color.Black);
                         #endregion
                         break;
                 }

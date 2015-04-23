@@ -195,12 +195,23 @@ namespace Steam_Hunters
                 //spriteBatch.DrawString(FontManager.font, " Next Level: " + nextLvl, new Vector2(pos.X - 220, pos.Y - 200), Color.White);
                 GenerateHealthBar(hp, maxHp, spriteBatch);
                 GenerateManaBar(mana, maxMana, spriteBatch);
-                spriteBatch.DrawString(FontManager.SteamFont, " Int: " + intelligence, new Vector2(pos.X - 385, pos.Y - 15), colorint);
-                spriteBatch.DrawString(FontManager.SteamFont, "\n str: " + strength, new Vector2(pos.X - 385, pos.Y - 15), colorstr);
-                spriteBatch.DrawString(FontManager.SteamFont, "\n\n agil: " + agility, new Vector2(pos.X - 385, pos.Y - 15), coloragili);
-                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n vita: " + vitality, new Vector2(pos.X - 385, pos.Y - 15), colorvitality);
-                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n luck: " + luck, new Vector2(pos.X - 385, pos.Y - 15), colorluck);
-                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n\n\n Points: " + points, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
+                spriteBatch.DrawString(FontManager.SteamFont, " Intelligence:", new Vector2(pos.X - 385, pos.Y - 15), colorint);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n Strength:", new Vector2(pos.X - 385, pos.Y - 15), colorstr);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n Agility:", new Vector2(pos.X - 385, pos.Y - 15), coloragili);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n Vitality:", new Vector2(pos.X - 385, pos.Y - 15), colorvitality);
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n luck:", new Vector2(pos.X - 385, pos.Y - 15), colorluck);
+
+
+                spriteBatch.DrawString(FontManager.SteamFont, "\t\t" + intelligence
+                                                             + "\n\t\t" + strength
+                                                             + "\n\t\t" + agility
+                                                             + "\n\t\t" + vitality
+                                                             + "\n\t\t" + luck, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
+
+
+
+
+                spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n\n\n Points:" + points, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
                 spriteBatch.DrawString(FontManager.SteamFont, "\n\n\n\n\n\n\n Money: " + money, new Vector2(pos.X - 385, pos.Y - 15), Color.Black);
             }
             
