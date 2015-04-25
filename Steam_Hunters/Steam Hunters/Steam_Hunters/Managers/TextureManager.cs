@@ -140,6 +140,8 @@ namespace Steam_Hunters
 
         public static Texture2D hpTexture { get; private set; }
         public static Texture2D manaTexture { get; private set; }
+
+        public static Texture2D cloud1Texture { get; private set; }
         #endregion
 
         #endregion
@@ -284,6 +286,7 @@ namespace Steam_Hunters
 
             #region M.m. Texturer
 
+            cloud1Texture = Content.Load<Texture2D>(@"Cloud");
 
             #endregion
 
@@ -327,9 +330,6 @@ namespace Steam_Hunters
             hpTexture = Content.Load<Texture2D>(@"HpPixel");
             manaTexture = Content.Load<Texture2D>(@"ManaPixel");
             NPCTexture = Content.Load<Texture2D>(@"NPC");
-
-
-
         }
 
 
