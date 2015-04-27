@@ -16,6 +16,7 @@ namespace Steam_Hunters
         public Camera camera;
         private Vector2 cameraCenter;
         private Dialog dialog;
+        CloudAnimation cloudAnimation;
         
         List<Player> playerlist = new List<Player>();
 
@@ -51,6 +52,8 @@ namespace Steam_Hunters
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
 
+           cloudAnimation = new CloudAnimation(game.Content, game.Window);
+
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
         }
@@ -59,7 +62,7 @@ namespace Steam_Hunters
         {
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState ms = new MouseState();
-            
+            cloudAnimation.Update();
             
 
             if (ms.RightButton == ButtonState.Pressed)
@@ -396,6 +399,12 @@ namespace Steam_Hunters
                 p.DrawInterface(spriteBatch);
             }
             #endregion
+
+            spriteBatch.End();
+
+            //clouds
+            spriteBatch.Begin();
+            cloudAnimation.Draw(spriteBatch);
             spriteBatch.End();
 
             //static
