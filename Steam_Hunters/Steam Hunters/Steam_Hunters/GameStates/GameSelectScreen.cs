@@ -12,15 +12,13 @@ namespace Steam_Hunters
     {
     
         private SelectCharacter selectCharacterP1, selectCharacterP2, selectCharacterP3, selectCharacterP4;
-        private GamePlayScreen gps;
         private Game1 game;
-        private GamePadState oldgamePadStateP1 = GamePad.GetState(PlayerIndex.One);
-        private bool archerSelect, warriorSelect, wizardSelect, engineerSelect;
+        public GamePadState gamePadState, oldgamePadState = GamePad.GetState(PlayerIndex.One);
+        float timer;
 
         public GameSelectScreen(Game1 game)
         {
             this.game = game;
-            this.gps = new GamePlayScreen(game);
             selectCharacterP1 = new SelectCharacter(game, PlayerIndex.One);
             if (GameData.MultiplayerMode == true)
             {
@@ -31,10 +29,14 @@ namespace Steam_Hunters
             
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
+            oldgamePadState = gamePadState;
+            gamePadState = GamePad.GetState(PlayerIndex.One);
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             #region Singleplayer
-            if (GameData.SinglePlayMode == true)
+            if (GameData.SinglePlayMode == true && timer > 0.2f)
             {
                 selectCharacterP1.Update();
                 
@@ -42,7 +44,7 @@ namespace Steam_Hunters
             #endregion
 
             #region Multiplayer
-            if (GameData.MultiplayerMode == true)
+            if (GameData.MultiplayerMode == true && timer > 0.2f)
             {
                 selectCharacterP1.Update();
                 selectCharacterP2.Update();
@@ -51,7 +53,8 @@ namespace Steam_Hunters
             }
             #endregion
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed && oldgamePadStateP1.Buttons.B == ButtonState.Released)
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed && oldgamePadState.Buttons.B == ButtonState.Released)
             {
                 GameData.playerList.Clear();
                 GameData.archerSelect = false;
@@ -62,7 +65,7 @@ namespace Steam_Hunters
                 GameData.MultiplayerMode = false;
                 game.StartScreen();
             }
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed && oldgamePadStateP1.Buttons.Start == ButtonState.Released && GameData.playerList.Count != 0)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed && oldgamePadState.Buttons.Start == ButtonState.Released && GameData.playerList.Count != 0)
                 game.StartGame();
 
         }

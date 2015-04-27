@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Griddy2D;
+using Microsoft.Xna.Framework.Media;
 
 namespace Steam_Hunters
 {
@@ -32,6 +33,10 @@ namespace Steam_Hunters
 
         public GamePlayScreen(Game1 game)
         {
+            GameData.volym = 0.1f;
+            if (GameData.Level == 1)
+                MediaPlayer.Play(MusicManager.Level1Music);
+
             #region Få ut / sätter in data i GameData.playerlist
             foreach (Player p in GameData.playerList)
             {
@@ -48,11 +53,11 @@ namespace Steam_Hunters
             }
             #endregion
 
-           enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
-           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
-           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
 
-           cloudAnimation = new CloudAnimation(game.Content, game.Window);
+            enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
+            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
+            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
+            cloudAnimation = new CloudAnimation(game.Content, game.Window);
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -60,6 +65,7 @@ namespace Steam_Hunters
 
         public void Update(GameTime gameTime)
         {
+            
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState ms = new MouseState();
             cloudAnimation.Update();
@@ -392,7 +398,7 @@ namespace Steam_Hunters
             }
             #endregion
             level1.DrawLayerTop(spriteBatch);
-            level1.DrawLayerHitbox(spriteBatch);
+            //level1.DrawLayerHitbox(spriteBatch);
             #region Draw Interface
             foreach (Player p in GameData.playerList)
             {

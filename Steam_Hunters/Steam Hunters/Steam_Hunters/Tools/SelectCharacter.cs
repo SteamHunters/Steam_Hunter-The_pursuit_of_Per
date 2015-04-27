@@ -35,8 +35,10 @@ namespace Steam_Hunters
 
         public void Update()
         {
-           
+            
             gamePadState = GamePad.GetState(playerIndex);
+            
+            
 
             #region Select character
             switch (SelectedCharacter)
@@ -55,17 +57,8 @@ namespace Steam_Hunters
                     {
                         p = new Archer(TextureManager.testTextureArcher, TextureManager.ArhHUD, new Vector2(1665, 3235), game.Window, gps, 100, 100, speed, 1, playerIndex);
                         GameData.playerList.Add(p);
-                        //p = new Warrior(TextureManager.warriorAnimation, new Vector2(300, 450), game.Window, gps, 1, 1, 5, playerIndex);
-                        //GameData.playerList.Add(p);
-                        //p = new Wizard(TextureManager.WizardAnimation, new Vector2(550, 500), game.Window, gps, 1, 1, 5, playerIndex);
-                        //GameData.playerList.Add(p);
-                        //p = new Engineer(TextureManager.testTextureEngineer, new Vector2(800, 550), game.Window, gps, 1, 1, 5, playerIndex);
-                        //GameData.playerList.Add(p);
                         Selected = true;
                         GameData.archerSelect = true;
-                    //    GameData.wizardSelect = true;
-                    //    GameData.engineerSelect = true;
-                    //    GameData.warriorSelect = true;
                     }
                     #endregion
                     break;

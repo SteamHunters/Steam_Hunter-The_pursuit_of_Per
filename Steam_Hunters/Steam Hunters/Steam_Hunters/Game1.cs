@@ -59,9 +59,7 @@ namespace Steam_Hunters
        
         protected override void LoadContent()
         {
-            
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             TextureManager.LoadContent(Content);
             FontManager.LoadContent(Content);
             MusicManager.LoadContent(Content);
@@ -69,8 +67,9 @@ namespace Steam_Hunters
 
             startScreen = new StartScreen(this);
             currentScreen = Screen.StartScreen;
+            MediaPlayer.Play(MusicManager.MenyMusic);
+            MediaPlayer.IsRepeating = true;
             
-
             base.LoadContent();
 
         }
@@ -84,7 +83,7 @@ namespace Steam_Hunters
        
         protected override void Update(GameTime gameTime)
         {
-
+            MediaPlayer.Volume = GameData.volym;
             if (Keyboard.GetState().IsKeyDown(Keys.G))
             {
                 if (GameData.playerList[0] != null)
@@ -113,7 +112,7 @@ namespace Steam_Hunters
                     break;
                 case Screen.GameSelectScreen:
                     if (gameSelectScreen != null)
-                        gameSelectScreen.Update();
+                        gameSelectScreen.Update(gameTime);
                     break;
                 case Screen.GamePlayScreen:
                     if (gamePlayScreen != null)

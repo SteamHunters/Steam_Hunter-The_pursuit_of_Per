@@ -30,7 +30,6 @@ namespace Steam_Hunters
             oldgamePadState = gamePadState;
             gamePadState = GamePad.GetState(PlayerIndex.One);
             
-
             #region moveStartMenu
             if (gamePadState.DPad.Down == ButtonState.Pressed && oldgamePadState.DPad.Down == ButtonState.Released && showCharacterSelectSingle == false && showCharacterSelectMulti == false)
             {
@@ -103,7 +102,7 @@ namespace Steam_Hunters
             {
                 showInstruction = false;
             }
-
+           
 
         }
         public void Draw(SpriteBatch spriteBatch)
