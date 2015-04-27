@@ -389,7 +389,7 @@ namespace Steam_Hunters
             }
             #endregion
             level1.DrawLayerTop(spriteBatch);
-            //level1.DrawLayerHitbox(spriteBatch);
+            level1.DrawLayerHitbox(spriteBatch);
             #region Draw Interface
             foreach (Player p in GameData.playerList)
             {
