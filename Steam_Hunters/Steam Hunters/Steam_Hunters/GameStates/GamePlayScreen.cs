@@ -17,7 +17,7 @@ namespace Steam_Hunters
         public Camera camera;
         private Vector2 cameraCenter;
         private Dialog dialog;
-        CloudAnimation cloudAnimation;
+        private List <CloudAnimation> cloudAnimation;
         
         List<Player> playerlist = new List<Player>();
 
@@ -57,7 +57,11 @@ namespace Steam_Hunters
             enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
-            cloudAnimation = new CloudAnimation(game.Content, game.Window);
+
+            cloudAnimation = new List<CloudAnimation>();
+            //cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud1Texture, 0.0f));
+            cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud2Texture, 10.0f));
+            //cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud3Texture, 50.0f)); 
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -68,8 +72,19 @@ namespace Steam_Hunters
             
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState ms = new MouseState();
-            cloudAnimation.Update();
-            
+
+            foreach (CloudAnimation cA in cloudAnimation)
+            {
+                cA.MoveDown(gameTime);
+
+                foreach (Player p in GameData.playerList)
+                {
+                    if (p.newState.ThumbSticks.Left.Y != 0)
+                        cA.speed = p.newState.ThumbSticks.Left.Y * 50;
+                    else
+                        cA.speed = 15;
+                }
+            }
 
             if (ms.RightButton == ButtonState.Pressed)
             {
@@ -102,7 +117,6 @@ namespace Steam_Hunters
             #region Update player/players
             foreach (Player p in GameData.playerList)
             {
-
                 p.Update(gameTime);
                 foreach (Tile h in level1.hitboxList)
                 {
@@ -359,8 +373,7 @@ namespace Steam_Hunters
         }
 
         public void Draw(SpriteBatch spriteBatch)
-        {
-     
+        {     
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             
@@ -410,7 +423,10 @@ namespace Steam_Hunters
 
             //clouds
             spriteBatch.Begin();
-            cloudAnimation.Draw(spriteBatch);
+            foreach (CloudAnimation cA in cloudAnimation)
+            {
+                cA.Draw(spriteBatch);
+            };
             spriteBatch.End();
 
             //static

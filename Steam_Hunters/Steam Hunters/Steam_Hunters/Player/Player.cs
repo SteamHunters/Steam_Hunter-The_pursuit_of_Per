@@ -136,7 +136,6 @@ namespace Steam_Hunters
             }
 
           
-
             invurnableAfterHit();
 
             //ShootRightThumbStick(newState, gameTime);

@@ -3,130 +3,110 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace Steam_Hunters
 {
-    class CloudAnimation
+    public class CloudAnimation
     {
-        List<Vector2> foreground, middleground, background;
-        int fgSpacing, mgSpacing, bgSpacing;
-        float fgSpeed, mgSpeed, bgSpeed;
-        Texture2D[] tex;
-        GameWindow window;
+        private Texture2D texture;          // layer texture  
+        public Vector2 position1;           // position of 1st layer copy
+        public Vector2 position2;           // position of 1st layer copy
+        public float speed;                // layer speed (for parallax scrolling)
+        private float viewportWidth;        // viewport width
+        private float viewportHeight;       // viewport height
 
-        public CloudAnimation(ContentManager Content, GameWindow window)
+
+        /// <summary>
+        /// Building a new layer in our Parallax Scroll. 
+        /// </summary>
+        /// <param name="graphics">graphics device where we are drawing our layer </param>
+        /// <param name="texture">Layer background texture</param>
+        /// <param name="speed">speed to move our layer (parallax)</param>
+        public CloudAnimation(GraphicsDeviceManager graphics, Texture2D texture, float speed)
         {
-            this.tex = new Texture2D[3];
-            this.window = window;
+            // Assigments
+            this.texture = texture;
+            this.speed = speed;
+            viewportWidth = graphics.GraphicsDevice.Viewport.Width;
+            viewportHeight = graphics.GraphicsDevice.Viewport.Height;
 
-            tex[0] = Content.Load<Texture2D>("Cloud");
-            tex[1] = Content.Load<Texture2D>("Cloud2");
-            tex[2] = Content.Load<Texture2D>("Cloud3");
-
-            middleground = new List<Vector2>();
-            mgSpacing = window.ClientBounds.Width /1;
-            mgSpeed = 0.75f;
-
-            for (int i = 0; i < (window.ClientBounds.Width / mgSpacing) + 2; i++)
-            {
-                middleground.Add(new Vector2(i * mgSpacing,
-                window.ClientBounds.Height - tex[0].Height - tex[1].Height));
-            }
-
-            background = new List<Vector2>();
-            bgSpacing = window.ClientBounds.Width / 2;
-            bgSpeed = 1.0f;
-
-            for (int i = 0; i < (window.ClientBounds.Width / bgSpacing) + 2; i++)
-            {
-                background.Add(new Vector2(i * bgSpacing, window.ClientBounds.Height
-                - tex[2].Height));
-            }
-
-            foreground = new List<Vector2>();
-            fgSpacing = window.ClientBounds.Width /1 ;
-            fgSpeed = 0.8f;
-
-            for (int i = 0; i < (window.ClientBounds.Width / fgSpacing) + 2; i++)
-            {
-                foreground.Add(new Vector2(i * fgSpacing, window.ClientBounds.Height
-                - tex[0].Height));
-            }
+            // First layer in Screen, second layer, just behind first one
+            position1 = new Vector2(0.0f, 0.0f);
+            position2 = new Vector2(0.0f, 0.0f + texture.Height);
         }
 
-        public void Update()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gameTime">time elapsed since last iteration</param>
+        public void Update(GameTime gameTime)
         {
-            mgSpeed = 0.25f;
-            fgSpeed = 0.5f;
-            bgSpeed = 0.1f;
 
-            for (int i = 0; i < foreground.Count; i++)
-            {
-                foreground[i] = new Vector2(foreground[i].X - fgSpeed,
-                foreground[i].Y - fgSpeed);
-                if (foreground[i].X <= -fgSpacing)
-                {
-                    int j = i - 1;
-                    if (j < 0)
-                    {
-                        j = foreground.Count - 1;
-                    }
-                    foreground[i] = new Vector2(foreground[j].X + fgSpacing - 1,
-                    foreground[i].Y +(window.ClientBounds.Height) - 1);
-                }
-            }
-
-            for (int i = 0; i < middleground.Count; i++)
-            {
-                middleground[i] = new Vector2(middleground[i].X - mgSpeed,
-                middleground[i].Y - mgSpeed);
-                if (middleground[i].X <= -mgSpacing)
-                {
-                    int j = i - 1;
-                    if (j < 0)
-                    {
-                        j = middleground.Count - 1;
-                    }
-                    middleground[i] = new Vector2(middleground[j].X + mgSpacing - 1,
-                    middleground[i].Y+(window.ClientBounds.Height) - 1);
-                }
-            }
-            for (int i = 0; i < background.Count; i++)
-            {
-                background[i] = new Vector2(background[i].X - bgSpeed,
-                background[i].Y - bgSpeed);
-                if (background[i].X <= -bgSpacing)
-                {
-                    int j = i - 1;
-                    if (j < 0)
-                    {
-                        j = background.Count - 1;
-                    }
-                    background[i] = new Vector2(background[j].X + bgSpacing - 1,
-                    background[i].Y+(window.ClientBounds.Height) - 1);
-                }
-            }
         }
 
-        public void Draw(SpriteBatch sb)
+        /// <summary>
+        /// Method to move up our parrallax layer ( moving backwards effect).
+        /// </summary>
+        /// <param name="gameTime">time elapsed since last iteration</param>
+        public void MoveUp(GameTime gameTime)
         {
-            foreach (Vector2 v in background)
-            {
-                sb.Draw(tex[2], v, Color.White);
-            }
-            foreach (Vector2 v in middleground)
-            {
-                sb.Draw(tex[1], v, Color.White);
-            }
-            foreach (Vector2 v in foreground)
-            {
-                sb.Draw(tex[0], v, Color.White);
-            }
+            // get seconds since last iteration
+            float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            // update the current layer position (using layer's speed and delta)
+            position1.Y -= speed * delta;
+            position2.Y -= speed * delta;
+
+            // Check if the layer have reach out of our Viewporth. If yes we
+            // move it behind the other layer. 
+            if (position1.Y < (viewportHeight * -1))
+                position1.Y = position2.Y + texture.Height;
+
+            if (position2.Y < (viewportHeight * -1))
+                position2.Y = position1.Y + texture.Height;
+
+        }
+
+        /// <summary>
+        /// Method to move up our parrallax layer ( moving forward effect).
+        /// </summary>
+        /// <param name="gameTime">time elapsed since last iteration</param>
+        public void MoveDown(GameTime gameTime)
+        {
+            // get seconds since last iteration
+            float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            // update the current layer position (using layer's speed and delta)
+            position1.Y += speed * delta;
+            position2.Y += speed * delta;
+
+            // Check if the layer have reach out of our Viewporth. In afirmative case, we
+            // move it behind the other layer. 
+            if (position1.Y > viewportHeight)
+                position1.Y = position2.Y - texture.Height;
+
+            if (position2.Y > viewportHeight)
+                position2.Y = position1.Y - texture.Height;
+        }
+
+        /// <summary>
+        /// Draw the layer
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            // Only if visible. 
+            if (position1.X < viewportWidth)
+                spriteBatch.Draw(texture, position1, Color.White);
+            if (position2.X < viewportWidth)
+                spriteBatch.Draw(texture, position2, Color.White);
         }
     }
-    }
+}

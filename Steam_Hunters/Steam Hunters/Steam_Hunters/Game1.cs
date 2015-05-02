@@ -21,7 +21,7 @@ namespace Steam_Hunters
     
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
+        public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         StartScreen startScreen;
