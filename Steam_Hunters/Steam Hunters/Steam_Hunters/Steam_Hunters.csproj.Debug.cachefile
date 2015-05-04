@@ -1,4 +1,6 @@
 Content\font.xnb
+Content\HUDFont.xnb
+Content\SteamFont.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb
@@ -39,7 +41,6 @@ Content\NPC.xnb
 Content\Texturer\Enimes\Mobs 1\Melee mob.xnb
 Content\HpPixel.xnb
 Content\ManaPixel.xnb
-Content\StatusWindow.xnb
 Content\BuffPotionHUD.xnb
 Content\BuffPotionSHOP.xnb
 Content\HealthPotionHUD.xnb
@@ -58,12 +59,11 @@ Content\bulletEng.xnb
 Content\arrowRain.xnb
 Content\WarriorWalk.xnb
 Content\PowerShot Arrow.xnb
-Content\SteamFont.xnb
-Content\HUDFont.xnb
 Content\Player1HUD.xnb
 Content\Player2HUD.xnb
 Content\Player3HUD.xnb
 Content\Player4HUD.xnb
+Content\StatusWindow.xnb
 Content\Archer PicHUD.xnb
 Content\Engineer PicHUD.xnb
 Content\WarriorPicHUD.xnb
@@ -190,11 +190,13 @@ Content\Tiles\Tree (50px)\tree_3-2.xnb
 Content\Tiles\Tree (50px)\tree_3-3.xnb
 Content\archer trap.xnb
 Content\Cloud.xnb
-Content\Cloud3.xnb
 Content\Cloud2.xnb
+Content\Cloud3.xnb
 Content\Music\Roundtable Rival.xnb
 Content\Music\Sakura Sword.xnb
 Content\Music\SteampunkOrchestra.xnb
+Content\CloudanimationTex.xnb
+Content\CloudanimationTex2.xnb
 Content\Music\Roundtable Rival.wma
 Content\Music\Sakura Sword.wma
 Content\Music\SteampunkOrchestra.wma
