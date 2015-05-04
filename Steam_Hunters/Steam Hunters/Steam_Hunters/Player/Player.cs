@@ -20,13 +20,12 @@ namespace Steam_Hunters
 
         #region Variabler
         protected SpriteEffects EntityFx = 0;
-
         protected PlayerIndex playerIndex;
         private Potion selectedPotion;
         protected Point sheetSize = new Point(4, 2), currentFrame = new Point(0, 0), frameSize;
 
         public Texture2D projTex, HUDPic;
-
+        
         public Vector2 direction = Vector2.Zero, prevPos, towerDirection, powerArrowDir, prevThumbStickRightValue, offsetBullet;
 
         public GameWindow window;
@@ -48,8 +47,10 @@ namespace Steam_Hunters
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed, oldSpeed, time;
 
-        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, isDead, isHurt;
-        protected bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting;
+        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, ghostMode, isHurt;
+        public static bool paused;
+
+        public bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting, isDead;
         #endregion
 
         public StatusWindow statusWindow;
@@ -95,11 +96,11 @@ namespace Steam_Hunters
             newState = GamePad.GetState(playerIndex);
             prevPos = pos;
             #region Buying
-            if (buying == false)
+            if (buying == false && paused == false)
             {
                 MoveLeftThumbStick(newState);
             }
-            if (buying == true)
+            if (buying == true && paused == false)
             {
                 BuyPotions();
                 if (Backpress == true)
@@ -125,64 +126,89 @@ namespace Steam_Hunters
             StartButton(playerIndex);
             BackButton(playerIndex);
             #endregion
+
+            if(Startpress)
+            {
+                paused = true;
+            }
+            if(paused == true)
+            {
+                if (Backpress)
+                    paused = false;
+            }
+
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             hitBox = new Rectangle((int)pos.X - frameSize.X / 2, (int)pos.Y - frameSize.Y / 2, 40, 40);
             time = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (statusWindow.hp <= 0)
             {
-                isDead = true;
+                ghostMode = true;
                 color = new Color(128,128,128, 0.3f);
                 statusWindow.hp = 0;
             }
-
-          
-            invurnableAfterHit();
-
-            //ShootRightThumbStick(newState, gameTime);
-            changeDirection();
-            WalkAnimation(gameTime);
-
-            
-
-            UsingPotion();
-           
-            #region Stats buff
-            if (statusWindow.mana < statusWindow.maxMana)
-                statusWindow.mana += 3 * ((1 + (statusWindow.intelligence / 3)) * time / 2);
-
-           if(statusWindow.Selectedattributs == StatusWindow.Attributs.agility)
-           {
-               if(Apress && statusWindow.points > 0)
-               {
-                   speed += statusWindow.agility * 0.002f;
-                   oldSpeed += statusWindow.agility * 0.002f;
-               }
-           }
-           if (statusWindow.Selectedattributs == StatusWindow.Attributs.strength)
-           {
-               if (Apress && statusWindow.points > 0)
-               {
-                   damage += (int)(statusWindow.strength * 0.002f);
-               }
-           }
-           #endregion
-
-            #region update statuswindow
-           if (statusWindow != null)
+            if (ghostMode == true && GameData.SinglePlayMode == true)
             {
-                if (buying == false)
+                if (ressPotion >= 1)
                 {
-                    if (Drightpress == true)
-                    {
-                        statusWindow.active = true;
-                    }
+                    ghostMode = false;
+                    statusWindow.hp += 100;
+                    ressPotion -= 1;
 
-                    if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
-                        statusWindow.SetStatusWinwosActiv = false;
+                    color = Color.White;
+                    if (statusWindow.hp > statusWindow.maxHp)
+                        statusWindow.hp = statusWindow.maxHp;
                 }
-            }
-           #endregion
+                else
+                    isDead = true;
 
+            }               
+
+            if (paused == false)
+            {
+                invurnableAfterHit();
+                //ShootRightThumbStick(newState, gameTime);
+                changeDirection();
+                WalkAnimation(gameTime);
+
+                UsingPotion();
+
+                #region Stats buff
+                if (statusWindow.mana < statusWindow.maxMana)
+                    statusWindow.mana += 3 * ((1 + (statusWindow.intelligence / 3)) * time / 2);
+
+                if (statusWindow.Selectedattributs == StatusWindow.Attributs.agility)
+                {
+                    if (Apress && statusWindow.points > 0)
+                    {
+                        speed += statusWindow.agility * 0.002f;
+                        oldSpeed += statusWindow.agility * 0.002f;
+                    }
+                }
+                if (statusWindow.Selectedattributs == StatusWindow.Attributs.strength)
+                {
+                    if (Apress && statusWindow.points > 0)
+                    {
+                        damage += (int)(statusWindow.strength * 0.002f);
+                    }
+                }
+                #endregion
+
+                #region update statuswindow
+                if (statusWindow != null)
+                {
+                    if (buying == false)
+                    {
+                        if (Drightpress == true)
+                        {
+                            statusWindow.active = true;
+                        }
+
+                        if (statusWindow.StatusWinwosActiv() == true && Backpress == true)
+                            statusWindow.SetStatusWinwosActiv = false;
+                    }
+                }
+                #endregion
+            }
             oldState = GamePad.GetState(playerIndex);
             rumble.Update((float)gameTime.ElapsedGameTime.TotalSeconds, playerIndex);
             
@@ -225,7 +251,7 @@ namespace Steam_Hunters
                 {
                     ressPotion -= 1;
                     statusWindow.hp += 100;
-                    isDead = false;
+                    ghostMode = false;
                     color = Color.White;
                     if (statusWindow.hp > statusWindow.maxHp)
                         statusWindow.hp = statusWindow.maxHp;
@@ -637,7 +663,7 @@ namespace Steam_Hunters
                 {
                     if (shootOneAtTime == true)
                     {
-                        if (isShooting && isDead == false)
+                        if (isShooting && ghostMode == false)
                         {
                             AddProjectile(new Vector2(0, -1));
                             reloadCount++;
@@ -663,7 +689,7 @@ namespace Steam_Hunters
                     {
                         if (newState.ThumbSticks.Right.X != 0.0f)
                         {
-                            if (isShooting && isDead == false)
+                            if (isShooting && ghostMode == false)
                             {
                                 AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
                                                                              -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
@@ -672,7 +698,7 @@ namespace Steam_Hunters
                         }
                         else if (newState.ThumbSticks.Right.Y != 0.0f)
                         {
-                            if (isShooting && isDead == false)
+                            if (isShooting && ghostMode == false)
                             {
                                 AddProjectile(new Vector2(GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.X,
                                                                              -GamePad.GetState(playerIndex, GamePadDeadZone.Circular).ThumbSticks.Right.Y));
@@ -684,7 +710,7 @@ namespace Steam_Hunters
                         {
                             if (rightTriggerValue != 0)
                             {
-                                if (isShooting && isDead == false)
+                                if (isShooting && ghostMode == false)
                                 {
                                     AddProjectile(new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y));
                                     reloadCount++;

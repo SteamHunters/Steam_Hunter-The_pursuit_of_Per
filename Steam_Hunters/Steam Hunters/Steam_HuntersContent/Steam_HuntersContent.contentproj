@@ -159,6 +159,11 @@
       <Name>tileMap_v1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="pauseFont.spritefont">
+      <Name>pauseFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tiles\GriddyDefault\blankTile.PNG">
@@ -1146,6 +1151,13 @@
   <ItemGroup>
     <Compile Include="CloudanimationTex2.png">
       <Name>CloudanimationTex2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gameOverScreen.png">
+      <Name>gameOverScreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

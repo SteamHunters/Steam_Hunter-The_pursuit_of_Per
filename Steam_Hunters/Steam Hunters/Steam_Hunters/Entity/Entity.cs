@@ -85,7 +85,7 @@ namespace Steam_Hunters
                 pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (target != null && target.isDead == false)
+            if (target != null && target.ghostMode == false)
             {
                 FaceTarget();
 
@@ -94,7 +94,7 @@ namespace Steam_Hunters
 
                 }
                 
-                if (IsInRange(target.center) == false || target.isDead == true)
+                if (IsInRange(target.center) == false || target.ghostMode == true)
                 {
                     target = null;
                     Aggro = false;
@@ -157,7 +157,7 @@ namespace Steam_Hunters
 
             foreach (Player p in playerList)
             {
-                if (Vector2.Distance(center, p.center) < smallestRange && !p.isDead == true)
+                if (Vector2.Distance(center, p.center) < smallestRange && !p.ghostMode == true)
                 {
                     smallestRange = Vector2.Distance(center, p.center);
                     target = p;

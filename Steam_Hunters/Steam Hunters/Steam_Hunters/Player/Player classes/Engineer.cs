@@ -29,130 +29,130 @@ namespace Steam_Hunters
             offsetBullet = new Vector2(-7, 20);
             //oldSpeed = speed;
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
-            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sebastian", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
+            statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "Sebastian", 2, 2, 2, 4, 0, hp, mana, 1, playerIndex);
         }
 
         public override void Update(GameTime gameTime)
         {
-           
-            ShootRightThumbStick(newState, gameTime);
-
-            turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
-            particleEngineSteam.Update();
-            statusWindow.SetPos = pos;
-            statusWindow.Update(gameTime);
-
-            if (buying == false && statusWindow.active == false && isDead == false)
+            if (paused == false)
             {
-                #region Dispenser 
-                if (Xpress == true)
-                {
-                    if (statusWindow.mana >= 50)
-                    {
-                        dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
-                        rumble.Vibrate(0.15f, 0.5f);
-                        gps.dispensers.Add(dispenser);
-                        statusWindow.mana -= 50;
-                    }
-                }
-                #endregion
+                ShootRightThumbStick(newState, gameTime);
 
-                #region Missile
-                if (Ypress == true)
+                turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
+                particleEngineSteam.Update();
+                statusWindow.SetPos = pos;
+                statusWindow.Update(gameTime);
+
+                if (buying == false && statusWindow.active == false && ghostMode == false)
                 {
-                    if (statusWindow.mana >= 100)
+                    #region Dispenser
+                    if (Xpress == true)
                     {
-                        if (gps.turrets.Count >= 1)
+                        if (statusWindow.mana >= 50)
                         {
-                            createMissile = true;
-                            rumble.Vibrate(0.2f, 1f);
-                            statusWindow.mana -= 100;
+                            dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
+                            rumble.Vibrate(0.15f, 0.5f);
+                            gps.dispensers.Add(dispenser);
+                            statusWindow.mana -= 50;
                         }
                     }
-                }
-                else
-                {
-                    createMissile = false;
-                }
-                #endregion
+                    #endregion
 
-                #region Turret
-                if (Apress == true)
-                {
-                    if (statusWindow.mana >= 10)
+                    #region Missile
+                    if (Ypress == true)
                     {
-                        gps.turrets.Add(turret);
-                        rumble.Vibrate(0.15f, 0.25f);
-                        statusWindow.mana -= 10;
-                    }
-
-                }
-                if (LTpress == true)
-                {
-                    speed -= 0.4f;
-                    turretShooting = true;
-
-                    if (gps.turrets.Count >= 1)
-                    {
-                        rumble.Vibrate(0.0015f, 0.5f);
-                        
-                    }
-
-                    if (speed <= 0)
-                        speed = 0;
-                }
-                else
-                {
-                    speed = oldSpeed;
-                    turretShooting = false;
-                }
-                #endregion
-
-                #region Teleport
-                if (Bpress == true)
-                {
-                    teleportIsOn = true;
-                    teleportPos = pos;
-                }
-                if (teleportIsOn == true)
-                {
-                    distancevalue = pos - teleportPos;
-                    if (Vector2.Distance(pos, teleportPos) <= 400)
-                    {
-                        teleportPos.X += newState.ThumbSticks.Right.X * speed * 2f;
-                        teleportPos.Y -= newState.ThumbSticks.Right.Y * speed * 2f;
+                        if (statusWindow.mana >= 100)
+                        {
+                            if (gps.turrets.Count >= 1)
+                            {
+                                createMissile = true;
+                                rumble.Vibrate(0.2f, 1f);
+                                statusWindow.mana -= 100;
+                            }
+                        }
                     }
                     else
                     {
-                        teleportPos.X = pos.X;
-                        teleportPos.Y = pos.Y;
+                        createMissile = false;
                     }
-                    if (RBpress == true)
+                    #endregion
+
+                    #region Turret
+                    if (Apress == true)
                     {
-                        pos.X = teleportPos.X + TextureManager.teleportLocation.Width / 2;
-                        pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
-                        teleportIsOn = false;
-                        rumble.Vibrate(0.15f, 0.75f);
-                        particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
-                        particleEngineSteam.total = 150;
+                        if (statusWindow.mana >= 10)
+                        {
+                            gps.turrets.Add(turret);
+                            rumble.Vibrate(0.15f, 0.25f);
+                            statusWindow.mana -= 10;
+                        }
+
                     }
+                    if (LTpress == true)
+                    {
+                        speed -= 0.4f;
+                        turretShooting = true;
+
+                        if (gps.turrets.Count >= 1)
+                        {
+                            rumble.Vibrate(0.0015f, 0.5f);
+
+                        }
+
+                        if (speed <= 0)
+                            speed = 0;
+                    }
+                    else
+                    {
+                        speed = oldSpeed;
+                        turretShooting = false;
+                    }
+                    #endregion
+
+                    #region Teleport
+                    if (Bpress == true)
+                    {
+                        teleportIsOn = true;
+                        teleportPos = pos;
+                    }
+                    if (teleportIsOn == true)
+                    {
+                        distancevalue = pos - teleportPos;
+                        if (Vector2.Distance(pos, teleportPos) <= 400)
+                        {
+                            teleportPos.X += newState.ThumbSticks.Right.X * speed * 2f;
+                            teleportPos.Y -= newState.ThumbSticks.Right.Y * speed * 2f;
+                        }
+                        else
+                        {
+                            teleportPos.X = pos.X;
+                            teleportPos.Y = pos.Y;
+                        }
+                        if (RBpress == true)
+                        {
+                            pos.X = teleportPos.X + TextureManager.teleportLocation.Width / 2;
+                            pos.Y = teleportPos.Y + TextureManager.teleportLocation.Height / 2;
+                            teleportIsOn = false;
+                            rumble.Vibrate(0.15f, 0.75f);
+                            particleEngineSteam.EmitterLocation = new Vector2(pos.X, pos.Y);
+                            particleEngineSteam.total = 150;
+                        }
+                    }
+                    else
+                    {
+                        particleEngineSteam.total = 0;
+                    }
+                    #endregion
+
+
                 }
-                else
+
+                if (statusWindow.hp < statusWindow.maxHp)
                 {
-                    particleEngineSteam.total = 0;
+                    if (ghostMode == false)
+                        statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
                 }
-                #endregion
-
-                
             }
-
-            if (statusWindow.hp < statusWindow.maxHp)
-            {
-                if (isDead == false)
-                statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
-            }
-
-
             base.Update(gameTime);
         }
 

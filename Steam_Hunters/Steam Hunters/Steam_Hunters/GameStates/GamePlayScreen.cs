@@ -33,6 +33,7 @@ namespace Steam_Hunters
 
         public GamePlayScreen(Game1 game)
         {
+            this.game = game;
             GameData.volym = 0.1f;
             if (GameData.Level == 1)
                 MediaPlayer.Play(MusicManager.Level1Music);
@@ -68,24 +69,10 @@ namespace Steam_Hunters
         }
 
         public void Update(GameTime gameTime)
-        {
-            
+        {           
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState ms = new MouseState();
-
-            foreach (CloudAnimation cA in cloudAnimation)
-            {
-                cA.MoveDown(gameTime);
-
-                foreach (Player p in GameData.playerList)
-                {
-                    if (p.newState.ThumbSticks.Left.Y != 0)
-                        cA.speed = p.newState.ThumbSticks.Left.Y * 50;
-                    else
-                        cA.speed = 15;
-                }
-            }
-
+         
             if (ms.RightButton == ButtonState.Pressed)
             {
                 enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
@@ -124,11 +111,51 @@ namespace Steam_Hunters
                     if (p.hitBox.Intersects(rect))
                     {
                         p.HandleCollision();
-                    }                  
-                }
-                
+                    }
+                  
+                    if(Player.paused)
+                    {
+                        if(p.Apress)
+                            GameData.volym = 0f;
+                        if (p.Bpress)
+                            game.EndGame();
+                    }
+                    if (p.isDead == true)
+                        game.EndGame();
 
-                
+                    if(GameData.MultiplayerMode == true)
+                    {
+                        if (GameData.playerList.Count == 1)
+                        {
+                            if (GameData.playerList[0].ghostMode == true)
+                            {
+                                game.EndGame();
+                            }
+                        }
+                        if (GameData.playerList.Count == 2)
+                        {
+                            if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true)
+                            {
+                                game.EndGame();
+                            }
+                        }
+                        if (GameData.playerList.Count == 3)
+                        {
+                            if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true)
+                            {
+                                game.EndGame();
+                            }
+                        }
+                        if (GameData.playerList.Count == 4)
+                        {
+                            if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true && GameData.playerList[3].ghostMode == true)
+                            {
+                                game.EndGame();
+                            }
+                        }
+                    }
+                }
+                          
                 #region Eniemes
                 foreach (Enemies e in enemyList)
                 {
@@ -137,7 +164,7 @@ namespace Steam_Hunters
                         e.GetClosestPlayer(GameData.playerList);
                     }
 
-                    if(p.isDead == true)
+                    if(p.ghostMode == true)
                     {
                         if(p.hitBox.Intersects(e.hitBox))
                         {
@@ -162,214 +189,224 @@ namespace Steam_Hunters
             }
             #endregion
 
-            #region Eniemes
-            foreach (Enemies e in enemyList)
+            if (Player.paused == false)
             {
-                e.Update(gameTime);
-                if (e.target != null)
+                #region Eniemes
+                foreach (Enemies e in enemyList)
                 {
-                    if (e.target.isDead == true)
+                    e.Update(gameTime);
+                    if (e.target != null)
                     {
-                        e.Aggro = false;
-                        e.target = null;
+                        if (e.target.ghostMode == true)
+                        {
+                            e.Aggro = false;
+                            e.target = null;
+                        }
+                    }
+                    foreach (Projectile p in turretProjectile)
+                    {
+                        if (p.IsCollidingEntity(e))
+                        {
+                            //e.life = -10;
+                            turretProjectile.Remove(p);
+                            break;
+                        }
+                    }
+                    foreach (Missile m in missiles)
+                    {
+                        if (m.IsCollidingEntity(e))
+                        {
+                            //e.life = -10;
+                            missiles.Remove(m);
+                            break;
+                        }
+                    }
+
+                }
+                #endregion
+                #region NPC
+                foreach (NPC n in npcList)
+                {
+                    n.Update(gameTime);
+
+                    foreach (Player p in GameData.playerList)
+                    {
+                        if (n.Buyer == null)
+                        {
+                            n.GetClosestBuyer(GameData.playerList);
+                        }
+                        if (p.LBpress)
+                        {
+                            if (n.IsInRange(p.center) == true)
+                            {
+                                n.buy = true;
+                                p.buying = true;
+                            }
+                            //else
+                            //{
+                            //    n.buy = false;
+                            //    p.buying = false;
+                            //}
+                        }
+                        if (p.Backpress)
+                            n.buy = false;
+                    }
+
+                }
+                #endregion
+                #region Clouds
+                foreach (CloudAnimation cA in cloudAnimation)
+                {
+                    cA.MoveDown(gameTime);
+
+                    foreach (Player p in GameData.playerList)
+                    {
+                        if (p.newState.ThumbSticks.Left.Y != 0)
+                            cA.speed = p.newState.ThumbSticks.Left.Y * 50;
+                        else
+                            cA.speed = 15;
                     }
                 }
-                foreach(Projectile p in turretProjectile)
+                #endregion
+                #region engineerstuff(turret, dispenser etc)
+
+                #region dispenser
+
+                for (int i = 0; i < GameData.playerList.Count; i++)
                 {
-                    if(p.IsCollidingEntity(e))
+                    if (GameData.playerList[i] is Engineer)
                     {
-                        //e.life = -10;
-                        turretProjectile.Remove(p);
-                        break;
+
+                        foreach (Dispenser d in dispensers)
+                        {
+                            d.Update(gameTime);
+
+                            if (dispensers.Count > 1)
+                            {
+                                dispensers.Remove(d);
+                                break;
+                            }
+                            if (d.DispenserRemove == true)
+                            {
+                                dispensers.Remove(d);
+                                break;
+                            }
+
+                            #region dispenser heal
+                            foreach (Player p in GameData.playerList)
+                            {
+                                if (d.IsInRange(p.pos))
+                                {
+                                    p.color = Color.Green;
+                                }
+                                else
+                                {
+                                    p.color = Color.White;
+                                }
+                            }
+
+
+                            //måste titta om de finns i spelet först, hur gör det?
+                            //if (d.IsInRange(archer.pos))
+                            //{
+                            //    archer.color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    archer.color = Color.White;
+                            //}
+                            //if (d.IsInRange(warrior.pos))
+                            //{
+                            //    warrior.color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    warrior.color = Color.White;
+                            //}
+                            //if (d.IsInRange(wizard.pos))
+                            //{
+                            //    wizard.color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    wizard.color = Color.White;
+                            //}
+                            #endregion
+
+                            //collison spelare alla utom engineer
+                            //if (wizard.IsCollidingObject(d))
+                            //{
+                            //    wizard.HandleCollision();
+                            //}
+                        }
                     }
                 }
+                #endregion
+
+                #region turret
+                foreach (Player e in engineerList)
+                {
+                    foreach (EngineerTower t in turrets)
+                    {
+                        t.UpdateTrue(gameTime, e);
+
+                        if (turrets.Count > 2)
+                        {
+                            turrets.Remove(t);
+                            break;
+                        }
+                        if (t.towerLife <= 0)
+                        {
+                            turrets.Remove(t);
+                            break;
+                        }
+                        t.rotation = e.angle;
+
+                        if (t.TowerRemove == true)
+                        {
+                            turrets.Remove(t);
+                            break;
+                        }
+                    }
+                }
+                #endregion
+
+                #region missile
                 foreach (Missile m in missiles)
                 {
-                    if (m.IsCollidingEntity(e))
+                    m.Update(gameTime);
+
+                    foreach (Enemies e in enemyList)
                     {
-                        //e.life = -10;
+                        if (m.Target == null)
+                        {
+                            m.GetClosestEnemy(enemyList);
+                        }
+                    }
+
+                    if (m.missileRemove == true)
+                    {
                         missiles.Remove(m);
                         break;
                     }
                 }
+                #endregion
 
-            }
-            #endregion
-
-            #region NPC
-            foreach (NPC n in npcList)
-            {
-                n.Update(gameTime);
-
-                foreach (Player p in GameData.playerList)
+                #region Turret projectile
+                foreach (Projectile tp in turretProjectile)
                 {
-                    if (n.Buyer == null)
+                    tp.Update(gameTime);
+
+                    if (tp.BulletRemove == true)
                     {
-                        n.GetClosestBuyer(GameData.playerList);
-                    }
-                    if (p.LBpress)
-                    {
-                        if (n.IsInRange(p.center) == true)
-                        {
-                            n.buy = true;
-                            p.buying = true;
-                        }
-                        //else
-                        //{
-                        //    n.buy = false;
-                        //    p.buying = false;
-                        //}
-                    }
-                    if (p.Backpress)
-                        n.buy = false;
-                }
-
-            }
-            #endregion 
-
-
-            #region engineerstuff(turret, dispenser etc)
-
-            #region dispenser
-
-            for (int i = 0; i < GameData.playerList.Count; i++)
-            {
-                if (GameData.playerList[i] is Engineer)
-                {
-
-                    foreach (Dispenser d in dispensers)
-                    {
-                        d.Update(gameTime);
-
-                        if (dispensers.Count > 1)
-                        {
-                            dispensers.Remove(d);
-                            break;
-                        }
-                        if (d.DispenserRemove == true)
-                        {
-                            dispensers.Remove(d);
-                            break;
-                        }
-
-                        #region dispenser heal
-                        foreach (Player p in GameData.playerList)
-                        {
-                            if (d.IsInRange(p.pos))
-                            {
-                                p.color = Color.Green;
-                            }
-                            else
-                            {
-                                p.color = Color.White;
-                            }
-                        }
-
-
-                        //måste titta om de finns i spelet först, hur gör det?
-                        //if (d.IsInRange(archer.pos))
-                        //{
-                        //    archer.color = Color.Green;
-                        //}
-                        //else
-                        //{
-                        //    archer.color = Color.White;
-                        //}
-                        //if (d.IsInRange(warrior.pos))
-                        //{
-                        //    warrior.color = Color.Green;
-                        //}
-                        //else
-                        //{
-                        //    warrior.color = Color.White;
-                        //}
-                        //if (d.IsInRange(wizard.pos))
-                        //{
-                        //    wizard.color = Color.Green;
-                        //}
-                        //else
-                        //{
-                        //    wizard.color = Color.White;
-                        //}
-                        #endregion
-
-                        //collison spelare alla utom engineer
-                        //if (wizard.IsCollidingObject(d))
-                        //{
-                        //    wizard.HandleCollision();
-                        //}
-                    }
-                }
-            }
-            #endregion
-
-            #region turret
-            foreach (Player e in engineerList)
-            {
-            foreach (EngineerTower t in turrets)
-            {
-                    t.UpdateTrue(gameTime, e);
-
-                    if (turrets.Count > 2)
-                    {
-                        turrets.Remove(t);
-                        break;
-                    }
-                    if (t.towerLife <= 0)
-                    {
-                        turrets.Remove(t);
-                        break;
-                    }
-                    t.rotation = e.angle;
-
-                    if (t.TowerRemove == true)
-                    {
-                        turrets.Remove(t);
+                        turretProjectile.Remove(tp);
                         break;
                     }
                 }
+                #endregion
+
+                #endregion
             }
-            #endregion
-
-            #region missile
-            foreach (Missile m in missiles)
-            {
-                m.Update(gameTime);
-
-                foreach (Enemies e in enemyList)
-                {
-                    if (m.Target == null)
-                    {
-                        m.GetClosestEnemy(enemyList);
-                    }
-                }
-
-                if(m.missileRemove == true)
-                {
-                    missiles.Remove(m);
-                    break;
-                }
-            }
-            #endregion
-
-            #region Turret projectile
-            foreach (Projectile tp in turretProjectile)
-            {
-                tp.Update(gameTime);
-
-                if (tp.BulletRemove == true)
-                {
-                    turretProjectile.Remove(tp);
-                    break;
-                }
-            }
-            #endregion
-
-            #endregion
-
-
-            
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -497,6 +534,13 @@ namespace Steam_Hunters
                 GenerateManaBar(GameData.playerList[3].statusWindow.mana, GameData.playerList[3].statusWindow.maxMana, new Vector2(1280 - 90 - 150, 720 - 22 - 10), spriteBatch);
             }
             #endregion
+
+            if (Player.paused == true)
+            {
+                spriteBatch.DrawString(FontManager.pauseFont, "Paused", new Vector2(570, 200), Color.White);
+                spriteBatch.DrawString(FontManager.SteamFont, "Press back to unpause\nPress A to mute\nPress B to End game", new Vector2(580, 300), Color.White);
+            }
+
             spriteBatch.End();
         }
 

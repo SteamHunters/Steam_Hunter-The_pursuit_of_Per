@@ -119,6 +119,7 @@ namespace Steam_Hunters
         public static Texture2D instructionScreen { get; private set; }
         public static Texture2D chooseSingleplayer { get; private set; }
         public static Texture2D chooseMultiplayer { get; private set; }
+        public static Texture2D gameOverScreen { get; private set; }
 
         #endregion
 
@@ -331,6 +332,7 @@ namespace Steam_Hunters
 
             startBackground = Content.Load<Texture2D>(@"StartScreenTest");
             StatusWindowTexture = Content.Load<Texture2D>(@"StatusWindow");
+            gameOverScreen = Content.Load<Texture2D>(@"gameOverScreen");
             hpTexture = Content.Load<Texture2D>(@"HpPixel");
             manaTexture = Content.Load<Texture2D>(@"ManaPixel");
             NPCTexture = Content.Load<Texture2D>(@"NPC");
