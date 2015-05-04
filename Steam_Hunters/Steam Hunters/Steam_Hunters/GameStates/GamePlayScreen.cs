@@ -139,7 +139,9 @@ namespace Steam_Hunters
                     {
                         p.HandleCollision();
                     }
+
                     #region remove Wizards spells if hits hitboxes
+<<<<<<< HEAD
    
                     //foreach (Wizard w in GameData.playerList)
                     //{
@@ -162,6 +164,32 @@ namespace Steam_Hunters
                     //            break;
                     //        }
                     //    }
+=======
+                    if (GameData.wizardSelect == true)
+                    {
+                        foreach (Wizard w in GameData.playerList)
+                        {
+                            if (w != null)
+                                foreach (Projectile f in w.FireBallList)
+                                {
+                                    if (f.hitBox.Intersects(rect))
+                                        w.FireBallList.Remove(f);
+                                    break;
+                                }
+                            foreach (Projectile wb in w.WaterBallList)
+                            {
+                                if (wb.hitBox.Intersects(rect))
+                                    w.WaterBallList.Remove(wb);
+                                break;
+                            }
+                            foreach (Projectile b in w.BoulderList)
+                            {
+                                if (b.hitBox.Intersects(rect))
+                                    w.boulderOn = false;
+                                break;
+                            }
+                        }
+>>>>>>> origin/master
                     }
                     #endregion
                 
