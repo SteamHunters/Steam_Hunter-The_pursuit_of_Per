@@ -95,6 +95,11 @@ namespace Steam_Hunters
                 if (GameData.playerList[0] != null)
                     GameData.playerList[0].statusWindow.hp -= 10;
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.F))
+            {
+                graphics.IsFullScreen = true;
+                graphics.ApplyChanges();
+            }
 
             #region Exit game
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -120,7 +125,7 @@ namespace Steam_Hunters
                     break;
                 case Screen.GameOverScreen:
                     if (gameOverScreen != null)
-                        gameOverScreen.Update();
+                        gameOverScreen.Update(gameTime);
                     break;
             }
             #endregion

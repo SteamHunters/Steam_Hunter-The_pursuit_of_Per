@@ -54,7 +54,7 @@ namespace Steam_Hunters
                 time = (float)gameTime.ElapsedGameTime.TotalSeconds;
            
 
-            if (buying == false && statusWindow.active == false && isDead == false)
+            if (buying == false && statusWindow.active == false && ghostMode == false)
             {
                 //klar
                 #region Attack A
@@ -138,7 +138,7 @@ namespace Steam_Hunters
 
             if (statusWindow.hp < statusWindow.maxHp)
             {
-                if (isDead == false)
+                if (ghostMode == false)
                 statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
             }
             
