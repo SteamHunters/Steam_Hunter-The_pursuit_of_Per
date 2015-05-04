@@ -16,13 +16,9 @@ namespace Steam_Hunters
         public static SpriteFont font { get; private set; }
         public static SpriteFont SteamFont { get; private set; }
         public static SpriteFont HUDFont { get; private set; }
-<<<<<<< HEAD
-
         public static SpriteFont SelectFont { get; private set; }
-
-=======
         public static SpriteFont pauseFont { get; private set; }
->>>>>>> origin/master
+
 
         #endregion
 
@@ -35,11 +31,8 @@ namespace Steam_Hunters
             font = Content.Load<SpriteFont>(@"font");
             SteamFont = Content.Load<SpriteFont>(@"SteamFont");
             HUDFont = Content.Load<SpriteFont>(@"HUDFont");
-<<<<<<< HEAD
             SelectFont = Content.Load<SpriteFont>(@"Font_35");
-=======
             pauseFont = Content.Load<SpriteFont>(@"pauseFont");
->>>>>>> origin/master
             #endregion
 
         }
