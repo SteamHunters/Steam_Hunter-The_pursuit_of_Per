@@ -11,7 +11,7 @@ namespace Steam_Hunters
        public static bool SinglePlayMode, MultiplayerMode;
        public static bool archerSelect, warriorSelect, wizardSelect, engineerSelect;
        public static int Level = 1;
-       public static float volym = 1f;
+       public static float volym = .5f;
 
     }
 }

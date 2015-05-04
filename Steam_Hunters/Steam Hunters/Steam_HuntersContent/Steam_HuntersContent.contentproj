@@ -150,6 +150,11 @@
       <Processor>FontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
+    <Compile Include="Font_35.spritefont">
+      <Name>Font_35</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Maps\tileMap_v1.tmx">
       <Name>tileMap_v1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

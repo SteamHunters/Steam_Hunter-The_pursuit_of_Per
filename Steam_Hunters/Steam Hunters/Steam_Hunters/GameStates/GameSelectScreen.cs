@@ -60,7 +60,7 @@ namespace Steam_Hunters
                 GameData.archerSelect = false;
                 GameData.engineerSelect = false;
                 GameData.warriorSelect = false;
-                GameData.engineerSelect = false;
+                GameData.wizardSelect = false;
                 GameData.SinglePlayMode = false;
                 GameData.MultiplayerMode = false;
                 game.StartScreen();
@@ -81,6 +81,7 @@ namespace Steam_Hunters
                 spriteBatch.Draw(TextureManager.chooseSingleplayer, new Vector2(0f, 0f), Color.White);
                 selectCharacterP1.DrawText(spriteBatch);
 
+                spriteBatch.DrawString(FontManager.SelectFont, "Press A to select  Press start to play", new Vector2(50, 600), Color.White);
             }
             #endregion
 
@@ -97,10 +98,9 @@ namespace Steam_Hunters
                 selectCharacterP3.DrawText(spriteBatch);
                 selectCharacterP4.DrawText(spriteBatch);
 
+                spriteBatch.DrawString(FontManager.SelectFont, "Press A to select  Press start to play  Press B to back", new Vector2(20, 380), Color.White);
             }
             #endregion
-
-  
 
             spriteBatch.End();
         }

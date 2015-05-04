@@ -236,6 +236,8 @@ namespace Steam_Hunters
                                                                      +"\nAttribut: Agility"
                                                                      +"\nHP: 100"
                                                                      +"\nMP: 100", new Vector2(585, 315), Color.Black);
+                        if(GameData.archerSelect == true)
+                        spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(375,345), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
 
                         #endregion
                         break;
@@ -247,6 +249,8 @@ namespace Steam_Hunters
                                                                      + "\nAttribut: strength"
                                                                      + "\nHP: 100"
                                                                      + "\nMP: 100", new Vector2(585, 315), Color.Black);
+                        if (GameData.warriorSelect == true)
+                            spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(375, 345), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         #endregion
                         break;
                     case Character.Engineer:
@@ -257,6 +261,8 @@ namespace Steam_Hunters
                                                                      + "\nAttribut: Balance"
                                                                      + "\nHP: 100"
                                                                      + "\nMP: 100", new Vector2(585, 315), Color.Black);
+                        if (GameData.engineerSelect == true)
+                            spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(375, 345), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         #endregion
                         break;
                     case Character.Wizard:
@@ -267,6 +273,8 @@ namespace Steam_Hunters
                                                                      + "\nAttribut: Intelligence"
                                                                      + "\nHP: 75"
                                                                      + "\nMP: 250", new Vector2(585, 315), Color.Black);
+                        if (GameData.wizardSelect == true)
+                            spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(375, 345), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         #endregion
                         break;
                 }
@@ -284,18 +292,26 @@ namespace Steam_Hunters
                         if (playerIndex == PlayerIndex.One)
                         {
                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 350), Color.White);
+                            if (GameData.archerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 250), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Two)
                         {
                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 350), Color.White);
+                            if (GameData.archerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(800, 255), Color.Blue, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Three)
                         {
                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(35, 650), Color.White);
+                            if (GameData.archerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 549), Color.Red, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Four)
                         {
                             spriteBatch.DrawString(FontManager.font, "Archer", new Vector2(830, 650), Color.White);
+                            if (GameData.archerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(785, 548), Color.White, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
 
                         #endregion
@@ -305,18 +321,26 @@ namespace Steam_Hunters
                         if (playerIndex == PlayerIndex.One)
                         {
                             spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(35, 350), Color.White);
+                            if (GameData.warriorSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 250), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Two)
                         {
                             spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(830, 350), Color.White);
+                            if (GameData.warriorSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(800, 255), Color.Blue, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Three)
                         {
                             spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(35, 650), Color.White);
+                            if (GameData.warriorSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 549), Color.Red, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Four)
                         {
                             spriteBatch.DrawString(FontManager.font, "Warrior", new Vector2(830, 650), Color.White);
+                            if (GameData.warriorSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(785, 548), Color.White, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         #endregion
                         break;
@@ -325,18 +349,26 @@ namespace Steam_Hunters
                         if (playerIndex == PlayerIndex.One)
                         {
                             spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(35, 350), Color.White);
+                            if (GameData.engineerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 250), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Two)
                         {
                             spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(830, 350), Color.White);
+                            if (GameData.engineerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(800, 255), Color.Blue, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Three)
                         {
                             spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(35, 650), Color.White);
+                            if (GameData.engineerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 549), Color.Red, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Four)
                         {
                             spriteBatch.DrawString(FontManager.font, "Engineer", new Vector2(830, 650), Color.White);
+                            if (GameData.engineerSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(785, 548), Color.White, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         #endregion
                         break;
@@ -345,18 +377,26 @@ namespace Steam_Hunters
                         if (playerIndex == PlayerIndex.One)
                         {
                             spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(35, 350), Color.White);
+                            if (GameData.wizardSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 250), Color.Green, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Two)
                         {
                             spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(830, 350), Color.White);
+                            if (GameData.wizardSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(800, 255), Color.Blue, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Three)
                         {
                             spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(35, 650), Color.White);
+                            if (GameData.wizardSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(0, 549), Color.Red, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         if (playerIndex == PlayerIndex.Four)
                         {
                             spriteBatch.DrawString(FontManager.font, "Wizard", new Vector2(830, 650), Color.White);
+                            if (GameData.wizardSelect == true)
+                                spriteBatch.DrawString(FontManager.SelectFont, "Selected", new Vector2(785, 548), Color.White, -.60f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         }
                         #endregion
                         break;
