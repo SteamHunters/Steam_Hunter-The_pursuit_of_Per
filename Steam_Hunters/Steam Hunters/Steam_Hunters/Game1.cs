@@ -45,7 +45,6 @@ namespace Steam_Hunters
             graphics.IsFullScreen = false;
 
             this.Window.Title = "Steam Hunter - The pursuit of Per";
-
         }
 
        

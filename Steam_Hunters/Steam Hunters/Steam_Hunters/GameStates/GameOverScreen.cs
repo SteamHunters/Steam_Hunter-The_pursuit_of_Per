@@ -27,6 +27,11 @@ namespace Steam_Hunters
                 if(p.Startpress)
                 {
                     GameData.playerList.Clear();
+                    GameData.archerSelect = false;
+                    GameData.engineerSelect = false;
+                    GameData.warriorSelect = false;
+                    GameData.wizardSelect = false;
+
                     Player.paused = false;
                     game.StartScreen();
                     break;
