@@ -123,9 +123,7 @@ namespace Steam_Hunters
             {
                 p.Update(gameTime);
 
-<<<<<<< HEAD
                 #region Check collision whit tiles
-=======
                 foreach (EngineerTower t in turrets)
                 {
                     if (p.IsCollidingObject(t))
@@ -133,7 +131,7 @@ namespace Steam_Hunters
                         p.HandleCollision();
                     }
                 }
->>>>>>> origin/master
+
                 foreach (Tile h in level1.hitboxList)
                 {
                     Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
