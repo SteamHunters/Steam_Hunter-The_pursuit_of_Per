@@ -20,16 +20,20 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
+
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
-
-
-
 
             if (statusWindow.hp < statusWindow.maxHp)
             {
                 if(ghostMode == false)
                 statusWindow.hp += 5 * ((1 + (statusWindow.vitality / 20)) * time / 2);
+            }
+
+            //Dina knapptryckningar in här
+            if(paused == false)
+            {
+
             }
 
             base.Update(gameTime);

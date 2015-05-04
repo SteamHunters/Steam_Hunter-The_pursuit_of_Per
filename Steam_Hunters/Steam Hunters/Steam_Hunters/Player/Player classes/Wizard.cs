@@ -42,106 +42,107 @@ namespace Steam_Hunters
 
         public override void Update(GameTime gameTime)
         {
-            
-            particleEngineSteam.Update();
-            particleEngineWater.Update();
-            particleEngineFire.Update();
-            particleEngineRocks.Update();
-            statusWindow.SetPos = pos;
-            statusWindow.Update(gameTime);
-
-            if (shieldActivated == true)
-                time = (float)gameTime.ElapsedGameTime.TotalSeconds;
-           
-
-            if (buying == false && statusWindow.active == false && ghostMode == false)
+            if (paused == false)
             {
-                //klar
-                #region Attack A
-                if (Apress == true)
-                {
-                    if (statusWindow.mana >= 35)
-                    {
-                        Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                        Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
-                        FireBallList.Add(f);
-                        particleEngineFire.EmitterLocation = new Vector2(pos.X, pos.Y);
-                        particleEngineFire.total = 15;
-                        rumble.Vibrate(0.1f, 1f);
-                        statusWindow.mana -= 35;
-                        
-                    }
-                }
-                else
-                    particleEngineFire.total = 0;
-                #endregion
-                //klar
-                #region Attack X
-                if (Xpress == true)
-                {
-                    if (statusWindow.mana >= 35)
-                    {
-                        Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                        Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
-                        WaterBallList.Add(w);
-                        particleEngineWater.EmitterLocation = new Vector2(pos.X, pos.Y);
-                        particleEngineWater.total = 15;
-                        rumble.Vibrate(0.1f, 1f);
-                        statusWindow.mana -= 35;
-                    }
-                }
-                else
-                    particleEngineWater.total = 0;
-                #endregion
-                //klar
-                #region Attack B
-                if (Bpress == true)
-                {
-                    if (statusWindow.mana >= 20)
-                    {
-                        windruchOn = true;
-                        statusWindow.mana -= 20;
-                    }
-                }
-                #endregion
-                //Klar
-                #region Attack Y
-                if (Ypress == true && boulderOn == false)
-                {
-                    if (statusWindow.mana >= 100)
-                    {
-                        Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
-                        Projectile b = new Projectile(pos, TextureManager.BoulderSheetTexture, FireAngle, angle, new Vector2(0, 0), 0.25f, 120, new Point(72, 72), new Point(5, 4), 45, true);
-                        BoulderList.Add(b);
-                        boulderOn = true;
-                        statusWindow.mana -= 100;
-                    }
-                }
-                #endregion
+                particleEngineSteam.Update();
+                particleEngineWater.Update();
+                particleEngineFire.Update();
+                particleEngineRocks.Update();
+                statusWindow.SetPos = pos;
+                statusWindow.Update(gameTime);
 
-                #region Mana Shield
-                if (LTpress == true)
+                if (shieldActivated == true)
+                    time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+
+                if (buying == false && statusWindow.active == false && ghostMode == false)
                 {
-                    if (statusWindow.mana > 0)
+                    //klar
+                    #region Attack A
+                    if (Apress == true)
                     {
-                        shieldActivated = true;
-                        statusWindow.mana -= 5 * time;
+                        if (statusWindow.mana >= 35)
+                        {
+                            Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                            Projectile f = new Projectile(pos, TextureManager.fireBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                            FireBallList.Add(f);
+                            particleEngineFire.EmitterLocation = new Vector2(pos.X, pos.Y);
+                            particleEngineFire.total = 15;
+                            rumble.Vibrate(0.1f, 1f);
+                            statusWindow.mana -= 35;
+
+                        }
+                    }
+                    else
+                        particleEngineFire.total = 0;
+                    #endregion
+                    //klar
+                    #region Attack X
+                    if (Xpress == true)
+                    {
+                        if (statusWindow.mana >= 35)
+                        {
+                            Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                            Projectile w = new Projectile(pos, TextureManager.waterBall, FireAngle, angle, new Vector2(0, 0), 0.35f, 80, new Point(40, 40), new Point(4, 1), 60, true);
+                            WaterBallList.Add(w);
+                            particleEngineWater.EmitterLocation = new Vector2(pos.X, pos.Y);
+                            particleEngineWater.total = 15;
+                            rumble.Vibrate(0.1f, 1f);
+                            statusWindow.mana -= 35;
+                        }
+                    }
+                    else
+                        particleEngineWater.total = 0;
+                    #endregion
+                    //klar
+                    #region Attack B
+                    if (Bpress == true)
+                    {
+                        if (statusWindow.mana >= 20)
+                        {
+                            windruchOn = true;
+                            statusWindow.mana -= 20;
+                        }
+                    }
+                    #endregion
+                    //Klar
+                    #region Attack Y
+                    if (Ypress == true && boulderOn == false)
+                    {
+                        if (statusWindow.mana >= 100)
+                        {
+                            Vector2 FireAngle = new Vector2(prevThumbStickRightValue.X, prevThumbStickRightValue.Y);
+                            Projectile b = new Projectile(pos, TextureManager.BoulderSheetTexture, FireAngle, angle, new Vector2(0, 0), 0.25f, 120, new Point(72, 72), new Point(5, 4), 45, true);
+                            BoulderList.Add(b);
+                            boulderOn = true;
+                            statusWindow.mana -= 100;
+                        }
+                    }
+                    #endregion
+
+                    #region Mana Shield
+                    if (LTpress == true)
+                    {
+                        if (statusWindow.mana > 0)
+                        {
+                            shieldActivated = true;
+                            statusWindow.mana -= 5 * time;
+                        }
+                        else
+                            shieldActivated = false;
                     }
                     else
                         shieldActivated = false;
+                    #endregion
                 }
-                else
-                    shieldActivated = false;
-                #endregion
-            }
 
 
-            if (statusWindow.hp < statusWindow.maxHp)
-            {
-                if (ghostMode == false)
-                statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
-            }
-            
+                if (statusWindow.hp < statusWindow.maxHp)
+                {
+                    if (ghostMode == false)
+                        statusWindow.hp += 2 * ((1 + (statusWindow.vitality / 20)) * time / 2);
+                }
+
 
                 #region Update Fireball
                 foreach (Projectile f in FireBallList)
@@ -223,10 +224,9 @@ namespace Steam_Hunters
                 }
                 #endregion
 
-                base.Update(gameTime);
-
                 ShootRightThumbStick(newState, gameTime);
-
+            }
+                base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Griddy2D;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 namespace Steam_Hunters
 {
@@ -18,8 +19,17 @@ namespace Steam_Hunters
         private Vector2 cameraCenter;
         private Dialog dialog;
         private List <CloudAnimation> cloudAnimation;
-        
+
+        //Highscore kod
+        FileStream theFileRead, theFileWrite;
+        StreamWriter theScoreWrite;
+        StreamReader theScoreRead;
         List<Player> playerlist = new List<Player>();
+        public static String[] textHighScores_01;
+        public static String[] textHighScores_02;
+        int maxHighScores = 5;
+        public static Boolean boolHighScoresRun = false;
+        public static int score;
 
         //engineer 
         public List<Player> engineerList = new List<Player>();
@@ -54,7 +64,6 @@ namespace Steam_Hunters
             }
             #endregion
 
-
             enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
@@ -66,6 +75,9 @@ namespace Steam_Hunters
 
             level1 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
+            
+            textHighScores_01 = new String[maxHighScores];
+            textHighScores_02 = new String[maxHighScores];
         }
 
         public void Update(GameTime gameTime)
@@ -105,6 +117,14 @@ namespace Steam_Hunters
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
+
+                foreach (EngineerTower t in turrets)
+                {
+                    if (p.IsCollidingObject(t))
+                    {
+                        p.HandleCollision();
+                    }
+                }
                 foreach (Tile h in level1.hitboxList)
                 {
                     Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
@@ -297,47 +317,19 @@ namespace Steam_Hunters
                             {
                                 if (d.IsInRange(p.pos))
                                 {
-                                    p.color = Color.Green;
+                                    p.statusWindow.hp += 0.075f;
+                                    if (p.statusWindow.hp > p.statusWindow.maxHp)
+                                        p.statusWindow.hp = p.statusWindow.maxHp;
                                 }
                                 else
                                 {
                                     p.color = Color.White;
                                 }
+                                if(p.IsCollidingObject(d))
+                                    p.HandleCollision();
+                                    
                             }
-
-
-                            //måste titta om de finns i spelet först, hur gör det?
-                            //if (d.IsInRange(archer.pos))
-                            //{
-                            //    archer.color = Color.Green;
-                            //}
-                            //else
-                            //{
-                            //    archer.color = Color.White;
-                            //}
-                            //if (d.IsInRange(warrior.pos))
-                            //{
-                            //    warrior.color = Color.Green;
-                            //}
-                            //else
-                            //{
-                            //    warrior.color = Color.White;
-                            //}
-                            //if (d.IsInRange(wizard.pos))
-                            //{
-                            //    wizard.color = Color.Green;
-                            //}
-                            //else
-                            //{
-                            //    wizard.color = Color.White;
-                            //}
                             #endregion
-
-                            //collison spelare alla utom engineer
-                            //if (wizard.IsCollidingObject(d))
-                            //{
-                            //    wizard.HandleCollision();
-                            //}
                         }
                     }
                 }

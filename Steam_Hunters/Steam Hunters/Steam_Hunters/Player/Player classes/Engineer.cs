@@ -38,7 +38,7 @@ namespace Steam_Hunters
             {
                 ShootRightThumbStick(newState, gameTime);
 
-                turret = new EngineerTower(TextureManager.turretTexTop, pos, gps, 100);
+                turret = new EngineerTower(TextureManager.turretTexTop, new Vector2(pos.X-15,pos.Y-70), gps, 100);
                 particleEngineSteam.Update();
                 statusWindow.SetPos = pos;
                 statusWindow.Update(gameTime);
@@ -50,7 +50,7 @@ namespace Steam_Hunters
                     {
                         if (statusWindow.mana >= 50)
                         {
-                            dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X, pos.Y), 100);
+                            dispenser = new Dispenser(TextureManager.dispenserTex, new Vector2(pos.X-15, pos.Y+50), 100);
                             rumble.Vibrate(0.15f, 0.5f);
                             gps.dispensers.Add(dispenser);
                             statusWindow.mana -= 50;
