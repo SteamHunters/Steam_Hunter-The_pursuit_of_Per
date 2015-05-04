@@ -99,6 +99,10 @@ namespace Steam_Hunters
                 graphics.IsFullScreen = true;
                 graphics.ApplyChanges();
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                GamePlayScreen.score += 1;
+            }
 
             #region Exit game
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

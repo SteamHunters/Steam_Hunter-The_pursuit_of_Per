@@ -140,31 +140,31 @@ namespace Steam_Hunters
                         p.HandleCollision();
                     }
                     #region remove Wizards spells if hits hitboxes
-                    foreach (Wizard w in GameData.playerList)
-                    {
-                        foreach (Projectile f in w.FireBallList)
-                        {
-                            if (f.hitBox.Intersects(rect))
-                                w.FireBallList.Remove(f);
-                            break;
-                        }
-                        foreach (Projectile wa in w.WaterBallList)
-                        {
-                            if (wa.hitBox.Intersects(rect))
-                                w.WaterBallList.Remove(wa);
-                            break;
-                        }
-                        foreach (Projectile b in w.BoulderList)
-                        {
-                            if (b.hitBox.Intersects(rect))
-                                w.boulderOn = false;
-                            break;
-                        }
-
-                      
+   
+                    //foreach (Wizard w in GameData.playerList)
+                    //{
+                    //        foreach (Projectile f in w.FireBallList)
+                    //        {
+                    //            if (f.hitBox.Intersects(rect))
+                    //                w.FireBallList.Remove(f);
+                    //            break;
+                    //        }
+                    //        foreach (Projectile wa in w.WaterBallList)
+                    //        {
+                    //            if (wa.hitBox.Intersects(rect))
+                    //                w.WaterBallList.Remove(wa);
+                    //            break;
+                    //        }
+                    //        foreach (Projectile b in w.BoulderList)
+                    //        {
+                    //            if (b.hitBox.Intersects(rect))
+                    //                w.boulderOn = false;
+                    //            break;
+                    //        }
+                    //    }
                     }
                     #endregion
-                }
+                
                 #endregion
 
                 #region Paus game
@@ -173,8 +173,12 @@ namespace Steam_Hunters
                     if (p.Apress)
                         GameData.volym = 0f;
                     if (p.Bpress)
+                    {
                         game.EndGame();
+                        GetHighscores();
+                    }
                 }
+            
                 #endregion
 
                 #region The game ends if all player i in ghost mode in multiplayer
@@ -185,6 +189,7 @@ namespace Steam_Hunters
                         if (GameData.playerList[0].ghostMode == true)
                         {
                             game.EndGame();
+                            GetHighscores();
                         }
                     }
                     if (GameData.playerList.Count == 2)
@@ -192,6 +197,7 @@ namespace Steam_Hunters
                         if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true)
                         {
                             game.EndGame();
+                            GetHighscores();
                         }
                     }
                     if (GameData.playerList.Count == 3)
@@ -199,6 +205,7 @@ namespace Steam_Hunters
                         if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true)
                         {
                             game.EndGame();
+                            GetHighscores();
                         }
                     }
                     if (GameData.playerList.Count == 4)
@@ -206,6 +213,7 @@ namespace Steam_Hunters
                         if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true && GameData.playerList[3].ghostMode == true)
                         {
                             game.EndGame();
+                            GetHighscores();
                         }
                     }
                 }
@@ -243,8 +251,12 @@ namespace Steam_Hunters
                 #endregion
 
                 if (p.isDead == true)
+                {
                     game.EndGame();
+                    GetHighscores();
+                }
             }
+    
             #endregion
 
             if (Player.paused == false)
@@ -584,6 +596,82 @@ namespace Steam_Hunters
         {
             Double Percent = (Double)CurrentMana / MaxMana;
             spriteBatch.Draw(TextureManager.manaTexture, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)(Percent * 150), 10), Color.White);
+        }
+        public void GetHighscores()
+        {
+            bool boolWorkingFileIO = true;
+
+            try
+            {
+                theFileRead = new FileStream(@"HighScores.txt ",
+                FileMode.OpenOrCreate,
+                FileAccess.Read);
+
+                theScoreRead = new StreamReader(theFileRead);
+
+                for (int i = 0; i < maxHighScores; i++)
+                {
+                    textHighScores_01[i] = theScoreRead.ReadLine();
+
+
+                    if (textHighScores_01[i] == null)
+                    {
+                        textHighScores_01[i] = "0";
+                    }
+                }
+                theScoreRead.Close();
+                theFileRead.Close();
+            }
+            catch
+            {
+                boolWorkingFileIO = false;
+            }
+
+            if (boolWorkingFileIO)
+            {
+                int j = 0;
+
+                for (int i = 0; i < maxHighScores; i++)
+                {
+                    if (score > Convert.ToInt32(textHighScores_01[i]) && i == j)
+                    {
+                        textHighScores_02[i] = score.ToString();
+                        i++;
+
+                        if (i < maxHighScores)
+                        {
+                            textHighScores_02[i] = textHighScores_01[j];
+                        }
+                    }
+                    else
+                    {
+                        textHighScores_02[i] = textHighScores_01[j];
+                    }
+
+                    j++;
+                }
+                try
+                {
+                    theFileWrite = new FileStream("HighScores.txt",
+                        FileMode.Create, FileAccess.Write);
+
+                    theScoreWrite = new StreamWriter(theFileWrite);
+
+                    for (int i = 0; i < maxHighScores; i++)
+                    {
+                        theScoreWrite.WriteLine(textHighScores_02[i]);
+                    }
+
+                    theScoreWrite.Close();
+                    theFileWrite.Close();
+                }
+                catch
+                {
+                    boolWorkingFileIO = false;
+                }
+
+                boolHighScoresRun = true;
+            }
         }
     }
 }

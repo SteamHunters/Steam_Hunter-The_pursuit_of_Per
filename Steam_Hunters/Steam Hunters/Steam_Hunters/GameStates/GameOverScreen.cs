@@ -13,10 +13,17 @@ namespace Steam_Hunters
         private Game1 game;
         //private KeyboardState lastState;
         List<Player> playerlist = new List<Player>();
+        Vector2 scorePos, highscorePos, backPos, nrONE, nrTWO, nrTHREE, nrFOUR, nrFIVE;
 
         public GameOverScreen(Game1 game)
         {
             this.game = game;
+            nrONE = new Vector2(950, 100);
+            nrTWO = new Vector2(950, 200);
+            nrTHREE = new Vector2(950, 300);
+            nrFOUR = new Vector2(950, 400);
+            nrFIVE = new Vector2(950, 500);
+            backPos = new Vector2(950, 600);
         }
         public void Update(GameTime gameTime)
         {
@@ -33,6 +40,9 @@ namespace Steam_Hunters
                     GameData.wizardSelect = false;
 
                     Player.paused = false;
+                    GamePlayScreen.score = 0;
+                    GamePlayScreen.boolHighScoresRun = false;
+
                     game.StartScreen();
                     break;
                 }
@@ -46,6 +56,12 @@ namespace Steam_Hunters
         {
             spriteBatch.Begin();
             spriteBatch.Draw(TextureManager.gameOverScreen, Vector2.Zero, Color.White);
+
+            spriteBatch.DrawString(FontManager.pauseFont, GamePlayScreen.textHighScores_02[0], nrONE, Color.White);
+            spriteBatch.DrawString(FontManager.pauseFont, GamePlayScreen.textHighScores_02[1], nrTWO, Color.White);
+            spriteBatch.DrawString(FontManager.pauseFont, GamePlayScreen.textHighScores_02[2], nrTHREE, Color.White);
+            spriteBatch.DrawString(FontManager.pauseFont, GamePlayScreen.textHighScores_02[3], nrFOUR, Color.White);
+            spriteBatch.DrawString(FontManager.pauseFont, GamePlayScreen.textHighScores_02[4], nrFIVE, Color.White);
             spriteBatch.End();
         }
     }
