@@ -33,6 +33,7 @@ namespace Steam_Hunters
 
         public Color color = Color.White;
 
+        
         protected List<Projectile> listProjectile = new List<Projectile>();
         protected Projectile projectile;
 

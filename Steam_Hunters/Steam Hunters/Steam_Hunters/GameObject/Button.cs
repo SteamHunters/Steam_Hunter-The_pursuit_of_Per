@@ -11,7 +11,7 @@ namespace Steam_Hunters
     class Button : GameObject
     {
         public bool selected;
-        public Rectangle hitBox;
+       // public Rectangle hitBox;
 
         public Button(Texture2D tex, Vector2 pos)
             : base(tex, pos)

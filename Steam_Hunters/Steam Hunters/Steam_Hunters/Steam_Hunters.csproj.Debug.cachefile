@@ -189,22 +189,14 @@ Content\Tiles\Tree (50px)\tree_3-1.xnb
 Content\Tiles\Tree (50px)\tree_3-2.xnb
 Content\Tiles\Tree (50px)\tree_3-3.xnb
 Content\archer trap.xnb
-<<<<<<< HEAD
 Content\Font_35.xnb
 Content\CloudanimationTex.xnb
 Content\CloudanimationTex2.xnb
 Content\Music\Roundtable Rival.xnb
 Content\Music\Sakura Sword.xnb
 Content\Music\SteampunkOrchestra.xnb
-=======
-Content\Music\Roundtable Rival.xnb
-Content\Music\Sakura Sword.xnb
-Content\Music\SteampunkOrchestra.xnb
-Content\CloudanimationTex.xnb
-Content\CloudanimationTex2.xnb
 Content\pauseFont.xnb
 Content\gameOverScreen.xnb
->>>>>>> origin/master
 Content\Music\Roundtable Rival.wma
 Content\Music\Sakura Sword.wma
 Content\Music\SteampunkOrchestra.wma

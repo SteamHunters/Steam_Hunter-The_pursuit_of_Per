@@ -10,14 +10,14 @@ namespace Steam_Hunters
     
     class Wizard : Player
     {
-        private List<Projectile> FireBallList = new List<Projectile>();
-        private List<Projectile> WaterBallList = new List<Projectile>();
-        private List<Projectile> BoulderList = new List<Projectile>();
+        public List<Projectile> FireBallList = new List<Projectile>();
+        public List<Projectile> WaterBallList = new List<Projectile>();
+        public List<Projectile> BoulderList = new List<Projectile>();
         private ParticleEngine particleEngineWater, particleEngineFire, particleEngineRocks; 
         private double timerWindRuch;
         private int  timeWindRuch;
-        private bool windruchOn, boulderOn, shieldActivated;
-        private float boulderspeed = 0.08f, shieldTimer;
+        public bool windruchOn, boulderOn, shieldActivated;
+        private float boulderspeed = 0.08f;
 
 
 
@@ -205,14 +205,14 @@ namespace Steam_Hunters
                     {
                         particleEngineRocks.EmitterLocation = new Vector2(b.pos.X, b.pos.Y);
                         particleEngineRocks.total = 15;
-                        if (b != null)
+                        if (b != null || BoulderList.Count == 0)
                         {
                             b.Update(gameTime);
                             b.direction.X += (float)(newState.ThumbSticks.Right.X * boulderspeed);
                             b.direction.Y -= (float)(newState.ThumbSticks.Right.Y * boulderspeed);
                             b.direction.Normalize();
                         }
-                        if (b.BulletRemove == true)
+                        if (b.BulletRemove == true || boulderOn == false)
                         {
                             particleEngineRocks.total = 0;
                             BoulderList.Remove(b);

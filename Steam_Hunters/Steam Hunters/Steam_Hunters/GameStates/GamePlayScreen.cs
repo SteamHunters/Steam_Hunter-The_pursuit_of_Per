@@ -23,6 +23,7 @@ namespace Steam_Hunters
 
         //engineer 
         public List<Player> engineerList = new List<Player>();
+         public List<Player> WizardList = new List<Player>();
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
@@ -50,6 +51,10 @@ namespace Steam_Hunters
                 if (p is Engineer)
                 {
                     engineerList.Add(p);
+                }
+                if (p is Wizard)
+                {
+                    WizardList.Add(p);
                 }
             }
             #endregion
@@ -105,6 +110,8 @@ namespace Steam_Hunters
             foreach (Player p in GameData.playerList)
             {
                 p.Update(gameTime);
+
+                #region Check collision whit tiles
                 foreach (Tile h in level1.hitboxList)
                 {
                     Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
@@ -112,50 +119,78 @@ namespace Steam_Hunters
                     {
                         p.HandleCollision();
                     }
-                  
-                    if(Player.paused)
+                    #region remove Wizards spells if hits hitboxes
+                    foreach (Wizard w in GameData.playerList)
                     {
-                        if(p.Apress)
-                            GameData.volym = 0f;
-                        if (p.Bpress)
-                            game.EndGame();
-                    }
-                    if (p.isDead == true)
-                        game.EndGame();
+                        foreach (Projectile f in w.FireBallList)
+                        {
+                            if (f.hitBox.Intersects(rect))
+                                w.FireBallList.Remove(f);
+                            break;
+                        }
+                        foreach (Projectile wa in w.WaterBallList)
+                        {
+                            if (wa.hitBox.Intersects(rect))
+                                w.WaterBallList.Remove(wa);
+                            break;
+                        }
+                        foreach (Projectile b in w.BoulderList)
+                        {
+                            if (b.hitBox.Intersects(rect))
+                                w.boulderOn = false;
+                            break;
+                        }
 
-                    if(GameData.MultiplayerMode == true)
+                      
+                    }
+                    #endregion
+                }
+                #endregion
+
+                #region Paus game
+                if (Player.paused)
+                {
+                    if (p.Apress)
+                        GameData.volym = 0f;
+                    if (p.Bpress)
+                        game.EndGame();
+                }
+                #endregion
+
+                #region The game ends if all player i in ghost mode in multiplayer
+                if (GameData.MultiplayerMode == true)
+                {
+                    if (GameData.playerList.Count == 1)
                     {
-                        if (GameData.playerList.Count == 1)
+                        if (GameData.playerList[0].ghostMode == true)
                         {
-                            if (GameData.playerList[0].ghostMode == true)
-                            {
-                                game.EndGame();
-                            }
+                            game.EndGame();
                         }
-                        if (GameData.playerList.Count == 2)
+                    }
+                    if (GameData.playerList.Count == 2)
+                    {
+                        if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true)
                         {
-                            if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true)
-                            {
-                                game.EndGame();
-                            }
+                            game.EndGame();
                         }
-                        if (GameData.playerList.Count == 3)
+                    }
+                    if (GameData.playerList.Count == 3)
+                    {
+                        if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true)
                         {
-                            if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true)
-                            {
-                                game.EndGame();
-                            }
+                            game.EndGame();
                         }
-                        if (GameData.playerList.Count == 4)
+                    }
+                    if (GameData.playerList.Count == 4)
+                    {
+                        if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true && GameData.playerList[3].ghostMode == true)
                         {
-                            if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true && GameData.playerList[2].ghostMode == true && GameData.playerList[3].ghostMode == true)
-                            {
-                                game.EndGame();
-                            }
+                            game.EndGame();
                         }
                     }
                 }
-                          
+                #endregion
+
                 #region Eniemes
                 foreach (Enemies e in enemyList)
                 {
@@ -186,6 +221,9 @@ namespace Steam_Hunters
                     }
                 }
                 #endregion
+
+                if (p.isDead == true)
+                    game.EndGame();
             }
             #endregion
 
