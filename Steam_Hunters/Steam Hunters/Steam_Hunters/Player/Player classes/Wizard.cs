@@ -13,7 +13,7 @@ namespace Steam_Hunters
         public List<Projectile> FireBallList = new List<Projectile>();
         public List<Projectile> WaterBallList = new List<Projectile>();
         public List<Projectile> BoulderList = new List<Projectile>();
-        private ParticleEngine particleEngineWater, particleEngineFire, particleEngineRocks; 
+        public ParticleEngine particleEngineWater, particleEngineFire, particleEngineRocks; 
         private double timerWindRuch;
         private int  timeWindRuch;
         public bool windruchOn, boulderOn, shieldActivated;
@@ -213,7 +213,7 @@ namespace Steam_Hunters
                             b.direction.Y -= (float)(newState.ThumbSticks.Right.Y * boulderspeed);
                             b.direction.Normalize();
                         }
-                        if (b.BulletRemove == true || boulderOn == false)
+                        if (b.BulletRemove == true)
                         {
                             particleEngineRocks.total = 0;
                             BoulderList.Remove(b);

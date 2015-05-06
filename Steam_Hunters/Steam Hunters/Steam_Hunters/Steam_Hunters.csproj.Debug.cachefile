@@ -1,6 +1,8 @@
 Content\font.xnb
 Content\HUDFont.xnb
 Content\SteamFont.xnb
+Content\Font_35.xnb
+Content\pauseFont.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb
@@ -189,14 +191,12 @@ Content\Tiles\Tree (50px)\tree_3-1.xnb
 Content\Tiles\Tree (50px)\tree_3-2.xnb
 Content\Tiles\Tree (50px)\tree_3-3.xnb
 Content\archer trap.xnb
-Content\Font_35.xnb
 Content\CloudanimationTex.xnb
 Content\CloudanimationTex2.xnb
+Content\gameOverScreen.xnb
 Content\Music\Roundtable Rival.xnb
 Content\Music\Sakura Sword.xnb
 Content\Music\SteampunkOrchestra.xnb
-Content\pauseFont.xnb
-Content\gameOverScreen.xnb
 Content\Music\Roundtable Rival.wma
 Content\Music\Sakura Sword.wma
 Content\Music\SteampunkOrchestra.wma

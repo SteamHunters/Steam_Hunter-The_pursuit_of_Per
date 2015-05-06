@@ -140,31 +140,7 @@ namespace Steam_Hunters
                         p.HandleCollision();
                     }
 
-                    #region remove Wizards spells if hits hitboxes
-<<<<<<< HEAD
-   
-                    //foreach (Wizard w in GameData.playerList)
-                    //{
-                    //        foreach (Projectile f in w.FireBallList)
-                    //        {
-                    //            if (f.hitBox.Intersects(rect))
-                    //                w.FireBallList.Remove(f);
-                    //            break;
-                    //        }
-                    //        foreach (Projectile wa in w.WaterBallList)
-                    //        {
-                    //            if (wa.hitBox.Intersects(rect))
-                    //                w.WaterBallList.Remove(wa);
-                    //            break;
-                    //        }
-                    //        foreach (Projectile b in w.BoulderList)
-                    //        {
-                    //            if (b.hitBox.Intersects(rect))
-                    //                w.boulderOn = false;
-                    //            break;
-                    //        }
-                    //    }
-=======
+                    #region remove Wizards spells if hits hitboxes   
                     if (GameData.wizardSelect == true)
                     {
                         foreach (Wizard w in GameData.playerList)
@@ -185,14 +161,18 @@ namespace Steam_Hunters
                             foreach (Projectile b in w.BoulderList)
                             {
                                 if (b.hitBox.Intersects(rect))
+                                {
+                                    w.particleEngineRocks.total = 0;
+                                    w.BoulderList.Remove(b);
                                     w.boulderOn = false;
-                                break;
+                                    break;
+                                }
+                               
                             }
                         }
->>>>>>> origin/master
                     }
                     #endregion
-                
+                }
                 #endregion
 
                 #region Paus game
@@ -283,6 +263,7 @@ namespace Steam_Hunters
                     game.EndGame();
                     GetHighscores();
                 }
+                
             }
     
             #endregion
