@@ -167,8 +167,12 @@ namespace Steam_Hunters
         public static Texture2D circle6 { get; private set; }
         public static Texture2D circle7 { get; private set; }
 
-        public static Texture2D MonsterTest { get; private set; }
+        public static Texture2D BrownMonsterWalking { get; private set; }
+        public static Texture2D BrownMonsterAttack { get; private set; }
+        public static Texture2D BlueBugs { get; private set; }
+        public static Texture2D BrownBugs { get; private set; }
 
+        public static Texture2D MissileCrab { get; private set; }
         public static Texture2D map { get; private set; }
         //        
 
@@ -304,7 +308,6 @@ namespace Steam_Hunters
             testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
             testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
             reload = Content.Load<Texture2D>(@"reload");
-            MonsterTest = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob");
             arrowPowerShoot = Content.Load<Texture2D>(@"PowerShot Arrow");
             circles.Add(circle1 = Content.Load<Texture2D>(@"circle/circle1"));
             circles.Add(circle2 = Content.Load<Texture2D>(@"circle/circle2"));
@@ -314,7 +317,17 @@ namespace Steam_Hunters
             circles.Add(circle6 = Content.Load<Texture2D>(@"circle/circle6"));
             circles.Add(circle7 = Content.Load<Texture2D>(@"circle/circle7"));
 
-            //circles.Add(Content.Load<Texture2D>(@"circle2"));
+           
+                BrownMonsterWalking = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob");
+                BrownMonsterAttack = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob slash");
+                
+                BlueBugs = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 2/BlueBug");
+                BrownBugs = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 2/BrownBug");
+              
+                MissileCrab = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 3/missile crab");
+            
+
+            ////circles.Add(Content.Load<Texture2D>(@"circle2"));
             //circles.Add(Content.Load<Texture2D>(@"circle3"));
             //circles.Add(Content.Load<Texture2D>(@"circle4"));
             //circles.Add(Content.Load<Texture2D>(@"circle5"));

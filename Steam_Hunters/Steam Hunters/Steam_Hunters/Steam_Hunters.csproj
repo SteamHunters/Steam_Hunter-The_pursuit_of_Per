@@ -76,8 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloudAnimation.cs" />
+    <Compile Include="Entity\Enemy classes\EnemyBomb.cs" />
+    <Compile Include="Entity\Enemy classes\EnemyBug.cs" />
+    <Compile Include="Entity\Enemy classes\EnemyMelee.cs" />
+    <Compile Include="Entity\Enemy classes\EnemyRange.cs" />
     <Compile Include="Tools\Dialog.cs" />
-    <Compile Include="Entity\Enemies.cs" />
     <Compile Include="Tools\GameData.cs" />
     <Compile Include="GameObject\Dispenser.cs" />
     <Compile Include="GameObject\EngineerTower.cs" />
@@ -149,9 +152,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entity\Enemy classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>

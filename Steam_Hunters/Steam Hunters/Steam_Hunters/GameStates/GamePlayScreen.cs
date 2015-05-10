@@ -39,7 +39,7 @@ namespace Steam_Hunters
         public List<EngineerTower> turrets = new List<EngineerTower>();
         public List<Projectile> turretProjectile = new List<Projectile>();
         //
-        public List<Enemies> enemyList = new List<Enemies>();
+        public List<Entity> enemyList = new List<Entity>();
         public List<NPC> npcList = new List<NPC>();
 
         public GamePlayScreen(Game1 game)
@@ -69,10 +69,12 @@ namespace Steam_Hunters
             }
             #endregion
 
-            enemyList.Add(new Enemies(TextureManager.MonsterTest, new Vector2(100, 150), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 110, 1, 1, false, 1));
-            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
+           //enemyList.Add(new EnemyMelee(TextureManager.BrownMonsterWalking, new Vector2(1600, 3100), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           //enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1500, 3150), new Point(50, 50), new Point(3, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
-
+           
             cloudAnimation = new List<CloudAnimation>();
             //cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud1Texture, 0.0f));
             cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud2Texture, 10.0f));
@@ -90,10 +92,10 @@ namespace Steam_Hunters
             KeyboardState keyboardState = Keyboard.GetState();
             MouseState ms = new MouseState();
          
-            if (ms.RightButton == ButtonState.Pressed)
-            {
-                enemyList.Add(new Enemies(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1, 1, 1, 1, false, 1));
-            } 
+            //if (ms.RightButton == ButtonState.Pressed)
+            //{
+            //    enemyList.Add(new EnemyMelee(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1,0, 1, 1, 1, false, 1));
+            //} 
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -228,7 +230,7 @@ namespace Steam_Hunters
                 #endregion
 
                 #region Eniemes
-                foreach (Enemies e in enemyList)
+                foreach (Entity e in enemyList)
                 {
                     if (e.target == null )
                     {
@@ -255,6 +257,10 @@ namespace Steam_Hunters
                             p.isHurt = true;
                         }
                     }
+                    if (e.canAttack == true)
+                    {
+                        e.AOEDamage(GameData.playerList);
+                    }
                 }
                 #endregion
 
@@ -271,7 +277,7 @@ namespace Steam_Hunters
             if (Player.paused == false)
             {
                 #region Eniemes
-                foreach (Enemies e in enemyList)
+                foreach (Entity e in enemyList)
                 {
                     e.Update(gameTime);
                     if (e.target != null)
@@ -427,7 +433,7 @@ namespace Steam_Hunters
                 {
                     m.Update(gameTime);
 
-                    foreach (Enemies e in enemyList)
+                    foreach (Entity e in enemyList)
                     {
                         if (m.Target == null)
                         {
@@ -489,7 +495,7 @@ namespace Steam_Hunters
             }
             #endregion
             #region Draw PLayer and Enimes
-            foreach (Enemies e in enemyList)
+              foreach (Entity e in enemyList)
             {
                 e.Draw(spriteBatch);
             }
@@ -497,6 +503,8 @@ namespace Steam_Hunters
             {
                 p.Draw(spriteBatch);
             }
+
+          
             #endregion
             level1.DrawLayerTop(spriteBatch);
             //level1.DrawLayerHitbox(spriteBatch);

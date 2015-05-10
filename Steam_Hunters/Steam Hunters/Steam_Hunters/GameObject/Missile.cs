@@ -16,10 +16,10 @@ namespace Steam_Hunters
         float speed;
         protected ParticleEngine particleEngineSteam;
 
-        public Enemies target;
+        public Entity target;
         public bool missileRemove;
 
-        public Enemies Target
+        public Entity Target
         {
             get { return target; }
         }
@@ -84,12 +84,12 @@ namespace Steam_Hunters
             return Vector2.Distance(center, pos) <= radius;
         }
 
-        public void GetClosestEnemy(List<Enemies> enemyList)
+        public void GetClosestEnemy(List<Entity> enemyList)
         {
             target = null;
             float smallestRange = radius;
 
-            foreach (Enemies e in enemyList)
+            foreach (Entity e in enemyList)
             {
                 if (Vector2.Distance(center, e.Center) < smallestRange)
                 {

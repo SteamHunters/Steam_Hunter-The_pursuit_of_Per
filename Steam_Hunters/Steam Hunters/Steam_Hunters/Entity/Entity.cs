@@ -19,15 +19,19 @@ namespace Steam_Hunters
         protected int Item;
         protected float AttackRangeRadius;
         protected float SearchRadius;
+        protected float backRadius;
         public float MovementSpeed;
         protected float AttackSpeed;
         //vilken map den ska spawnas i och pos är var i den mapen den är
         protected float MapPos;
         //Aggro går igång när player är i searchRadius och rör moben till AttackRangeRadius
-        public bool Aggro, canAttack;
+        public bool Aggro, canAttack, ExplodeOn;
         protected double AttackCooldown;
         protected Vector2 direction;
         public Player target;
+        double totalElapsedSeconds = 0;
+        const double MovementChangeTimeSeconds = 1.0; //seconds
+        
 
         public Vector2 Center
         {
@@ -48,7 +52,7 @@ namespace Steam_Hunters
         protected int milliSecondsPerFrame = 90;
 
         protected int size = 50;
-        public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, float AttackRangeRadius, float SearchRadius, float MovementSpeed,
+        public Entity(Texture2D tex, Vector2 pos, Point frameSize, Point sheetSize, int Hp, int MaxHp, int Gold, int Item, float AttackRangeRadius, float SearchRadius,float backRadius, float MovementSpeed,
            float AttackSpeed, float MapPos, bool Aggro, float AttackCooldown)
             : base(tex, pos)
         {
@@ -68,6 +72,7 @@ namespace Steam_Hunters
             this.Item = Item;
             this.AttackRangeRadius = AttackRangeRadius;
             this.SearchRadius = SearchRadius;
+            this.backRadius = backRadius;
             this.MovementSpeed = MovementSpeed;
             this.AttackSpeed = AttackSpeed;
             this.Aggro = Aggro;
@@ -80,6 +85,19 @@ namespace Steam_Hunters
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, frameSize.X, frameSize.Y);
 
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
+            if (Aggro == false)
+            {
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+                {
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    GetRandomDirection2();
+                }
+
+                pos += direction;
+
+            }
             if (Aggro == true && canAttack == false) 
             { 
                 pos -= direction * MovementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -170,6 +188,58 @@ namespace Steam_Hunters
             direction = center - target.center;
             direction.Normalize();
             rotation = (float)Math.Atan2(direction.X, -direction.Y);
+        }
+        private void GetRandomDirection2()
+        {
+            Random random = new Random();
+            int randomDirection = random.Next(5);
+
+            switch (randomDirection)
+            {
+
+                case 1:
+                    // Går vänster
+                    this.rotation = -67.5f;
+                    this.direction = new Vector2(-1, 0);
+
+                    break;
+                case 2:
+                    // Går höger
+                    this.rotation = 67.5f;
+                    this.direction = new Vector2(1, 0);
+
+                    break;
+                case 3:
+                    // Går upp
+                    this.rotation = 135;
+                    this.direction = new Vector2(0, -1);
+
+                    break;
+                case 4:
+                    // Går ner
+                    this.rotation = 0f;
+                    this.direction = new Vector2(0, 1);
+
+                    break;
+                default:
+                    this.direction = Vector2.Zero;
+                    break;
+
+            }
+        }
+        public void AOEDamage(List<Player> playerList)
+        {
+
+            foreach (Player p in playerList)
+            {
+                if (Vector2.Distance(center, p.center) < 300 && !p.ghostMode == true)
+                {
+                    p.statusWindow.hp -= 0.1f;
+
+
+
+                }
+            }
         }
     }
 }
