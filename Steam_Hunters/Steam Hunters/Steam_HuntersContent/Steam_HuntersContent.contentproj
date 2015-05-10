@@ -1174,13 +1174,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Texturer\Enimes\Mobs 2\BlueBug.png">
-      <Name>BlueBug</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Texturer\Enimes\Mobs 2\BrownBug.png">
       <Name>BrownBug</Name>
       <Importer>TextureImporter</Importer>
@@ -1190,6 +1183,13 @@
   <ItemGroup>
     <Compile Include="Texturer\Enimes\Mobs 3\missile crab.png">
       <Name>missile crab</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Texturer\Enimes\Mobs 2\BlueBug.png">
+      <Name>BlueBug</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -234,7 +234,7 @@ namespace Steam_Hunters
             {
                 if (Vector2.Distance(center, p.center) < 300 && !p.ghostMode == true)
                 {
-                    p.statusWindow.hp -= 0.1f;
+                    p.statusWindow.hp -= 25;
 
 
 

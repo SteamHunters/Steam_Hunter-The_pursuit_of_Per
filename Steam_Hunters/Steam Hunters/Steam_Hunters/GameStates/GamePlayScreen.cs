@@ -69,9 +69,10 @@ namespace Steam_Hunters
             }
             #endregion
 
-           //enemyList.Add(new EnemyMelee(TextureManager.BrownMonsterWalking, new Vector2(1600, 3100), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
-           //enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           //enemyList.Add(new EnemyMelee(TextureManager.BrownMonsterWalking, new Vector2(1600, 3100), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 70, 250, 0, 50, 1, 1, false, 1));
+           enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 1, 1, 1, 1, 10, 250, 0, 70, 1, 1, false, 1));
            enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1500, 3150), new Point(50, 50), new Point(3, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1600, 3150), new Point(50, 50), new Point(3, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
            
@@ -257,10 +258,16 @@ namespace Steam_Hunters
                             p.isHurt = true;
                         }
                     }
+                  if (e is EnemyBomb)
+                  { 
+
                     if (e.canAttack == true)
                     {
                         e.AOEDamage(GameData.playerList);
+                        enemyList.Remove(e);
+                        break;
                     }
+                  }
                 }
                 #endregion
 
