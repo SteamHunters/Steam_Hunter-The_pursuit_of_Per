@@ -16,8 +16,6 @@ Content\turret bot.xnb
 Content\turret top.xnb
 Content\turretBullet.xnb
 Content\teleportLocation.xnb
-Content\Tiles\GriddyDefault\blankTile.xnb
-Content\Tiles\GriddyDefault\unknownTile.xnb
 Content\pixel.xnb
 Content\ArcherTest.xnb
 Content\reload.xnb
@@ -123,7 +121,6 @@ Content\Tiles\House (50px)\house_8-1.xnb
 Content\Tiles\House (50px)\house_8-2.xnb
 Content\Tiles\House (50px)\house_8-3.xnb
 Content\Tiles\House (50px)\house_8-4.xnb
-Content\Tiles\red_50.xnb
 Content\Tiles\Rock (50px)\rock_1-1.xnb
 Content\Tiles\Rock (50px)\rock_1-2.xnb
 Content\Tiles\Rock (50px)\rock_1-3.xnb
@@ -199,11 +196,59 @@ Content\Music\Sakura Sword.xnb
 Content\Music\SteampunkOrchestra.xnb
 Content\Texturer\Enimes\Mobs 4\ShieldMob.xnb
 Content\Texturer\Enimes\Mobs 1\Melee mob slash.xnb
-Content\Texturer\Enimes\Mobs 2\BlueBug.xnb
 Content\Texturer\Enimes\Mobs 2\BrownBug.xnb
 Content\Texturer\Enimes\Mobs 3\missile crab.xnb
+Content\Texturer\Enimes\Mobs 2\BlueBug.xnb
+Content\Tiles\Cave (50px)\cave_1-1.xnb
+Content\Tiles\Cave (50px)\cave_1-2.xnb
+Content\Tiles\Cave (50px)\cave_1-3.xnb
+Content\Tiles\Cave (50px)\cave_1-4.xnb
+Content\Tiles\Cave (50px)\cave_1-5.xnb
+Content\Tiles\Cave (50px)\cave_1-6.xnb
+Content\Tiles\Cave (50px)\cave_2-1.xnb
+Content\Tiles\Cave (50px)\cave_2-2.xnb
+Content\Tiles\Cave (50px)\cave_2-3.xnb
+Content\Tiles\Cave (50px)\cave_2-4.xnb
+Content\Tiles\Cave (50px)\cave_2-5.xnb
+Content\Tiles\Cave (50px)\cave_3-1.xnb
+Content\Tiles\Cave (50px)\cave_3-2.xnb
+Content\Tiles\Cave (50px)\cave_3-3.xnb
+Content\Tiles\Extra (50px)\extra_1-2.xnb
+Content\Tiles\Extra (50px)\extra_1-3.xnb
+Content\Tiles\Extra (50px)\extra_1-4.xnb
+Content\Tiles\Extra (50px)\extra_2-1.xnb
+Content\Tiles\Extra (50px)\extra_2-2.xnb
+Content\Tiles\Extra (50px)\extra_2-3.xnb
+Content\Tiles\Extra (50px)\extra_2-4.xnb
+Content\Tiles\Extra (50px)\extra_3-1.xnb
+Content\Tiles\Extra (50px)\extra_3-2.xnb
+Content\Tiles\Extra (50px)\extra_3-3.xnb
+Content\Tiles\Extra (50px)\extra_3-4.xnb
+Content\Tiles\Extra (50px)\extra_4-1.xnb
+Content\Tiles\Extra (50px)\extra_4-2.xnb
+Content\Tiles\Extra (50px)\extra_4-3.xnb
+Content\Tiles\Extra (50px)\extra_4-4.xnb
+Content\Tiles\Extra (50px)\extra_5-1.xnb
+Content\Tiles\Extra (50px)\extra_5-2.xnb
+Content\Tiles\Extra (50px)\extra_5-3.xnb
+Content\Tiles\Extra (50px)\extra_5-4.xnb
+Content\Tiles\Extra (50px)\extra_6-1.xnb
+Content\Tiles\Extra (50px)\extra_6-2.xnb
+Content\Tiles\Extra (50px)\extra_6-3.xnb
+Content\Tiles\Extra (50px)\extra_6-4.xnb
+Content\Tiles\Extra (50px)\unkownTile.xnb
+Content\Tiles\Extra (50px)\red_50.xnb
+Content\Tiles\Extra (50px)\blankTile.xnb
+Content\Tiles\Extra (50px)\extra_1-1.xnb
+Content\Gold.xnb
 Content\Music\Roundtable Rival.wma
 Content\Music\Sakura Sword.wma
 Content\Music\SteampunkOrchestra.wma
-Content\Maps\tileMap_v1.tmx
-Content\Maps\tileBank_v1.xml
+Content\Maps\tileBank1.xml
+Content\Maps\tileBank2.xml
+Content\Maps\tileBank3.xml
+Content\Maps\tileBank4.xml
+Content\Maps\tileMap1.tmx
+Content\Maps\tileMap2.tmx
+Content\Maps\tileMap3.tmx
+Content\Maps\tileMap4.tmx

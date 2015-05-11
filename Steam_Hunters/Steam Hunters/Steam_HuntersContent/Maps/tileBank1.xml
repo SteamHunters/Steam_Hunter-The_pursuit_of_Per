@@ -2,12 +2,12 @@
   <layerData name ="griddyDefault">
     <tile>
       <name>UnknownTile</name>
-      <texture>GriddyDefault/unknownTile</texture>
+      <texture>Extra (50px)/unkownTile</texture>
       <key>255</key>
     </tile>
     <tile>
       <name>BlankTile</name>
-      <texture>GriddyDefault/blankTile</texture>
+      <texture>Extra (50px)/blankTile</texture>
       <key>0</key>
     </tile>
   </layerData>
@@ -579,7 +579,7 @@
     </defaultProperties>
     <tile>
       <name>hitbox</name>
-      <texture>red_50</texture>
+      <texture>Extra (50px)/red_50</texture>
       <key>82</key>
     </tile>
   </layerData>

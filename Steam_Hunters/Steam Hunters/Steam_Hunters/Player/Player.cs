@@ -34,7 +34,7 @@ namespace Steam_Hunters
         public Color color = Color.White;
 
         
-        protected List<Projectile> listProjectile = new List<Projectile>();
+        public List<Projectile> listProjectile = new List<Projectile>();
         protected Projectile projectile;
 
         public GamePadState newState, oldState;
@@ -43,7 +43,7 @@ namespace Steam_Hunters
 
         protected ParticleEngine particleEngineSteam;
 
-        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold, damage,isHurtTimer;
+        public int reloadCount, healthPotion, manaPotion, ressPotion, buffPotion, hp, mana, projectileTimerLife, gold, damage,isHurtTimer, xP;
         protected int timerSinceLastFrame = 0, milliSecondsPerFrame = 75;
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed, oldSpeed, time;
@@ -138,6 +138,11 @@ namespace Steam_Hunters
                     paused = false;
             }
 
+            if (xP >= 10)
+            {
+                xP = 0;
+                statusWindow.points += 1;
+            }
             center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             hitBox = new Rectangle((int)pos.X - frameSize.X / 2, (int)pos.Y - frameSize.Y / 2, 40, 40);
             time = (float)gameTime.ElapsedGameTime.TotalSeconds;

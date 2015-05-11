@@ -12,7 +12,7 @@ namespace Steam_Hunters
         protected SpriteEffects EntityFx = 0;
 
 
-        protected int Hp;
+        public int Hp;
         protected int MaxHp;
         protected int Gold;
         //om de ska dropa items

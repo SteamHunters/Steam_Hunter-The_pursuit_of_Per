@@ -21,8 +21,14 @@ namespace Steam_Hunters
         {
             this.content = content;
 
-            if(GameData.Level == 1)
+            if (GameData.Level == 1)
                 LoadLevel1();
+            else if (GameData.Level == 2)
+                LoadLevel2();
+            else if (GameData.Level == 3)
+                LoadLevel3();
+            else if (GameData.Level == 4)
+                LoadLevel4();
 
         }
 
@@ -57,15 +63,69 @@ namespace Steam_Hunters
         }
         public void DrawLayerHitbox(SpriteBatch spriteBatch)
         {
-            level.GetLayer("Hitbox").Draw(spriteBatch);
+            //level.GetLayer("Hitbox").Draw(spriteBatch);
         }
 
         
 
         private void LoadLevel1()
         {
-            this.gridDataStream = new FileStream("Content/Maps/tileMap_v1.tmx", FileMode.Open, FileAccess.Read);
-            this.tileBankStream = new FileStream("Content/Maps/tileBank_v1.xml", FileMode.Open, FileAccess.Read);
+            this.gridDataStream = new FileStream("Content/Maps/tileMap1.tmx", FileMode.Open, FileAccess.Read);
+            this.tileBankStream = new FileStream("Content/Maps/tileBank1.xml", FileMode.Open, FileAccess.Read);
+
+            GridData gridData = GridData.NewFromStreamAndWorldPosition(gridDataStream, new Vector2(1, 0));
+            TileBank tileBank = TileBank.CreateFromSerializedData(tileBankStream, content);
+
+            gridDataStream.Position = 0;
+            SerializedGridFactory gridFactory = SerializedGridFactory.NewFromData(gridDataStream, gridData, tileBank);
+
+            level = Grid.NewGrid(gridData, gridFactory, DefaultGridDrawer.NewFromGridData(gridData, content, Color.Black));
+
+            // YEY detta funkar
+            Predicate<Tile> temp = FindHitboxTiles;
+            hitboxList = level.GetLayer("hitbox").GetAllMatchingTiles(temp);
+        }
+
+        private void LoadLevel2()
+        {
+            this.gridDataStream = new FileStream("Content/Maps/tileMap2.tmx", FileMode.Open, FileAccess.Read);
+            this.tileBankStream = new FileStream("Content/Maps/tileBank2.xml", FileMode.Open, FileAccess.Read);
+
+            GridData gridData = GridData.NewFromStreamAndWorldPosition(gridDataStream, new Vector2(1, 0));
+            TileBank tileBank = TileBank.CreateFromSerializedData(tileBankStream, content);
+
+            gridDataStream.Position = 0;
+            SerializedGridFactory gridFactory = SerializedGridFactory.NewFromData(gridDataStream, gridData, tileBank);
+
+            level = Grid.NewGrid(gridData, gridFactory, DefaultGridDrawer.NewFromGridData(gridData, content, Color.Black));
+
+            // YEY detta funkar
+            Predicate<Tile> temp = FindHitboxTiles;
+            hitboxList = level.GetLayer("hitbox").GetAllMatchingTiles(temp);
+        }
+
+        private void LoadLevel3()
+        {
+            this.gridDataStream = new FileStream("Content/Maps/tileMap3.tmx", FileMode.Open, FileAccess.Read);
+            this.tileBankStream = new FileStream("Content/Maps/tileBank3.xml", FileMode.Open, FileAccess.Read);
+
+            GridData gridData = GridData.NewFromStreamAndWorldPosition(gridDataStream, new Vector2(1, 0));
+            TileBank tileBank = TileBank.CreateFromSerializedData(tileBankStream, content);
+
+            gridDataStream.Position = 0;
+            SerializedGridFactory gridFactory = SerializedGridFactory.NewFromData(gridDataStream, gridData, tileBank);
+
+            level = Grid.NewGrid(gridData, gridFactory, DefaultGridDrawer.NewFromGridData(gridData, content, Color.Black));
+
+            // YEY detta funkar
+            Predicate<Tile> temp = FindHitboxTiles;
+            hitboxList = level.GetLayer("hitbox").GetAllMatchingTiles(temp);
+        }
+
+        private void LoadLevel4()
+        {
+            this.gridDataStream = new FileStream("Content/Maps/tileMap4.tmx", FileMode.Open, FileAccess.Read);
+            this.tileBankStream = new FileStream("Content/Maps/tileBank4.xml", FileMode.Open, FileAccess.Read);
 
             GridData gridData = GridData.NewFromStreamAndWorldPosition(gridDataStream, new Vector2(1, 0));
             TileBank tileBank = TileBank.CreateFromSerializedData(tileBankStream, content);

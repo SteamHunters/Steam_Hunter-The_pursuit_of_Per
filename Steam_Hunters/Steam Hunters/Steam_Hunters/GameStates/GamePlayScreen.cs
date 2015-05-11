@@ -13,7 +13,7 @@ namespace Steam_Hunters
 {
     class GamePlayScreen
     {
-        private World level1;//, level2, level3;
+        private World level1, level2, level3, level4;
         private Game1 game;
         public Camera camera;
         private Vector2 cameraCenter;
@@ -70,18 +70,21 @@ namespace Steam_Hunters
             #endregion
 
            //enemyList.Add(new EnemyMelee(TextureManager.BrownMonsterWalking, new Vector2(1600, 3100), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 70, 250, 0, 50, 1, 1, false, 1));
-           enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 1, 1, 1, 1, 10, 250, 0, 70, 1, 1, false, 1));
-           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1500, 3150), new Point(50, 50), new Point(3, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
-           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1600, 3150), new Point(50, 50), new Point(3, 1), 1, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 10, 1, 1, 1, 10, 250, 0, 70, 1, 1, false, 1));
+           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1500, 3150), new Point(50, 50), new Point(3, 1), 20, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1600, 3150), new Point(50, 50), new Point(3, 1), 30, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
            
             cloudAnimation = new List<CloudAnimation>();
             //cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud1Texture, 0.0f));
-            cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud2Texture, 10.0f));
-            //cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud3Texture, 50.0f)); 
+            cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud2Texture, 15.0f));
+            cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud3Texture, 20.0f)); 
 
-            level1 = new World(game.Content);
+            //level1 = new World(game.Content);
+            //level2 = new World(game.Content);
+            level3 = new World(game.Content);
+            //level4 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
             
             textHighScores_01 = new String[maxHighScores];
@@ -135,7 +138,7 @@ namespace Steam_Hunters
                     }
                 }
 
-                foreach (Tile h in level1.hitboxList)
+                foreach (Tile h in level3.hitboxList)
                 {
                     Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
                     if (p.hitBox.Intersects(rect))
@@ -233,6 +236,23 @@ namespace Steam_Hunters
                 #region Eniemes
                 foreach (Entity e in enemyList)
                 {
+                    if (e.Hp <= 0)
+                    {
+                        enemyList.Remove(e);
+                        score += 10;
+                        p.xP += 5;
+                        break;
+                    }
+
+                    foreach (Projectile pj in p.listProjectile)
+                    {
+                        if (pj.IsCollidingEntity(e))
+                        {
+                            e.Hp -= p.damage;
+                            p.listProjectile.Remove(pj);
+                            break;
+                        }
+                    }
                     if (e.target == null )
                     {
                         e.GetClosestPlayer(GameData.playerList);
@@ -354,9 +374,16 @@ namespace Steam_Hunters
                     foreach (Player p in GameData.playerList)
                     {
                         if (p.newState.ThumbSticks.Left.Y != 0)
-                            cA.speed = p.newState.ThumbSticks.Left.Y * 50;
+                        {
+                            cloudAnimation[0].speed = p.newState.ThumbSticks.Left.Y * 50;
+                            cloudAnimation[1].speed = p.newState.ThumbSticks.Left.Y * 60;                         
+                        }
                         else
-                            cA.speed = 15;
+                        {
+                            cloudAnimation[0].speed = 15f;
+                            cloudAnimation[1].speed = 20f;
+                        }
+                            
                     }
                 }
                 #endregion
@@ -477,50 +504,194 @@ namespace Steam_Hunters
         {     
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
-            
-            level1.DrawLayerBase(spriteBatch);
-            #region Enginers things
-            foreach (Projectile tp in turretProjectile)
+
+            if (GameData.Level == 1)
             {
-                tp.Draw(spriteBatch);
-            }
-            foreach (Dispenser d in dispensers)
-            {
-                d.Draw(spriteBatch);
-            }
-            foreach (EngineerTower t in turrets)
-            {
-                t.Draw(spriteBatch);
-            }
-            foreach (Missile m in missiles)
-            {
-                m.Draw(spriteBatch);
-            }
-            foreach(NPC n in npcList)
-            {
-                n.Draw(spriteBatch);
-            }
-            #endregion
-            #region Draw PLayer and Enimes
-              foreach (Entity e in enemyList)
-            {
-                e.Draw(spriteBatch);
-            }
-            foreach (Player p in GameData.playerList)
-            {
-                p.Draw(spriteBatch);
+                level1.DrawLayerBase(spriteBatch);
+                #region Enginers things
+                foreach (Projectile tp in turretProjectile)
+                {
+                    tp.Draw(spriteBatch);
+                }
+                foreach (Dispenser d in dispensers)
+                {
+                    d.Draw(spriteBatch);
+                }
+                foreach (EngineerTower t in turrets)
+                {
+                    t.Draw(spriteBatch);
+                }
+                foreach (Missile m in missiles)
+                {
+                    m.Draw(spriteBatch);
+                }
+                foreach (NPC n in npcList)
+                {
+                    n.Draw(spriteBatch);
+                }
+                #endregion
+                #region Draw PLayer and Enimes
+                foreach (Entity e in enemyList)
+                {
+                    e.Draw(spriteBatch);
+                }
+                foreach (Player p in GameData.playerList)
+                {
+                    p.Draw(spriteBatch);
+                }
+
+
+                #endregion
+                level1.DrawLayerTop(spriteBatch);
+                level1.DrawLayerHitbox(spriteBatch);
+                #region Draw Interface
+                foreach (Player p in GameData.playerList)
+                {
+                    p.DrawInterface(spriteBatch);
+                }
+                #endregion
             }
 
-          
-            #endregion
-            level1.DrawLayerTop(spriteBatch);
-            //level1.DrawLayerHitbox(spriteBatch);
-            #region Draw Interface
-            foreach (Player p in GameData.playerList)
+            if (GameData.Level == 2)
             {
-                p.DrawInterface(spriteBatch);
+                level2.DrawLayerBase(spriteBatch);
+                #region Enginers things
+                foreach (Projectile tp in turretProjectile)
+                {
+                    tp.Draw(spriteBatch);
+                }
+                foreach (Dispenser d in dispensers)
+                {
+                    d.Draw(spriteBatch);
+                }
+                foreach (EngineerTower t in turrets)
+                {
+                    t.Draw(spriteBatch);
+                }
+                foreach (Missile m in missiles)
+                {
+                    m.Draw(spriteBatch);
+                }
+                foreach (NPC n in npcList)
+                {
+                    n.Draw(spriteBatch);
+                }
+                #endregion
+                #region Draw PLayer and Enimes
+                foreach (Entity e in enemyList)
+                {
+                    e.Draw(spriteBatch);
+                }
+                foreach (Player p in GameData.playerList)
+                {
+                    p.Draw(spriteBatch);
+                }
+
+
+                #endregion
+                level2.DrawLayerTop(spriteBatch);
+                level2.DrawLayerHitbox(spriteBatch);
+                #region Draw Interface
+                foreach (Player p in GameData.playerList)
+                {
+                    p.DrawInterface(spriteBatch);
+                }
+                #endregion
             }
-            #endregion
+
+            if (GameData.Level == 3)
+            {
+                level3.DrawLayerBase(spriteBatch);
+                #region Enginers things
+                foreach (Projectile tp in turretProjectile)
+                {
+                    tp.Draw(spriteBatch);
+                }
+                foreach (Dispenser d in dispensers)
+                {
+                    d.Draw(spriteBatch);
+                }
+                foreach (EngineerTower t in turrets)
+                {
+                    t.Draw(spriteBatch);
+                }
+                foreach (Missile m in missiles)
+                {
+                    m.Draw(spriteBatch);
+                }
+                foreach (NPC n in npcList)
+                {
+                    n.Draw(spriteBatch);
+                }
+                #endregion
+                #region Draw PLayer and Enimes
+                foreach (Entity e in enemyList)
+                {
+                    e.Draw(spriteBatch);
+                }
+                foreach (Player p in GameData.playerList)
+                {
+                    p.Draw(spriteBatch);
+                }
+
+
+                #endregion
+                level3.DrawLayerTop(spriteBatch);
+                level3.DrawLayerHitbox(spriteBatch);
+                #region Draw Interface
+                foreach (Player p in GameData.playerList)
+                {
+                    p.DrawInterface(spriteBatch);
+                }
+                #endregion
+            }
+
+            if (GameData.Level == 4)
+            {
+                level4.DrawLayerBase(spriteBatch);
+                #region Enginers things
+                foreach (Projectile tp in turretProjectile)
+                {
+                    tp.Draw(spriteBatch);
+                }
+                foreach (Dispenser d in dispensers)
+                {
+                    d.Draw(spriteBatch);
+                }
+                foreach (EngineerTower t in turrets)
+                {
+                    t.Draw(spriteBatch);
+                }
+                foreach (Missile m in missiles)
+                {
+                    m.Draw(spriteBatch);
+                }
+                foreach (NPC n in npcList)
+                {
+                    n.Draw(spriteBatch);
+                }
+                #endregion
+                #region Draw PLayer and Enimes
+                foreach (Entity e in enemyList)
+                {
+                    e.Draw(spriteBatch);
+                }
+                foreach (Player p in GameData.playerList)
+                {
+                    p.Draw(spriteBatch);
+                }
+
+
+                #endregion
+                level4.DrawLayerTop(spriteBatch);
+                level4.DrawLayerHitbox(spriteBatch);
+                #region Draw Interface
+                foreach (Player p in GameData.playerList)
+                {
+                    p.DrawInterface(spriteBatch);
+                }
+                #endregion
+            }
 
             spriteBatch.End();
 

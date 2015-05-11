@@ -1,0 +1,364 @@
+﻿<tilebank>
+  <layerData name ="griddyDefault">
+    <tile>
+      <name>UnknownTile</name>
+      <texture>Extra (50px)/unkownTile</texture>
+      <key>255</key>
+    </tile>
+    <tile>
+      <name>BlankTile</name>
+      <texture>Extra (50px)/blankTile</texture>
+      <key>0</key>
+    </tile>
+  </layerData>
+
+  <layerData name ="Base">
+    <defaultProperties>
+    </defaultProperties>    
+    <tile>
+      <name>cave11</name>
+      <texture>Cave (50px)/cave_1-1</texture>  
+      <key>1</key>
+    </tile>
+    <tile>
+      <name>cave12</name>
+      <texture>Cave (50px)/cave_1-2</texture>
+      <key>2</key>
+    </tile>
+    <tile>
+      <name>cave13</name>
+      <texture>Cave (50px)/cave_1-3</texture>
+      <key>3</key>
+    </tile>
+    <tile>
+      <name>cave14</name>
+      <texture>Cave (50px)/cave_1-4</texture>
+      <key>4</key>
+    </tile>
+    <tile>
+      <name>cave15</name>
+      <texture>Cave (50px)/cave_1-5</texture>
+      <key>5</key>
+    </tile>
+    <tile>
+      <name>cave16</name>
+      <texture>Cave (50px)/cave_1-6</texture>
+      <key>6</key>
+    </tile>
+    
+    <tile>
+      <name>cave21</name>
+      <texture>Cave (50px)/cave_2-1</texture>
+      <key>7</key>
+    </tile>
+    <tile>
+      <name>cave22</name>
+      <texture>Cave (50px)/cave_2-2</texture>
+      <key>8</key>
+    </tile>
+    <tile>
+      <name>cave23</name>
+      <texture>Cave (50px)/cave_2-3</texture>
+      <key>9</key>
+    </tile>
+    <tile>
+      <name>cave24</name>
+      <texture>Cave (50px)/cave_2-4</texture>
+      <key>10</key>
+    </tile>
+    <tile>
+      <name>cave25</name>
+      <texture>Cave (50px)/cave_2-5</texture>
+      <key>11</key>
+    </tile>
+
+    <tile>
+      <name>cave31</name>
+      <texture>Cave (50px)/cave_3-1</texture>
+      <key>13</key>
+    </tile>
+    <tile>
+      <name>cave32</name>
+      <texture>Cave (50px)/cave_3-2</texture>
+      <key>14</key>
+    </tile>
+    <tile>
+      <name>cave33</name>
+      <texture>Cave (50px)/cave_3-3</texture>
+      <key>15</key>
+    </tile>
+  </layerData>
+
+  <layerData name ="Middle">
+    <defaultProperties>
+    </defaultProperties>
+    <tile>
+      <name>extra11</name>
+      <texture>Extra (50px)/extra_1-1</texture>
+      <key>19</key>
+    </tile>
+    <tile>
+      <name>extra12</name>
+      <texture>Extra (50px)/extra_1-2</texture>
+      <key>20</key>
+    </tile>
+    <tile>
+      <name>extra13</name>
+      <texture>Extra (50px)/extra_1-3</texture>
+      <key>21</key>
+    </tile>
+    <tile>
+      <name>extra14</name>
+      <texture>Extra (50px)/extra_1-4</texture>
+      <key>22</key>
+    </tile>
+
+    <tile>
+      <name>extra21</name>
+      <texture>Extra (50px)/extra_2-1</texture>
+      <key>23</key>
+    </tile>
+    <tile>
+      <name>extra22</name>
+      <texture>Extra (50px)/extra_2-2</texture>
+      <key>24</key>
+    </tile>
+    <tile>
+      <name>extra23</name>
+      <texture>Extra (50px)/extra_2-3</texture>
+      <key>25</key>
+    </tile>
+    <tile>
+      <name>extra24</name>
+      <texture>Extra (50px)/extra_2-4</texture>
+      <key>26</key>
+    </tile>
+
+    <tile>
+      <name>extra31</name>
+      <texture>Extra (50px)/extra_3-1</texture>
+      <key>27</key>
+    </tile>
+    <tile>
+      <name>extra32</name>
+      <texture>Extra (50px)/extra_3-2</texture>
+      <key>28</key>
+    </tile>
+    <tile>
+      <name>extra33</name>
+      <texture>Extra (50px)/extra_3-3</texture>
+      <key>29</key>
+    </tile>
+    <tile>
+      <name>extra34</name>
+      <texture>Extra (50px)/extra_3-4</texture>
+      <key>30</key>
+    </tile>
+
+    <tile>
+      <name>extra41</name>
+      <texture>Extra (50px)/extra_4-1</texture>
+      <key>31</key>
+    </tile>
+    <tile>
+      <name>extra42</name>
+      <texture>Extra (50px)/extra_4-2</texture>
+      <key>32</key>
+    </tile>
+    <tile>
+      <name>extra43</name>
+      <texture>Extra (50px)/extra_4-3</texture>
+      <key>33</key>
+    </tile>
+    <tile>
+      <name>extra44</name>
+      <texture>Extra (50px)/extra_4-4</texture>
+      <key>34</key>
+    </tile>
+
+    <tile>
+      <name>extra51</name>
+      <texture>Extra (50px)/extra_5-1</texture>
+      <key>35</key>
+    </tile>
+    <tile>
+      <name>extra52</name>
+      <texture>Extra (50px)/extra_5-2</texture>
+      <key>36</key>
+    </tile>
+    <tile>
+      <name>extra53</name>
+      <texture>Extra (50px)/extra_5-3</texture>
+      <key>37</key>
+    </tile>
+    <tile>
+      <name>extra54</name>
+      <texture>Extra (50px)/extra_5-4</texture>
+      <key>38</key>
+    </tile>
+
+    <tile>
+      <name>extra61</name>
+      <texture>Extra (50px)/extra_6-1</texture>
+      <key>39</key>
+    </tile>
+    <tile>
+      <name>extra62</name>
+      <texture>Extra (50px)/extra_6-2</texture>
+      <key>40</key>
+    </tile>
+    <tile>
+      <name>extra63</name>
+      <texture>Extra (50px)/extra_6-3</texture>
+      <key>41</key>
+    </tile>
+    <tile>
+      <name>extra64</name>
+      <texture>Extra (50px)/extra_6-4</texture>
+      <key>42</key>
+    </tile>
+  </layerData>
+
+  <layerData name ="Top">
+    <defaultProperties>
+    </defaultProperties>
+    <tile>
+      <name>extra11</name>
+      <texture>Extra (50px)/extra_1-1</texture>
+      <key>19</key>
+    </tile>
+    <tile>
+      <name>extra12</name>
+      <texture>Extra (50px)/extra_1-2</texture>
+      <key>20</key>
+    </tile>
+    <tile>
+      <name>extra13</name>
+      <texture>Extra (50px)/extra_1-3</texture>
+      <key>21</key>
+    </tile>
+    <tile>
+      <name>extra14</name>
+      <texture>Extra (50px)/extra_1-4</texture>
+      <key>22</key>
+    </tile>
+
+    <tile>
+      <name>extra21</name>
+      <texture>Extra (50px)/extra_2-1</texture>
+      <key>23</key>
+    </tile>
+    <tile>
+      <name>extra22</name>
+      <texture>Extra (50px)/extra_2-2</texture>
+      <key>24</key>
+    </tile>
+    <tile>
+      <name>extra23</name>
+      <texture>Extra (50px)/extra_2-3</texture>
+      <key>25</key>
+    </tile>
+    <tile>
+      <name>extra24</name>
+      <texture>Extra (50px)/extra_2-4</texture>
+      <key>26</key>
+    </tile>
+
+    <tile>
+      <name>extra31</name>
+      <texture>Extra (50px)/extra_3-1</texture>
+      <key>27</key>
+    </tile>
+    <tile>
+      <name>extra32</name>
+      <texture>Extra (50px)/extra_3-2</texture>
+      <key>28</key>
+    </tile>
+    <tile>
+      <name>extra33</name>
+      <texture>Extra (50px)/extra_3-3</texture>
+      <key>29</key>
+    </tile>
+    <tile>
+      <name>extra34</name>
+      <texture>Extra (50px)/extra_3-4</texture>
+      <key>30</key>
+    </tile>
+
+    <tile>
+      <name>extra41</name>
+      <texture>Extra (50px)/extra_4-1</texture>
+      <key>31</key>
+    </tile>
+    <tile>
+      <name>extra42</name>
+      <texture>Extra (50px)/extra_4-2</texture>
+      <key>32</key>
+    </tile>
+    <tile>
+      <name>extra43</name>
+      <texture>Extra (50px)/extra_4-3</texture>
+      <key>33</key>
+    </tile>
+    <tile>
+      <name>extra44</name>
+      <texture>Extra (50px)/extra_4-4</texture>
+      <key>34</key>
+    </tile>
+
+    <tile>
+      <name>extra51</name>
+      <texture>Extra (50px)/extra_5-1</texture>
+      <key>35</key>
+    </tile>
+    <tile>
+      <name>extra52</name>
+      <texture>Extra (50px)/extra_5-2</texture>
+      <key>36</key>
+    </tile>
+    <tile>
+      <name>extra53</name>
+      <texture>Extra (50px)/extra_5-3</texture>
+      <key>37</key>
+    </tile>
+    <tile>
+      <name>extra54</name>
+      <texture>Extra (50px)/extra_5-4</texture>
+      <key>38</key>
+    </tile>
+
+    <tile>
+      <name>extra61</name>
+      <texture>Extra (50px)/extra_6-1</texture>
+      <key>39</key>
+    </tile>
+    <tile>
+      <name>extra62</name>
+      <texture>Extra (50px)/extra_6-2</texture>
+      <key>40</key>
+    </tile>
+    <tile>
+      <name>extra63</name>
+      <texture>Extra (50px)/extra_6-3</texture>
+      <key>41</key>
+    </tile>
+    <tile>
+      <name>extra64</name>
+      <texture>Extra (50px)/extra_6-4</texture>
+      <key>42</key>
+    </tile>
+  </layerData>
+
+    <layerData name ="Hitbox">
+    <defaultProperties>
+      <property name ="Passable">false</property>
+      <property name ="Visible">true</property>
+    </defaultProperties>
+    <tile>
+      <name>hitbox</name>
+      <texture>Extra (50px)/red_50</texture>
+      <key>43</key>
+    </tile>
+  </layerData>
+  
+</tilebank>
