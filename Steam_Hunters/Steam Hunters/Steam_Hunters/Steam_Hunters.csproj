@@ -80,6 +80,7 @@
     <Compile Include="Entity\Enemy classes\EnemyBug.cs" />
     <Compile Include="Entity\Enemy classes\EnemyMelee.cs" />
     <Compile Include="Entity\Enemy classes\EnemyRange.cs" />
+    <Compile Include="GameObject\RainAttack.cs" />
     <Compile Include="Tools\Dialog.cs" />
     <Compile Include="Tools\GameData.cs" />
     <Compile Include="GameObject\Dispenser.cs" />
