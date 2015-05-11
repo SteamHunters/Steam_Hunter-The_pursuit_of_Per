@@ -48,7 +48,7 @@ namespace Steam_Hunters
 
         public float PrevAngle, shootTimer, rightTriggerTimer, rightTriggerValue, lefthTriggerValue, speed, oldSpeed, time;
 
-        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, ghostMode, isHurt;
+        public bool LTpress, LBpress, buying, Backpress, notMoved, shootOneAtTime, ghostMode, isHurt, isArcherMoving;
         public static bool paused;
 
         public bool Apress, Bpress, Xpress, Ypress, RTpress, RBpress, Duppress, Drightpress, Dlefthpress, Ddownpress, Startpress, isShooting, isDead;
@@ -83,6 +83,7 @@ namespace Steam_Hunters
             shootOneAtTime = true;
             showButtonCounter = true;
             isShooting = true;
+            isArcherMoving = true;
 
             this.center = new Vector2(pos.X + frameSize.X / 2, pos.Y + frameSize.Y / 2);
             particleEngineSteam = new ParticleEngine(TextureManager.steamTextures, pos, Color.White);
@@ -99,7 +100,10 @@ namespace Steam_Hunters
             #region Buying
             if (buying == false && paused == false)
             {
-                MoveLeftThumbStick(newState);
+                if (isArcherMoving)
+                {
+                    MoveLeftThumbStick(newState);
+                }
             }
             if (buying == true && paused == false)
             {

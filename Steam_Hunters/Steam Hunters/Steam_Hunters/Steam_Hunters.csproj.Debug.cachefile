@@ -199,6 +199,7 @@ Content\Texturer\Enimes\Mobs 1\Melee mob slash.xnb
 Content\Texturer\Enimes\Mobs 2\BrownBug.xnb
 Content\Texturer\Enimes\Mobs 3\missile crab.xnb
 Content\Texturer\Enimes\Mobs 2\BlueBug.xnb
+<<<<<<< HEAD
 Content\Tiles\Cave (50px)\cave_1-1.xnb
 Content\Tiles\Cave (50px)\cave_1-2.xnb
 Content\Tiles\Cave (50px)\cave_1-3.xnb
@@ -241,6 +242,8 @@ Content\Tiles\Extra (50px)\red_50.xnb
 Content\Tiles\Extra (50px)\blankTile.xnb
 Content\Tiles\Extra (50px)\extra_1-1.xnb
 Content\Gold.xnb
+=======
+>>>>>>> origin/master
 Content\Music\Roundtable Rival.wma
 Content\Music\Sakura Sword.wma
 Content\Music\SteampunkOrchestra.wma

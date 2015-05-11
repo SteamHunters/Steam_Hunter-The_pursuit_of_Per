@@ -34,14 +34,16 @@ namespace Steam_Hunters
 
         #region Warrior Textur
         public static Texture2D WarriorPic { get; private set; }
+        public static Texture2D warriorAnimation { get; private set; }
         #endregion
 
         #region Archer Textur
         public static Texture2D ArcherPic { get; private set; }
+        public static Texture2D archerAnimation { get; private set; }
         #endregion
 
         #region Wizard Textur
-        public static Texture2D WizardAnimation { get; private set; }
+        public static Texture2D wizardAnimation { get; private set; }
         public static Texture2D WizardPic { get; private set; }
         public static Texture2D magicShield { get; private set; }
         #endregion
@@ -54,6 +56,8 @@ namespace Steam_Hunters
         public static Texture2D turretTexTop { get; private set; }
         public static Texture2D teleportLocation { get; private set; }
         public static Texture2D missile { get; private set; }
+
+        public static Texture2D engineerAnimation { get; private set; }
         #endregion
 
         #region NPC
@@ -77,6 +81,23 @@ namespace Steam_Hunters
         #endregion
 
         #region Vapen Texturer
+
+        #region Archer
+        public static List<Texture2D> circles = new List<Texture2D>();
+        public static Texture2D circle1 { get; private set; }
+        public static Texture2D circle2 { get; private set; }
+        public static Texture2D circle3 { get; private set; }
+        public static Texture2D circle4 { get; private set; }
+        public static Texture2D circle5 { get; private set; }
+        public static Texture2D circle6 { get; private set; }
+        public static Texture2D circle7 { get; private set; }
+
+        public static Texture2D archerTrap { get; private set; }
+
+        public static Texture2D reload { get; private set; }
+
+        #endregion
+
         #endregion
 
         #region Profil Texturer
@@ -147,36 +168,18 @@ namespace Steam_Hunters
         public static Texture2D cloud3Texture { get; private set; }
         #endregion
 
-        #endregion
-
-        // Ta bort sen
-        public static Texture2D archerTrap { get; private set; }
-        public static Texture2D testTextureEngineer { get; private set; }
-        public static Texture2D testTextureArcher { get; private set; }
-        public static Texture2D reload { get; private set; }
-        //public static Texture2D wizard { get; private set; }
-        public static Texture2D warriorAnimation { get; private set; }
-
-        //public static Texture2D [] circle { get; private set; }
-        public static List<Texture2D> circles = new List<Texture2D>();
-        public static Texture2D circle1 { get; private set; }
-        public static Texture2D circle2 { get; private set; }
-        public static Texture2D circle3 { get; private set; }
-        public static Texture2D circle4 { get; private set; }
-        public static Texture2D circle5 { get; private set; }
-        public static Texture2D circle6 { get; private set; }
-        public static Texture2D circle7 { get; private set; }
-
+        #region Monster Texturer
         public static Texture2D BrownMonsterWalking { get; private set; }
         public static Texture2D BrownMonsterAttack { get; private set; }
         public static Texture2D BlueBugs { get; private set; }
         public static Texture2D BrownBugs { get; private set; }
 
         public static Texture2D MissileCrab { get; private set; }
-        public static Texture2D map { get; private set; }
-        //        
+        #endregion
 
+        #endregion
 
+        //public static Texture2D map { get; private set; }//den verkar inte användas
 
         public static void LoadContent(ContentManager Content)
         {
@@ -204,21 +207,24 @@ namespace Steam_Hunters
             #region Karaktär Texturer
 
             #region Warrior Textur
-            WizardAnimation = Content.Load<Texture2D>(@"WizardAnimation");
             WarriorPic = Content.Load<Texture2D>(@"Texturer/Karakter/Warrior/WarriorPic");
+            warriorAnimation = Content.Load<Texture2D>(@"WarriorWalk");
             #endregion
 
             #region Archer Textur
             ArcherPic = Content.Load<Texture2D>(@"Texturer/Karakter/Archer/Archer Pic");
+            archerAnimation = Content.Load<Texture2D>(@"ArcherTest");
             #endregion
 
             #region Wizard Textur
             WizardPic = Content.Load<Texture2D>(@"Texturer/Karakter/Wizard/Wizard Pic");
+            wizardAnimation = Content.Load<Texture2D>(@"WizardAnimation");
             magicShield = Content.Load<Texture2D>(@"Magic shield");
             #endregion
 
             #region Enginer Textur
             EngineerPic = Content.Load<Texture2D>(@"Texturer/Karakter/Engineer/Engineer Pic");
+            engineerAnimation = Content.Load<Texture2D>(@"engineer animation walking");
             dispenserTex = Content.Load<Texture2D>(@"Dispenser");
             turretTexBot = Content.Load<Texture2D>(@"turret bot");
             turretTexTop = Content.Load<Texture2D>(@"turret top");
@@ -244,6 +250,21 @@ namespace Steam_Hunters
             #endregion
 
             #region Vapen Texturer
+
+            #region Archer
+            archerTrap = Content.Load<Texture2D>(@"archer trap");
+            reload = Content.Load<Texture2D>(@"reload");
+            arrowPowerShoot = Content.Load<Texture2D>(@"PowerShot Arrow");
+
+            circles.Add(circle1 = Content.Load<Texture2D>(@"circle/circle1"));
+            circles.Add(circle2 = Content.Load<Texture2D>(@"circle/circle2"));
+            circles.Add(circle3 = Content.Load<Texture2D>(@"circle/circle3"));
+            circles.Add(circle4 = Content.Load<Texture2D>(@"circle/circle4"));
+            circles.Add(circle5 = Content.Load<Texture2D>(@"circle/circle5"));
+            circles.Add(circle6 = Content.Load<Texture2D>(@"circle/circle6"));
+            circles.Add(circle7 = Content.Load<Texture2D>(@"circle/circle7"));
+            #endregion
+
             #endregion
 
             #region Profil Texturer
@@ -297,51 +318,9 @@ namespace Steam_Hunters
             cloud2Texture = Content.Load<Texture2D>(@"CloudanimationTex");
             cloud3Texture = Content.Load<Texture2D>(@"CloudanimationTex2");
 
-            #endregion
-
-            #endregion
-
-            // Ta bort sen
-            //wizard = Content.Load<Texture2D>(@"Wizard done");
-            archerTrap = Content.Load<Texture2D>(@"archer trap");
-            warriorAnimation = Content.Load<Texture2D>(@"WarriorWalk");
-            testTextureEngineer = Content.Load<Texture2D>(@"engineer animation walking");
-            testTextureArcher = Content.Load<Texture2D>(@"ArcherTest");
-            reload = Content.Load<Texture2D>(@"reload");
-            arrowPowerShoot = Content.Load<Texture2D>(@"PowerShot Arrow");
-            circles.Add(circle1 = Content.Load<Texture2D>(@"circle/circle1"));
-            circles.Add(circle2 = Content.Load<Texture2D>(@"circle/circle2"));
-            circles.Add(circle3 = Content.Load<Texture2D>(@"circle/circle3"));
-            circles.Add(circle4 = Content.Load<Texture2D>(@"circle/circle4"));
-            circles.Add(circle5 = Content.Load<Texture2D>(@"circle/circle5"));
-            circles.Add(circle6 = Content.Load<Texture2D>(@"circle/circle6"));
-            circles.Add(circle7 = Content.Load<Texture2D>(@"circle/circle7"));
-
-           
-                BrownMonsterWalking = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob");
-                BrownMonsterAttack = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob slash");
-                
-                BlueBugs = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 2/BlueBug");
-                BrownBugs = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 2/BrownBug");
-              
-                MissileCrab = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 3/missile crab");
-            
-
-            ////circles.Add(Content.Load<Texture2D>(@"circle2"));
-            //circles.Add(Content.Load<Texture2D>(@"circle3"));
-            //circles.Add(Content.Load<Texture2D>(@"circle4"));
-            //circles.Add(Content.Load<Texture2D>(@"circle5"));
-            //circles.Add(Content.Load<Texture2D>(@"circle6"));
-            //circles.Add(Content.Load<Texture2D>(@"circle7"));
-
-
-
             steamTextures.Add(steam1 = Content.Load<Texture2D>(@"steamSmoke1"));
             steamTextures.Add(steam2 = Content.Load<Texture2D>(@"steamSmoke2"));
             steamTextures.Add(steam3 = Content.Load<Texture2D>(@"steamSmoke3"));
-
-            // 
-            // Ska flyttas
 
             startBackground = Content.Load<Texture2D>(@"StartScreenTest");
             StatusWindowTexture = Content.Load<Texture2D>(@"StatusWindow");
@@ -349,8 +328,19 @@ namespace Steam_Hunters
             hpTexture = Content.Load<Texture2D>(@"HpPixel");
             manaTexture = Content.Load<Texture2D>(@"ManaPixel");
             NPCTexture = Content.Load<Texture2D>(@"NPC");
+            #endregion
+
+            #region Monster Texturer
+            BrownMonsterWalking = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob");
+            BrownMonsterAttack = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 1/Melee mob slash");
+
+            BlueBugs = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 2/BlueBug");
+            BrownBugs = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 2/BrownBug");
+
+            MissileCrab = Content.Load<Texture2D>(@"Texturer/Enimes/Mobs 3/missile crab");
+            #endregion
+
+            #endregion
         }
-
-
     }
 }
