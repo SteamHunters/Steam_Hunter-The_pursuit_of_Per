@@ -55,11 +55,8 @@ namespace Steam_Hunters
                     }
                     if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.archerSelect == false)
                     {
-<<<<<<< HEAD
-                        p = new Archer(TextureManager.testTextureArcher, TextureManager.ArhHUD, new Vector2(1665, 3235), game.Window, gps, 100, 100, speed,1 , playerIndex);
-=======
                         p = new Archer(TextureManager.archerAnimation, TextureManager.ArhHUD, new Vector2(1665, 3235), game.Window, gps, 100, 100, speed, 1, playerIndex);
->>>>>>> origin/master
+
                         GameData.playerList.Add(p);
                         Selected = true;
                         GameData.archerSelect = true;
@@ -97,11 +94,8 @@ namespace Steam_Hunters
                     }
                     if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.engineerSelect == false)
                     {
-<<<<<<< HEAD
-                        p = new Engineer(TextureManager.testTextureEngineer,TextureManager.EngHUD, new Vector2(1665, 3315), game.Window, gps, 100, 100, speed, 3,playerIndex);
-=======
-                        p = new Engineer(TextureManager.engineerAnimation,TextureManager.EngHUD, new Vector2(1665, 3315), game.Window, gps, 100, 100, speed, 1,playerIndex);
->>>>>>> origin/master
+                        p = new Engineer(TextureManager.engineerAnimation,TextureManager.EngHUD, new Vector2(1665, 3315), game.Window, gps, 100, 100, speed, 1, playerIndex);
+
                         GameData.playerList.Add(p);
                         Selected = true;
                         GameData.engineerSelect = true;
@@ -120,11 +114,9 @@ namespace Steam_Hunters
                     }
                     if (gamePadState.Buttons.A == ButtonState.Pressed && oldgamePadState.Buttons.A == ButtonState.Released && Selected == false && GameData.wizardSelect == false)
                     {
-<<<<<<< HEAD
-                        p = new Wizard(TextureManager.WizardAnimation, TextureManager.WizHUD, new Vector2(1800, 3315), game.Window, gps, 75, 250, speed, 10, playerIndex);
-=======
-                        p = new Wizard(TextureManager.wizardAnimation, TextureManager.WizHUD, new Vector2(1800, 3315), game.Window, gps, 75, 250, speed, 1, playerIndex);
->>>>>>> origin/master
+
+                        p = new Wizard(TextureManager.wizardAnimation, TextureManager.WizHUD, new Vector2(1800, 3315), game.Window, gps, 75, 250, speed, 10, playerIndex);
+
                         GameData.playerList.Add(p);
                         Selected = true;
                         GameData.wizardSelect = true;
