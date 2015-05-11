@@ -1,4 +1,4 @@
-﻿ using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -35,6 +35,8 @@ namespace Steam_Hunters
         #region Warrior Textur
         public static Texture2D WarriorPic { get; private set; }
         public static Texture2D warriorAnimation { get; private set; }
+        public static Texture2D warriorAttack { get; private set; }
+        public static Texture2D warriorShield { get; private set; }
         #endregion
 
         #region Archer Textur
@@ -209,6 +211,9 @@ namespace Steam_Hunters
             #region Warrior Textur
             WarriorPic = Content.Load<Texture2D>(@"Texturer/Karakter/Warrior/WarriorPic");
             warriorAnimation = Content.Load<Texture2D>(@"WarriorWalk");
+            warriorAttack = Content.Load<Texture2D>(@"warriorAttack");
+            warriorShield = Content.Load<Texture2D>(@"warriorShield");
+
             #endregion
 
             #region Archer Textur
@@ -289,13 +294,13 @@ namespace Steam_Hunters
             EngHUD = Content.Load<Texture2D>(@"Engineer PicHUD");
             WarHUD = Content.Load<Texture2D>(@"WarriorPicHUD");
             WizHUD = Content.Load<Texture2D>(@"Wizard PicHUD");
-        ArhHUD = Content.Load<Texture2D>(@"Archer PicHUD");
+            ArhHUD = Content.Load<Texture2D>(@"Archer PicHUD");
 
-        player1HUD = Content.Load<Texture2D>(@"Player1HUD");
-        player2HUD = Content.Load<Texture2D>(@"Player2HUD");
-        player3HUD = Content.Load<Texture2D>(@"Player3HUD");
-        player4HUD = Content.Load<Texture2D>(@"Player4HUD");
-        shopHUD = Content.Load<Texture2D>(@"ShopMenu");
+            player1HUD = Content.Load<Texture2D>(@"Player1HUD");
+            player2HUD = Content.Load<Texture2D>(@"Player2HUD");
+            player3HUD = Content.Load<Texture2D>(@"Player3HUD");
+            player4HUD = Content.Load<Texture2D>(@"Player4HUD");
+            shopHUD = Content.Load<Texture2D>(@"ShopMenu");
 
             #endregion
 
