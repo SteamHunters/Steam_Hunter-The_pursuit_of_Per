@@ -36,6 +36,7 @@ namespace Steam_Hunters
         public static Texture2D WarriorPic { get; private set; }
         public static Texture2D warriorAnimation { get; private set; }
         public static Texture2D warriorAttack { get; private set; }
+        public static Texture2D warriorCharge { get; private set; }
         public static Texture2D warriorShield { get; private set; }
         #endregion
 
@@ -213,6 +214,7 @@ namespace Steam_Hunters
             warriorAnimation = Content.Load<Texture2D>(@"WarriorWalk");
             warriorAttack = Content.Load<Texture2D>(@"warriorAttack");
             warriorShield = Content.Load<Texture2D>(@"warriorShield");
+            warriorCharge = Content.Load<Texture2D>(@"charge");
 
             #endregion
 

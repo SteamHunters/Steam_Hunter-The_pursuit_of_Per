@@ -9,24 +9,33 @@ namespace Steam_Hunters
 {
     class Warrior : Player
     {
+        private ParticleEngine particleEngineCharge;
         private Point sheetSizeAttack = new Point(4, 2), currentFrameAttack = new Point(0, 0), frameSizeAttack = new Point(50, 50);
         private Point sheetSizeShield = new Point(4, 2), currentFrameShield = new Point(0, 0), frameSizeShield = new Point(50, 50);
-        bool isAttacking, isShielding;
-        float timerAttack, timerShield;
+        bool isAttacking, isShielding, isCharging, isAPress, getThumbStickValue, availableAPress;
+        float timerAttack, timerShield, timerCharge;
+        Vector2 leftStickValue;
+
 
         public Warrior(Texture2D tex, Texture2D HUDPic, Vector2 pos, GameWindow window, GamePlayScreen gps, int hp, int mana, int speed, int damage, PlayerIndex playerIndex)
             : base(tex, HUDPic, pos, window, gps, hp, mana, speed, damage, playerIndex)
         {
             //                                                      name, int, str, agil, vit, luck, hp, mp, lvl 
             statusWindow = new StatusWindow(TextureManager.turretBullet, pos, "hej", 0, 0, 0, 0, 0, hp, mana, 1, playerIndex);
+            this.particleEngineCharge = new ParticleEngine(TextureManager.steamTextures, pos, Color.Green);
             frameSize = new Point(50, 50);
             isAttacking = false;
-            isShielding = true;
+            isShielding = false;
+            isCharging = false;
+            isAPress = false;
+            availableAPress = true;
+
         }
 
 
         public override void Update(GameTime gameTime)
         {
+            particleEngineCharge.Update();
 
             statusWindow.SetPos = pos;
             statusWindow.Update(gameTime);
@@ -45,6 +54,12 @@ namespace Steam_Hunters
 
                 if (LTpress == true)
                     isShielding = true;
+
+                if (availableAPress == true)
+                {
+                    if (Apress == true)
+                        isCharging = true; 
+                }
             }
 
             if (isAttacking)
@@ -95,6 +110,60 @@ namespace Steam_Hunters
                 }
             }
 
+            if (isCharging && (newState.ThumbSticks.Left.X != 0 || newState.ThumbSticks.Left.Y != 0))
+            {
+                isAPress = true;
+                getThumbStickValue = true;
+                isCharging = false;
+            }
+            if (isAPress)
+            {
+                timerCharge += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (getThumbStickValue)
+                {
+                    //ma.X = GamePad.GetState(playerIndex, GamePadDeadZone.None).ThumbSticks.Left.X;//har jag igång none så funkar det, konstigt
+                    //ma.Y = -GamePad.GetState(playerIndex, GamePadDeadZone.None).ThumbSticks.Left.Y;
+                    leftStickValue.X = newState.ThumbSticks.Left.X;//annars funkar dessa
+                    leftStickValue.Y = -newState.ThumbSticks.Left.Y;
+                    //angle = (float)Math.Atan2(GamePad.GetState(playerIndex, GamePadDeadZone.None).ThumbSticks.Left.X, GamePad.GetState(playerIndex, GamePadDeadZone.None).ThumbSticks.Left.Y);
+                    angle = (float)Math.Atan2(newState.ThumbSticks.Left.X, newState.ThumbSticks.Left.Y);
+                    getThumbStickValue = false;
+                }
+
+                //if (ma.X == 0 && ma.Y == 0)
+                //{
+                //    x = prevThumbStickLeftValue.X;
+                //    y = prevThumbStickLeftValue.Y;
+                //}
+
+                Vector2 specialMove = new Vector2(leftStickValue.X, leftStickValue.Y);
+                specialMove.Normalize();
+
+                if (timerCharge < 400)
+                {
+                    isArcherMoving = false;
+
+                    specialMove.Normalize();
+                    pos += specialMove * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                    particleEngineCharge.EmitterLocation = new Vector2(pos.X, pos.Y);
+                    particleEngineCharge.total = 15;
+                    //speed += 5;
+                    //pos += direction * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds; 
+                    availableAPress = false;
+                }
+                else
+                {
+                    availableAPress = true;
+                    particleEngineCharge.total = 0;
+                    isAPress = false;
+                    timerCharge = 0;
+                    isArcherMoving = true;
+                }
+
+            }
+
             base.Update(gameTime);
         }
 
@@ -108,6 +177,11 @@ namespace Steam_Hunters
             {
                 spriteBatch.Draw(TextureManager.warriorShield, new Vector2(pos.X, pos.Y), new Rectangle(currentFrameShield.X * frameSizeShield.X, currentFrameShield.Y * frameSizeShield.Y, frameSizeShield.X, frameSizeShield.Y), color, angle, new Vector2(frameSizeShield.X / 2, frameSizeShield.Y / 2 + 6), 1, EntityFx, 0);
             }
+            else if (availableAPress == false)
+            {
+                spriteBatch.Draw(TextureManager.warriorCharge, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, 50, 50), color, angle, new Vector2(frameSizeShield.X / 2, frameSizeShield.Y / 2 + 6), 1, EntityFx, 0);
+                
+            }
             else
             {
                 spriteBatch.Draw(tex, pos, new Rectangle(currentFrame.X * frameSize.X, currentFrame.Y * frameSize.Y, frameSize.X, frameSize.Y), color, angle, new Vector2(frameSize.X / 2, frameSize.Y / 2), 1, EntityFx, 0);
@@ -117,6 +191,8 @@ namespace Steam_Hunters
             spriteBatch.DrawString(FontManager.font, "current: " + currentFrameAttack +
                                                      "\nframe size: " + currentFrameAttack +
                                                      "\nsheet size: " + sheetSizeAttack, new Vector2(pos.X + 100, pos.Y + 100), Color.Blue);
+
+            particleEngineCharge.Draw(spriteBatch);
 
 
             //base.Draw(spriteBatch);
