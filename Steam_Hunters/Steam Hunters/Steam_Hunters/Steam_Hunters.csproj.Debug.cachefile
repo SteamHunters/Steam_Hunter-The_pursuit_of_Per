@@ -69,29 +69,6 @@ Content\Engineer PicHUD.xnb
 Content\WarriorPicHUD.xnb
 Content\Wizard PicHUD.xnb
 Content\ShopMenu.xnb
-Content\archer trap.xnb
-Content\CloudanimationTex.xnb
-Content\CloudanimationTex2.xnb
-Content\gameOverScreen.xnb
-Content\Texturer\Enimes\Mobs 4\ShieldMob.xnb
-Content\Texturer\Enimes\Mobs 1\Melee mob slash.xnb
-Content\Texturer\Enimes\Mobs 2\BrownBug.xnb
-Content\Texturer\Enimes\Mobs 3\missile crab.xnb
-Content\Texturer\Enimes\Mobs 2\BlueBug.xnb
-Content\Tiles\Cave (50px)\cave_1-1.xnb
-Content\Tiles\Cave (50px)\cave_1-2.xnb
-Content\Tiles\Cave (50px)\cave_1-3.xnb
-Content\Tiles\Cave (50px)\cave_1-4.xnb
-Content\Tiles\Cave (50px)\cave_1-5.xnb
-Content\Tiles\Cave (50px)\cave_1-6.xnb
-Content\Tiles\Cave (50px)\cave_2-1.xnb
-Content\Tiles\Cave (50px)\cave_2-2.xnb
-Content\Tiles\Cave (50px)\cave_2-3.xnb
-Content\Tiles\Cave (50px)\cave_2-4.xnb
-Content\Tiles\Cave (50px)\cave_2-5.xnb
-Content\Tiles\Cave (50px)\cave_3-1.xnb
-Content\Tiles\Cave (50px)\cave_3-2.xnb
-Content\Tiles\Cave (50px)\cave_3-3.xnb
 Content\Tiles\Dirt (50px)\dirt_1-1.xnb
 Content\Tiles\Dirt (50px)\dirt_1-2.xnb
 Content\Tiles\Dirt (50px)\dirt_1-3.xnb
@@ -103,31 +80,6 @@ Content\Tiles\Dirt (50px)\dirt_2-4.xnb
 Content\Tiles\Dirt (50px)\dirt_3-1.xnb
 Content\Tiles\Dirt (50px)\dirt_3-2.xnb
 Content\Tiles\Dirt (50px)\dirt_3-3.xnb
-Content\Tiles\Extra (50px)\extra_1-1.xnb
-Content\Tiles\Extra (50px)\extra_1-2.xnb
-Content\Tiles\Extra (50px)\extra_1-3.xnb
-Content\Tiles\Extra (50px)\extra_1-4.xnb
-Content\Tiles\Extra (50px)\extra_2-1.xnb
-Content\Tiles\Extra (50px)\extra_2-2.xnb
-Content\Tiles\Extra (50px)\extra_2-3.xnb
-Content\Tiles\Extra (50px)\extra_2-4.xnb
-Content\Tiles\Extra (50px)\extra_3-1.xnb
-Content\Tiles\Extra (50px)\extra_3-2.xnb
-Content\Tiles\Extra (50px)\extra_3-3.xnb
-Content\Tiles\Extra (50px)\extra_3-4.xnb
-Content\Tiles\Extra (50px)\extra_4-1.xnb
-Content\Tiles\Extra (50px)\extra_4-2.xnb
-Content\Tiles\Extra (50px)\extra_4-3.xnb
-Content\Tiles\Extra (50px)\extra_4-4.xnb
-Content\Tiles\Extra (50px)\extra_5-1.xnb
-Content\Tiles\Extra (50px)\extra_5-2.xnb
-Content\Tiles\Extra (50px)\extra_5-3.xnb
-Content\Tiles\Extra (50px)\extra_5-4.xnb
-Content\Tiles\Extra (50px)\extra_6-1.xnb
-Content\Tiles\Extra (50px)\extra_6-2.xnb
-Content\Tiles\Extra (50px)\extra_6-3.xnb
-Content\Tiles\Extra (50px)\extra_6-4.xnb
-Content\Tiles\Extra (50px)\unkownTile.xnb
 Content\Tiles\House (50px)\house_1-1.xnb
 Content\Tiles\House (50px)\house_1-2.xnb
 Content\Tiles\House (50px)\house_1-3.xnb
@@ -235,12 +187,60 @@ Content\Tiles\Tree (50px)\tree_2-5.xnb
 Content\Tiles\Tree (50px)\tree_3-1.xnb
 Content\Tiles\Tree (50px)\tree_3-2.xnb
 Content\Tiles\Tree (50px)\tree_3-3.xnb
-Content\Tiles\Extra (50px)\blankTile.xnb
-Content\Tiles\Extra (50px)\red_50.xnb
-Content\Gold.xnb
+Content\archer trap.xnb
+Content\CloudanimationTex.xnb
+Content\CloudanimationTex2.xnb
+Content\gameOverScreen.xnb
 Content\Music\Roundtable Rival.xnb
 Content\Music\Sakura Sword.xnb
 Content\Music\SteampunkOrchestra.xnb
+Content\Texturer\Enimes\Mobs 4\ShieldMob.xnb
+Content\Texturer\Enimes\Mobs 1\Melee mob slash.xnb
+Content\Texturer\Enimes\Mobs 2\BrownBug.xnb
+Content\Texturer\Enimes\Mobs 3\missile crab.xnb
+Content\Texturer\Enimes\Mobs 2\BlueBug.xnb
+Content\Tiles\Cave (50px)\cave_1-1.xnb
+Content\Tiles\Cave (50px)\cave_1-2.xnb
+Content\Tiles\Cave (50px)\cave_1-3.xnb
+Content\Tiles\Cave (50px)\cave_1-4.xnb
+Content\Tiles\Cave (50px)\cave_1-5.xnb
+Content\Tiles\Cave (50px)\cave_1-6.xnb
+Content\Tiles\Cave (50px)\cave_2-1.xnb
+Content\Tiles\Cave (50px)\cave_2-2.xnb
+Content\Tiles\Cave (50px)\cave_2-3.xnb
+Content\Tiles\Cave (50px)\cave_2-4.xnb
+Content\Tiles\Cave (50px)\cave_2-5.xnb
+Content\Tiles\Cave (50px)\cave_3-1.xnb
+Content\Tiles\Cave (50px)\cave_3-2.xnb
+Content\Tiles\Cave (50px)\cave_3-3.xnb
+Content\Tiles\Extra (50px)\extra_1-2.xnb
+Content\Tiles\Extra (50px)\extra_1-3.xnb
+Content\Tiles\Extra (50px)\extra_1-4.xnb
+Content\Tiles\Extra (50px)\extra_2-1.xnb
+Content\Tiles\Extra (50px)\extra_2-2.xnb
+Content\Tiles\Extra (50px)\extra_2-3.xnb
+Content\Tiles\Extra (50px)\extra_2-4.xnb
+Content\Tiles\Extra (50px)\extra_3-1.xnb
+Content\Tiles\Extra (50px)\extra_3-2.xnb
+Content\Tiles\Extra (50px)\extra_3-3.xnb
+Content\Tiles\Extra (50px)\extra_3-4.xnb
+Content\Tiles\Extra (50px)\extra_4-1.xnb
+Content\Tiles\Extra (50px)\extra_4-2.xnb
+Content\Tiles\Extra (50px)\extra_4-3.xnb
+Content\Tiles\Extra (50px)\extra_4-4.xnb
+Content\Tiles\Extra (50px)\extra_5-1.xnb
+Content\Tiles\Extra (50px)\extra_5-2.xnb
+Content\Tiles\Extra (50px)\extra_5-3.xnb
+Content\Tiles\Extra (50px)\extra_5-4.xnb
+Content\Tiles\Extra (50px)\extra_6-1.xnb
+Content\Tiles\Extra (50px)\extra_6-2.xnb
+Content\Tiles\Extra (50px)\extra_6-3.xnb
+Content\Tiles\Extra (50px)\extra_6-4.xnb
+Content\Tiles\Extra (50px)\unkownTile.xnb
+Content\Tiles\Extra (50px)\red_50.xnb
+Content\Tiles\Extra (50px)\blankTile.xnb
+Content\Tiles\Extra (50px)\extra_1-1.xnb
+Content\Gold.xnb
 Content\warriorAttack.xnb
 Content\warriorShield.xnb
 Content\charge.xnb

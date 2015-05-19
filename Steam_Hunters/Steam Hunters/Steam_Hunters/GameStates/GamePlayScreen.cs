@@ -82,8 +82,8 @@ namespace Steam_Hunters
             cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud3Texture, 20.0f)); 
 
             //level1 = new World(game.Content);
-            //level2 = new World(game.Content);
-            level3 = new World(game.Content);
+            level2 = new World(game.Content);
+            //level3 = new World(game.Content);
             //level4 = new World(game.Content);
             camera = new Camera(game.GraphicsDevice.Viewport);
             
@@ -138,47 +138,47 @@ namespace Steam_Hunters
                     }
                 }
 
-                foreach (Tile h in level3.hitboxList)
-                {
-                    Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
-                    if (p.hitBox.Intersects(rect))
-                    {
-                        p.HandleCollision();
-                    }
+                //foreach (Tile h in level2.hitboxList)
+                //{
+                //    Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
+                //    if (p.hitBox.Intersects(rect))
+                //    {
+                //        p.HandleCollision();
+                //    }
 
-                    #region remove Wizards spells if hits hitboxes   
-                    if (GameData.wizardSelect == true)
-                    {
-                        foreach (Wizard w in GameData.playerList)
-                        {
-                            if (w != null)
-                                foreach (Projectile f in w.FireBallList)
-                                {
-                                    if (f.hitBox.Intersects(rect))
-                                        w.FireBallList.Remove(f);
-                                    break;
-                                }
-                            foreach (Projectile wb in w.WaterBallList)
-                            {
-                                if (wb.hitBox.Intersects(rect))
-                                    w.WaterBallList.Remove(wb);
-                                break;
-                            }
-                            foreach (Projectile b in w.BoulderList)
-                            {
-                                if (b.hitBox.Intersects(rect))
-                                {
-                                    w.particleEngineRocks.total = 0;
-                                    w.BoulderList.Remove(b);
-                                    w.boulderOn = false;
-                                    break;
-                                }
+                //    #region remove Wizards spells if hits hitboxes   
+                //    if (GameData.wizardSelect == true)
+                //    {
+                //        foreach (Wizard w in GameData.playerList)
+                //        {
+                //            if (w != null)
+                //                foreach (Projectile f in w.FireBallList)
+                //                {
+                //                    if (f.hitBox.Intersects(rect))
+                //                        w.FireBallList.Remove(f);
+                //                    break;
+                //                }
+                //            foreach (Projectile wb in w.WaterBallList)
+                //            {
+                //                if (wb.hitBox.Intersects(rect))
+                //                    w.WaterBallList.Remove(wb);
+                //                break;
+                //            }
+                //            foreach (Projectile b in w.BoulderList)
+                //            {
+                //                if (b.hitBox.Intersects(rect))
+                //                {
+                //                    w.particleEngineRocks.total = 0;
+                //                    w.BoulderList.Remove(b);
+                //                    w.boulderOn = false;
+                //                    break;
+                //                }
                                
-                            }
-                        }
-                    }
-                    #endregion
-                }
+                //            }
+                //        }
+                //    }
+                //    #endregion
+                //}
                 #endregion
 
                 #region Paus game
@@ -198,14 +198,7 @@ namespace Steam_Hunters
                 #region The game ends if all player i in ghost mode in multiplayer
                 if (GameData.MultiplayerMode == true)
                 {
-                    if (GameData.playerList.Count == 1)
-                    {
-                        if (GameData.playerList[0].ghostMode == true)
-                        {
-                            game.EndGame();
-                            GetHighscores();
-                        }
-                    }
+                    
                     if (GameData.playerList.Count == 2)
                     {
                         if (GameData.playerList[0].ghostMode == true && GameData.playerList[1].ghostMode == true)
