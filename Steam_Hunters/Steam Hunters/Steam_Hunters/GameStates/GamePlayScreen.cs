@@ -19,6 +19,7 @@ namespace Steam_Hunters
         private Vector2 cameraCenter;
         private Dialog dialog;
         private List <CloudAnimation> cloudAnimation;
+        private Rectangle warp1, warp2, warp3, warp4;
 
         //Highscore kod
         FileStream theFileRead, theFileWrite;
@@ -33,7 +34,7 @@ namespace Steam_Hunters
 
         //engineer 
         public List<Player> engineerList = new List<Player>();
-         public List<Player> WizardList = new List<Player>();
+        public List<Player> WizardList = new List<Player>();
         public List<Dispenser> dispensers = new List<Dispenser>();
         public List<Missile> missiles = new List<Missile>();
         public List<EngineerTower> turrets = new List<EngineerTower>();
@@ -46,7 +47,7 @@ namespace Steam_Hunters
         {
             this.game = game;
             GameData.volym = 0.1f;
-            if (GameData.Level == 1)
+            if (GameData.Level == 1 || GameData.Level == 2 || GameData.Level == 3)
                 MediaPlayer.Play(MusicManager.Level1Music);
 
             #region Få ut / sätter in data i GameData.playerlist
@@ -69,11 +70,11 @@ namespace Steam_Hunters
             }
             #endregion
 
-           //enemyList.Add(new EnemyMelee(TextureManager.BrownMonsterWalking, new Vector2(1600, 3100), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 70, 250, 0, 50, 1, 1, false, 1));
-           enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 10, 1, 1, 1, 10, 250, 0, 70, 1, 1, false, 1));
-           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1500, 3150), new Point(50, 50), new Point(3, 1), 20, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
-           enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1600, 3150), new Point(50, 50), new Point(3, 1), 30, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
-           npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
+            //enemyList.Add(new EnemyMelee(TextureManager.BrownMonsterWalking, new Vector2(1600, 3100), new Point(50, 50), new Point(4, 2), 1, 1, 1, 1, 70, 250, 0, 50, 1, 1, false, 1));
+            enemyList.Add(new EnemyBug(TextureManager.BlueBugs, new Vector2(1500, 3100), new Point(40, 40), new Point(2, 1), 10, 1, 1, 1, 10, 250, 0, 70, 1, 1, false, 1));
+            enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1500, 3150), new Point(50, 50), new Point(3, 1), 20, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+            enemyList.Add(new EnemyBomb(TextureManager.MissileCrab, new Vector2(1600, 3150), new Point(50, 50), new Point(3, 1), 30, 1, 1, 1, 125, 250, 0, 50, 1, 1, false, 1));
+            npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(2105, 2645), 200));
             npcList.Add(new NPC(TextureManager.NPCTexture, new Vector2(3850, 3575), 200));
            
             cloudAnimation = new List<CloudAnimation>();
@@ -81,25 +82,22 @@ namespace Steam_Hunters
             cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud2Texture, 15.0f));
             cloudAnimation.Add(new CloudAnimation(game.graphics, TextureManager.cloud3Texture, 20.0f)); 
 
-            //level1 = new World(game.Content);
-            level2 = new World(game.Content);
-            //level3 = new World(game.Content);
-            //level4 = new World(game.Content);
+            level1 = new World(game.Content, 1);
+            level2 = new World(game.Content, 2);
+            level3 = new World(game.Content, 3);
+            //level4 = new World(game.Content, 4);
             camera = new Camera(game.GraphicsDevice.Viewport);
             
             textHighScores_01 = new String[maxHighScores];
             textHighScores_02 = new String[maxHighScores];
+            warp1 = new Rectangle(2410, 765, 150, 15);
+            warp2 = new Rectangle(4540, 790, 140, 50);
         }
 
         public void Update(GameTime gameTime)
         {           
             KeyboardState keyboardState = Keyboard.GetState();
-            MouseState ms = new MouseState();
-         
-            //if (ms.RightButton == ButtonState.Pressed)
-            //{
-            //    enemyList.Add(new EnemyMelee(TextureManager.testTextureArcher, new Vector2(ms.X, ms.Y), new Point(45, 45), new Point(45, 45), 1, 1, 1, 1, 10, 1,0, 1, 1, 1, false, 1));
-            //} 
+            
 
             #region Set Camera center by how many players
             if (GameData.playerList.Count == 1)
@@ -129,6 +127,32 @@ namespace Steam_Hunters
             {
                 p.Update(gameTime);
 
+                #region warp to lvl 2
+                if (GameData.Level == 1)
+                {
+                    if (p.hitBox.Intersects(warp1))
+                    {
+                        p.pos = new Vector2(4274, 9236);
+                        p.prevPos = new Vector2(4274, 9236);
+                        GameData.Level = 2;
+                        level1 = null;
+                    }
+
+                }
+                #endregion
+                #region warp to lvl 3
+                if(GameData.Level == 2)
+                {
+                    if (p.hitBox.Intersects(warp2))
+                    {
+                        p.pos = new Vector2(2250, 4247);
+                        p.prevPos = new Vector2(2250, 4247);
+                        GameData.Level = 3;
+                        level2 = null;
+                    }
+                }
+                #endregion
+
                 #region Check collision whit tiles
                 foreach (EngineerTower t in turrets)
                 {
@@ -137,47 +161,83 @@ namespace Steam_Hunters
                         p.HandleCollision();
                     }
                 }
+                if (GameData.Level == 1)
+                {
+                    foreach (Tile h in level1.hitboxList)
+                    {
+                        Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
+                        if (p.hitBox.Intersects(rect))
+                        {
+                            p.HandleCollision();
+                        }
 
-                //foreach (Tile h in level2.hitboxList)
+                    }
+                }
+                if (GameData.Level == 2)
+                {
+                    foreach (Tile h in level2.hitboxList)
+                    {
+                        Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
+                        if (p.hitBox.Intersects(rect))
+                        {
+                            p.HandleCollision();
+                        }
+                    }
+                }
+                if (GameData.Level == 3)
+                {
+                    foreach (Tile h in level3.hitboxList)
+                    {
+                        Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
+                        if (p.hitBox.Intersects(rect))
+                        {
+                            p.HandleCollision();
+                        }
+                    }
+                }
+                if (GameData.Level == 4)
+                {
+                    foreach (Tile h in level4.hitboxList)
+                    {
+                        Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
+                        if (p.hitBox.Intersects(rect))
+                        {
+                            p.HandleCollision();
+                        }
+                    }
+                }
+                #endregion
+
+                #region remove Wizards spells if hits hitboxes
+                //if (GameData.wizardSelect == true)
                 //{
-                //    Rectangle rect = new Rectangle((int)h.Position.X, (int)h.Position.Y, 50, 50);
-                //    if (p.hitBox.Intersects(rect))
+                //    foreach (Wizard w in GameData.playerList)
                 //    {
-                //        p.HandleCollision();
-                //    }
-
-                //    #region remove Wizards spells if hits hitboxes   
-                //    if (GameData.wizardSelect == true)
-                //    {
-                //        foreach (Wizard w in GameData.playerList)
-                //        {
-                //            if (w != null)
-                //                foreach (Projectile f in w.FireBallList)
-                //                {
-                //                    if (f.hitBox.Intersects(rect))
-                //                        w.FireBallList.Remove(f);
-                //                    break;
-                //                }
-                //            foreach (Projectile wb in w.WaterBallList)
+                //        if (w != null)
+                //            foreach (Projectile f in w.FireBallList)
                 //            {
-                //                if (wb.hitBox.Intersects(rect))
-                //                    w.WaterBallList.Remove(wb);
+                //                if (f.hitBox.Intersects(rect))
+                //                    w.FireBallList.Remove(f);
                 //                break;
                 //            }
-                //            foreach (Projectile b in w.BoulderList)
+                //        foreach (Projectile wb in w.WaterBallList)
+                //        {
+                //            if (wb.hitBox.Intersects(rect))
+                //                w.WaterBallList.Remove(wb);
+                //            break;
+                //        }
+                //        foreach (Projectile b in w.BoulderList)
+                //        {
+                //            if (b.hitBox.Intersects(rect))
                 //            {
-                //                if (b.hitBox.Intersects(rect))
-                //                {
-                //                    w.particleEngineRocks.total = 0;
-                //                    w.BoulderList.Remove(b);
-                //                    w.boulderOn = false;
-                //                    break;
-                //                }
-                               
+                //                w.particleEngineRocks.total = 0;
+                //                w.BoulderList.Remove(b);
+                //                w.boulderOn = false;
+                //                break;
                 //            }
+
                 //        }
                 //    }
-                //    #endregion
                 //}
                 #endregion
 
@@ -498,6 +558,7 @@ namespace Steam_Hunters
             //camera
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
+            #region draw level
             if (GameData.Level == 1)
             {
                 level1.DrawLayerBase(spriteBatch);
@@ -685,6 +746,7 @@ namespace Steam_Hunters
                 }
                 #endregion
             }
+            #endregion
 
             spriteBatch.End();
 

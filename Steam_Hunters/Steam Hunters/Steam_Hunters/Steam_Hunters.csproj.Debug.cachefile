@@ -1,8 +1,6 @@
 Content\font.xnb
 Content\HUDFont.xnb
 Content\SteamFont.xnb
-Content\Font_35.xnb
-Content\pauseFont.xnb
 Content\one frame wizard.xnb
 Content\Arrow.xnb
 Content\Instructions.xnb
@@ -188,12 +186,14 @@ Content\Tiles\Tree (50px)\tree_3-1.xnb
 Content\Tiles\Tree (50px)\tree_3-2.xnb
 Content\Tiles\Tree (50px)\tree_3-3.xnb
 Content\archer trap.xnb
+Content\Font_35.xnb
 Content\CloudanimationTex.xnb
 Content\CloudanimationTex2.xnb
-Content\gameOverScreen.xnb
 Content\Music\Roundtable Rival.xnb
 Content\Music\Sakura Sword.xnb
 Content\Music\SteampunkOrchestra.xnb
+Content\pauseFont.xnb
+Content\gameOverScreen.xnb
 Content\Texturer\Enimes\Mobs 4\ShieldMob.xnb
 Content\Texturer\Enimes\Mobs 1\Melee mob slash.xnb
 Content\Texturer\Enimes\Mobs 2\BrownBug.xnb
@@ -213,6 +213,7 @@ Content\Tiles\Cave (50px)\cave_2-5.xnb
 Content\Tiles\Cave (50px)\cave_3-1.xnb
 Content\Tiles\Cave (50px)\cave_3-2.xnb
 Content\Tiles\Cave (50px)\cave_3-3.xnb
+Content\Tiles\Extra (50px)\extra_1-1.xnb
 Content\Tiles\Extra (50px)\extra_1-2.xnb
 Content\Tiles\Extra (50px)\extra_1-3.xnb
 Content\Tiles\Extra (50px)\extra_1-4.xnb
@@ -237,9 +238,8 @@ Content\Tiles\Extra (50px)\extra_6-2.xnb
 Content\Tiles\Extra (50px)\extra_6-3.xnb
 Content\Tiles\Extra (50px)\extra_6-4.xnb
 Content\Tiles\Extra (50px)\unkownTile.xnb
-Content\Tiles\Extra (50px)\red_50.xnb
 Content\Tiles\Extra (50px)\blankTile.xnb
-Content\Tiles\Extra (50px)\extra_1-1.xnb
+Content\Tiles\Extra (50px)\red_50.xnb
 Content\Gold.xnb
 Content\warriorAttack.xnb
 Content\warriorShield.xnb

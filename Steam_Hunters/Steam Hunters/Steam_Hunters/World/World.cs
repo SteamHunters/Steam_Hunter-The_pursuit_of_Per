@@ -17,17 +17,17 @@ namespace Steam_Hunters
         public List<Tile> hitboxList, EnimesMonsterType, SpawnPlayer1, SpawnPlayer2, SpawnPlayer3, SpawnPlayer4, traps, npc, mm;
         Stream gridDataStream, tileBankStream;
 
-        public World(ContentManager content)
+        public World(ContentManager content, int nr)
         {
             this.content = content;
 
-            if (GameData.Level == 1)
+            if (nr == 1)
                 LoadLevel1();
-            else if (GameData.Level == 2)
+            else if (nr == 2)
                 LoadLevel2();
-            else if (GameData.Level == 3)
+            else if (nr == 3)
                 LoadLevel3();
-            else if (GameData.Level == 4)
+            else if (nr == 4)
                 LoadLevel4();
 
         }
@@ -86,7 +86,7 @@ namespace Steam_Hunters
             hitboxList = level.GetLayer("hitbox").GetAllMatchingTiles(temp);
         }
 
-        private void LoadLevel2()
+        public void LoadLevel2()
         {
             this.gridDataStream = new FileStream("Content/Maps/tileMap2.tmx", FileMode.Open, FileAccess.Read);
             this.tileBankStream = new FileStream("Content/Maps/tileBank2.xml", FileMode.Open, FileAccess.Read);
@@ -104,7 +104,7 @@ namespace Steam_Hunters
             hitboxList = level.GetLayer("hitbox").GetAllMatchingTiles(temp);
         }
 
-        private void LoadLevel3()
+        public void LoadLevel3()
         {
             this.gridDataStream = new FileStream("Content/Maps/tileMap3.tmx", FileMode.Open, FileAccess.Read);
             this.tileBankStream = new FileStream("Content/Maps/tileBank3.xml", FileMode.Open, FileAccess.Read);
@@ -122,7 +122,7 @@ namespace Steam_Hunters
             hitboxList = level.GetLayer("hitbox").GetAllMatchingTiles(temp);
         }
 
-        private void LoadLevel4()
+        public void LoadLevel4()
         {
             this.gridDataStream = new FileStream("Content/Maps/tileMap4.tmx", FileMode.Open, FileAccess.Read);
             this.tileBankStream = new FileStream("Content/Maps/tileBank4.xml", FileMode.Open, FileAccess.Read);
