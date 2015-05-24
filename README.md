@@ -14,5 +14,5 @@ Have fun!
 
 What you need to install/ have to be able to play:
 1. Xbox 360 controller
-2. Intalled the Font: steamwreck (it is inside the content map)
+2. Intalled the Font: steamwreck
 
